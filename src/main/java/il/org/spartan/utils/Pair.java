@@ -60,7 +60,6 @@ public class Pair<First, Second> {
       assert p.hashCode()!=p3.hashCode();
       assert p.hashCode()!=p4.hashCode();
       assert p.hashCode()==p2.hashCode();
-      assert p.hashCode()==hash(p);
       assert p.toString().equals("<1,abc>");
       Pair<String,Integer> n = p.newPair("X", 22);
       assert !p.equals(n);
