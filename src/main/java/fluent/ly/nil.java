@@ -2,6 +2,8 @@ package fluent.ly;
 
 import java.util.function.*;
 
+import org.junit.*;
+
 /** TODO Yossi Gil: document class
  * @author Yossi Gil
  * @since 2017-04-10 */
@@ -29,4 +31,28 @@ import java.util.function.*;
   static <T> T ignoring(final long __) {
     return null;
   }
+  
+  @SuppressWarnings("static-method") public static class TEST {
+    @Test public void usecase0() {
+      azzert.isNull(nil.ignoring(true));
+    }
+
+    @Test public void usecase1() {
+      azzert.isNull(nil.ignoring(3));
+    }
+
+    @Test public void usecase2() {
+      azzert.isNull(nil.ignoring(2.5));
+    }
+    
+    @Test public void usecase3() {
+      azzert.isNull(nil.forgetting(Integer.valueOf(1), Double.valueOf(4), "hi"));
+    }
+    
+    @Test public void usecase4() {
+      On<Object, Object> f = nil.guardingly(x->Boolean.valueOf(x.equals("hi")));
+      azzert.isNull(f.on(null));
+    }
+  }
+  
 }
