@@ -228,6 +228,32 @@ import il.org.spartan.*;
         }
       }), is("null"));
     }
+    
+    @Test public void asIteretableTest() {
+      Integer val = Integer.valueOf(1);
+      for(Integer i : as.asIterable(Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3))) {
+        assert i.equals(val);
+        val = Integer.valueOf(val.intValue()+1);
+      }
+    }
+    
+    @Test public void bitObjectTest() {
+      assert as.bit(null) == 0;
+      assert as.bit("false") == 1;
+    }
+    
+    @SuppressWarnings("unlikely-arg-type") @Test public void setTest() {
+      Set<? extends String> s1 = as.set("a","b","c");
+      assert s1.size() == 3;
+      List<? extends String> s2 = as.list("a","b","c");
+      assert s1.containsAll(s2);
+    }
+    
+    @Test public void stringsTest() {
+      String[] actual = as.strings(as.list("a","b","c", Integer.valueOf(1), null));
+      String[] expected = new String [] {"a", "b", "c" , "1"};
+      Assert.assertArrayEquals(expected, actual);
+    }
   }
 
   /** Converts a sequence of values into an array.
