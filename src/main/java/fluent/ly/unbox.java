@@ -1,12 +1,9 @@
 package fluent.ly;
 
-import java.io.*;
 import java.util.*;
 
 import org.jetbrains.annotations.*;
 import org.junit.*;
-
-import il.org.spartan.utils.*;
 
 /** A utility class, offering a collection of function to unbox arrays and
  * collection of the boxed versions of the primitive types. The input of each
@@ -203,10 +200,8 @@ import il.org.spartan.utils.*;
 
       azzert.assertEquals(res.length, arr.length);
       int j = 0;
-      for(int i : arr)
-      {
-        azzert.assertEquals(i, res[j++]);
-      }
+      for(int ¢ : arr)
+        azzert.assertEquals(¢, res[j++]);
       
       Integer[] arrInt = {1,2,3,4,5,6};
 
@@ -214,10 +209,8 @@ import il.org.spartan.utils.*;
 
       azzert.assertEquals(res.length, arr.length);
       j = 0;
-      for(int i : arr)
-      {
-        azzert.assertEquals(i, res[j++]);
-      }
+      for(int ¢ : arr)
+        azzert.assertEquals(¢, res[j++]);
       
       azzert.assertEquals(unbox.unbox(Integer.valueOf(5)), 5);
       
@@ -225,17 +218,13 @@ import il.org.spartan.utils.*;
 
       azzert.assertEquals(res.length, arr.length);
       j = 0;
-      for(int i : arr)
-      {
-        azzert.assertEquals(i, res[j++]);
-      }
+      for(int ¢ : arr)
+        azzert.assertEquals(¢, res[j++]);
     }
     
     @Test
     public void testShorts() {
-      short[] arr = {1,2,3,4,5,6};
-      
-      short[] res;
+      short[] arr = { 1, 2, 3, 4, 5, 6 }, res;
       
       Short[] arrShort = {1,2,3,4,5,6};
       
@@ -246,16 +235,12 @@ import il.org.spartan.utils.*;
       azzert.assertEquals(res.length, arr.length);
       int j = 0;
       for(short i : arr)
-      {
         azzert.assertEquals(i, res[j++]);
-      }
     }
     
     @Test
     public void testBytes() {
-      byte[] arr = {1,2,3,4,5,6};
-      
-      byte[] res;
+      byte[] arr = { 1, 2, 3, 4, 5, 6 }, res;
       
       Byte[] arrByte = {1,2,3,4,5,6};
       
@@ -266,9 +251,7 @@ import il.org.spartan.utils.*;
       azzert.assertEquals(res.length, arr.length);
       int j = 0;
       for(byte i : arr)
-      {
         azzert.assertEquals(i, res[j++]);
-      }
     }
     
     @Test
@@ -281,20 +264,16 @@ import il.org.spartan.utils.*;
       azzert.assertEquals(res.length, arr.length);
       int j = 0;
       for(double i : arr)
-      {
-        azzert.assertTrue(Math.abs(i-res[j++]) < EPS);
-      }
+        assert Math.abs(i - res[j++]) < EPS;
 
-      azzert.assertTrue(Math.abs(unbox.unbox(Double.valueOf(5.0)) - 5.0) < EPS);
+      assert Math.abs(unbox.unbox(Double.valueOf(5.0)) - 5.0) < EPS;
       
       res = unbox.unbox(arrDouble);
 
       azzert.assertEquals(res.length, arr.length);
       j = 0;
       for(double i : arr)
-      {
-        azzert.assertTrue(Math.abs(i-res[j++]) < EPS);
-      }
+        assert Math.abs(i - res[j++]) < EPS;
     }
     
     @Test
@@ -307,20 +286,16 @@ import il.org.spartan.utils.*;
       azzert.assertEquals(res.length, arr.length);
       int j = 0;
       for(float i : arr)
-      {
-        azzert.assertTrue(Math.abs(i-res[j++]) < (float) EPS);
-      }
+        assert Math.abs(i - res[j++]) < (float) EPS;
 
-      azzert.assertTrue(Math.abs(unbox.unbox(Float.valueOf(5.0f)) - 5.0f) < (float) EPS);
+      assert Math.abs(unbox.unbox(Float.valueOf(5.0f)) - 5.0f) < (float) EPS;
       
       res = unbox.unbox(arrFloat);
 
       azzert.assertEquals(res.length, arr.length);
       j = 0;
       for(float i : arr)
-      {
-        azzert.assertTrue(Math.abs(i-res[j++]) < (float) EPS);
-      }
+        assert Math.abs(i - res[j++]) < (float) EPS;
     }
     
     @Test
@@ -329,17 +304,15 @@ import il.org.spartan.utils.*;
       
       Boolean[] arrBool = {true, false, true, true, false, false};
       
-      azzert.assertEquals(unbox.unbox(Boolean.valueOf(true)), true);
-      azzert.assertEquals(unbox.unbox(Boolean.valueOf(false)), false);
+      azzert.assertEquals(unbox.unbox(Boolean.TRUE), true);
+      azzert.assertEquals(unbox.unbox(Boolean.FALSE), false);
       
       boolean[] res = unbox.unbox(arrBool);
 
       azzert.assertEquals(res.length, arr.length);
       int j = 0;
       for(boolean i : arr)
-      {
         azzert.assertEquals(i, res[j++]);
-      }
     } 
     
     @Test
@@ -348,16 +321,14 @@ import il.org.spartan.utils.*;
       
       Long[] arrLong = {1l,2l,3l,4l,5l,6l};
       
-      azzert.assertTrue(unbox.unbox(Long.valueOf(5l)) == 5l);
+      assert unbox.unbox(Long.valueOf(5l)) == 5l;
       
       long[] res = unbox.unbox(arrLong);
 
       azzert.assertEquals(res.length, arr.length);
       int j = 0;
       for(long i : arr)
-      {
-        azzert.assertTrue(i == res[j++]);
-      }
+        assert i == res[j++];
     }
     
     @Test
@@ -373,9 +344,7 @@ import il.org.spartan.utils.*;
       azzert.assertEquals(res.length, arr.length);
       int j = 0;
       for(char i : arr)
-      {
         azzert.assertEquals(i, res[j++]);
-      }
     }
   }
 }

@@ -28,7 +28,7 @@ public interface anonymous {
     return $.get();
   }
   
-  @SuppressWarnings("static-method") public static class TEST {
+  @SuppressWarnings("static-method") class TEST {
     @Test public void usecase0() {
       assert anonymous.ly(()->true);
     }
@@ -42,7 +42,7 @@ public interface anonymous {
     }
     
     @Test public void usecase3() {
-      assert anonymous.ly(()->"hello").equals("hello");
+      assert "hello".equals(anonymous.ly(() -> "hello"));
     }
   }
 }

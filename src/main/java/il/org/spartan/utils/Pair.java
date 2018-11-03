@@ -47,10 +47,8 @@ public class Pair<First, Second> {
   @SuppressWarnings({ "static-access", "unused", "static-method",
                       "boxing", "synthetic-access"}) public static class TEST {
      @Test public void basic_test() {
-      Pair<Integer,String>  p = new Pair<Integer,String>(1, "abc");
-      Pair<Integer,String>  p2 = new Pair<Integer,String>(1, "abc");
-      Pair<Integer,String>  p3 = new Pair<Integer,String>(3, "aaaa");
-      Pair<Integer,String>  p4 = new Pair<Integer,String>(1, "ac");
+      Pair<Integer, String> p = new Pair<Integer, String>(1, "abc"), p2 = new Pair<Integer, String>(1, "abc"),
+          p3 = new Pair<Integer, String>(3, "aaaa"), p4 = new Pair<Integer, String>(1, "ac");
       assert eq(p,p);
       assert eq(p,p2);
       assert !eq(p,p3);
@@ -61,17 +59,14 @@ public class Pair<First, Second> {
       assert p.hashCode()!=p3.hashCode();
       assert p.hashCode()!=p4.hashCode();
       assert p.hashCode()==p2.hashCode();
-      assert p.toString().equals("<1,abc>");
-      Pair<String,Integer> n = p.newPair("X", 22);
-      assert !p.equals(n);
+      assert "<1,abc>".equals(p + "");
+      assert !p.equals(p.newPair("X", 22));
     }
     @Test public void Pairs_nulls_test() {
-      Pair<Integer,String>  p = new Pair<Integer,String>(1, "abc");
-      Pair<Integer,String>  p2 = new Pair<Integer,String>(1, "abc");
-      Pair<Integer,String>  p3 = new Pair<Integer,String>(3, "aaaa");
-      Pair<Integer,String>  p4 = new Pair<Integer,String>(1, "ac");
-      Pair<Integer,String> a[] = makePairs(3);
-      Pair<Integer,String> b[] = makePairs(3*2);
+      new Pair<Integer, String>(1, "abc");
+      new Pair<Integer, String>(3, "aaaa");
+      new Pair<Integer, String>(1, "abc");
+      Pair<Integer, String> p = new Pair<Integer, String>(1, "abc"), p4 = new Pair<Integer, String>(1, "ac"), a[] = makePairs(3), b[] = makePairs(6);
       assert !eq(p,a[0]);
       assert !p.equals(a[1]);
       assert !eq(p,b[5]);
