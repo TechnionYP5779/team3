@@ -32,7 +32,7 @@ import org.junit.*;
     return null;
   }
   
-  @SuppressWarnings("static-method") public static class TEST {
+  @SuppressWarnings("static-method") class TEST {
     @Test public void usecase0() {
       azzert.isNull(nil.ignoring(true));
     }
@@ -50,8 +50,7 @@ import org.junit.*;
     }
     
     @Test public void usecase4() {
-      On<Object, Object> f = nil.guardingly(x->Boolean.valueOf(x.equals("hi")));
-      azzert.isNull(f.on(null));
+      azzert.isNull(nil.guardingly(λ -> Boolean.valueOf("hi".equals(λ))).on(null));
     }
   }
   

@@ -6,7 +6,6 @@ import java.util.function.*;
 import org.jetbrains.annotations.*;
 import org.junit.*;
 
-import an.*;
 import fluent.ly.*;
 
 public enum Truth {
@@ -66,40 +65,56 @@ public enum Truth {
   public static class Tests {
     @Test
     public void testTruthOf() {
-      azzert.assertTrue(Truth.truthOf(() -> true) == T);
-      azzert.assertTrue(Truth.truthOf(() -> false) == F);
-      azzert.assertTrue(Truth.truthOf(() -> {throw new NullPointerException();}) == N);
-      azzert.assertTrue(Truth.truthOf(null) == N);
-      azzert.assertTrue(Truth.truthOf(() -> {throw new AssertionError();}) == X);
-      azzert.assertTrue(Truth.truthOf(() -> {throw new RuntimeException();}) == R);
-      azzert.assertTrue(Truth.truthOf(() -> {throw new IOError(null);}) == Ħ);
+      assert Truth.truthOf(() -> true) == T;
+      assert Truth.truthOf(() -> false) == F;
+      assert Truth.truthOf(() -> {
+        throw new NullPointerException();
+      }) == N;
+      assert Truth.truthOf(null) == N;
+      assert Truth.truthOf(() -> {
+        throw new AssertionError();
+      }) == X;
+      assert Truth.truthOf(() -> {
+        throw new RuntimeException();
+      }) == R;
+      assert Truth.truthOf(() -> {
+        throw new IOError(null);
+      }) == Ħ;
     }
     
     @Test
     public void testOps() {
-      azzert.assertTrue(T.not() == F);
-      azzert.assertTrue(F.not() == T);
+      assert T.not() == F;
+      assert F.not() == T;
       
-      azzert.assertTrue(T.and(T) == T);
-      azzert.assertTrue(T.and(F) == F);
-      azzert.assertTrue(F.and(T) == F);
-      azzert.assertTrue(F.and(F) == F);
+      assert T.and(T) == T;
+      assert T.and(F) == F;
+      assert F.and(T) == F;
+      assert F.and(F) == F;
       
-      azzert.assertTrue(T.or(T) == T);
-      azzert.assertTrue(T.or(F) == T);
-      azzert.assertTrue(F.or(T) == T);
-      azzert.assertTrue(F.or(F) == F);
+      assert T.or(T) == T;
+      assert T.or(F) == T;
+      assert F.or(T) == T;
+      assert F.or(F) == F;
     }
     
     @Test
     public void testLetterOf() {
-      azzert.assertTrue(Truth.letterOf(() -> true).equals(T.toString()));
-      azzert.assertTrue(Truth.letterOf(() -> false).equals(F.toString()));
-      azzert.assertTrue(Truth.letterOf(() -> {throw new NullPointerException();}).equals(N.toString()));
-      azzert.assertTrue(Truth.letterOf(null).equals(N.toString()));
-      azzert.assertTrue(Truth.letterOf(() -> {throw new AssertionError();}).equals(X.toString()));
-      azzert.assertTrue(Truth.letterOf(() -> {throw new RuntimeException();}).equals(R.toString()));
-      azzert.assertTrue(Truth.letterOf(() -> {throw new IOError(null);}).equals(Ħ.toString()));
+      assert Truth.letterOf(() -> true).equals(T + "");
+      assert Truth.letterOf(() -> false).equals(F + "");
+      assert Truth.letterOf(() -> {
+        throw new NullPointerException();
+      }).equals(N + "");
+      assert Truth.letterOf(null).equals(N + "");
+      assert Truth.letterOf(() -> {
+        throw new AssertionError();
+      }).equals(X + "");
+      assert Truth.letterOf(() -> {
+        throw new RuntimeException();
+      }).equals(R + "");
+      assert Truth.letterOf(() -> {
+        throw new IOError(null);
+      }).equals(Ħ + "");
     }
   }
 }

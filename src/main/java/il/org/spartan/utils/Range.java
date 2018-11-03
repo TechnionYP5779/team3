@@ -41,9 +41,8 @@ public class Range {
   @Nullable public Range findIncludedIn(final @Nullable Iterable<? extends Range> ¢) {
     if (¢ != null)
       for (final @Nullable Range $ : ¢)
-        if ($ != null)
-          if (includedIn($))
-            return $;
+        if ($ != null && includedIn($))
+          return $;
     return null;
   }
 
@@ -98,16 +97,8 @@ public class Range {
   
   @SuppressWarnings({ "static-method", "unused"}) public static class TEST {
     @Test public void test() {
-      Range zero = new Range(0,0);
-      Range zero_from1 = new Range(1,1);
-      Range r= new Range(1,10);
-      Range r2= new Range(1,11);
-      Range r3= new Range(-3,50);
-      Range r4= new Range(Integer.MIN_VALUE,Integer.MAX_VALUE);
-      Range bo= new Range(-5,2);
-      Range ao= new Range(9,11);
-      Range r_copy= new Range(r);
-      
+      Range zero = new Range(0, 0), zero_from1 = new Range(1, 1), r = new Range(1, 10), r2 = new Range(1, 11), r3 = new Range(-3, 50),
+          r4 = new Range(Integer.MIN_VALUE, Integer.MAX_VALUE), bo = new Range(-5, 2), ao = new Range(9, 11), r_copy = new Range(r);
       assert zero.equals(zero);
       assert !zero.equals(zero_from1);
       assert !zero.equals(r4);
@@ -138,7 +129,7 @@ public class Range {
       assert l.size()==2;
       l.remove(r);
       r.pruneIncluders(l);
-      assert l.size()==0;
+      assert l.isEmpty();
       
       assert r2.includedIn(r3);
       assert !r2.includedIn(r);
@@ -155,7 +146,7 @@ public class Range {
       assert !r.isEmpty();
       assert zero_from1.isEmpty();
       
-      assert zero.size()==0;
+      assert zero.isEmpty();
       assert r.size()==9;
       assert r4.size()==Integer.MAX_VALUE-Integer.MIN_VALUE;
       assert r3.merge(bo).size()==55;
@@ -164,8 +155,8 @@ public class Range {
       assert !r4.includedIn(r3.merge(bo));
       assert r3.merge(r4).size()==r4.size();
 
-      assert zero.toString().equals("[0, 0]");
-      assert r2.toString().equals("[1, 11]");
+      assert "[0, 0]".equals(zero + "");
+      assert "[1, 11]".equals(r2 + "");
     }
   }
 }
