@@ -3,6 +3,10 @@ package an;
 import java.util.*;
 
 import org.jetbrains.annotations.*;
+import org.junit.*;
+
+import fluent.ly.*;
+import fluent.ly.nil.*;
 
 /** TODO Yossi Gil: document class
  * @author Yossi Gil
@@ -27,5 +31,20 @@ public enum empty {
         };
       }
     };
+  }
+  
+  @SuppressWarnings("static-method")
+  public static class Tests {
+    @Test
+    public void testListEmpty() {
+      azzert.assertTrue(empty.list().size() == 0);
+      azzert.assertTrue(empty.list().isEmpty());
+    }
+    
+    @Test
+    public void testIterator() {
+      azzert.assertFalse(empty.iterable().iterator().hasNext());
+      azzert.assertNull(empty.iterable().iterator().next());
+    }
   }
 }
