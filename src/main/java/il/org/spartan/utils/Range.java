@@ -96,7 +96,7 @@ public class Range {
     return String.format("[%d, %d]", fluent.ly.box.it(from), fluent.ly.box.it(to));
   }
   
-  @SuppressWarnings("static-method") public static class TEST {
+  @SuppressWarnings({ "static-method", "unused"}) public static class TEST {
     @Test public void test() {
       Range zero = new Range(0,0);
       Range zero_from1 = new Range(1,1);
