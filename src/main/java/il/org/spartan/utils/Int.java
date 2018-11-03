@@ -65,12 +65,11 @@ public final class Int {
   }
   
   
-  @SuppressWarnings("static-method") public static class TEST {
+  @SuppressWarnings({ "unused", "static-method", 
+                      "boxing"}) public static class TEST {
     @Test public void basic_test() {
       Int a= new Int();
-      assert a==a;
       Int b= new Int(3);
-      assert b==b;
       assert b.equals(b);
       assert b.inner==3;
       assert valueOf(0).inner==0;
