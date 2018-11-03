@@ -44,8 +44,9 @@ public class Pair<First, Second> {
     return "<" + first + "," + second + ">";
   }
   
-  @SuppressWarnings("static-method") public static class TEST {
-    @Test public void basic_test() {
+  @SuppressWarnings({ "static-access", "unused", "static-method",
+                      "boxing", "synthetic-access"}) public static class TEST {
+     @Test public void basic_test() {
       Pair<Integer,String>  p = new Pair<Integer,String>(1, "abc");
       Pair<Integer,String>  p2 = new Pair<Integer,String>(1, "abc");
       Pair<Integer,String>  p3 = new Pair<Integer,String>(3, "aaaa");
