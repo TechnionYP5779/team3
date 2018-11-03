@@ -12,11 +12,9 @@ public interface count {
     return $;
   }
   
-  @SuppressWarnings("static-method") public static class TEST {
+  @SuppressWarnings("static-method") class TEST {
     @Test public void usecase0() {
-      String a[] = new String[]{"abc","klm","xyz","pqr"};
-      List<String> list1 = Arrays.asList(a);
-      assert count.of(list1) == 4;
+      assert count.of(Arrays.asList(new String[] { "abc", "klm", "xyz", "pqr" })) == 4;
     }
 
     @Test public void usecase1() {

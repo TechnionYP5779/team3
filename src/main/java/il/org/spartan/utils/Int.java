@@ -68,16 +68,15 @@ public final class Int {
   @SuppressWarnings({ "unused", "static-method", 
                       "boxing"}) public static class TEST {
     @Test public void basic_test() {
-      Int a= new Int();
-      Int b= new Int(3);
+      new Int();
+      Int b = new Int(3);
       assert b.equals(b);
       assert b.inner==3;
       assert valueOf(0).inner==0;
     }
 
     @Test public void set_get_change_test() {
-      Int a= new Int();
-      Int b= new Int(3);
+      Int a = new Int(), b = new Int(3);
       a.set(4);
       assert a.get()==4;
       a.set(-6);
@@ -93,12 +92,11 @@ public final class Int {
       assert b.inner()==b.get();
       assert b.next()==2;
       assert b.next()==valueOf(3).get();
-      assert b.toString().equals("3"+ "");
+      assert "3".equals(b + "");
     }
     
     @Test public void math_test() {
-      Int a= new Int(5);
-      Int b= new Int(3);
+      Int a = new Int(5), b = new Int(3);
       a.add(b);
       assert a.get()==8;
       a.add(-10);
