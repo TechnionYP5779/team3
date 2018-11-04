@@ -3,7 +3,6 @@ package il.org.spartan;
 import static org.junit.Assert.*;
 
 import static fluent.ly.azzert.*;
-import static fluent.ly.idiomatic.*;
 
 import java.io.*;
 import java.util.*;
@@ -184,17 +183,7 @@ import il.org.spartan.Utils.FoundHandleForT.*;
     return false;
   }
 
-  /** Determine if an item can be found in a list of values
-   * @param           <T> JD
-   * @param candidate what to search for
-   * @param ts        where to search
-   * @return true if the the item is found in the list */
-  @SafeVarargs static <T> boolean in(final T candidate, final @NotNull T... ts) {
-    for (final T ¢ : ts)
-      if (¢ != null && ¢.equals(candidate))
-        return true;
-    return false;
-  }
+
 
   /** Determine whether an integer is a valid list index
    * @param    <T> JD
@@ -242,25 +231,6 @@ import il.org.spartan.Utils.FoundHandleForT.*;
    * @return name of the parameter, which must not be <code><b>null</b></code> */
   static String name(final File ¢) {
     return cantBeNull(¢.getName());
-  }
-
-  /** @param <T> JD
-   * @param ¢ a list
-   * @return last item in a list or <code><b>null</b></code> if the parameter is
-   *         <code><b>null</b></code> or empty */
-  static <T> @Nullable T penultimate(final List<T> ¢) {
-    return eval(() -> ¢.get(¢.size() - 2)).unless(¢ == null || ¢.size() < 2);
-  }
-
-  /** Determine whether an {@link Object} is penultimate in its {@link List} .
-   * @param    <T> JD
-   * @param o  JD
-   * @param os JD
-   * @return <code><b>true</b></code> <i>iff</i> the an {@link Object} parameter
-   *         occurs as the penultimate element of the {@link List} parameter */
-  static <@Nullable T> boolean penultimateIn(final T o, final @Nullable List<T> os) {
-    assert os != null;
-    return penultimate(os) == o;
   }
 
   /** Prepend a given <code><b>char</b></code> to a {@link StringBuilder}
