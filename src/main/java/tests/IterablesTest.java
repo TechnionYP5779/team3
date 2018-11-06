@@ -32,19 +32,18 @@ public class IterablesTest {
     }
 
     @Test public void countDoesNotIncludeNull() {
-      assertEquals(3, count(iterable.over(null, "One", null, "Two", null, "Three")));
+      assertEquals(3, iterables.count(iterable.over(null, "One", null, "Two", null, "Three")));
     }
 
     @Test public void countEmpty() {
-      assertEquals(0, count(iterables.<String> empty()));
+      assertEquals(0, iterables.count(iterables.<String> empty()));
     }
 
     @Test public void countSingleton() {
-      assertEquals(1, count(iterable.singleton(new Object())));
+      assertEquals(1, iterables.count(iterable.singleton(new Object())));
     }
 
     @Test public void countThree() {
-      assertEquals(3, count(iterable.over("One", "Two", "Three")));
+      assertEquals(3, iterables.count(iterable.over("One", "Two", "Three")));
     }
-  }
 }
