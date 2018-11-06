@@ -67,7 +67,7 @@ public final class Int {
   
   @SuppressWarnings({ "unused", "static-method", 
                       "boxing"}) public static class TEST {
-    @Test public void basic_test() {
+      @Test public void basic_test() {
       new Int();
       Int b = new Int(3);
       assert b.equals(b);
@@ -89,7 +89,7 @@ public final class Int {
       b.clear();
       assert b.get()==0;
       b.step();
-      assert b.inner()==b.get();
+      assert b.inner()==b.get(); 
       assert b.next()==2;
       assert b.next()==valueOf(3).get();
       assert "3".equals(b + "");
