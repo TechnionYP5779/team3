@@ -1,6 +1,6 @@
 /* Part of the "Spartan Blog"; mutate the rest / but leave this line as is */
 package fluent.ly;
-
+ 
 import static fluent.ly.azzert.*;
 
 import java.util.function.*;
@@ -139,7 +139,7 @@ public interface idiomatic {
     @Override public void run() {
       run.run();
     }
-
+    
     /** <code>unless</code>
      * @param unless condition n which execution occurs. */
     public void unless(final boolean unless) {
@@ -172,7 +172,7 @@ public interface idiomatic {
   }
 
   @SuppressWarnings("static-method") public static class TEST {
-    
+
     @Test public void use0() {
       assert new Storer<>(this) != null;
     }
@@ -197,7 +197,16 @@ public interface idiomatic {
     @Test public void use11() {
       azzert.isNull(when(false).eval(() -> new Object()));
     }
-
+    @Test public void use12() {
+      assert (quote("ABBA").equals("'ABBA'"));
+    }
+    
+    @SuppressWarnings("boxing") @Test public void use13() {
+      assert (incase(true,4) == 4);
+      assert (incase(false,4) == null);
+    }
+    
+  
     @Test public void use2() {
       assert take(this) != null;
       azzert.isNull(take(this).when(false));
@@ -224,8 +233,35 @@ public interface idiomatic {
       azzert.isNull(take(null).unless(true));
       azzert.isNull(take(null).unless(false));
     }
+   
+    @SuppressWarnings("null") @Test public void use14() {
+      Supplier<String> s  = ()-> "12534";
+      assert(eval(s).get().equals("12534"));
+    }
+    @SuppressWarnings("boxing") @Test public void use15() {
+      assert (unless(true,4) == 4);
+      assert (unless(false,4) == null);
+    }
+    @Test public void use16() {
+      assert (unless(true) == ignore);
+      assert (unless(false) == eval);
+    }
+    
+    @Test public void use17() {
+      assert (when(false) == ignore);
+      assert (when(true) == eval);
+    }
+    @Test public void use18() {
+      Runnable myRunnable =
+          new Runnable(){
+              @Override public void run(){
+                  System.out.println("Runnable running");
+              }
+          };
+      Runner r = run(myRunnable);
+      assert (r!=null);
+    }
   }
-
   /** @author Yossi Gil <Yossi.Gil@GMail.COM>
    * @since 2016 */
   interface Trigger {
