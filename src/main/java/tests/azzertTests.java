@@ -2,6 +2,7 @@ package tests;
 
 import java.util.*;
 
+import org.hamcrest.*;
 import org.junit.*;
 
 import fluent.ly.*;
@@ -138,5 +139,8 @@ public class azzertTests {
     
     azzert.notNull(new Object());
     azzert.notNull("bla", new Object());
+    
+    azzert.startsWith("bla");
+   
   }
 }

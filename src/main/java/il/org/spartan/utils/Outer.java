@@ -1,6 +1,7 @@
 package il.org.spartan.utils;
 
 import org.jetbrains.annotations.*;
+import org.junit.*;
 
 import il.org.spartan.*;
 
@@ -50,6 +51,14 @@ public class Outer<@Nullable Inner> {
     return inner;
   }
   
-  
-  
+  public class tests {
+    @SuppressWarnings({ "unchecked", "boxing", "synthetic-access", "null" }) @Test public void outerAdds() {
+      @SuppressWarnings({ "rawtypes" }) Outer o = new Outer(10);
+      @SuppressWarnings({ "rawtypes" }) Outer o1 = new Outer(10);
+      assert(o.equals(o1)); 
+      assert(o.equalsAux(o1)); 
+      o.set(11);
+      assert((int)o.get() == 11);
+    }
+}
 }
