@@ -2,15 +2,14 @@
 package fluent.ly;
 
 import static il.org.spartan.Utils.*;
-import static org.junit.Assert.assertEquals;
 
-import static fluent.ly.azzert.*;
+
 
 import java.util.*;
-import java.util.function.*;
+
 
 import org.jetbrains.annotations.*;
-import org.junit.*;
+
 
 /** A <b>Utility class</b> providing functions to remove
  * <code><b>null</b></code> elements from arrays and iterable collections. For
