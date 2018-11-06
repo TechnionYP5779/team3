@@ -239,8 +239,8 @@ public interface idiomatic {
       assert(eval(s).get().equals("12534"));
     }
     @SuppressWarnings("boxing") @Test public void use15() {
-      assert (unless(true,4) == 4);
-      assert (unless(false,4) == null);
+      assert (unless(true,4) == null);
+      assert (unless(false,4) == 4);
     }
     @Test public void use16() {
       assert (unless(true) == ignore);
