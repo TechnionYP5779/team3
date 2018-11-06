@@ -1,4 +1,4 @@
-package fluent.ly;
+package tests;
 
 import java.util.function.*;
 
