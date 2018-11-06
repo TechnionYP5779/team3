@@ -1,6 +1,6 @@
 package fluent.ly;
 
-import org.junit.*;
+
 
 /** This interface contains methods that do nothing and document the fact that some Object or value are not used in a function.
  * Calling these functions suppresses the "variable unused" warning that would usually be caused.
