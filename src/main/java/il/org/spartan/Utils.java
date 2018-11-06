@@ -445,7 +445,7 @@ import il.org.spartan.Utils.FoundHandleForT.*;
    * begin with the name of the method they check.
    * @author Yossi Gil
    * @since 2014-05-31 */
-  @SuppressWarnings("static-method") class TEST {
+  @SuppressWarnings("static-method") public static class TEST {
     @NotNull public static Integer[] intToIntegers(final int... is) {
       final Integer @NotNull [] $ = new Integer @NotNull [is.length];
       for (int ¢ = 0; ¢ < is.length; ++¢)
@@ -537,6 +537,61 @@ import il.org.spartan.Utils.FoundHandleForT.*;
       swap($, 0, 1);
       assertArrayEquals(intToIntegers(1, 29, 60), $);
     }
+    @SuppressWarnings("unchecked") @Test public void addTest() {
+      @SuppressWarnings("rawtypes") List listSource = new ArrayList();
+
+      listSource.add("123");
+      listSource.add("456");
+      @SuppressWarnings("rawtypes") List newList = new ArrayList();
+      assert(add(newList, listSource.iterator()).size()==2);
+    }
+    
+    @SuppressWarnings("unchecked") @Test public void addTest2() {
+      @SuppressWarnings("rawtypes") List newList = new ArrayList();
+      assert(add(newList, "a", "a","b","c").size()==4);
+    }
+     @SuppressWarnings("unchecked") @Test public void hasNullTest() {
+       @SuppressWarnings("rawtypes") List newList = new ArrayList();
+       newList.add(null);
+      assert(hasNull(newList));
+    }
+     @Test public void hasIntest() {
+      assert(intIsIn(3,2,4,3));
+    }
+     
+     @SuppressWarnings("unchecked") @Test public void tesDup() {
+       @SuppressWarnings("rawtypes") List list = new ArrayList();
+
+       list.add("123");
+       list.add("123");
+       removeDuplicates(list);
+       assert(list.size()==1);
+       
+     }
+     
+     @Test public void removeSuffixTest() {
+      assert(removeSuffix("12345","45").equals("123"));
+     }
+     
+     @Test public void removePrefixTest() {
+       assert(removePrefix("12345","123").equals("45"));
+      }
+     
+     @Test public void removeFromArrayTest() {
+       String[] arr ={"1","2","3"};
+       
+       assert(delete(arr,1).length==2);
+      }
+     
+     @Test public void appendToArrayTest() {
+       String[] arr ={"1","2","3"};
+       
+       assert(append(arr,"5").length==4);
+      }
+     
+     
+     
+    
   }
 
   static int hash(Object ¢) {

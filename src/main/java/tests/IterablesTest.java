@@ -9,8 +9,7 @@ import an.*;
 import fluent.ly.*;
 import il.org.spartan.iterables.*;
 
-@SuppressWarnings("static-method") 
-public class IterablesTest {
+@SuppressWarnings("static-method") public class IterablesTest {
     @Test public void containsDegenerate() {
       azzert.nay(contains("Hello"));
     }
