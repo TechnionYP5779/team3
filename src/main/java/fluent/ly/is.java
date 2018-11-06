@@ -2,21 +2,13 @@
 package fluent.ly;
 
 import java.util.*;
-import java.util.stream.*;
 
 import org.jetbrains.annotations.*;
 
 /** @author Yossi Gil <tt>yogi@cs.technion.ac.il</tt>
  * @since 2017-04-23 */
 public interface is {
-  /** Determine if an item can be found in a list of values
-   * @param           < T > JD
-   * @param candidate what to search for
-   * @param ts        where to search
-   * @return true if the the item is found in the list */
-  @SafeVarargs static <T> boolean in(final T candidate, final T... ts) {
-    return Stream.of(ts).anyMatch(λ -> λ != null && λ.equals(candidate));
-  }
+
 
   /** Determine if an integer can be found in a list of values
    * @param candidate what to search for
@@ -31,9 +23,22 @@ public interface is {
 
   interface not {
     /** the candidate is not in ts */
-    @SafeVarargs static <T> boolean in(final T candidate, final T... ts) {
+    @SafeVarargs static <T> boolean in(final T candidate, final @NotNull T... ts) {
       return !is.in(candidate, ts);
     }
+  }
+  
+  
+  /** Determine if an item can be found in a list of values
+   * @param           <T> JD
+   * @param candidate what to search for
+   * @param ts        where to search
+   * @return true if the the item is found in the list */
+  @SafeVarargs static <T> boolean in(final T candidate, final @NotNull T... ts) {
+    for (final T ¢ : ts)
+      if (¢.equals(candidate))
+        return true;
+    return false;
   }
 
   /** Determine if an item is not included in a list of values
@@ -41,7 +46,7 @@ public interface is {
    * @param candidate what to search for
    * @param ts        where to search
    * @return true if the the item is not found in the list */
-  @SafeVarargs static <T> boolean out(final T candidate, final T... ts) {
+  @SafeVarargs static <T> boolean out(final T candidate, final @NotNull T... ts) {
     return !in(candidate, ts);
   }
 

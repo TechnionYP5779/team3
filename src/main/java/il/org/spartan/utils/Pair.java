@@ -1,6 +1,9 @@
 package il.org.spartan.utils;
 
+import il.org.spartan.Utils;
+
 import org.jetbrains.annotations.*;
+import org.junit.*;
 
 public class Pair<First, Second> {
   @SuppressWarnings("unchecked") //
@@ -33,14 +36,47 @@ public class Pair<First, Second> {
   }
 
   @Override public int hashCode() {
-    return hash(second) ^ hash(first) >>> 1;
+    return Utils.hash(second) ^ Utils.hash(first) >>> 1;
   }
 
-  private static int hash(Object ¢) {
-    return ¢ == null ? 0 : ¢.hashCode();
-  }
 
   @Override @NotNull public String toString() {
     return "<" + first + "," + second + ">";
   }
+  
+  @SuppressWarnings({ "static-access", "unused", "static-method",
+                      "boxing", "synthetic-access"}) public static class TEST {
+     @Test public void basic_test() {
+      Pair<Integer, String> p = new Pair<Integer, String>(1, "abc"), p2 = new Pair<Integer, String>(1, "abc"),
+          p3 = new Pair<Integer, String>(3, "aaaa"), p4 = new Pair<Integer, String>(1, "ac");
+      assert eq(p,p);
+      assert eq(p,p2);
+      assert !eq(p,p3);
+      assert !eq(p,p4);
+      assert p.equals(p);
+      assert p.equals(p2);
+      assert !p.equals(p3);
+      assert p.hashCode()!=p3.hashCode();
+      assert p.hashCode()!=p4.hashCode();
+      assert p.hashCode()==p2.hashCode();
+      assert "<1,abc>".equals(p + "");
+      assert !p.equals(p.newPair("X", 22));
+    }
+    @Test public void Pairs_nulls_test() {
+      new Pair<Integer, String>(1, "abc");
+      new Pair<Integer, String>(3, "aaaa");
+      new Pair<Integer, String>(1, "abc");
+      Pair<Integer, String> p = new Pair<Integer, String>(1, "abc"), p4 = new Pair<Integer, String>(1, "ac"), a[] = makePairs(3), b[] = makePairs(6);
+      assert !eq(p,a[0]);
+      assert !p.equals(a[1]);
+      assert !eq(p,b[5]);
+      b[3]=p;
+      a[1]= new Pair<Integer,String>(1, "ac");
+      assert b[3].equals(p);
+      assert a[1].equals(p4);
+    }
+    
+    
+    
+  } 
 }
