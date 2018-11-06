@@ -86,7 +86,7 @@ public class seperateTests {
     azzert.that(separate.these(new Applicator<>(quote).to(as.list("Hello", "World"))).by(", "), is("'Hello', 'World'"));
   }
 
-  @Test public final void byFOfTTArrayChar() {
+  @SuppressWarnings("null") @Test public final void byFOfTTArrayChar() {
     final @NotNull Applicator<Object, String> f = new Applicator<>(λ -> "'" + λ + "'");
     assert f != null : "Function literals should never by null.";
     final @NotNull Collection<String> c = as.list("Hello", "World");
@@ -169,12 +169,12 @@ public class seperateTests {
     azzert.that(separate.these("Hello", "World").byNLs(), is("Hello\nWorld"));
   }
 
-  @Test public final void separateByNoItemslPruneWhitesSpaceSeparated() {
+  @SuppressWarnings("null") @Test public final void separateByNoItemslPruneWhitesSpaceSeparated() {
     final @NotNull SeparationSubject these = separate.these();
     assert these != null : null;
     final Iterable<?> os = these.os;
     assert os != null : null;
-    azzert.aye(is.empty(os));
+    azzert.aye(is.empty(os));   
     final @NotNull String[] ss = as.strings(os);
     assert ss != null : null;
     azzert.zero(ss.length);
@@ -183,6 +183,7 @@ public class seperateTests {
   }
 
   @Test public final void separateByNoItemslSpaceSeparated() {
+    @SuppressWarnings("unused") int x;
   }
 
   @Test public void separateBySpaceEmpty() {
