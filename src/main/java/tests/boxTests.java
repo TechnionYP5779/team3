@@ -7,7 +7,7 @@ import org.junit.*;
 import fluent.ly.*;
 
 @SuppressWarnings("boxing")  public class boxTests {
-  @Test public void boxAdds() {
+  @SuppressWarnings("static-method") @Test public void boxAdds() {
     Boolean b = box.box(true);
     Boolean b1 = Boolean.valueOf(true);
     azzert.that(b1.equals(b), is(true));
