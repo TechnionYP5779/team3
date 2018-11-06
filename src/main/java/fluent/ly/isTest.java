@@ -21,10 +21,10 @@ public class isTest {
   }
   
   @SuppressWarnings("static-method") @Test public void strTest() {
-    List<? extends String> li = as.list("a", "b", "c");
-    assert (is.in("a",li ));
-    assert (!is.in("d",li ));
-    assert(is.out("1",li));
+    List<String> li = as.list("a", "b", "c");
+    assert (is.in("a", "a","b","c" ));
+    assert (!is.in("d", "a","b","c" ));
+    assert(is.out("1", li));
     assert(is.empty(li)==false);
     
   }
