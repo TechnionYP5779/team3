@@ -120,7 +120,7 @@ import il.org.spartan.*;
     azzert.aye(reason, b);
   }
 
-  @SuppressWarnings("unused") @NotNull private static SeparationSubject these(final int @NotNull [] ¢) {
+ @NotNull public static SeparationSubject these(final int @NotNull [] ¢) {
     return these(box.it(¢));
   }
 
