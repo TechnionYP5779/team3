@@ -43,15 +43,4 @@ public interface forget {
   @SuppressWarnings("unused") static void it(final Object __) {
     /**/ }
   
-  @SuppressWarnings("static-method") class Tests {
-    @Test
-    public void testForget() {
-      forget.it(5);
-      forget.it(false);
-      forget.it(1.0);
-      forget.it("bla");
-      
-      forget.all("1", "2", "3");
-    }
-  }
 }

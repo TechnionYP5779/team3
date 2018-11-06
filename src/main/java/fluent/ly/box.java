@@ -7,6 +7,7 @@ import org.jetbrains.annotations.*;
 
 import il.org.spartan.*;
 
+
 /** A utility class, with a collection of function to box primitive types in
  * their reference type equivalent representation. Similarly, this class offers
  * functions to box arrays of primitive types into their reference type
@@ -14,7 +15,7 @@ import il.org.spartan.*;
  * @author Yossi Gil, the Technion.
  * @since 21/06/2008
  * @see unbox */
-@SuppressWarnings("null") public enum box {
+@SuppressWarnings("all") public enum box {
   // A namespace: no values to this <code><b>enum</b></code>
   ;
   /** box a <code><b>boolean</b></code> into a {@link Boolean} object.
@@ -234,4 +235,5 @@ import il.org.spartan.*;
       $[¢] = it(ss[¢]);
     return $;
   }
+  
 }
