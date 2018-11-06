@@ -3,15 +3,10 @@ package fluent.ly;
 
 import static il.org.spartan.Utils.*;
 
-import static fluent.ly.azzert.*;
-
-import javax.swing.*;
-
 import org.jetbrains.annotations.*;
-import org.junit.*;
 
 import il.org.spartan.*;
-import il.org.spartan.utils.*;
+
 
 /** A utility class, with a collection of function to box primitive types in
  * their reference type equivalent representation. Similarly, this class offers
@@ -20,7 +15,7 @@ import il.org.spartan.utils.*;
  * @author Yossi Gil, the Technion.
  * @since 21/06/2008
  * @see unbox */
-@SuppressWarnings("null") public enum box {
+@SuppressWarnings("all") public enum box {
   // A namespace: no values to this <code><b>enum</b></code>
   ;
   /** box a <code><b>boolean</b></code> into a {@link Boolean} object.

@@ -3,7 +3,7 @@ package fluent.ly;
 import java.util.*;
 
 import org.jetbrains.annotations.*;
-import org.junit.*;
+
 
 /** A utility class, offering a collection of function to unbox arrays and
  * collection of the boxed versions of the primitive types. The input of each
@@ -25,7 +25,7 @@ import org.junit.*;
  * function such as {@link Long#longValue()}
  * @author Yossi Gil.
  * @see box */
-@SuppressWarnings("null") public enum unbox {
+@SuppressWarnings("all") public enum unbox {
   // A namespace: no values to this <code><b>enum</b></code>
   ;
   public static double @NotNull [] it(final @NotNull Double[] ¢) {
