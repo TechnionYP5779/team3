@@ -16,7 +16,7 @@ public interface list {
   interface Operator<T> extends UnaryOperator<List<T>> {
     /**/}
 
-  class Operators<T> extends Outer<List<Operator<T>>> {
+  @SuppressWarnings("null") class Operators<T> extends Outer<List<Operator<T>>> {
     public Operators() {
       super(an.empty.list());
     }
@@ -39,7 +39,7 @@ public interface list {
       super(other);
     }
 
-    public ToCallExpected<T> append(final T x) {
+    @SuppressWarnings("null") public ToCallExpected<T> append(final T x) {
       inner.add(λ -> {
         λ.add(x);
         return λ;
@@ -47,7 +47,7 @@ public interface list {
       return new ToCallExpected<>(this);
     }
 
-    public ToCallExpected<T> prepend(final T t) {
+    @SuppressWarnings("null") public ToCallExpected<T> prepend(final T t) {
       inner.add(λ -> {
         λ.add(0, t);
         return λ;
@@ -65,7 +65,7 @@ public interface list {
       return new PrependOrAppend<>(this);
     }
 
-    public List<T> to(final List<T> xs) {
+    @SuppressWarnings("null") public List<T> to(final List<T> xs) {
       List<T> $ = new ArrayList<>(xs);
       for (final Operator<T> ¢ : inner)
         $ = ¢.apply($);
