@@ -23,41 +23,41 @@ public class pruneTests {
     assertEquals(nonNullArray.length, prune.nulls(nonNullArray).length);
   }
 
-  @SuppressWarnings({ }) @Test public void nullsNullArrayItems() {
+   @Test public void nullsNullArrayItems() {
     assertEquals("1", prune.nulls(nonNullArray)[0]);
     assertEquals("2", prune.nulls(nonNullArray)[1]);
     assertEquals("4", prune.nulls(nonNullArray)[2]);
   }
 
-  @Test public void nullsPruneArrayAltenatingItems() {
-    assertEquals("A", prune.nulls(alternatingArray)[0]);
-    assertEquals("B", prune.nulls(alternatingArray)[1]);
-    assertEquals("C", prune.nulls(alternatingArray)[2]);
-  }
+   @Test public void nullsPruneArrayAltenatingItems() {
+     assertEquals("A", prune.nulls(alternatingArray)[0]);
+     assertEquals("B", prune.nulls(alternatingArray)[1]);
+     assertEquals("C", prune.nulls(alternatingArray)[2]);
+   }
 
-  @Test public void nullsPruneArrayAltenatingLength() {
-    assertEquals(3, prune.nulls(alternatingArray).length);
-  }
+   @Test public void nullsPruneArrayAltenatingLength() {
+     assertEquals(3, prune.nulls(alternatingArray).length);
+   }
 
-  @Test public void nullsPruneSparseCollectionContents() {
-    final String[] a = prune.nulls(sparseCollection).toArray(new String[3]);
-    assertEquals("A", a[0]);
-    assertEquals("B", a[1]);
-    assertEquals("C", a[2]);
-    assertEquals(3, a.length);
-  }
+   @Test public void nullsPruneSparseCollectionContents() {
+     final String[] a = prune.nulls(sparseCollection).toArray(new String[3]);
+     assertEquals("A", a[0]);
+     assertEquals("B", a[1]);
+     assertEquals("C", a[2]);
+     assertEquals(3, a.length);
+   }
 
-  @Test public void nullsPruneSparseCollectionLength() {
-    assertEquals(3, prune.nulls(sparseCollection).size());
-  }
+   @Test public void nullsPruneSparseCollectionLength() {
+     assertEquals(3, prune.nulls(sparseCollection).size());
+   }
 
-  @Test public void nullsPrunNotNull() {
-    assert prune.nulls(sparseCollection) != null;
-  }
+   @Test public void nullsPrunNotNull() {
+     assert prune.nulls(sparseCollection) != null;
+   }
 
-  @SuppressWarnings("static-method") @Test public void whitesEmptyArray() {
-    assertEquals(0, prune.whites().length);
-  }
+   @Test public void whitesEmptyArray() {
+     assertEquals(0, prune.whites().length);
+   }
 
   @Test public void whitesEmptyList() {
     assertEquals(0, prune.whites().length);
@@ -87,7 +87,7 @@ public class pruneTests {
       return $;
     }
   };
-  @NotNull private List<String> sparseCollection1 = new Supplier<List<String>>() {
+  @SuppressWarnings("unused") @NotNull private List<String> sparseCollection1 = new Supplier<List<String>>() {
     @Override @NotNull public List<String> get() {
       @NotNull List<String> $ = an.empty.list();
       $.add(null);
@@ -130,7 +130,7 @@ public class pruneTests {
     azzert.that(prune.nulls(alternatingArray).length, is(3));
   }
 
-  @Test public void testPruneSparseCollectionContents() {
+  @SuppressWarnings("null") @Test public void testPruneSparseCollectionContents() {
     final @NotNull String[] a = prune.nulls(sparseCollection).toArray(new String[3]);
     azzert.that(a[0], is("A"));
     azzert.that(a[1], is("B"));
