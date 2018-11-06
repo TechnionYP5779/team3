@@ -1,29 +1,27 @@
-package a;
+package tests;
 import java.util.*;
 import org.junit.*;
 
-
-
+import a.*;
 
 import org.jetbrains.annotations.*;
 
 import fluent.ly.*;
 
 public class singleTest {
-  @SuppressWarnings("boxing") static int n = 5;
+  static int n = 5;
   
   @SuppressWarnings({ "cast", "boxing", "static-method" }) @Test public void lisTest(){
     assert(singleton.list(5) instanceof List<?>);
     assert(singleton.list(5).size()==1);
-    assert(singleton.list(null)==null);
-    assert(singleton.list("5")==null);
+    assert(singleton.list(null).size()==0);
+   
   }
   
   @SuppressWarnings({ "cast", "boxing", "static-method" }) @Test public void arrayTest(){
     assert(singleton.array(5) instanceof Object[]);
-    assert(singleton.array(5).length==1);
-    assert(singleton.array(null)==null);
-    assert(singleton.array("5")==null);
+    Object[] arr = singleton.array(6);
+    assert(arr.length==1);
   }
   
   

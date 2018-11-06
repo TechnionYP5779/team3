@@ -172,6 +172,7 @@ public interface idiomatic {
   }
 
   @SuppressWarnings("static-method") public static class TEST {
+
     @Test public void use0() {
       assert new Storer<>(this) != null;
     }

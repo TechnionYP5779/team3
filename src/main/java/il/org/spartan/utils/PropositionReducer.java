@@ -4,7 +4,7 @@ import java.util.function.*;
 
 import il.org.spartan.utils.Proposition.*;
 
-/** TODO Yossi Gil: document class
+/**  Yossi Gil: document class
  * @param <R>
  * @author Yossi Gil
  * @since 2017-03-19 */
@@ -31,7 +31,7 @@ public abstract class PropositionReducer<R> extends Reduce<R> {
     return inner.reduce(r1, r2);
   }
 
-  private R reduce(final And a) {
+  @SuppressWarnings({ "null" }) private R reduce(final And a) {
     R $ = ante(a);
     for (int size = a.inner.size(), ¢ = 0; ¢ < size; ++¢) {
       $ = reduce($, reduce(a.inner.get(¢)));
@@ -49,7 +49,7 @@ public abstract class PropositionReducer<R> extends Reduce<R> {
     return reduce(ante(¢), map(¢), post(¢));
   }
 
-  private R reduce(final Or o) {
+  @SuppressWarnings("null") private R reduce(final Or o) {
     R $ = ante(o);
     for (int size = o.inner.size(), ¢ = 0; ¢ < size; ++¢) {
       $ = reduce($, reduce(o.inner.get(¢)));
