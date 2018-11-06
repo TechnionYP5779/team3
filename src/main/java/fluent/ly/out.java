@@ -4,7 +4,8 @@ import java.util.*;
 
 import org.jetbrains.annotations.*;
 
-public class out {
+
+@SuppressWarnings("all")public class out {
   static final int MAX_FIRST = 20;
   static final int MAX_LAST = 10;
 
