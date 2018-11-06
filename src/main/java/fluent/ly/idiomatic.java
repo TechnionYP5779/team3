@@ -234,9 +234,9 @@ public interface idiomatic {
       azzert.isNull(take(null).unless(false));
     }
    
-    @Test public void use14() {
+    @SuppressWarnings("null") @Test public void use14() {
       Supplier<String> s  = ()-> "12534";
-      assert(eval(s).equals("12534"));
+      assert(eval(s).get().equals("12534"));
     }
     @SuppressWarnings("boxing") @Test public void use15() {
       assert (unless(true,4) == 4);
