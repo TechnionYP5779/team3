@@ -55,6 +55,14 @@ public class asTests {
     }
   }
   
+  @SuppressWarnings("null") @Test public void asIteretableLambdaTest() {
+    Integer val = Integer.valueOf(1);
+    for(Integer ¢ : as.asIterableLambda(Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3))) {
+      assert ¢.equals(val);
+      val = Integer.valueOf(val.intValue()+1);
+    }
+  }
+  
   @Test public void bitObjectTest() {
     assert as.bit(null) == 0;
     assert as.bit("false") == 1;
