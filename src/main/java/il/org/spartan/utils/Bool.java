@@ -1,5 +1,12 @@
 package il.org.spartan.utils;
 
+import org.jetbrains.annotations.*;
+import org.junit.*;
+
+import fluent.ly.*;
+import il.org.spartan.utils.Accumulator.Counter;
+
+import static fluent.ly.azzert.*;
 /** A poor man's approximation of a mutable boolean, which is so much more
  * convenient than {@link Boolean}
  * @author Ori Marcovitch
@@ -39,4 +46,16 @@ public final class Bool {
     inner = ¢;
     return this;
   }
+  
+  @SuppressWarnings("static-method") public static class TEST {
+    @Test public void booleanAdds() {
+      final @NotNull Bool b = new Bool(true);
+      azzert.that(b.get(), is(true));
+      b.clear(); 
+      azzert.that(b.get(), is(false));
+      b.set(true); 
+      azzert.that(b.get(), is(true));
+      
+    }
+}
 }
