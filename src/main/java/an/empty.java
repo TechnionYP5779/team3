@@ -3,9 +3,7 @@ package an;
 import java.util.*;
 
 import org.jetbrains.annotations.*;
-import org.junit.*;
 
-import fluent.ly.*;
 
 /** TODO Yossi Gil: document class
  * @author Yossi Gil
