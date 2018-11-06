@@ -2,12 +2,11 @@
 package il.org.spartan.iterables;
 
 import org.jetbrains.annotations.Nullable;
-import static il.org.spartan.Utils.*;
-import static org.junit.Assert.*;
+
 
 import java.util.*;
 
-import org.junit.*;
+
 
 import an.*;
 import fluent.ly.*;
