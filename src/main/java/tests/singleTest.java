@@ -1,16 +1,15 @@
-package a;
+package tests;
 import java.util.*;
 import org.junit.*;
 
-
-
+import a.*;
 
 import org.jetbrains.annotations.*;
 
 import fluent.ly.*;
 
 public class singleTest {
-  @SuppressWarnings("boxing") static int n = 5;
+  static int n = 5;
   
   @SuppressWarnings({ "cast", "boxing", "static-method" }) @Test public void lisTest(){
     assert(singleton.list(5) instanceof List<?>);

@@ -32,18 +32,4 @@ public enum empty {
     };
   }
   
-  @SuppressWarnings("static-method")
-  public static class Tests {
-    @Test
-    public void testListEmpty() {
-      assert empty.list().isEmpty();
-      assert empty.list().isEmpty();
-    }
-    
-    @Test
-    public void testIterator() {
-      assert !empty.iterable().iterator().hasNext();
-      azzert.assertNull(empty.iterable().iterator().next());
-    }
-  }
 }
