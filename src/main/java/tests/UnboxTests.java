@@ -6,7 +6,7 @@ import org.junit.*;
 
 import fluent.ly.*;
 
-@SuppressWarnings({"static-method", "boxing"})
+@SuppressWarnings({"all"})
 public class UnboxTests {
     //NOTE: apparently not all functions are implemented
     
