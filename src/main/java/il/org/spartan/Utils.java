@@ -445,7 +445,7 @@ import il.org.spartan.Utils.FoundHandleForT.*;
    * begin with the name of the method they check.
    * @author Yossi Gil
    * @since 2014-05-31 */
-  @SuppressWarnings("static-method") class TEST {
+  @SuppressWarnings("static-method") public static class TEST {
     @NotNull public static Integer[] intToIntegers(final int... is) {
       final Integer @NotNull [] $ = new Integer @NotNull [is.length];
       for (int ¢ = 0; ¢ < is.length; ++¢)
