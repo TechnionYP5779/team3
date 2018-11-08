@@ -1,11 +1,9 @@
 package fluent.ly;
 
-
 import static fluent.ly.box.*;
 import static fluent.ly.string.*;
 
 import org.jetbrains.annotations.*;
-
 
 import fluent.ly.___.Bug.*;
 import fluent.ly.___.Bug.Assertion.*;

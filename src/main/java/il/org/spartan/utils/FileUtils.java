@@ -25,7 +25,6 @@ import org.jetbrains.annotations.*;
     return $;
   }
 
-
   @NotNull public static String read(final @NotNull String fileName) throws IOException {
     return read(Paths.get(fileName));
   }

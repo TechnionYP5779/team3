@@ -4,7 +4,6 @@ import java.util.*;
 
 import org.jetbrains.annotations.*;
 
-
 /** A utility class, offering a collection of function to unbox arrays and
  * collection of the boxed versions of the primitive types. The input of each
  * unboxing function is a {@link Collection} or an array of one the following

@@ -4,8 +4,7 @@ import org.junit.*;
 
 import fluent.ly.*;
 
-@SuppressWarnings("static-method") 
-public class maybeTests {
+@SuppressWarnings("static-method") public class maybeTests {
   @Test public void usecase0() {
     azzert.isNull(maybe.no().get());
   }

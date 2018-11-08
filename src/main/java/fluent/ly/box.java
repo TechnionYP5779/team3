@@ -7,7 +7,6 @@ import org.jetbrains.annotations.*;
 
 import il.org.spartan.*;
 
-
 /** A utility class, with a collection of function to box primitive types in
  * their reference type equivalent representation. Similarly, this class offers
  * functions to box arrays of primitive types into their reference type
@@ -235,5 +234,4 @@ import il.org.spartan.*;
       $[¢] = it(ss[¢]);
     return $;
   }
-  
 }

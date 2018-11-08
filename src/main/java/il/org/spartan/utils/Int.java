@@ -61,16 +61,4 @@ public final class Int {
   public void clear() {
     inner = 0;
   }
-  
-  
 }
-
-
-
-
-
-
-
-
-
-

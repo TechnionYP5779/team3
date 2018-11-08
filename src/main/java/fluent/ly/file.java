@@ -5,12 +5,10 @@ import java.nio.file.*;
 
 import org.jetbrains.annotations.*;
 
-
 /** File utils
  * @author Ori Marcovitch
  * @since Dec 4, 2016 */
 public class file {
-  
   private static void delete(final @NotNull String path) {
     if (file.exists(path))
       new File(path).delete();
@@ -25,7 +23,6 @@ public class file {
       note.io(¢);
     }
   }
-  
 
   @NotNull public static String read(final @NotNull File f) throws IOException {
     @SuppressWarnings("null") final @NotNull String ls = System.getProperty("line.separator");
@@ -37,7 +34,6 @@ public class file {
     }
     return $ + "";
   }
-  
 
   private static boolean exists(final @NotNull String path) {
     final File $ = new File(path);

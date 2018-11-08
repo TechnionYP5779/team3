@@ -2,8 +2,6 @@ package fluent.ly;
 
 import java.util.function.*;
 
-import org.junit.*;
-
 /** TODO Yossi Gil: document class
  * @author Yossi Gil
  * @since 2017-04-10 */
@@ -31,6 +29,4 @@ import org.junit.*;
   static <T> T ignoring(final long __) {
     return null;
   }
-  
-  
 }

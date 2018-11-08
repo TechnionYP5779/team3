@@ -13,16 +13,16 @@ import org.junit.*;
 import an.*;
 import fluent.ly.*;
 import fluent.ly.separate.*;
+import il.org.spartan.Utils.*;
 
-@SuppressWarnings("static-method")
-public class seperateTests {
+@SuppressWarnings("static-method") public class seperateTests {
   private static final Function<String, String> quote = λ -> "'" + λ + "'";
 
   static <T> void assertEquals(final @NotNull String reason, final T t1, final T t2) {
     azzert.that(reason, t2, is(t1));
   }
 
-   @Test public final void asArrayBetweenChar() {
+  @Test public final void asArrayBetweenChar() {
     azzert.that(separate.these(as.array("Hello", "World")).by(','), is("Hello,World"));
   }
 
@@ -174,7 +174,7 @@ public class seperateTests {
     assert these != null : null;
     final Iterable<?> os = these.os;
     assert os != null : null;
-    azzert.aye(is.empty(os));   
+    azzert.aye(is.empty(os));
     final @NotNull String[] ss = as.strings(os);
     assert ss != null : null;
     azzert.zero(ss.length);
@@ -183,7 +183,6 @@ public class seperateTests {
   }
 
   @Test public final void separateByNoItemslSpaceSeparated() {
-    @SuppressWarnings("unused") int x;
   }
 
   @Test public void separateBySpaceEmpty() {

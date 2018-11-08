@@ -1,9 +1,8 @@
 package il.org.spartan.utils;
 
-import il.org.spartan.Utils;
-
 import org.jetbrains.annotations.*;
 
+import il.org.spartan.*;
 
 public class Pair<First, Second> {
   @SuppressWarnings("unchecked") //
@@ -39,10 +38,7 @@ public class Pair<First, Second> {
     return Utils.hash(second) ^ Utils.hash(first) >>> 1;
   }
 
-
   @Override @NotNull public String toString() {
     return "<" + first + "," + second + ">";
   }
-  
- 
 }
