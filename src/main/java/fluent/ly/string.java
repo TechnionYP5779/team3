@@ -480,7 +480,6 @@ public enum string {
       assert sprintf(new String[] {}).equals("");
       assert sprintf(new String[] {"a"}).equals("a");
       assert sprintf(new String[] {"a","b"}).equals("a");
-      assert pretty("a", as.list(1,2)) != null;
       assert repeat(2,"n").equals("nn");
     }
   }
