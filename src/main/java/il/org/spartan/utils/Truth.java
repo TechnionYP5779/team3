@@ -1,10 +1,8 @@
 package il.org.spartan.utils;
 
-
 import java.util.function.*;
 
 import org.jetbrains.annotations.*;
-
 
 import fluent.ly.*;
 
@@ -60,6 +58,4 @@ public enum Truth {
   @Override public String toString() {
     return description;
   }
-  
-  
 }

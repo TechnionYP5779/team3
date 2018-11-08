@@ -3,13 +3,9 @@ package fluent.ly;
 
 import static il.org.spartan.Utils.*;
 
-
-
 import java.util.*;
 
-
 import org.jetbrains.annotations.*;
-
 
 /** A <b>Utility class</b> providing functions to remove
  * <code><b>null</b></code> elements from arrays and iterable collections. For
@@ -70,5 +66,4 @@ import org.jetbrains.annotations.*;
           accumulate.to($).add((¢ + "").trim());
     return asArrray($);
   }
-
 }

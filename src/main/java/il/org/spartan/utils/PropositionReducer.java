@@ -4,7 +4,7 @@ import java.util.function.*;
 
 import il.org.spartan.utils.Proposition.*;
 
-/**  Yossi Gil: document class
+/** Yossi Gil: document class
  * @param <R>
  * @author Yossi Gil
  * @since 2017-03-19 */

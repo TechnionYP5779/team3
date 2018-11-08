@@ -5,14 +5,13 @@ import static org.junit.Assert.*;
 import org.junit.*;
 
 import fluent.ly.*;
-import fluent.ly.___.Variant;
 import fluent.ly.___.Bug.Assertion.*;
 import fluent.ly.___.Bug.Assertion.Value.Numerical.*;
 import fluent.ly.___.Bug.Assertion.Variant.*;
 import fluent.ly.___.Bug.Contract.*;
+import fluent.ly.___.Variant;
 
-@SuppressWarnings("static-method")
-public class __Tests {
+@SuppressWarnings("static-method") public class __Tests {
   @Test public void ensure() {
     ___.ensure(true);
     try {
