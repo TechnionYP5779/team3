@@ -9,6 +9,8 @@ public class range {
   //params
   int from;
 //  boolean from_defined;
+  
+  
   //funcs & methods
   private range() {
 //    from_defined=false;
@@ -27,6 +29,10 @@ public class range {
   
   public int from() {
     return from;
+  }
+  
+  public range to(int t) {
+    return this;
   }
  
 }
