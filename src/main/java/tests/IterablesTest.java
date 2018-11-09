@@ -45,4 +45,10 @@ import il.org.spartan.iterables.*;
     @Test public void countThree() {
       assertEquals(3, iterables.count(iterable.over("One", "Two", "Three")));
     }
+    
+    @Test public void alternateNullArguments() {
+      Iterable<String> it1 = iterable.over("a","b","c");
+      Iterable<String> it2 = null;
+      azzert.assertCollectionsEqual(as.list(it1), as.list(iterables.alternate(it1, it2)));
+    }
 }
