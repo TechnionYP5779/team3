@@ -51,9 +51,31 @@ public enum iterables {
   }
   
   public static <T> Iterable<T> alternate(Iterable<T> it1, Iterable<T> it2){
-    if (it1 == null) {
-      return it2;
+    if (it1 == null | it2 == null) {
+      return it1 == null ? it2 : it1;
     }
-    return it1;
+    return new Iterable<T>() {
+
+      @Override public Iterator<T> iterator() {
+        // TODO Auto-generated method stub
+        return new Iterator<T>() {
+          int current = 0;
+          Iterator<T> i1 = it1.iterator();
+          Iterator<T> i2 = it2.iterator();
+
+          @Override public boolean hasNext() {
+            // TODO Auto-generated method stub
+            return (current) % 2 == 0 ? i1.hasNext() : i2.hasNext();
+          }
+
+          @Override public T next() {
+            // TODO Auto-generated method stub
+            return  (current ++) % 2 == 0 ? i1.next() : i2.next();
+          }
+          
+        };
+      }
+      
+    };
   }
 }

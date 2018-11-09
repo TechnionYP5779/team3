@@ -52,4 +52,11 @@ import il.org.spartan.iterables.*;
       azzert.assertCollectionsEqual(as.list(it1), as.list(iterables.alternate(it1, it2)));
       azzert.assertCollectionsEqual(as.list(it1), as.list(iterables.alternate(it2, it1)));
     }
+    
+    @Test public void altenateEqualLengths() {
+      Iterable<String> it1 = iterable.over("a","c","e");
+      Iterable<String> it2 = iterable.over("b","d","f");
+      Iterable<String> expected = iterable.over("a","b","c","d","e","f");
+      azzert.assertCollectionsEqual(as.list(expected), as.list(iterables.alternate(it1, it2)));
+    }
 }
