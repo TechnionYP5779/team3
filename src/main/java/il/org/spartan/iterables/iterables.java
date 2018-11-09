@@ -49,4 +49,8 @@ public enum iterables {
   public static <T> Iterator<T> singletonIterator(final T $) {
     return iterable.singleton($).iterator();
   }
+  
+  @SuppressWarnings("unused") public static <T> Iterable<T> alternate(Iterable<T> it1, Iterable<T> it2){
+    return it1;
+  }
 }
