@@ -65,12 +65,12 @@ public enum iterables {
 
           @Override public boolean hasNext() {
             // TODO Auto-generated method stub
-            return (current) % 2 == 0 ? i1.hasNext() : i2.hasNext();
+            return i1.hasNext() || i2.hasNext();
           }
 
           @Override public T next() {
             // TODO Auto-generated method stub
-            return  (current ++) % 2 == 0 ? i1.next() : i2.next();
+            return  (current ++) % 2 == 0 ? i1.hasNext() ? i1.next() : i2.next() : i2.hasNext() ? i2.next() : i1.next();
           }
           
         };

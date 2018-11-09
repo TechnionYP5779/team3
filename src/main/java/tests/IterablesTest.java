@@ -59,4 +59,11 @@ import il.org.spartan.iterables.*;
       Iterable<String> expected = iterable.over("a","b","c","d","e","f");
       azzert.assertCollectionsEqual(as.list(expected), as.list(iterables.alternate(it1, it2)));
     }
+    
+    @Test public void alternateDifferentLen() {
+      Iterable<String> it1 = iterable.over("a","c","e", "g", "h");
+      Iterable<String> it2 = iterable.over("b","d","f");
+      Iterable<String> expected = iterable.over("a","b","c","d","e","f", "g", "h");
+      azzert.assertCollectionsEqual(as.list(expected), as.list(iterables.alternate(it1, it2)));
+    }
 }
