@@ -16,5 +16,9 @@ public class Tests_range_tdd {
     //box3
     assert a.from()==2;
     assert range.from(2).from()==2;
+    
+    //box4
+    assert a.to(6).getClass().equals(range.class);
+    assert range.from(2).to(6).getClass().equals(range.class);
   }
 }
