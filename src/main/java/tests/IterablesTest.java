@@ -50,5 +50,6 @@ import il.org.spartan.iterables.*;
       Iterable<String> it1 = iterable.over("a","b","c");
       Iterable<String> it2 = null;
       azzert.assertCollectionsEqual(as.list(it1), as.list(iterables.alternate(it1, it2)));
+      azzert.assertCollectionsEqual(as.list(it1), as.list(iterables.alternate(it2, it1)));
     }
 }

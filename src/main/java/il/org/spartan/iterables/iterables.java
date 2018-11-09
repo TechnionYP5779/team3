@@ -50,7 +50,10 @@ public enum iterables {
     return iterable.singleton($).iterator();
   }
   
-  @SuppressWarnings("unused") public static <T> Iterable<T> alternate(Iterable<T> it1, Iterable<T> it2){
+  public static <T> Iterable<T> alternate(Iterable<T> it1, Iterable<T> it2){
+    if (it1 == null) {
+      return it2;
+    }
     return it1;
   }
 }
