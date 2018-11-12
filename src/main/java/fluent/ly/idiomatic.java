@@ -173,8 +173,8 @@ public interface idiomatic {
 
   @SuppressWarnings("static-method") public static class TEST {
 
-    @Test public void use0() {
-      assert new Storer<>(this) != null;
+    @SuppressWarnings("null") @Test public void use0() {
+      azzert.assertTrue(new Storer<>(this) != null);
     }
 
     @Test public void use08() {
@@ -182,33 +182,33 @@ public interface idiomatic {
     }
 
     @Test public void use09() {
-      assert unless(false).eval(() -> new Object()) != null;
+      azzert.assertTrue(unless(false).eval(() -> new Object()) != null);
     }
 
-    @Test public void use1() {
-      assert new Storer<>(this) != null;
+    @SuppressWarnings("null") @Test public void use1() {
+      azzert.assertTrue(new Storer<>(this) != null);
       new Storer<>(this).when(true);
     }
 
     @Test public void use10() {
-      assert when(true).eval(() -> new Object()) != null;
+      azzert.assertTrue(when(true).eval(() -> new Object()) != null);
     }
 
     @Test public void use11() {
       azzert.isNull(when(false).eval(() -> new Object()));
     }
     @Test public void use12() {
-      assert (quote("ABBA").equals("'ABBA'"));
+      azzert.assertTrue((quote("ABBA").equals("'ABBA'")));
     }
     
     @SuppressWarnings("boxing") @Test public void use13() {
-      assert (incase(true,4) == 4);
-      assert (incase(false,4) == null);
+      azzert.assertTrue( (incase(true,4) == 4));
+      azzert.assertTrue( (incase(false,4) == null));
     }
     
   
-    @Test public void use2() {
-      assert take(this) != null;
+    @SuppressWarnings("null") @Test public void use2() {
+      azzert.assertTrue( take(this) != null);
       azzert.isNull(take(this).when(false));
     }
 
@@ -236,30 +236,30 @@ public interface idiomatic {
    
     @SuppressWarnings("null") @Test public void use14() {
       Supplier<String> s  = ()-> "12534";
-      assert(eval(s).get().equals("12534"));
+      azzert.assertTrue((eval(s).get().equals("12534")));
     }
     @SuppressWarnings("boxing") @Test public void use15() {
-      assert (unless(true,4) == null);
-      assert (unless(false,4) == 4);
+      azzert.assertTrue( (unless(true,4) == null));
+      azzert.assertTrue( (unless(false,4) == 4));
     }
     @Test public void use16() {
-      assert (unless(true) == ignore);
-      assert (unless(false) == eval);
+      azzert.assertTrue( (unless(true) == ignore));
+      azzert.assertTrue( (unless(false) == eval));
     }
     
     @Test public void use17() {
-      assert (when(false) == ignore);
-      assert (when(true) == eval);
+      azzert.assertTrue( (when(false) == ignore));
+      azzert.assertTrue( (when(true) == eval));
     }
     @Test public void use18() {
       Runnable myRunnable =
           new Runnable(){
               @Override public void run(){
-                  System.out.println("Runnable running");
+                  return;
               }
           };
       Runner r = run(myRunnable);
-      assert (r!=null);
+      azzert.assertTrue( (r!=null));
     }
   }
   /** @author Yossi Gil <Yossi.Gil@GMail.COM>

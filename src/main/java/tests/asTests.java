@@ -58,23 +58,26 @@ public class asTests {
   @SuppressWarnings("null") @Test public void asIteretableLambdaTest() {
     Integer val = Integer.valueOf(1);
     for(Integer ¢ : as.asIterableLambda(Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3))) {
-      assert ¢.equals(val);
+      azzert.assertTrue( ¢.equals(val));
       val = Integer.valueOf(val.intValue()+1);
     }
   }
   
   @Test public void bitObjectTest() {
-    assert as.bit(null) == 0;
-    assert as.bit("false") == 1;
+    azzert.assertTrue( as.bit(null) == 0);
+    azzert.assertTrue( as.bit("false") == 1);
   }
   
   @Test @SuppressWarnings("unlikely-arg-type") public void setTest() {
     Set<? extends String> s1 = as.set("a", "b", "c");
-    assert s1.size() == 3;
-    assert s1.containsAll(as.list("a", "b", "c"));
+    azzert.assertTrue( s1.size() == 3);
+    azzert.assertTrue(s1.containsAll(as.list("a", "b", "c")));
   }
   
-  @Test public void stringsTest() {
-    Assert.assertArrayEquals(new String[] { "a", "b", "c", "1" }, as.strings(as.list("a", "b", "c", Integer.valueOf(1), null)));
+  @SuppressWarnings("static-access") @Test public void stringsTest() {
+    String [] expected = new String[] { "a", "b", "c", "1" };
+    String [] actual = as.strings(as.list("a", "b", "c", Integer.valueOf(1), null));
+    
+    azzert.assertArrayEquals(expected, actual);
   }
 }
