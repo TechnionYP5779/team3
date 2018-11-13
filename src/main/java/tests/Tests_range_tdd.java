@@ -32,5 +32,10 @@ public class Tests_range_tdd {
     azzert.assertTrue( a.to(6).from().equals(Integer.valueOf(2)));
     azzert.assertTrue( b.from()==null);
     azzert.assertTrue( range.to(2).from()==null);
+    
+    //box7
+    azzert.assertTrue( b.from(3).from().equals(Integer.valueOf(3)));
+    azzert.assertTrue( range.to(2).from(3).from().equals(Integer.valueOf(3)));
+    azzert.assertTrue( b.from().equals(Integer.valueOf(3)));
   }
 }

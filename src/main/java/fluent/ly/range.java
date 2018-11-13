@@ -32,6 +32,10 @@ public class range {
     public inner_range to(int t) {
       return this;
     }
+    public inner_range from(int f) {
+      this.set_from(f);
+      return this;
+    }
   }
  //--------------------------------------------------------------- 
   
