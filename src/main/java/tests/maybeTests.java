@@ -14,6 +14,6 @@ import fluent.ly.*;
   }
 
   @Test public void usecase2() {
-    assert maybe.yes(new Object()).get() != null;
+    azzert.assertTrue( maybe.yes(new Object()).get() != null);
   }
 }

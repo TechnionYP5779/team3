@@ -58,7 +58,6 @@ public class Outer<@Nullable Inner> {
       @SuppressWarnings({ "rawtypes" }) final Outer o = new Outer(10);
       @SuppressWarnings({ "rawtypes" }) final Outer o1 = new Outer(10);
       azzert.assertTrue( o.equals(o1));
-      azzert.assertTrue(  o.equalsAux(o1));
       o.set(11);
       azzert.assertTrue(  (int) o.get() == 11);
     }
