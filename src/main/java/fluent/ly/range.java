@@ -8,25 +8,32 @@ public class range {
   
   public static class inner_range{
   //params
-    int from;
-//    boolean from_defined;
+    Integer from;
+    boolean from_defined;
     
     
     //funcs & methods
     inner_range() {
-//      from_defined=false;
+      from_defined=false;
     }
 
     void set_from(int f) {
-      from=f;
-//      from_defined=true;
+      from=new Integer(f);
+      from_defined=true;
     }
     
-    public int from() {
-      return from;
+    public Integer from() {
+      if(from_defined){
+        return from;
+      }
+      return null;
     }
     
     public inner_range to(int t) {
+      return this;
+    }
+    public inner_range from(int f) {
+      this.set_from(f);
       return this;
     }
   }
