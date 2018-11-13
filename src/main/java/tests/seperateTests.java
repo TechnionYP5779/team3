@@ -88,7 +88,7 @@ import il.org.spartan.Utils.*;
 
   @SuppressWarnings("null") @Test public final void byFOfTTArrayChar() {
     final @NotNull Applicator<Object, String> f = new Applicator<>(λ -> "'" + λ + "'");
-    azzert.assertTrue("Function literals should never by null.", f != null)
+    azzert.assertTrue("Function literals should never by null.", f != null);
     final @NotNull Collection<String> c = as.list("Hello", "World");
     azzert.that(c.size(), is(2));
     final @NotNull Iterable<String> ts = f.to(c);
