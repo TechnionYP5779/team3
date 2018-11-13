@@ -1,6 +1,6 @@
 /* Part of the "Spartan Blog"; mutate the rest / but leave this line as is */
 package fluent.ly;
- 
+
 import static fluent.ly.azzert.*;
 
 import java.util.function.*;
@@ -139,7 +139,7 @@ public interface idiomatic {
     @Override public void run() {
       run.run();
     }
-    
+
     /** <code>unless</code>
      * @param unless condition n which execution occurs. */
     public void unless(final boolean unless) {
@@ -175,6 +175,7 @@ public interface idiomatic {
 
     @SuppressWarnings("null") @Test public void use0() {
       azzert.assertTrue(new Storer<>(this) != null);
+
     }
 
     @Test public void use08() {
@@ -197,10 +198,11 @@ public interface idiomatic {
     @Test public void use11() {
       azzert.isNull(when(false).eval(() -> new Object()));
     }
+
     @Test public void use12() {
       azzert.assertTrue((quote("ABBA").equals("'ABBA'")));
     }
-    
+
     @SuppressWarnings("boxing") @Test public void use13() {
       azzert.assertTrue( (incase(true,4) == 4));
       azzert.assertTrue( (incase(false,4) == null));
@@ -209,6 +211,7 @@ public interface idiomatic {
   
     @SuppressWarnings("null") @Test public void use2() {
       azzert.assertTrue( take(this) != null);
+
       azzert.isNull(take(this).when(false));
     }
 
@@ -233,24 +236,31 @@ public interface idiomatic {
       azzert.isNull(take(null).unless(true));
       azzert.isNull(take(null).unless(false));
     }
-   
+
     @SuppressWarnings("null") @Test public void use14() {
       Supplier<String> s  = ()-> "12534";
       azzert.assertTrue((eval(s).get().equals("12534")));
+
     }
+
     @SuppressWarnings("boxing") @Test public void use15() {
       azzert.assertTrue( (unless(true,4) == null));
       azzert.assertTrue( (unless(false,4) == 4));
+
     }
+
     @Test public void use16() {
       azzert.assertTrue( (unless(true) == ignore));
       azzert.assertTrue( (unless(false) == eval));
+
     }
-    
+
     @Test public void use17() {
       azzert.assertTrue( (when(false) == ignore));
       azzert.assertTrue( (when(true) == eval));
+
     }
+
     @Test public void use18() {
       Runnable myRunnable =
           new Runnable(){
@@ -260,8 +270,10 @@ public interface idiomatic {
           };
       Runner r = run(myRunnable);
       azzert.assertTrue( (r!=null));
+
     }
   }
+
   /** @author Yossi Gil <Yossi.Gil@GMail.COM>
    * @since 2016 */
   interface Trigger {

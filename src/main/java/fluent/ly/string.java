@@ -8,8 +8,6 @@ import java.util.*;
 import org.jetbrains.annotations.*;
 import org.junit.*;
 
-import fluent.ly.idiomatic.*;
-
 /** A bunch of string functions.
  * @author Yossi Gil */
 public enum string {
@@ -347,57 +345,64 @@ public enum string {
   @NotNull private static String toup(final int ¢) {
     return ¢ == 0 ? "" : toup(¢ / 26) + (char) (¢ % 26 + 'A');
   }
-  
-  @SuppressWarnings("static-method")
-  public static class TEST {
 
+  @SuppressWarnings("static-method") public static class TEST {
     @Test public void use0() {
       double d = atod("5.5");
       azzert.assertTrue( d == 5.5);
+
     }
-    
+
     @Test public void use1() {
       float d = atof("5.5");
       azzert.assertTrue( d == 5.5);
+
     }
-    
+
     @Test public void use2() {
       int d = atoi("5");
       azzert.assertTrue( d == 5);
+
     }
-    
+
     @Test public void use3() {
       long d = atol("5");
       azzert.assertTrue( d == 5);
+
     }
-    
+
     @Test public void use4() {
       String res = capitalize("aAAAA");
       azzert.assertTrue( res.equals("Aaaaa"));
+
     }
-    
+
     @Test public void use5() {
       String res = cat("a", "b");
       azzert.assertTrue( res.equals("ab"));
+
     }
-    
+
     @Test public void use6() {
       @SuppressWarnings("null") String res = cat(new String[] {"a"}, new String[] {"b","c"});
       azzert.assertTrue( res.equals("abc"));
+
     }
-    
+
     @Test public void use7() {
       String d = dtoa(5.5);
       azzert.assertTrue( d.equals("5.5"));
+
     }
-    
+
     @Test public void use8() {
       azzert.assertTrue( eq("a","a"));
       azzert.assertTrue( !eq("a","A"));
       azzert.assertTrue( !eq(null,"a"));
       azzert.assertTrue( eq(null,null));
+
     }
-    
+
     @Test public void use9() {
       azzert.assertTrue( esc("a").equals("a"));
       azzert.assertTrue( esc("\n").equals("\\n"));
@@ -408,21 +413,23 @@ public enum string {
       azzert.assertTrue( esc("\\").equals("\\\\"));
       azzert.assertTrue( esc(null).equals("(null)"));
     }
-    
+
     @Test public void use10() {
       azzert.assertTrue( expandLeadingTabs("bla").equals("bla"));
     }
-    
+
     @Test public void use11() {
       azzert.assertTrue( fill(5,'a').equals("aaaaa"));
       azzert.assertTrue( fill(2,"aa").equals("aaaa"));
+
     }
-    
+
     @Test public void use12() {
       float f = 1/2;
       azzert.assertTrue( ftoa(f).equals("0.0"));
+
     }
-    
+
     @Test public void use13() {
       azzert.assertTrue( isDouble("4.4"));
       azzert.assertTrue( !isDouble("a"));
@@ -433,13 +440,11 @@ public enum string {
       azzert.assertTrue( isFloat("1"));
       azzert.assertTrue( !isFloat("..."));
     }
-    
+
     @Test public void use14() {
       azzert.assertTrue( itoa(5).equals("5"));
     }
-    
-    
-    
+
     @SuppressWarnings("null") @Test public void ordinalTest() {
       azzert.assertTrue( ordinal(1).equals("1st"));
       azzert.assertTrue( ordinal(2).equals("2nd"));
@@ -447,7 +452,7 @@ public enum string {
       azzert.assertTrue( ordinal(11).equals("11th"));
       azzert.assertTrue( ordinal(12).equals("12th"));
     }
-    
+
     @SuppressWarnings("null") @Test public void pluralizeTest() {
       azzert.assertTrue( pluralize(0,"cat").equals("no cats"));
       azzert.assertTrue( pluralize(1,"cat").equals("cat"));
@@ -484,4 +489,3 @@ public enum string {
     }
   }
 }
-

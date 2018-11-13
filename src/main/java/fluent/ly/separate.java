@@ -9,6 +9,7 @@ import java.util.*;
 import java.util.stream.*;
 
 import org.jetbrains.annotations.*;
+
 import il.org.spartan.*;
 
 /** A utility class providing library functions that take an array or a
@@ -120,7 +121,7 @@ import il.org.spartan.*;
     azzert.aye(reason, b);
   }
 
- @NotNull public static SeparationSubject these(final int @NotNull [] ¢) {
+  @NotNull public static SeparationSubject these(final int @NotNull [] ¢) {
     return these(box.it(¢));
   }
 
@@ -205,5 +206,4 @@ import il.org.spartan.*;
       return separateBy(prune.whites(as.strings(os)), SPACE);
     }
   }
-
 }

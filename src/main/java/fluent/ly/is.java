@@ -8,8 +8,6 @@ import org.jetbrains.annotations.*;
 /** @author Yossi Gil <tt>yogi@cs.technion.ac.il</tt>
  * @since 2017-04-23 */
 public interface is {
-
-
   /** Determine if an integer can be found in a list of values
    * @param candidate what to search for
    * @param is        where to search
@@ -27,8 +25,7 @@ public interface is {
       return !is.in(candidate, ts);
     }
   }
-  
-  
+
   /** Determine if an item can be found in a list of values
    * @param           <T> JD
    * @param candidate what to search for

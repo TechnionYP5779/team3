@@ -183,8 +183,6 @@ import il.org.spartan.Utils.FoundHandleForT.*;
     return false;
   }
 
-
-
   /** Determine whether an integer is a valid list index
    * @param    <T> JD
    * @param i  some integer
@@ -537,60 +535,53 @@ import il.org.spartan.Utils.FoundHandleForT.*;
       swap($, 0, 1);
       assertArrayEquals(intToIntegers(1, 29, 60), $);
     }
-    @SuppressWarnings("unchecked") @Test public void addTest() {
-      @SuppressWarnings("rawtypes") List listSource = new ArrayList();
 
+    @SuppressWarnings("unchecked") @Test public void addTest() {
+      @SuppressWarnings("rawtypes") final List listSource = new ArrayList();
       listSource.add("123");
       listSource.add("456");
-      @SuppressWarnings("rawtypes") List newList = new ArrayList();
-      assert(add(newList, listSource.iterator()).size()>0);
+      @SuppressWarnings("rawtypes") final List newList = new ArrayList();
+      assert add(newList, listSource.iterator()).size() > 0;
     }
-    
-    @SuppressWarnings("unchecked") @Test public void addTest2() {
-      @SuppressWarnings("rawtypes") List newList = new ArrayList();
-      assert(add(newList, "a", "a","b","c").size()==4);
-    }
-     @Test public void hasNullTest() {
-       
-      assert(hasNull(null,"a"));
-    }
-     @Test public void hasIntest() {
-      assert(intIsIn(3,2,4,3));
-    }
-     
-     @SuppressWarnings("unchecked") @Test public void tesDup() {
-       @SuppressWarnings("rawtypes") List list = new ArrayList();
 
-       list.add("123");
-       list.add("123");
-       removeDuplicates(list);
-       assert(list.size()==1);
-       
-     }
-     
-     @Test public void removeSuffixTest() {
-      assert(removeSuffix("12345","45").equals("123"));
-     }
-     
-     @Test public void removePrefixTest() {
-       assert(removePrefix("12345","123").equals("45"));
-      }
-     
-     @Test public void removeFromArrayTest() {
-       String[] arr ={"1","2","3"};
-       
-       assert(delete(arr,1).length==2);
-      }
-     
-     @Test public void appendToArrayTest() {
-       String[] arr ={"1","2","3"};
-       
-       assert(append(arr,"5").length==4);
-      }
-     
-     
-     
-    
+    @SuppressWarnings("unchecked") @Test public void addTest2() {
+      @SuppressWarnings("rawtypes") final List newList = new ArrayList();
+      assert add(newList, "a", "a", "b", "c").size() == 4;
+    }
+
+    @Test public void hasNullTest() {
+      assert hasNull(null, "a");
+    }
+
+    @Test public void hasIntest() {
+      assert intIsIn(3, 2, 4, 3);
+    }
+
+    @SuppressWarnings("unchecked") @Test public void tesDup() {
+      @SuppressWarnings("rawtypes") final List list = new ArrayList();
+      list.add("123");
+      list.add("123");
+      removeDuplicates(list);
+      assert list.size() == 1;
+    }
+
+    @Test public void removeSuffixTest() {
+      assert removeSuffix("12345", "45").equals("123");
+    }
+
+    @Test public void removePrefixTest() {
+      assert removePrefix("12345", "123").equals("45");
+    }
+
+    @Test public void removeFromArrayTest() {
+      final String[] arr = { "1", "2", "3" };
+      assert delete(arr, 1).length == 2;
+    }
+
+    @Test public void appendToArrayTest() {
+      final String[] arr = { "1", "2", "3" };
+      assert append(arr, "5").length == 4;
+    }
   }
 
   static int hash(Object ¢) {

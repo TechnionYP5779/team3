@@ -122,8 +122,6 @@ public abstract class Accumulator {
     @Override protected int transform(final int v) {
       return v;
     }
-
-    
   }
 
   public static class Squarer extends Accumulator {

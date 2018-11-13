@@ -12,10 +12,9 @@ import il.org.spartan.utils.*;
   @Test public void booleanAdds() {
     final @NotNull Bool b = new Bool(true);
     azzert.that(b.get(), is(true));
-    b.clear(); 
+    b.clear();
     azzert.that(b.get(), is(false));
-    b.set(true); 
+    b.set(true);
     azzert.that(b.get(), is(true));
-    
   }
 }
