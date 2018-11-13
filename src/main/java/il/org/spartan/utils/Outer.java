@@ -3,6 +3,7 @@ package il.org.spartan.utils;
 import org.jetbrains.annotations.*;
 import org.junit.*;
 
+import fluent.ly.*;
 import il.org.spartan.*;
 
 /** TODO Yossi Gil: document class
@@ -52,14 +53,14 @@ public class Outer<@Nullable Inner> {
     return inner;
   }
 
-  public class tests {
-    @SuppressWarnings({ "unchecked", "boxing", "synthetic-access", "null" }) @Test public void outerAdds() {
+  public static class tests {
+    @SuppressWarnings({ "unchecked", "boxing", "synthetic-access", "null", "static-method" }) @Test public void outerAdds() {
       @SuppressWarnings({ "rawtypes" }) final Outer o = new Outer(10);
       @SuppressWarnings({ "rawtypes" }) final Outer o1 = new Outer(10);
-      assert o.equals(o1);
-      assert o.equalsAux(o1);
+      azzert.assertTrue( o.equals(o1));
+      azzert.assertTrue(  o.equalsAux(o1));
       o.set(11);
-      assert (int) o.get() == 11;
+      azzert.assertTrue(  (int) o.get() == 11);
     }
   }
 }
