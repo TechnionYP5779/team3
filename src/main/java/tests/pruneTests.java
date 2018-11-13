@@ -1,6 +1,5 @@
 package tests;
 
-import static org.junit.Assert.assertEquals;
 
 import static fluent.ly.azzert.*;
 import static fluent.ly.azzert.assertEquals;
@@ -142,6 +141,6 @@ import fluent.ly.*;
   }
 
   @Test public void testPrunNotNull() {
-    assert prune.nulls(sparseCollection) != null;
+    azzert.assertTrue( prune.nulls(sparseCollection) != null);
   }
 }

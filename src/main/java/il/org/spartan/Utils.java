@@ -109,7 +109,7 @@ import il.org.spartan.Utils.FoundHandleForT.*;
    *         <code><b>null</b></code>
    * @see #mustBeNull(Object) */
   static <T> @NotNull T cantBeNull(final @Nullable T $) {
-    assert $ != null;
+    azzert.assertTrue(  $ != null);
     return $;
   }
 
@@ -221,7 +221,7 @@ import il.org.spartan.Utils.FoundHandleForT.*;
    *          <code><b>null</b></code>.
    * @return parameter */
   static <@Nullable T> @Nullable Void mustBeNull(final @Nullable T $) {
-    assert $ == null;
+    azzert.assertTrue(  $ == null);
     return null;
   }
 
@@ -483,7 +483,7 @@ import il.org.spartan.Utils.FoundHandleForT.*;
     }
 
     @Test public void cantBeNullTypical() {
-      assert cantBeNull(new Object()) != null;
+      azzert.assertTrue(  cantBeNull(new Object()) != null);
     }
 
     @Test public void isNullTypical() {
@@ -521,19 +521,19 @@ import il.org.spartan.Utils.FoundHandleForT.*;
     @Test public void swapDegenerate() {
       final @NotNull String @NotNull [] ss = as.array("A", "B", "C", "D");
       swap(ss, 1, 1);
-      assertArrayEquals(as.array("A", "B", "C", "D"), ss);
+      azzert.assertCollectionsEqual(as.list("A", "B", "C", "D"), ss);
     }
 
     @Test public void swapTypical() {
       final @NotNull String @NotNull [] ss = as.array("A", "B", "C", "D");
       swap(ss, 1, 2);
-      assertArrayEquals(as.array("A", "C", "B", "D"), ss);
+      azzert.assertCollectionsEqual(as.list("A", "C", "B", "D"), ss);
     }
 
     @Test public void swapTypicalCase() {
       final Integer @NotNull [] $ = intToIntegers(29, 1, 60);
       swap($, 0, 1);
-      assertArrayEquals(intToIntegers(1, 29, 60), $);
+      azzert.assertCollectionsEqual(as.list(intToIntegers(1, 29, 60)), $);
     }
 
     @SuppressWarnings("unchecked") @Test public void addTest() {
@@ -541,20 +541,20 @@ import il.org.spartan.Utils.FoundHandleForT.*;
       listSource.add("123");
       listSource.add("456");
       @SuppressWarnings("rawtypes") final List newList = new ArrayList();
-      assert add(newList, listSource.iterator()).size() > 0;
+      azzert.assertTrue( add(newList, listSource.iterator()).size() > 0);
     }
 
     @SuppressWarnings("unchecked") @Test public void addTest2() {
       @SuppressWarnings("rawtypes") final List newList = new ArrayList();
-      assert add(newList, "a", "a", "b", "c").size() == 4;
+      azzert.assertTrue( add(newList, "a", "a", "b", "c").size() == 4);
     }
 
     @Test public void hasNullTest() {
-      assert hasNull(null, "a");
+      azzert.assertTrue( hasNull(null, "a"));
     }
 
     @Test public void hasIntest() {
-      assert intIsIn(3, 2, 4, 3);
+      azzert.assertTrue( intIsIn(3, 2, 4, 3));
     }
 
     @SuppressWarnings("unchecked") @Test public void tesDup() {
@@ -562,25 +562,25 @@ import il.org.spartan.Utils.FoundHandleForT.*;
       list.add("123");
       list.add("123");
       removeDuplicates(list);
-      assert list.size() == 1;
+      azzert.assertTrue( list.size() == 1);
     }
 
     @Test public void removeSuffixTest() {
-      assert removeSuffix("12345", "45").equals("123");
+      azzert.assertTrue( removeSuffix("12345", "45").equals("123"));
     }
 
     @Test public void removePrefixTest() {
-      assert removePrefix("12345", "123").equals("45");
+      azzert.assertTrue( removePrefix("12345", "123").equals("45"));
     }
 
     @Test public void removeFromArrayTest() {
       final String[] arr = { "1", "2", "3" };
-      assert delete(arr, 1).length == 2;
+      azzert.assertTrue( delete(arr, 1).length == 2);
     }
 
     @Test public void appendToArrayTest() {
       final String[] arr = { "1", "2", "3" };
-      assert append(arr, "5").length == 4;
+      azzert.assertTrue( append(arr, "5").length == 4);
     }
   }
 
