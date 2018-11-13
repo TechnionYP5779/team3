@@ -23,11 +23,11 @@ import il.org.spartan.utils.*;
   @Test public void emptyFalse() {
     final @NotNull Tab t = new Tab("abc");
     t.more();
-    assert !t.isEmpty();
+    azzert.assertTrue( !t.isEmpty());
   }
 
   @Test public void emtpyTrue() {
-    assert new Tab().isEmpty();
+    azzert.assertTrue( new Tab().isEmpty());
   }
 
   @SuppressWarnings("null") @Test public void testBeginAtLevelOne() {
@@ -47,7 +47,7 @@ import il.org.spartan.utils.*;
   }
 
   @Test public void testDone() {
-    assert new Tab().isEmpty();
+    azzert.assertTrue( new Tab().isEmpty());
   }
 
   @SuppressWarnings("null") @Test public void testEndAtLevelOne() {

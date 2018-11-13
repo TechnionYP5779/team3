@@ -5,19 +5,20 @@ import java.util.*;
 import org.junit.*;
 
 import a.*;
+import fluent.ly.*;
 
 public class singleTest {
   static int n = 5;
 
   @SuppressWarnings({ "cast", "boxing", "static-method" }) @Test public void lisTest() {
-    assert singleton.list(5) instanceof List<?>;
-    assert singleton.list(5).size() == 1;
-    assert singleton.list(null).size() == 0;
+    azzert.assertTrue( singleton.list(5) instanceof List<?>);
+    azzert.assertTrue( singleton.list(5).size() == 1);
+    azzert.assertTrue( singleton.list(null).size() == 0);
   }
 
   @SuppressWarnings({ "cast", "boxing", "static-method" }) @Test public void arrayTest() {
-    assert singleton.array(5) instanceof Object[];
+    azzert.assertTrue( singleton.array(5) instanceof Object[]);
     final Object[] arr = singleton.array(6);
-    assert arr.length == 1;
+    azzert.assertTrue( arr.length == 1);
   }
 }

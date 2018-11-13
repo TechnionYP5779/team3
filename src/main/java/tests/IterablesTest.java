@@ -31,19 +31,19 @@ import il.org.spartan.iterables.*;
   }
 
   @Test public void countDoesNotIncludeNull() {
-    assertEquals(3, iterables.count(iterable.over(null, "One", null, "Two", null, "Three")));
+    azzert.assertTrue(iterables.count(iterable.over(null, "One", null, "Two", null, "Three"))== 3);
   }
 
   @Test public void countEmpty() {
-    assertEquals(0, iterables.count(iterables.<String> empty()));
+    azzert.assertTrue(iterables.count(iterables.<String> empty()) ==0 );
   }
 
   @Test public void countSingleton() {
-    assertEquals(1, iterables.count(iterable.singleton(new Object())));
+    azzert.assertTrue(1 == iterables.count(iterable.singleton(new Object())));
   }
 
     @Test public void countThree() {
-      assertEquals(3, iterables.count(iterable.over("One", "Two", "Three")));
+      azzert.assertTrue(3 == iterables.count(iterable.over("One", "Two", "Three")));
     }
     
     @Test public void alternateNullArguments() {
