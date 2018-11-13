@@ -45,4 +45,32 @@ import il.org.spartan.iterables.*;
     @Test public void countThree() {
       assertEquals(3, iterables.count(iterable.over("One", "Two", "Three")));
     }
+    
+    @Test public void alternateNullArguments() {
+      Iterable<String> it1 = iterable.over("a","b","c");
+      Iterable<String> it2 = null;
+      azzert.assertCollectionsEqual(as.list(it1), as.list(iterables.alternate(it1, it2)));
+      azzert.assertCollectionsEqual(as.list(it1), as.list(iterables.alternate(it2, it1)));
+    }
+    
+    @Test public void altenateEqualLengths() {
+      Iterable<String> it1 = iterable.over("a","c","e");
+      Iterable<String> it2 = iterable.over("b","d","f");
+      Iterable<String> expected = iterable.over("a","b","c","d","e","f");
+      azzert.assertCollectionsEqual(as.list(expected), as.list(iterables.alternate(it1, it2)));
+    }
+    
+    @Test public void alternateDifferentLen1() {
+      Iterable<String> it1 = iterable.over("a","c","e", "g", "h");
+      Iterable<String> it2 = iterable.over("b","d","f");
+      Iterable<String> expected = iterable.over("a","b","c","d","e","f", "g", "h");
+      azzert.assertCollectionsEqual(as.list(expected), as.list(iterables.alternate(it1, it2)));
+    }
+    
+    @Test public void alternateDifferentLen2() {
+      Iterable<String> it1 = iterable.over("a","c","e");
+      Iterable<String> it2 = iterable.over("b","d","f", "g");
+      Iterable<String> expected = iterable.over("a","b","c","d","e","f", "g");
+      azzert.assertCollectionsEqual(as.list(expected), as.list(iterables.alternate(it1, it2)));
+    }
 }
