@@ -62,5 +62,31 @@ public class Tests_range_tdd {
     }
     azzert.assertTrue(!iter3.hasNext());
     
+  //box9
+    azzert.assertTrue(range.to(10).interset(range.from(3)).from().equals(Integer.valueOf(3)));
+    Iterator<Integer> iter4 =range.to(10).interset(range.from(3)).numbers();
+    for (int i=4; i <10 ;i++) {
+      azzert.assertTrue(iter4.hasNext());
+      azzert.assertTrue(iter4.next().equals(Integer.valueOf(i)));
+    }
+    azzert.assertTrue(!iter4.hasNext());
+    
+    azzert.assertTrue(range.to(10).from(5).interset(range.from(3).to(8)).from().equals(Integer.valueOf(5)));
+    Iterator<Integer> iter5 =range.to(10).from(5).interset(range.from(3).to(8)).numbers();
+    for (int i=6; i <8 ;i++) {
+      azzert.assertTrue(iter5.hasNext());
+      azzert.assertTrue(iter5.next().equals(Integer.valueOf(i)));
+    }
+    azzert.assertTrue(!iter5.hasNext());
+    
+    azzert.assertTrue(range.to(10).interset(range.to(Integer.MIN_VALUE+3)).from()==null);
+    Iterator<Integer> iter6 =range.to(10).interset(range.to(Integer.MIN_VALUE+3)).numbers();
+    for (int i=Integer.MIN_VALUE+1; i <(Integer.MIN_VALUE+3);i++) {
+      azzert.assertTrue(iter6.hasNext());
+      azzert.assertTrue(iter6.next().equals(Integer.valueOf(i)));
+    }
+    azzert.assertTrue(!iter6.hasNext());
+    azzert.assertTrue(range.from(10).interset(range.from(3)).from().equals(Integer.valueOf(10)));
+    
   }
 }

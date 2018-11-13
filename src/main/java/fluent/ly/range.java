@@ -46,6 +46,37 @@ public class range {
       return this;
     }
     
+    public inner_range interset (inner_range param) {
+      
+      inner_range new_r = new inner_range();
+      if(param.from_defined) {
+        if(this.from_defined&&(this.from.intValue()>param.from.intValue())) {
+          new_r.set_from(this.from.intValue());
+        }else {
+          new_r.set_from(param.from.intValue());
+        }
+      }else {
+        if(this.from_defined) {
+          new_r.set_from(this.from.intValue());
+        }
+      }
+
+
+      if(param.to_defined) {
+        if(this.to_defined&&(this.to.intValue()<param.to.intValue())) {
+          new_r.set_to(this.to.intValue());
+        }else {
+          new_r.set_to(param.to.intValue());
+        }
+      }else {
+        if(this.to_defined) {
+          new_r.set_to(this.to.intValue());
+        }
+      }
+      return new_r;
+      
+    }
+    
     public Iterator<Integer> numbers(){
       if(from_defined) { 
       return iterator();
