@@ -1,6 +1,5 @@
 package tests;
 
-import static org.junit.Assert.*;
 
 import static fluent.ly.azzert.*;
 
@@ -20,9 +19,9 @@ import fluent.ly.*;
     azzert.that(as.bit(true), is(1));
   }
 
-  @Test public void asIntArraySimple() {
+  @SuppressWarnings("null") @Test public void asIntArraySimple() {
     final int @NotNull [] is = as.intArray(100, 200, 200, 12, 13, 0);
-    assertArrayEquals(is, as.intArray(as.ingeterList(is)));
+    azzert.assertCollectionsEqual(as.list(is), as.ingeterList(is));
   }
 
   @Test public void asListSimple() {
@@ -49,7 +48,7 @@ import fluent.ly.*;
   @SuppressWarnings("null") @Test public void asIteretableTest() {
     Integer val = Integer.valueOf(1);
     for (final Integer ¢ : as.asIterable(Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3))) {
-      assert ¢.equals(val);
+      azzert.assertTrue(¢.equals(val));
       val = Integer.valueOf(val.intValue() + 1);
     }
   }
