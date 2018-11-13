@@ -6,35 +6,43 @@ package fluent.ly;
 
 public class range {
   
+  public static class inner_range{
   //params
-  int from;
-//  boolean from_defined;
-  
-  
-  //funcs & methods
-  private range() {
-//    from_defined=false;
-  }
+    int from;
+//    boolean from_defined;
+    
+    
+    //funcs & methods
+    inner_range() {
+//      from_defined=false;
+    }
 
-  private void set_from(int f) {
-    from=f;
-//    from_defined=true;
+    void set_from(int f) {
+      from=f;
+//      from_defined=true;
+    }
+    
+    public int from() {
+      return from;
+    }
+    
+    public inner_range to(int t) {
+      return this;
+    }
   }
+ //--------------------------------------------------------------- 
   
-  public static range from(int f) {
-    range f_range=new range();
+  public static inner_range from(int f) {
+    inner_range f_range=new inner_range();
     f_range.set_from(f);
     return f_range;    
   }
   
-  public int from() {
-    return from;
-  }
-  
-  public range to(int t) {
-    return this;
+  public static inner_range to(int t) {
+    return new inner_range();
   }
  
+
 }
 
 
