@@ -1,5 +1,7 @@
 package tests;
 
+import java.util.*;
+
 import org.junit.*;
 
 import fluent.ly.*;
@@ -37,5 +39,28 @@ public class Tests_range_tdd {
     azzert.assertTrue( b.from(3).from().equals(Integer.valueOf(3)));
     azzert.assertTrue( range.to(2).from(3).from().equals(Integer.valueOf(3)));
     azzert.assertTrue( b.from().equals(Integer.valueOf(3)));
+    
+    //box8
+    
+    Iterator<Integer> iter = range.from(-2).numbers();
+    for (int i=-1; i<2; i++) {
+      azzert.assertTrue(iter.hasNext());
+      azzert.assertTrue(iter.next().equals(Integer.valueOf(i)));
+    }
+    Iterator<Integer> iter2 = range.to(Integer.MIN_VALUE+3).numbers();
+    
+    for (int i=Integer.MIN_VALUE+1; i <(Integer.MIN_VALUE+3);i++) {
+      azzert.assertTrue(iter2.hasNext());
+      azzert.assertTrue(iter2.next().equals(Integer.valueOf(i)));
+    }
+    azzert.assertTrue(!iter2.hasNext());
+    
+    Iterator<Integer> iter3 = range.to(10).from(0).numbers();
+    for (int i=1; i <10 ;i++) {
+      azzert.assertTrue(iter3.hasNext());
+      azzert.assertTrue(iter3.next().equals(Integer.valueOf(i)));
+    }
+    azzert.assertTrue(!iter3.hasNext());
+    
   }
 }
