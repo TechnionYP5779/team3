@@ -80,7 +80,7 @@ public interface list {
   static <T> ToCallExpected<T> prepend(final T ¢) {
     return new PrependOrAppend<T>().prepend(¢);
   }
-  
+
   /** @param <T> JD
    * @param ¢ a list
    * @return last item in a list or <code><b>null</b></code> if the parameter is
@@ -99,5 +99,4 @@ public interface list {
     azzert.assertTrue( os != null);
     return penultimate(os) == o;
   }
-
 }

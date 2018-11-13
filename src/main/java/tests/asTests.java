@@ -11,8 +11,7 @@ import org.junit.*;
 
 import fluent.ly.*;
 
-@SuppressWarnings("static-method")
-public class asTests {
+@SuppressWarnings("static-method") public class asTests {
   @Test public void asBitOfFalse() {
     azzert.that(as.bit(false), is(0));
   }
@@ -46,29 +45,31 @@ public class asTests {
       }
     }), is("null"));
   }
-  
+
   @SuppressWarnings("null") @Test public void asIteretableTest() {
     Integer val = Integer.valueOf(1);
-    for(Integer ¢ : as.asIterable(Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3))) {
+    for (final Integer ¢ : as.asIterable(Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3))) {
       assert ¢.equals(val);
-      val = Integer.valueOf(val.intValue()+1);
+      val = Integer.valueOf(val.intValue() + 1);
     }
   }
-  
+
   @SuppressWarnings("null") @Test public void asIteretableLambdaTest() {
     Integer val = Integer.valueOf(1);
     for(Integer ¢ : as.asIterableLambda(Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3))) {
       azzert.assertTrue( ¢.equals(val));
       val = Integer.valueOf(val.intValue()+1);
+
     }
   }
-  
+
   @Test public void bitObjectTest() {
     azzert.assertTrue( as.bit(null) == 0);
     azzert.assertTrue( as.bit("false") == 1);
   }
-  
+
   @Test @SuppressWarnings("unlikely-arg-type") public void setTest() {
+
     Set<? extends String> s1 = as.set("a", "b", "c");
     azzert.assertTrue( s1.size() == 3);
     azzert.assertTrue(s1.containsAll(as.list("a", "b", "c")));
@@ -79,5 +80,6 @@ public class asTests {
     String [] actual = as.strings(as.list("a", "b", "c", Integer.valueOf(1), null));
     
     azzert.assertArrayEquals(expected, actual);
+
   }
 }

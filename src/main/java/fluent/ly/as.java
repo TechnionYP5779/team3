@@ -1,12 +1,9 @@
 /* Part of the "Spartan Blog"; mutate the rest / but leave this line as is */
 package fluent.ly;
 
-
-
 import java.util.*;
 
 import org.jetbrains.annotations.*;
-
 
 import il.org.spartan.*;
 
@@ -183,8 +180,6 @@ import il.org.spartan.*;
       }
     };
   }
-
-
 
   /** Converts a sequence of values into an array.
    * @param   <T> some arbitrary type

@@ -2,11 +2,6 @@ package a;
 
 import java.util.*;
 
-
-
-
-
-
 import org.jetbrains.annotations.*;
 
 import fluent.ly.*;
@@ -25,6 +20,3 @@ public interface singleton {
     return as.array(¢);
   }
 }
-
-
-

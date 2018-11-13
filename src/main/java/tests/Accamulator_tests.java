@@ -8,7 +8,7 @@ import org.junit.*;
 import fluent.ly.*;
 import il.org.spartan.utils.Accumulator.*;
 
-@SuppressWarnings("static-method")public class Accamulator_tests {
+@SuppressWarnings("static-method") public class Accamulator_tests {
   @Test public void booleanAdds() {
     final @NotNull Last c = new Last();
     azzert.that(as.bit(false), is(0));

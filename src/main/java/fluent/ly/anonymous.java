@@ -2,8 +2,6 @@ package fluent.ly;
 
 import java.util.function.*;
 
-
-
 /** TODO Yossi Gil: document class
  * @author Yossi Gil
  * @since 2017-04-12 */
@@ -27,5 +25,4 @@ public interface anonymous {
   static <T> T ly(final Supplier<T> $) {
     return $.get();
   }
-  
 }

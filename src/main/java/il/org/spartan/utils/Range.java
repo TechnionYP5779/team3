@@ -4,7 +4,6 @@ import java.util.*;
 
 import org.jetbrains.annotations.*;
 
-
 /** An immutable integral range, representing all integers between
  * {@link #from}, up to, but not including, {@link #to}, i.e.,
  *
@@ -94,6 +93,4 @@ public class Range {
   @Override public String toString() {
     return String.format("[%d, %d]", fluent.ly.box.it(from), fluent.ly.box.it(to));
   }
-  
-
 }
