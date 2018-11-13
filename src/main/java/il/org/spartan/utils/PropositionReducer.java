@@ -2,6 +2,7 @@ package il.org.spartan.utils;
 
 import java.util.function.*;
 
+import fluent.ly.*;
 import il.org.spartan.utils.Proposition.*;
 
 /** Yossi Gil: document class
@@ -11,7 +12,7 @@ import il.org.spartan.utils.Proposition.*;
 public abstract class PropositionReducer<R> extends Reduce<R> {
   public PropositionReducer(final Reduce<R> inner) {
     this.inner = inner;
-    assert inner != this;
+    azzert.assertTrue(  inner != this);
   }
 
   @Override public R reduce() {
