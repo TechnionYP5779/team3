@@ -77,6 +77,22 @@ public class range {
       
     }
     
+    public boolean includes(int a) {
+      if(from_defined) { 
+        if (a>=from.intValue()) {
+          if(to_defined) {
+            return a<to.intValue();
+          }
+          return true;
+        }
+        return false;
+      }
+      if(to_defined) {
+        return a<to.intValue();
+      }
+      return true;
+    }
+    
     public Iterator<Integer> numbers(){
       if(from_defined) { 
       return iterator();

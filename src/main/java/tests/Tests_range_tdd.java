@@ -88,5 +88,19 @@ public class Tests_range_tdd {
     azzert.assertTrue(!iter6.hasNext());
     azzert.assertTrue(range.from(10).interset(range.from(3)).from().equals(Integer.valueOf(10)));
     
+    //box10
+    azzert.assertTrue(range.from(2).to(5).includes(4));
+    azzert.assertTrue(range.from(2).to(5).includes(2));
+    azzert.assertTrue(range.from(2).to(5).includes(3));
+    azzert.assertTrue(!range.from(2).to(5).includes(5));
+    azzert.assertTrue(!range.from(2).to(5).includes(0));
+    
+    azzert.assertTrue(!range.from(2).includes(1));
+    azzert.assertTrue(range.from(2).includes(2));
+    azzert.assertTrue(range.from(2).includes(7));
+    
+    azzert.assertTrue(!range.to(2).includes(2));
+    azzert.assertTrue(!range.to(2).includes(3));
+    azzert.assertTrue(range.to(2).includes(1));
   }
 }
