@@ -6,7 +6,7 @@ import java.util.*;
 import org.junit.*;
 
 public class bigIntSequenceTest {
-  @Test
+  @SuppressWarnings("static-method") @Test
   public void testDefaults() {
     Iterable<BigInteger> seq1 = bigIntSequence.from(BigInteger.ONE);
     azzert.assertTrue(seq1.iterator().hasNext());
