@@ -1,11 +1,13 @@
 /* Part of the "Spartan Blog"; mutate the rest / but leave this line as is */
-package fluent.ly;
+package il.org.spartan.etc;
 
 import static il.org.spartan.Utils.*;
 
 import java.util.*;
 
 import org.jetbrains.annotations.*;
+
+import fluent.ly.*;
 
 /** A <b>Utility class</b> providing functions to remove
  * <code><b>null</b></code> elements from arrays and iterable collections. For

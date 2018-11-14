@@ -1,6 +1,8 @@
-package il.org.spartan.utils;
+package il.org.spartan.etc;
 
 import org.jetbrains.annotations.*;
+
+import il.org.spartan.utils.*;
 
 /** Return the first element that is not null
  * @author oran1248

@@ -3,6 +3,7 @@ package tests;
 import org.junit.*;
 
 import fluent.ly.*;
+import il.org.spartan.etc.*;
 
 public class angleTest {
 

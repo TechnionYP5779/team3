@@ -1,8 +1,9 @@
-package il.org.spartan.utils;
+package il.org.spartan.etc;
 
 import java.util.*;
 
-import il.org.spartan.utils.Example.*;
+import il.org.spartan.etc.*;
+import il.org.spartan.etc.Example.*;
 
 /** A collection of {@link Example}
  * @author Yossi Gil

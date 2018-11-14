@@ -3,6 +3,7 @@ package tests;
 import org.junit.*;
 
 import fluent.ly.*;
+import il.org.spartan.etc.*;
 
 public class English_tests {
   @SuppressWarnings({ "static-method", "unused" }) @Test public void basic_test() {
