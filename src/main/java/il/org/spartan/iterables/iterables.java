@@ -46,4 +46,20 @@ public enum iterables {
   public static <T> Iterator<T> singletonIterator(final T $) {
     return iterable.singleton($).iterator();
   }
+
+  public static <T> Iterable<T> alternate(final Iterable<T> it1, final Iterable<T> it2) {
+    return !(it1 == null | it2 == null) ? () -> new Iterator<T>() {
+      int current;
+      Iterator<T> i1 = it1.iterator();
+      Iterator<T> i2 = it2.iterator();
+
+      @Override public boolean hasNext() {
+        return i1.hasNext() || i2.hasNext();
+      }
+
+      @Override public T next() {
+        return current++ % 2 == 0 ? (i1.hasNext() ? i1 : i2).next() : (i2.hasNext() ? i2 : i1).next();
+      }
+    } : it1 == null ? it2 : it1;
+  }
 }
