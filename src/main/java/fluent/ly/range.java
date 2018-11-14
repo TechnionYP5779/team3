@@ -42,31 +42,31 @@ public class range {
       return this;
     }
     
-    public inner_range interset (inner_range param) {
+    public inner_range interset (inner_range ¢) {
       
       inner_range $ = new inner_range();
-      if(param.from_defined) {
-        if(this.from_defined&&(this.from.intValue()>param.from.intValue())) {
+      if (!¢.from_defined) {
+        if (this.from_defined) {
           $.set_from(this.from.intValue());
-        }else {
-          $.set_from(param.from.intValue());
         }
-      }else {
-        if(this.from_defined) {
+      } else {
+        if (this.from_defined && (this.from.intValue() > ¢.from.intValue())) {
           $.set_from(this.from.intValue());
+        } else {
+          $.set_from(¢.from.intValue());
         }
       }
 
 
-      if(param.to_defined) {
-        if(this.to_defined&&(this.to.intValue()<param.to.intValue())) {
+      if (!¢.to_defined) {
+        if (this.to_defined) {
           $.set_to(this.to.intValue());
-        }else {
-          $.set_to(param.to.intValue());
         }
-      }else {
-        if(this.to_defined) {
+      } else {
+        if (this.to_defined && (this.to.intValue() < ¢.to.intValue())) {
           $.set_to(this.to.intValue());
+        } else {
+          $.set_to(¢.to.intValue());
         }
       }
       return $;
@@ -74,16 +74,14 @@ public class range {
     }
     
     public boolean includes(int a) {
-      if (from_defined) {
-        if (a >= from.intValue()) {
-          if (to_defined) {
-            return a < to.intValue();
-          }
-          return true;
-        }
+      if (!from_defined)
+        return !to_defined || a < to.intValue();
+      if (a < from.intValue())
         return false;
+      if (to_defined) {
+        return a < to.intValue();
       }
-      return to_defined ? a < to.intValue() : true;
+      return true;
     }
     
     public Iterator<Integer> numbers(){
@@ -104,7 +102,7 @@ public class range {
       Integer curr;
 
       @Override public boolean hasNext() {
-        return !to_defined ? true : curr.intValue() < to.intValue() - 1;
+        return !to_defined || curr.intValue() < to.intValue() - 1;
       }
 
       @Override public Integer next() {
@@ -122,9 +120,9 @@ public class range {
     return $;    
   }
   
-  public static inner_range to(int t) {
+  public static inner_range to(int ¢) {
     inner_range $=new inner_range();
-    $.set_to(t);
+    $.set_to(¢);
     return $;  
   }
  

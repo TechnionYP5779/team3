@@ -24,10 +24,10 @@ public class RealList {
     return li.size();
   }
  @SuppressWarnings({ "rawtypes", "boxing" }) public static double first(Pair x){
-    return 1. * x.first;
+    return (double) x.first;
   }
  @SuppressWarnings({ "rawtypes", "boxing" }) public static double second(Pair x){
-   return 1. * x.first;
+   return (double) x.first;
  }
   
 
@@ -48,7 +48,7 @@ public class RealList {
     
     Collections.sort($,new Comparator<Pair<Double,Double>>(){
       @Override public int compare(final Pair first,final Pair second){
-        return (((Double) (first).second).intValue() -  ((Double) second.second).intValue());
+        return (((Double) first.second).intValue() -  ((Double) second.second).intValue());
       }
     });
     return $.iterator();
@@ -61,63 +61,22 @@ public class RealList {
 
         Integer numberOfDataValues = x.size();
 
-        List<Double> xSquared = x
-                .stream()
-                .map(position -> Math.pow(position, 2))
-                .collect(Collectors.toList());
+        List<Double> xSquared = x.stream().map(position -> Math.pow(position, 2)).collect(Collectors.toList()),
+            xMultipliedByY = IntStream.range(0, numberOfDataValues).mapToDouble(λ -> x.get(λ) * y.get(λ)).boxed().collect(Collectors.toList());
 
-        List<Double> xMultipliedByY = IntStream.range(0, numberOfDataValues)
-                .mapToDouble(i -> x.get(i) * y.get(i))
-                .boxed()
-                .collect(Collectors.toList());
+        Double xSummed = x.stream().reduce((prev, next) -> prev + next).get(), ySummed = y.stream().reduce((prev, next) -> prev + next).get(),
+            sumOfXSquared = xSquared.stream().reduce((prev, next) -> prev + next).get(),
+            sumOfXMultipliedByY = xMultipliedByY.stream().reduce((prev, next) -> prev + next).get();
 
-        Double xSummed = x
-                .stream()
-                .reduce((prev, next) -> prev + next)
-                .get();
-
-        Double ySummed = y
-                .stream()
-                .reduce((prev, next) -> prev + next)
-                .get();
-
-        Double sumOfXSquared = xSquared
-                .stream()
-                .reduce((prev, next) -> prev + next)
-                .get();
-
-        Double sumOfXMultipliedByY = xMultipliedByY
-                .stream()
-                .reduce((prev, next) -> prev + next)
-                .get();
-
-        double slopeNominator = numberOfDataValues * sumOfXMultipliedByY - ySummed * xSummed;
-        Double slopeDenominator = numberOfDataValues * sumOfXSquared - Math.pow(xSummed, 2);
-        Double $ = slopeNominator / slopeDenominator;
-
-        double interceptNominator = ySummed - $ * xSummed;
+        Double slopeDenominator = numberOfDataValues * sumOfXSquared - Math.pow(xSummed, 2), $ = numberOfDataValues * sumOfXMultipliedByY - xSummed * ySummed / slopeDenominator;
         double interceptDenominator = numberOfDataValues;
-        Double intercept = interceptNominator / interceptDenominator;
-
-        return ($ * predictForDependentVariable) + intercept;
+        return ($ * predictForDependentVariable) + (ySummed - $ * xSummed) / interceptDenominator;
     }
     @SuppressWarnings("boxing") public double averageX(){
-      if(x.size()==0)
-        return 0;
-      Double $ = x
-          .stream()
-          .reduce((prev, next) -> prev + next)
-          .get();
-      return $/ x.size();
+      return x.isEmpty() ? 0 : x.stream().reduce((prev, next) -> prev + next).get() / x.size();
     }
     @SuppressWarnings("boxing") public double averageY(){
-      if(y.size()==0)
-        return 0;
-      Double $ = y
-          .stream()
-          .reduce((prev, next) -> prev + next)
-          .get();
-      return $/ y.size();
+      return y.isEmpty() ? 0 : y.stream().reduce((prev, next) -> prev + next).get() / y.size();
     }
   
 }

@@ -31,7 +31,7 @@ public class Rectangle {
     
   }
   @SuppressWarnings("boxing") public double perimiter() {
-    return Math.abs((first.first - second.first) * 2.0) + Math.abs(first.second - second.second) * 2.0 ;
+    return Math.abs(2.0 * (first.first - second.first)) + 2.0 * Math.abs(first.second - second.second) ;
   }
   
 }

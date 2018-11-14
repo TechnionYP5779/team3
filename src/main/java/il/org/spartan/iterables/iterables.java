@@ -48,10 +48,10 @@ public enum iterables {
   }
   
   public static <T> Iterable<T> alternate(Iterable<T> it1, Iterable<T> it2){
-    return it1 == null | it2 == null ? it1 == null ? it2 : it1 : new Iterable<T>() {
+    return !(it1 == null | it2 == null) ? new Iterable<T>() {
       @Override public Iterator<T> iterator() {
         return new Iterator<T>() {
-          int current = 0;
+          int current;
           Iterator<T> i1 = it1.iterator();
           Iterator<T> i2 = it2.iterator();
 
@@ -60,10 +60,10 @@ public enum iterables {
           }
 
           @Override public T next() {
-            return (current++) % 2 == 0 ? i1.hasNext() ? i1.next() : i2.next() : i2.hasNext() ? i2.next() : i1.next();
+            return (current++) % 2 == 0 ? (i1.hasNext() ? i1 : i2).next() : (i2.hasNext() ? i2 : i1).next();
           }
         };
       }
-    };
+    } : it1 == null ? it2 : it1;
   }
 }
