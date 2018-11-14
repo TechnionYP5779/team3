@@ -17,7 +17,7 @@ import org.jetbrains.annotations.*;
   }
 
   public static void out(final @NotNull String name, final @Nullable Collection<Object> os) {
-    azzert.assertTrue( name != null);
+    assert name != null;
     if (os == null || os.isEmpty()) {
       System.out.printf("No %s\n", name);
       return;
@@ -46,7 +46,7 @@ import org.jetbrains.annotations.*;
   }
 
   public static void out(final @NotNull String name, final Object[] os) {
-    azzert.assertTrue( name != null);
+    assert name != null;
     if (os == null || os.length <= 0)
       System.out.printf("No %s\n", name);
     else if (os.length == 1)

@@ -109,7 +109,7 @@ import il.org.spartan.Utils.FoundHandleForT.*;
    *         <code><b>null</b></code>
    * @see #mustBeNull(Object) */
   static <T> @NotNull T cantBeNull(final @Nullable T $) {
-    azzert.assertTrue(  $ != null);
+    assert $ != null;
     return $;
   }
 
@@ -221,7 +221,7 @@ import il.org.spartan.Utils.FoundHandleForT.*;
    *          <code><b>null</b></code>.
    * @return parameter */
   static <@Nullable T> @Nullable Void mustBeNull(final @Nullable T $) {
-    azzert.assertTrue(  $ == null);
+    assert $ == null;
     return null;
   }
 
@@ -443,7 +443,7 @@ import il.org.spartan.Utils.FoundHandleForT.*;
    * begin with the name of the method they check.
    * @author Yossi Gil
    * @since 2014-05-31 */
-  @SuppressWarnings("static-method") public static class TEST {
+  @SuppressWarnings("static-method") class TEST {
     @NotNull public static Integer[] intToIntegers(final int... is) {
       final Integer @NotNull [] $ = new Integer @NotNull [is.length];
       for (int ¢ = 0; ¢ < is.length; ++¢)
@@ -483,7 +483,7 @@ import il.org.spartan.Utils.FoundHandleForT.*;
     }
 
     @Test public void cantBeNullTypical() {
-      azzert.assertTrue(  cantBeNull(new Object()) != null);
+      assert cantBeNull(new Object()) != null;
     }
 
     @Test public void isNullTypical() {
@@ -536,51 +536,49 @@ import il.org.spartan.Utils.FoundHandleForT.*;
       azzert.assertCollectionsEqual(as.list(intToIntegers(1, 29, 60)), $);
     }
 
-    @SuppressWarnings("unchecked") @Test public void addTest() {
+    @Test @SuppressWarnings("unchecked") public void addTest() {
       @SuppressWarnings("rawtypes") final List listSource = new ArrayList();
       listSource.add("123");
       listSource.add("456");
       @SuppressWarnings("rawtypes") final List newList = new ArrayList();
-      azzert.assertTrue( add(newList, listSource.iterator()).size() > 0);
+      azzert.assertTrue(add(newList, listSource.iterator()).size() > 0);
     }
 
-    @SuppressWarnings("unchecked") @Test public void addTest2() {
+    @Test @SuppressWarnings("unchecked") public void addTest2() {
       @SuppressWarnings("rawtypes") final List newList = new ArrayList();
-      azzert.assertTrue( add(newList, "a", "a", "b", "c").size() == 4);
+      azzert.assertTrue(add(newList, "a", "a", "b", "c").size() == 4);
     }
 
     @Test public void hasNullTest() {
-      azzert.assertTrue( hasNull(null, "a"));
+      assert hasNull(null, "a");
     }
 
     @Test public void hasIntest() {
-      azzert.assertTrue( intIsIn(3, 2, 4, 3));
+      assert intIsIn(3, 2, 4, 3);
     }
 
-    @SuppressWarnings("unchecked") @Test public void tesDup() {
+    @Test @SuppressWarnings("unchecked") public void tesDup() {
       @SuppressWarnings("rawtypes") final List list = new ArrayList();
       list.add("123");
       list.add("123");
       removeDuplicates(list);
-      azzert.assertTrue( list.size() == 1);
+      azzert.assertTrue(list.size() == 1);
     }
 
     @Test public void removeSuffixTest() {
-      azzert.assertTrue( removeSuffix("12345", "45").equals("123"));
+      assert removeSuffix("12345", "45").equals("123");
     }
 
     @Test public void removePrefixTest() {
-      azzert.assertTrue( removePrefix("12345", "123").equals("45"));
+      assert removePrefix("12345", "123").equals("45");
     }
 
     @Test public void removeFromArrayTest() {
-      final String[] arr = { "1", "2", "3" };
-      azzert.assertTrue( delete(arr, 1).length == 2);
+      azzert.assertTrue(delete((new String[] { "1", "2", "3" }), 1).length == 2);
     }
 
     @Test public void appendToArrayTest() {
-      final String[] arr = { "1", "2", "3" };
-      azzert.assertTrue( append(arr, "5").length == 4);
+      azzert.assertTrue(append((new String[] { "1", "2", "3" }), "5").length == 4);
     }
   }
 

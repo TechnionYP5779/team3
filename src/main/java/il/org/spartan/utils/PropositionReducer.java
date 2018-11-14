@@ -12,7 +12,7 @@ import il.org.spartan.utils.Proposition.*;
 public abstract class PropositionReducer<R> extends Reduce<R> {
   public PropositionReducer(final Reduce<R> inner) {
     this.inner = inner;
-    azzert.assertTrue(  inner != this);
+    assert inner != this;
   }
 
   @Override public R reduce() {
@@ -32,7 +32,7 @@ public abstract class PropositionReducer<R> extends Reduce<R> {
     return inner.reduce(r1, r2);
   }
 
-  @SuppressWarnings({ "null" }) private R reduce(final And a) {
+  @SuppressWarnings("null") private R reduce(final And a) {
     R $ = ante(a);
     for (int size = a.inner.size(), ¢ = 0; ¢ < size; ++¢) {
       $ = reduce($, reduce(a.inner.get(¢)));

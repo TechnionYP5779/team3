@@ -348,144 +348,135 @@ public enum string {
 
   @SuppressWarnings("static-method") public static class TEST {
     @Test public void use0() {
-      double d = atod("5.5");
-      azzert.assertTrue( d == 5.5);
+      azzert.assertTrue(atod("5.5") == 5.5);
 
     }
 
     @Test public void use1() {
-      float d = atof("5.5");
-      azzert.assertTrue( d == 5.5);
+      azzert.assertTrue(atof("5.5") == 5.5);
 
     }
 
     @Test public void use2() {
-      int d = atoi("5");
-      azzert.assertTrue( d == 5);
+      azzert.assertTrue(atoi("5") == 5);
 
     }
 
     @Test public void use3() {
-      long d = atol("5");
-      azzert.assertTrue( d == 5);
+      azzert.assertTrue(atol("5") == 5);
 
     }
 
     @Test public void use4() {
-      String res = capitalize("aAAAA");
-      azzert.assertTrue( res.equals("Aaaaa"));
+      azzert.assertTrue(capitalize("aAAAA").equals("Aaaaa"));
 
     }
 
     @Test public void use5() {
-      String res = cat("a", "b");
-      azzert.assertTrue( res.equals("ab"));
+      azzert.assertTrue(cat("a", "b").equals("ab"));
 
     }
 
     @Test public void use6() {
-      @SuppressWarnings("null") String res = cat(new String[] {"a"}, new String[] {"b","c"});
-      azzert.assertTrue( res.equals("abc"));
+      azzert.assertTrue( cat(new String[] { "a" }, new String[] { "b", "c" }).equals("abc"));
 
     }
 
     @Test public void use7() {
-      String d = dtoa(5.5);
-      azzert.assertTrue( d.equals("5.5"));
+      azzert.assertTrue(dtoa(5.5).equals("5.5"));
 
     }
 
     @Test public void use8() {
-      azzert.assertTrue( eq("a","a"));
-      azzert.assertTrue( !eq("a","A"));
-      azzert.assertTrue( !eq(null,"a"));
-      azzert.assertTrue( eq(null,null));
+      assert eq("a", "a");
+      assert !eq("a", "A");
+      assert !eq(null, "a");
+      assert eq(null, null);
 
     }
 
     @Test public void use9() {
-      azzert.assertTrue( esc("a").equals("a"));
-      azzert.assertTrue( esc("\n").equals("\\n"));
-      azzert.assertTrue( esc("\r").equals("\\r"));
-      azzert.assertTrue( esc("\t").equals("\\t"));
-      azzert.assertTrue( esc("\f").equals("\\f"));
-      azzert.assertTrue( esc("\b").equals("\\b"));
-      azzert.assertTrue( esc("\\").equals("\\\\"));
-      azzert.assertTrue( esc(null).equals("(null)"));
+      assert esc("a").equals("a");
+      assert esc("\n").equals("\\n");
+      assert esc("\r").equals("\\r");
+      assert esc("\t").equals("\\t");
+      assert esc("\f").equals("\\f");
+      assert esc("\b").equals("\\b");
+      assert esc("\\").equals("\\\\");
+      assert esc(null).equals("(null)");
     }
 
     @Test public void use10() {
-      azzert.assertTrue( expandLeadingTabs("bla").equals("bla"));
+      assert expandLeadingTabs("bla").equals("bla");
     }
 
     @Test public void use11() {
-      azzert.assertTrue( fill(5,'a').equals("aaaaa"));
-      azzert.assertTrue( fill(2,"aa").equals("aaaa"));
+      assert fill(5, 'a').equals("aaaaa");
+      assert fill(2, "aa").equals("aaaa");
 
     }
 
     @Test public void use12() {
-      float f = 1/2;
-      azzert.assertTrue( ftoa(f).equals("0.0"));
+      azzert.assertTrue(ftoa((1 / 2)).equals("0.0"));
 
     }
 
     @Test public void use13() {
-      azzert.assertTrue( isDouble("4.4"));
-      azzert.assertTrue( !isDouble("a"));
-      azzert.assertTrue( isInt("1"));
-      azzert.assertTrue( !isInt("1.1"));
-      azzert.assertTrue( isLong("1"));
-      azzert.assertTrue( !isLong("..."));
-      azzert.assertTrue( isFloat("1"));
-      azzert.assertTrue( !isFloat("..."));
+      assert isDouble("4.4");
+      assert !isDouble("a");
+      assert isInt("1");
+      assert !isInt("1.1");
+      assert isLong("1");
+      assert !isLong("...");
+      assert isFloat("1");
+      assert !isFloat("...");
     }
 
     @Test public void use14() {
-      azzert.assertTrue( itoa(5).equals("5"));
+      assert itoa(5).equals("5");
     }
 
-    @SuppressWarnings("null") @Test public void ordinalTest() {
-      azzert.assertTrue( ordinal(1).equals("1st"));
-      azzert.assertTrue( ordinal(2).equals("2nd"));
-      azzert.assertTrue( ordinal(3).equals("3th"));
-      azzert.assertTrue( ordinal(11).equals("11th"));
-      azzert.assertTrue( ordinal(12).equals("12th"));
+    @Test @SuppressWarnings("null") public void ordinalTest() {
+      azzert.assertTrue(ordinal(1).equals("1st"));
+      azzert.assertTrue(ordinal(2).equals("2nd"));
+      azzert.assertTrue(ordinal(3).equals("3th"));
+      azzert.assertTrue(ordinal(11).equals("11th"));
+      azzert.assertTrue(ordinal(12).equals("12th"));
     }
 
-    @SuppressWarnings("null") @Test public void pluralizeTest() {
-      azzert.assertTrue( pluralize(0,"cat").equals("no cats"));
-      azzert.assertTrue( pluralize(1,"cat").equals("cat"));
-      azzert.assertTrue( pluralize(2,"cat").equals("two cats"));
-      azzert.assertTrue( pluralize(3,"cat").equals("three cats"));
-      azzert.assertTrue( pluralize(4,"cat").equals("four cats"));
-      azzert.assertTrue( pluralize(5,"cat").equals("five cats"));
-      azzert.assertTrue( pluralize(6,"cat").equals("six cats"));
-      azzert.assertTrue( pluralize(7,"cat").equals("seven cats"));
-      azzert.assertTrue( pluralize(8,"cat").equals("eight cats"));
-      azzert.assertTrue( pluralize(9,"cat").equals("nine cats"));
-      azzert.assertTrue( pluralize(999,"cat").equals("999 cats"));
+    @Test @SuppressWarnings("null") public void pluralizeTest() {
+      azzert.assertTrue(pluralize(0, "cat").equals("no cats"));
+      azzert.assertTrue(pluralize(1, "cat").equals("cat"));
+      azzert.assertTrue(pluralize(2, "cat").equals("two cats"));
+      azzert.assertTrue(pluralize(3, "cat").equals("three cats"));
+      azzert.assertTrue(pluralize(4, "cat").equals("four cats"));
+      azzert.assertTrue(pluralize(5, "cat").equals("five cats"));
+      azzert.assertTrue(pluralize(6, "cat").equals("six cats"));
+      azzert.assertTrue(pluralize(7, "cat").equals("seven cats"));
+      azzert.assertTrue(pluralize(8, "cat").equals("eight cats"));
+      azzert.assertTrue(pluralize(9, "cat").equals("nine cats"));
+      azzert.assertTrue(pluralize(999, "cat").equals("999 cats"));
     }
     
-    @SuppressWarnings("null") @Test public void use15() {
-      azzert.assertTrue( javaCase("AaaA").equals("aaaA"));
-      azzert.assertTrue( javaCase("").equals(""));
-      azzert.assertTrue( last("blabla") == 'a');
-      azzert.assertTrue( lowCounter(-1).equals(""));
-      azzert.assertTrue( lowCounter(0).equals("a"));
-      azzert.assertTrue( (lowCounter(5)).equals("f"));
-      azzert.assertTrue( delta(1,1) == 0.0);
-      azzert.assertTrue( wrap("with","s").equals("withswith"));
-      azzert.assertTrue( wrap('a',"s").equals("asa"));
-      azzert.assertTrue( visualize("balkjg\n").equals("balkjg\\n"));
-      azzert.assertTrue( upCounter(-1).equals(""));
-      azzert.assertTrue( upCounter(0).equals("A"));
-      azzert.assertTrue( (upCounter(5)).equals("F"));
-      azzert.assertTrue( (strip("blabla")).equals("labl"));
-      azzert.assertTrue( sprintf(new String[] {}).equals(""));
-      azzert.assertTrue( sprintf(new String[] {"a"}).equals("a"));
-      azzert.assertTrue( sprintf(new String[] {"a","b"}).equals("a"));
-      azzert.assertTrue( repeat(2,"n").equals("nn"));
+    @Test @SuppressWarnings("null") public void use15() {
+      azzert.assertTrue(javaCase("AaaA").equals("aaaA"));
+      azzert.assertTrue(javaCase("").equals(""));
+      azzert.assertTrue(last("blabla") == 'a');
+      azzert.assertTrue(lowCounter(-1).equals(""));
+      azzert.assertTrue(lowCounter(0).equals("a"));
+      azzert.assertTrue((lowCounter(5)).equals("f"));
+      azzert.assertTrue(delta(1, 1) == 0.0);
+      azzert.assertTrue(wrap("with", "s").equals("withswith"));
+      azzert.assertTrue(wrap('a', "s").equals("asa"));
+      azzert.assertTrue(visualize("balkjg\n").equals("balkjg\\n"));
+      azzert.assertTrue(upCounter(-1).equals(""));
+      azzert.assertTrue(upCounter(0).equals("A"));
+      azzert.assertTrue((upCounter(5)).equals("F"));
+      azzert.assertTrue((strip("blabla")).equals("labl"));
+      azzert.assertTrue(sprintf(new String[] {}).equals(""));
+      azzert.assertTrue(sprintf(new String[] { "a" }).equals("a"));
+      azzert.assertTrue(sprintf(new String[] { "a", "b" }).equals("a"));
+      azzert.assertTrue(repeat(2, "n").equals("nn"));
     }
   }
 }
