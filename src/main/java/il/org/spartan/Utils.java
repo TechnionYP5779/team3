@@ -1,7 +1,5 @@
 package il.org.spartan;
 
-import static org.junit.Assert.*;
-
 import static fluent.ly.azzert.*;
 
 import java.io.*;
@@ -443,7 +441,7 @@ import il.org.spartan.Utils.FoundHandleForT.*;
    * begin with the name of the method they check.
    * @author Yossi Gil
    * @since 2014-05-31 */
-  @SuppressWarnings("static-method") public static class TEST {
+  @SuppressWarnings("static-method") class TEST {
     @NotNull public static Integer[] intToIntegers(final int... is) {
       final Integer @NotNull [] $ = new Integer @NotNull [is.length];
       for (int ¢ = 0; ¢ < is.length; ++¢)
@@ -521,32 +519,30 @@ import il.org.spartan.Utils.FoundHandleForT.*;
     @Test public void swapDegenerate() {
       final @NotNull String @NotNull [] ss = as.array("A", "B", "C", "D");
       swap(ss, 1, 1);
-      assertArrayEquals(as.array("A", "B", "C", "D"), ss);
+      azzert.assertCollectionsEqual(as.list("A", "B", "C", "D"), ss);
     }
 
     @Test public void swapTypical() {
       final @NotNull String @NotNull [] ss = as.array("A", "B", "C", "D");
       swap(ss, 1, 2);
-      assertArrayEquals(as.array("A", "C", "B", "D"), ss);
+      azzert.assertCollectionsEqual(as.list("A", "C", "B", "D"), ss);
     }
 
     @Test public void swapTypicalCase() {
       final Integer @NotNull [] $ = intToIntegers(29, 1, 60);
       swap($, 0, 1);
-      assertArrayEquals(intToIntegers(1, 29, 60), $);
+      azzert.assertCollectionsEqual(as.list(intToIntegers(1, 29, 60)), $);
     }
 
-    @SuppressWarnings("unchecked") @Test public void addTest() {
+    @Test @SuppressWarnings("unchecked") public void addTest() {
       @SuppressWarnings("rawtypes") final List listSource = new ArrayList();
       listSource.add("123");
       listSource.add("456");
-      @SuppressWarnings("rawtypes") final List newList = new ArrayList();
-      assert add(newList, listSource.iterator()).size() > 0;
+      assert add(new ArrayList(), listSource.iterator()).size() > 0;
     }
 
-    @SuppressWarnings("unchecked") @Test public void addTest2() {
-      @SuppressWarnings("rawtypes") final List newList = new ArrayList();
-      assert add(newList, "a", "a", "b", "c").size() == 4;
+    @Test @SuppressWarnings("unchecked") public void addTest2() {
+      assert add(new ArrayList(), "a", "a", "b", "c").size() == 4;
     }
 
     @Test public void hasNullTest() {
@@ -557,7 +553,7 @@ import il.org.spartan.Utils.FoundHandleForT.*;
       assert intIsIn(3, 2, 4, 3);
     }
 
-    @SuppressWarnings("unchecked") @Test public void tesDup() {
+    @Test @SuppressWarnings("unchecked") public void tesDup() {
       @SuppressWarnings("rawtypes") final List list = new ArrayList();
       list.add("123");
       list.add("123");
@@ -566,25 +562,23 @@ import il.org.spartan.Utils.FoundHandleForT.*;
     }
 
     @Test public void removeSuffixTest() {
-      assert removeSuffix("12345", "45").equals("123");
+      assert "123".equals(removeSuffix("12345", "45"));
     }
 
     @Test public void removePrefixTest() {
-      assert removePrefix("12345", "123").equals("45");
+      assert "45".equals(removePrefix("12345", "123"));
     }
 
     @Test public void removeFromArrayTest() {
-      final String[] arr = { "1", "2", "3" };
-      assert delete(arr, 1).length == 2;
+      assert delete(new String[] { "1", "2", "3" }, 1).length == 2;
     }
 
     @Test public void appendToArrayTest() {
-      final String[] arr = { "1", "2", "3" };
-      assert append(arr, "5").length == 4;
+      assert append(new String[] { "1", "2", "3" }, "5").length == 4;
     }
   }
 
-  static int hash(Object ¢) {
+  static int hash(final Object ¢) {
     return ¢ == null ? 0 : ¢.hashCode();
   }
 }

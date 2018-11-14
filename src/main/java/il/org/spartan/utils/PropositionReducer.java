@@ -31,7 +31,7 @@ public abstract class PropositionReducer<R> extends Reduce<R> {
     return inner.reduce(r1, r2);
   }
 
-  @SuppressWarnings({ "null" }) private R reduce(final And a) {
+  @SuppressWarnings("null") private R reduce(final And a) {
     R $ = ante(a);
     for (int size = a.inner.size(), ¢ = 0; ¢ < size; ++¢) {
       $ = reduce($, reduce(a.inner.get(¢)));

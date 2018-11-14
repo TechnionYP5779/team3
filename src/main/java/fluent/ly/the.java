@@ -1,7 +1,8 @@
 package fluent.ly;
 
+import static il.org.spartan.etc.idiomatic.*;
+
 import static fluent.ly.___.*;
-import static fluent.ly.idiomatic.*;
 
 import java.util.*;
 
@@ -165,7 +166,7 @@ public interface the {
     return ¢.substring(1);
   }
 
-  static <T> T[] tailOf(T[] ¢) {
+  static <T> T[] tailOf(final T[] ¢) {
     return Arrays.copyOfRange(¢, 1, ¢.length);
   }
 }

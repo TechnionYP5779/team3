@@ -1,167 +1,110 @@
 package fluent.ly;
 
 import java.util.*;
-import java.util.stream.*;
+// import java.util.*;
+// import java.util.stream.*;
 
-/** A fluent API implementation for range
- * @author Dor Ma'ayan
- * @since 26-11-2016 */
 public class range {
-  public class AfterTo extends RangeIterator<AfterTo> {
-    public AfterTo from(final int ¢) {
-      to = ¢;
+  public static class inner_range implements Iterable<Integer> {
+    // params
+    Integer from;
+    Integer to;
+    boolean from_defined;
+    boolean to_defined;
+
+    // funcs & methods
+    inner_range() {
+      to_defined = from_defined = false;
+    }
+
+    void set_from(final int f) {
+      from = Integer.valueOf(f);
+      from_defined = true;
+    }
+
+    void set_to(final int f) {
+      to = Integer.valueOf(f);
+      to_defined = true;
+    }
+
+    public Integer from() {
+      return from_defined ? from : null;
+    }
+
+    public inner_range to(final int ¢) {
+      this.set_to(¢);
       return this;
     }
 
-    public Iterable<Integer> infinite() {
-      return range.infiniteFrom(from, step);
-    }
-
-    public AfterTo step(final int ¢) {
-      step = ¢;
+    public inner_range from(final int f) {
+      this.set_from(f);
       return this;
     }
 
-    public Stream<Integer> stream() {
-      return StreamSupport.stream(spliterator(), false);
+    public inner_range interset(final inner_range ¢) {
+      final inner_range $ = new inner_range();
+      if (!¢.from_defined) {
+        if (this.from_defined)
+          $.set_from(this.from.intValue());
+      } else if (this.from_defined && this.from.intValue() > ¢.from.intValue())
+        $.set_from(this.from.intValue());
+      else
+        $.set_from(¢.from.intValue());
+      if (!¢.to_defined) {
+        if (this.to_defined)
+          $.set_to(this.to.intValue());
+      } else if (this.to_defined && this.to.intValue() < ¢.to.intValue())
+        $.set_to(this.to.intValue());
+      else
+        $.set_to(¢.to.intValue());
+      return $;
     }
 
-    @Override AfterTo self() {
-      return this;
-    }
-  }
-
-  public class BeforeTo extends RangeIterator<BeforeTo> {
-    public Infinite infinite() {
-      return range.infiniteFrom(from, step);
-    }
-
-    public AfterTo step(final int ¢) {
-      step = ¢;
-      return new AfterTo();
+    public boolean includes(final int a) {
+      if (!from_defined)
+        return !to_defined || a < to.intValue();
+      if (a < from.intValue())
+        return false;
+      if (to_defined)
+        return a < to.intValue();
+      return true;
     }
 
-    public AfterTo to(final int ¢) {
-      to = ¢;
-      return new AfterTo();
-    }
-
-    @Override BeforeTo self() {
-      return this;
-    }
-  }
-
-  public class Infinite extends RangeIterator<Infinite> {
-    public Infinite from(final int ¢) {
-      from = ¢;
-      step = 1;
-      return this;
-    }
-
-    public Iterable<Integer> step(final int ¢) {
-      step = ¢;
-      return this;
-    }
-
-    @Override Infinite self() {
-      return this;
-    }
-  }
-
-  abstract class RangeIterator<Self extends RangeIterator<Self>> implements Iterable<Integer> {
-    public final Self exclusive() {
-      inclusive = false;
-      return self();
-    }
-
-    public final Self inclusive() {
-      inclusive = true;
-      return self();
-    }
-
-    public final Self infiniteRange() {
-      infinite = true;
-      return self();
+    public Iterator<Integer> numbers() {
+      return from_defined ? iterator() : new MyIterator(Integer.valueOf(Integer.MIN_VALUE));
     }
 
     @Override public Iterator<Integer> iterator() {
-      return new Iterator<Integer>() {
-        int next = from;
-
-        @Override public boolean hasNext() {
-          return infinite || (inclusive ? next <= to : next < to);
-        }
-
-        @Override public Integer next() {
-          if (!hasNext())
-            throw new NoSuchElementException();
-          final int $ = next;
-          next += step;
-          return Integer.valueOf($);
-        }
-      };
+      return new MyIterator(from);
     }
 
-    abstract Self self();
-  }
-
-  public static BeforeTo from(final int ¢) {
-    return makeFrom(¢).new BeforeTo();
-  }
-
-  public static Infinite infinite() {
-    return infiniteFrom(0, 1);
-  }
-
-  public static Iterable<Integer> infinite(final int ¢) {
-    return from(¢).to(¢).step(0).inclusive();
-  }
-
-  public static RangeIterator<?> naturals() {
-    return from(0).to(-1).step(1);
-  }
-
-  public static RangeIterator<?> numerals() {
-    return from(1).to(-1).step(1);
-  }
-
-  public static RangeIterator<?> odds() {
-    return from(1).to(-1).step(2);
-  }
-
-  public static <T> RangeIterator<?> of(final T[] ¢) {
-    return from(0).to(¢.length);
-  }
-
-  public static AfterTo to(final int to) {
-    return makeTo(to).new AfterTo();
-  }
-
-  private static range makeFrom(final int ¢) {
-    return new range() {
-      {
-        from = ¢;
+    public class MyIterator implements Iterator<Integer> {
+      MyIterator(final Integer f) {
+        curr = Integer.valueOf(f.intValue());
       }
-    };
-  }
 
-  private static range makeTo(final int ¢) {
-    return new range() {
-      {
-        to = ¢;
+      Integer curr;
+
+      @Override public boolean hasNext() {
+        return !to_defined || curr.intValue() < to.intValue() - 1;
       }
-    };
-  }
 
-  static Infinite infiniteFrom(final int ¢, final int ¢2) {
-    final Infinite $ = makeFrom(¢).new Infinite().infiniteRange();
-    $.step(¢2);
+      @Override public Integer next() {
+        return curr = Integer.valueOf(curr.intValue() + 1);
+      }
+    }
+  }
+  // ---------------------------------------------------------------
+
+  public static inner_range from(final int f) {
+    final inner_range $ = new inner_range();
+    $.set_from(f);
     return $;
   }
 
-  int from;
-  boolean inclusive;
-  boolean infinite;
-  int step = 1;
-  int to = -1;
+  public static inner_range to(final int ¢) {
+    final inner_range $ = new inner_range();
+    $.set_to(¢);
+    return $;
+  }
 }
