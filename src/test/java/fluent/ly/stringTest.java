@@ -33,7 +33,7 @@ import org.junit.*;
 
   }
 
-  @Test public void use6() {
+  @SuppressWarnings("null") @Test public void use6() {
     azzert.assertTrue(string.cat(new String[] { "a" }, new String[] { "b", "c" }).equals("abc"));
 
   }
@@ -92,7 +92,7 @@ import org.junit.*;
     assert string.itoa(5).equals("5");
   }
 
-  @Test @SuppressWarnings("null") public void ordinalTest() {
+  @Test public void ordinalTest() {
     azzert.assertTrue(string.ordinal(1).equals("1st"));
     azzert.assertTrue(string.ordinal(2).equals("2nd"));
     azzert.assertTrue(string.ordinal(3).equals("3th"));
@@ -100,7 +100,7 @@ import org.junit.*;
     azzert.assertTrue(string.ordinal(12).equals("12th"));
   }
 
-  @Test @SuppressWarnings("null") public void pluralizeTest() {
+  @Test public void pluralizeTest() {
     azzert.assertTrue(string.pluralize(0, "cat").equals("no cats"));
     azzert.assertTrue(string.pluralize(1, "cat").equals("cat"));
     azzert.assertTrue(string.pluralize(2, "cat").equals("two cats"));
