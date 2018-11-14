@@ -37,8 +37,8 @@ import il.org.spartan.statistics.*;
    *                   columns in the principal file
    * @throws IOException */
   public CSVStatistics(final @NotNull String baseName, final @NotNull String keysHeader) {
-    azzert.assertTrue(  baseName != null);
-    azzert.assertTrue(  keysHeader != null);
+    assert baseName != null;
+    assert keysHeader != null;
     inner = new CSVWriter(removeExtension(baseName));
     summarizer = new CSVWriter(removeExtension(baseName) + SUMMARY_EXTENSION);
     this.keysHeader = keysHeader;

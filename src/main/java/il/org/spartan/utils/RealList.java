@@ -24,34 +24,34 @@ public class RealList {
     return li.size();
   }
  @SuppressWarnings({ "rawtypes", "boxing" }) public static double first(Pair x){
-    return (double) x.first;
+    return 1. * x.first;
   }
  @SuppressWarnings({ "rawtypes", "boxing" }) public static double second(Pair x){
-   return (double) x.first;
+   return 1. * x.first;
  }
   
 
 
   @SuppressWarnings({ "rawtypes", "unchecked" }) public Iterator iteratorX() {
-    @SuppressWarnings("unused") List newList=new ArrayList<Pair<Double,Double>>(li);
+    @SuppressWarnings("unused") List $=new ArrayList<Pair<Double,Double>>(li);
     
-    Collections.sort(newList,new Comparator<Pair<Double,Double>>(){
+    Collections.sort($,new Comparator<Pair<Double,Double>>(){
       @Override public int compare(final Pair first,final Pair second){
         return (int) (first(first)- first(second));
       }
     });
-    return newList.iterator();
+    return $.iterator();
   }
   
   @SuppressWarnings({ "rawtypes", "unchecked" }) public Iterator iteratorY() {
-    @SuppressWarnings("unused") List newList=new ArrayList<Pair<Double,Double>>(li);
+    @SuppressWarnings("unused") List $=new ArrayList<Pair<Double,Double>>(li);
     
-    Collections.sort(newList,new Comparator<Pair<Double,Double>>(){
+    Collections.sort($,new Comparator<Pair<Double,Double>>(){
       @Override public int compare(final Pair first,final Pair second){
         return (((Double) (first).second).intValue() -  ((Double) second.second).intValue());
       }
     });
-    return newList.iterator();
+    return $.iterator();
   }
 
 
@@ -93,31 +93,31 @@ public class RealList {
 
         double slopeNominator = numberOfDataValues * sumOfXMultipliedByY - ySummed * xSummed;
         Double slopeDenominator = numberOfDataValues * sumOfXSquared - Math.pow(xSummed, 2);
-        Double slope = slopeNominator / slopeDenominator;
+        Double $ = slopeNominator / slopeDenominator;
 
-        double interceptNominator = ySummed - slope * xSummed;
+        double interceptNominator = ySummed - $ * xSummed;
         double interceptDenominator = numberOfDataValues;
         Double intercept = interceptNominator / interceptDenominator;
 
-        return (slope * predictForDependentVariable) + intercept;
+        return ($ * predictForDependentVariable) + intercept;
     }
     @SuppressWarnings("boxing") public double averageX(){
       if(x.size()==0)
         return 0;
-      Double xSummed = x
+      Double $ = x
           .stream()
           .reduce((prev, next) -> prev + next)
           .get();
-      return xSummed/ x.size();
+      return $/ x.size();
     }
     @SuppressWarnings("boxing") public double averageY(){
       if(y.size()==0)
         return 0;
-      Double xSummed = y
+      Double $ = y
           .stream()
           .reduce((prev, next) -> prev + next)
           .get();
-      return xSummed/ y.size();
+      return $/ y.size();
     }
   
 }

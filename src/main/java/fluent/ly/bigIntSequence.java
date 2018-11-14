@@ -36,14 +36,13 @@ public class bigIntSequence{
     }
     
     @Override public BigInteger next() {
-      BigInteger tmp = current;
+      BigInteger $ = current;
       current = current.add(step);
-      return tmp;
+      return $;
     }
     
     @Override public boolean hasNext() {
-      return (end == null) ? true : 
-        (current.compareTo(end) >= 0) ? false : true;
+      return end == null || ((current.compareTo(end) >= 0) ? false : true);
     }
   }
 

@@ -7,20 +7,20 @@ public class angle{
     this.degree = i; 
   }
 
-  public static angle degree(int i) {
-    return new angle(i);
+  public static angle degree(int ¢) {
+    return new angle(¢);
   }
 
-  public static angle radians(int i) {
-    return new angle((i*180)/Math.PI);
+  public static angle radians(int ¢) {
+    return new angle((¢*180)/Math.PI);
   }
 
   public static angle pi() {
-    return new angle((Math.PI*180)/Math.PI);
+    return new angle((180 * Math.PI)/Math.PI);
   }
 
   public static angle halfPi() {
-    return new angle(((Math.PI/2)*180)/Math.PI);
+    return new angle((180 * Math.PI / 2)/Math.PI);
   }
 
   public angle add(angle ad) {
@@ -36,23 +36,23 @@ public class angle{
   }
 
   public double radians() {
-    return (this.degree*Math.PI)/180;
+    return (Math.PI * this.degree)/180;
   }
 
-  public static angle of(int i) {
-    return new angle(i); 
+  public static angle of(int ¢) {
+    return new angle(¢); 
   }
 
-  public angle add(int i) {
-    return new angle(this.degree + i); 
+  public angle add(int ¢) {
+    return new angle(this.degree + ¢); 
   }
 
-  public angle subtracted(int i) {
-    return new angle(this.degree - i); 
+  public angle subtracted(int ¢) {
+    return new angle(this.degree - ¢); 
   }
 
   public angle negated() {
-      return new angle(this.degree*(-1));
+      return new angle(-this.degree*(1));
   } 
 }
   
