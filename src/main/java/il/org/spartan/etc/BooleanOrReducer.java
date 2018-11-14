@@ -1,4 +1,6 @@
-package il.org.spartan.utils;
+package il.org.spartan.etc;
+
+import il.org.spartan.utils.*;
 
 /** Boolean or reducer
  * @author oran1248

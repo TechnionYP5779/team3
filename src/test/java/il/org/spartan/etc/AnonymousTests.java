@@ -3,6 +3,7 @@ package il.org.spartan.etc;
 import org.junit.*;
 
 import fluent.ly.*;
+import il.org.spartan.etc.*;
 
 @SuppressWarnings("static-method") public class AnonymousTests {
   @Test public void usecase0() {

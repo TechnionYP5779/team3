@@ -1,4 +1,4 @@
-package fluent.ly;
+package il.org.spartan.etc;
 
 import java.text.*;
 import java.util.*;
@@ -7,7 +7,9 @@ import java.util.stream.*;
 
 import org.jetbrains.annotations.*;
 
+import fluent.ly.*;
 import il.org.spartan.*;
+import il.org.spartan.etc.*;
 import il.org.spartan.utils.*;
 
 /** Utility class for linguistic issues. Used by GUI dialogs.

@@ -10,6 +10,7 @@ import java.util.function.*;
 import org.jetbrains.annotations.*;
 import org.junit.*;
 
+import il.org.spartan.etc.*;
 
 @SuppressWarnings({ "static-method" }) public class pruneTests {
   @Nullable final String[] alternatingArray = new @Nullable String[] { null, "A", null, null, "B", null, null, null, "C", null };

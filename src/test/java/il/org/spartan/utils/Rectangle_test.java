@@ -3,8 +3,7 @@ package il.org.spartan.utils;
 import org.junit.*;
 
 import fluent.ly.*;
-
-
+import il.org.spartan.etc.*;
 public class Rectangle_test {
   @SuppressWarnings({ "null", "static-method" }) @Test public void test(){
     Rectangle rec= new Rectangle(1.0,1.0,2.0,2.0);

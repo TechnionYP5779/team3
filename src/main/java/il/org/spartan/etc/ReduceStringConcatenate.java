@@ -1,4 +1,6 @@
-package il.org.spartan.utils;
+package il.org.spartan.etc;
+
+import il.org.spartan.utils.*;
 
 /** Reducer that concatenate strings
  * @author Yossi Gil
