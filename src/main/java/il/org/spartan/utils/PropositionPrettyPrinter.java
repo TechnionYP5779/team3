@@ -1,4 +1,4 @@
-package il.org.spartan.etc;
+package il.org.spartan.utils;
 
 import java.util.function.*;
 
