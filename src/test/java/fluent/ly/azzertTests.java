@@ -7,32 +7,32 @@ import org.junit.*;
 
 
 @SuppressWarnings("static-method") public class azzertTests {
-  @SuppressWarnings("boxing") @Test public void testStuff() {
+  @Test public void testStuff() {
     final List<Integer> lst = new ArrayList<>();
     lst.add(0);
     lst.add(1);
     lst.add(2);
     lst.add(3);
     final List<Integer> lst2 = new ArrayList<>(lst);
-    final Integer[] arr = { 0, 1, 2, 3 };
+    final Integer[] arr = { box.box(0), box.box(1), box.box(2), box.box(3) };
     azzert.assertCollectionsEqual(lst, lst2);
     azzert.assertCollectionsEqual(lst, arr);
     azzert.assertCollectionsEqual("bla", lst, lst2);
     azzert.assertCollectionsEqual("bla", lst, arr);
     azzert.assertCollectionsEqual("bla", arr, lst);
-    azzert.assertContains(lst2, 1);
-    azzert.assertContains("bla", lst2, 1);
-    azzert.assertNotContains(lst2, 15);
-    azzert.assertNotContains("bla", lst2, 15);
-    azzert.assertEquals(true, Boolean.valueOf(true));
-    azzert.assertEquals(Boolean.valueOf(true), true);
-    azzert.assertEquals(1, Integer.valueOf(1));
-    azzert.assertEquals(Integer.valueOf(1), 1);
+    azzert.assertContains(lst2, box.box(1));
+    azzert.assertContains("bla", lst2, box.box(1));
+    azzert.assertNotContains(lst2, box.box(15));
+    azzert.assertNotContains("bla", lst2, box.box(15));
+    azzert.assertEquals(true, box.box(true));
+    azzert.assertEquals(box.box(true), true);
+    azzert.assertEquals(1, box.box(1));
+    azzert.assertEquals(box.box(1), 1);
     azzert.assertEquals("bla", true, true);
-    azzert.assertEquals("bla", true, Boolean.valueOf(true));
-    azzert.assertEquals("bla", Boolean.valueOf(true), true);
-    azzert.assertEquals("bla", 1, Integer.valueOf(1));
-    azzert.assertEquals("bla", Integer.valueOf(1), 1);
+    azzert.assertEquals("bla", true, box.box(true));
+    azzert.assertEquals("bla", box.box(true), true);
+    azzert.assertEquals("bla", 1, box.box(1));
+    azzert.assertEquals("bla", box.box(1), 1);
     azzert.assertEquals("bla", 1, 1);
     azzert.assertFalse(false);
     azzert.assertFalse("bla", false);
