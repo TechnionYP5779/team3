@@ -42,7 +42,7 @@ public class bigIntSequence{
     }
     
     @Override public boolean hasNext() {
-      return end == null || ((current.compareTo(end) >= 0) ? false : true);
+      return end == null || (!(current.compareTo(end) >= 0));
     }
   }
 
