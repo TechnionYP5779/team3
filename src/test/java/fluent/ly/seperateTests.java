@@ -12,7 +12,7 @@ import org.junit.*;
 
 import an.*;
 import fluent.ly.separate.*;
-
+import il.org.spartan.etc.*;
 
 @SuppressWarnings("static-method") public class seperateTests {
   private static final Function<String, String> quote = λ -> "'" + λ + "'";

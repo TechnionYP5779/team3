@@ -5,6 +5,8 @@ import java.nio.file.*;
 
 import org.jetbrains.annotations.*;
 
+import il.org.spartan.etc.*;
+
 /** File utils
  * @author Ori Marcovitch
  * @since Dec 4, 2016 */
