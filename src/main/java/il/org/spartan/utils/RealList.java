@@ -3,6 +3,8 @@ package il.org.spartan.utils;
 import java.util.*;
 import java.util.stream.*;
 
+import fluent.ly.*;
+
 public class RealList {
   private List<Pair<Double,Double>> li;
   private List<Double> x;
@@ -14,20 +16,20 @@ public class RealList {
     y=new ArrayList<>();
   }
 
-  @SuppressWarnings({ "unchecked", "rawtypes", "boxing" }) public void record(double d, double e) {
-    li.add(new Pair(d,e));
-    x.add(d);
-    y.add(e);
+  @SuppressWarnings({ "unchecked", "rawtypes"}) public void record(double d, double e) {
+    li.add(new Pair(box.box(d),box.box(e)));
+    x.add(box.box(d));
+    y.add(box.box(e));
   }
 
   public int count() {
     return li.size();
   }
- @SuppressWarnings({ "rawtypes", "boxing" }) public static double first(Pair x){
-    return (double) x.first;
+ @SuppressWarnings({ "rawtypes", "null"}) public static double first(Pair x){
+    return unbox.unbox((Double) x.first);
   }
- @SuppressWarnings({ "rawtypes", "boxing" }) public static double second(Pair x){
-   return (double) x.first;
+ @SuppressWarnings({ "rawtypes", "null" }) public static double second(Pair x){
+   return unbox.unbox((Double) x.first);
  }
   
 
@@ -44,7 +46,7 @@ public class RealList {
   }
   
   @SuppressWarnings({ "rawtypes", "unchecked" }) public Iterator iteratorY() {
-    @SuppressWarnings("unused") List $=new ArrayList<Pair<Double,Double>>(li);
+    List $=new ArrayList<>(li);
     
     Collections.sort($,new Comparator<Pair<Double,Double>>(){
       @Override public int compare(final Pair first,final Pair second){
@@ -55,28 +57,28 @@ public class RealList {
   }
 
 
-    @SuppressWarnings("boxing") public double LinearRegressionpredict(double predictForDependentVariable) {
+    @SuppressWarnings("null") public double LinearRegressionpredict(double predictForDependentVariable) {
         if (x.size() != y.size())
             throw new IllegalStateException("Must have equal X and Y data points");
 
-        Integer numberOfDataValues = x.size();
+        Integer numberOfDataValues = box.box(x.size());
 
-        List<Double> xSquared = x.stream().map(position -> Math.pow(position, 2)).collect(Collectors.toList()),
-            xMultipliedByY = IntStream.range(0, numberOfDataValues).mapToDouble(λ -> x.get(λ) * y.get(λ)).boxed().collect(Collectors.toList());
+        List<Double> xSquared = x.stream().map(position -> box.box(Math.pow(unbox.unbox(position), 2))).collect(Collectors.toList()),
+            xMultipliedByY = IntStream.range(0, unbox.unbox(numberOfDataValues)).mapToDouble(λ -> unbox.unbox(x.get(λ)) * unbox.unbox(y.get(λ))).boxed().collect(Collectors.toList());
 
-        Double xSummed = x.stream().reduce((prev, next) -> prev + next).get(), ySummed = y.stream().reduce((prev, next) -> prev + next).get(),
-            sumOfXSquared = xSquared.stream().reduce((prev, next) -> prev + next).get(),
-            sumOfXMultipliedByY = xMultipliedByY.stream().reduce((prev, next) -> prev + next).get();
+        Double xSummed = x.stream().reduce((prev, next) -> box.box(unbox.unbox(prev) + unbox.unbox(next))).get(), ySummed = y.stream().reduce((prev, next) -> box.box(unbox.unbox(prev) + unbox.unbox(next))).get(),
+            sumOfXSquared = xSquared.stream().reduce((prev, next) -> box.box(unbox.unbox(prev) + unbox.unbox(next))).get(),
+            sumOfXMultipliedByY = xMultipliedByY.stream().reduce((prev, next) -> box.box(unbox.unbox(prev) + unbox.unbox(next))).get();
 
-        Double slopeDenominator = numberOfDataValues * sumOfXSquared - Math.pow(xSummed, 2), $ = numberOfDataValues * sumOfXMultipliedByY - xSummed * ySummed / slopeDenominator;
-        double interceptDenominator = numberOfDataValues;
-        return ($ * predictForDependentVariable) + (ySummed - $ * xSummed) / interceptDenominator;
+        Double slopeDenominator = box.box(unbox.unbox(numberOfDataValues )* unbox.unbox(sumOfXSquared) - Math.pow(unbox.unbox(xSummed), 2)), $ = box.box(unbox.unbox(numberOfDataValues) * unbox.unbox(sumOfXMultipliedByY) - unbox.unbox(xSummed) * unbox.unbox(ySummed) / unbox.unbox(slopeDenominator));
+        double interceptDenominator = unbox.unbox(numberOfDataValues);
+        return (unbox.unbox($) * predictForDependentVariable) + (unbox.unbox(ySummed) - unbox.unbox($) * unbox.unbox(xSummed)) / interceptDenominator;
     }
-    @SuppressWarnings("boxing") public double averageX(){
-      return x.isEmpty() ? 0 : x.stream().reduce((prev, next) -> prev + next).get() / x.size();
+    @SuppressWarnings("null") public double averageX(){
+      return x.isEmpty() ? 0 : unbox.unbox(x.stream().reduce((prev, next) -> box.box(unbox.unbox(prev) + unbox.unbox(next))).get()) / x.size();
     }
-    @SuppressWarnings("boxing") public double averageY(){
-      return y.isEmpty() ? 0 : y.stream().reduce((prev, next) -> prev + next).get() / y.size();
+    @SuppressWarnings({ "null" }) public double averageY(){
+      return y.isEmpty() ? 0 : unbox.unbox(y.stream().reduce((prev, next) -> box.box(unbox.unbox(prev) + unbox.unbox(next))).get()) / y.size();
     }
   
 }
