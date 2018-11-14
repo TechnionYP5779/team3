@@ -348,33 +348,27 @@ public enum string {
 
   @SuppressWarnings("static-method") public static class TEST {
     @Test public void use0() {
-      final double d = atod("5.5");
-      assert d == 5.5;
+      assert atod("5.5") == 5.5;
     }
 
     @Test public void use1() {
-      final float d = atof("5.5");
-      assert d == 5.5;
+      assert atof("5.5") == 5.5;
     }
 
     @Test public void use2() {
-      final int d = atoi("5");
-      assert d == 5;
+      assert atoi("5") == 5;
     }
 
     @Test public void use3() {
-      final long d = atol("5");
-      assert d == 5;
+      assert atol("5") == 5;
     }
 
     @Test public void use4() {
-      final String res = capitalize("aAAAA");
-      assert res.equals("Aaaaa");
+      assert capitalize("aAAAA").equals("Aaaaa");
     }
 
     @Test public void use5() {
-      final String res = cat("a", "b");
-      assert res.equals("ab");
+      assert cat("a", "b").equals("ab");
     }
 
     @Test public void use6() {
@@ -383,8 +377,7 @@ public enum string {
     }
 
     @Test public void use7() {
-      final String d = dtoa(5.5);
-      assert d.equals("5.5");
+      assert dtoa(5.5).equals("5.5");
     }
 
     @Test public void use8() {
@@ -415,8 +408,7 @@ public enum string {
     }
 
     @Test public void use12() {
-      final float f = 1 / 2;
-      assert ftoa(f).equals("0.0");
+      assert ftoa((1 / 2)).equals("0.0");
     }
 
     @Test public void use13() {
@@ -434,7 +426,7 @@ public enum string {
       assert itoa(5).equals("5");
     }
 
-    @SuppressWarnings("null") @Test public void ordinalTest() {
+    @Test public void ordinalTest() {
       assert ordinal(1).equals("1st");
       assert ordinal(2).equals("2nd");
       assert ordinal(3).equals("3th");
@@ -442,7 +434,7 @@ public enum string {
       assert ordinal(12).equals("12th");
     }
 
-    @SuppressWarnings("null") @Test public void pluralizeTest() {
+    @Test public void pluralizeTest() {
       assert pluralize(0, "cat").equals("no cats");
       assert pluralize(1, "cat").equals("cat");
       assert pluralize(2, "cat").equals("two cats");
