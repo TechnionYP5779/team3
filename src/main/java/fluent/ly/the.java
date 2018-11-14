@@ -12,9 +12,9 @@ import org.jetbrains.annotations.*;
  * @author Yossi Gil
  * @since 2017-04-12 */
 public interface the {
-  @SuppressWarnings("boxing") static int index(final int i, final int... is) {
+  @SuppressWarnings("null") static int index(final int i, final int... is) {
     for (final Integer $ : range.from(0).to(is.length))
-      if (is[$] == i)
+      if (is[unbox.unbox($)] == i)
         return $;
     return -1;
   }
