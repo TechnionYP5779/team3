@@ -3,6 +3,7 @@ package tests;
 import org.junit.*;
 
 import fluent.ly.*;
+import il.org.spartan.etc.*;
 
 @SuppressWarnings("static-method") public class maybeTests {
   @Test public void usecase0() {

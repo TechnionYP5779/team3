@@ -5,6 +5,8 @@ import java.util.*;
 
 import org.junit.*;
 
+import il.org.spartan.etc.*;
+
 public class bigIntSequenceTest {
   @Test
   public void testDefaults() {

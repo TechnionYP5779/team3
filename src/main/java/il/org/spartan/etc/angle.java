@@ -1,4 +1,4 @@
-package fluent.ly;
+package il.org.spartan.etc;
 
 public class angle{
   private double degree;

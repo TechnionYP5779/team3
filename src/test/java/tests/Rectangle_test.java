@@ -3,6 +3,7 @@ package tests;
 import org.junit.*;
 
 import fluent.ly.*;
+import il.org.spartan.etc.*;
 import il.org.spartan.utils.*;
 
 public class Rectangle_test {
