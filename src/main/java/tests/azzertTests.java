@@ -1,11 +1,13 @@
 package tests;
 
+import static fluent.ly.azzert.*;
+
 import java.util.*;
 
 import org.junit.*;
 
 import fluent.ly.*;
-import static fluent.ly.azzert.*;
+
 @SuppressWarnings("static-method") public class azzertTests {
   @SuppressWarnings("boxing") @Test public void testStuff() {
     final List<Integer> lst = new ArrayList<>();

@@ -1,14 +1,11 @@
 package tests;
 
-import org.junit.*;
-
-import fluent.ly.*;
-
-import org.jetbrains.annotations.*;
-import org.junit.*;
-
-import fluent.ly.*;
 import static fluent.ly.azzert.*;
+
+import org.junit.*;
+
+import fluent.ly.*;
+
 @SuppressWarnings("static-method") public class nilTests {
   @Test public void usecase0() {
     isNull(nil.ignoring(true));
