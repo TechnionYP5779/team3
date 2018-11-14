@@ -174,7 +174,7 @@ public interface idiomatic {
   @SuppressWarnings("static-method") class TEST {
 
     @Test @SuppressWarnings("null") public void use0() {
-      azzert.assertTrue(new Storer<>(this) != null);
+      assert new Storer<>(this) != null;
     }
 
     @Test public void use08() {
@@ -186,7 +186,7 @@ public interface idiomatic {
     }
 
     @Test @SuppressWarnings("null") public void use1() {
-      azzert.assertTrue(new Storer<>(this) != null);
+      assert new Storer<>(this) != null;
       new Storer<>(this).when(true);
     }
 
@@ -199,17 +199,17 @@ public interface idiomatic {
     }
 
     @Test public void use12() {
-      assert (quote("ABBA").equals("'ABBA'"));
+      assert ("'ABBA'".equals(quote("ABBA")));
     }
 
     @Test @SuppressWarnings("boxing") public void use13() {
-      azzert.assertTrue((incase(true, 4) == 4));
-      azzert.assertTrue((incase(false, 4) == null));
+      assert (incase(true, 4) == 4);
+      assert (incase(false, 4) == null);
     }
     
   
     @Test @SuppressWarnings("null") public void use2() {
-      azzert.assertTrue(take(this) != null);
+      assert take(this) != null;
       azzert.isNull(take(this).when(false));
     }
 
@@ -236,13 +236,12 @@ public interface idiomatic {
     }
 
     @Test @SuppressWarnings("null") public void use14() {
-      Supplier<String> s = () -> "12534";
-      azzert.assertTrue((eval(s).get().equals("12534")));
+      assert (eval(() -> "12534").get().equals("12534"));
     }
 
     @Test @SuppressWarnings("boxing") public void use15() {
-      azzert.assertTrue((unless(true, 4) == null));
-      azzert.assertTrue((unless(false, 4) == 4));
+      assert (unless(true, 4) == null);
+      assert (unless(false, 4) == 4);
     }
 
     @Test public void use16() {
@@ -258,12 +257,10 @@ public interface idiomatic {
     }
 
     @Test public void use18() {
-      Runner r = run(new Runnable() {
+      assert (run(new Runnable() {
         @Override public void run() {
-          return;
         }
-      });
-      assert (r != null);
+      }) != null);
 
     }
   }

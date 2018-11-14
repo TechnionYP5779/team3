@@ -52,14 +52,5 @@ public class Outer<@Nullable Inner> {
   public Inner get() {
     return inner;
   }
-
-  public static class tests {
-    @Test @SuppressWarnings({ "unchecked", "boxing", "synthetic-access", "null", "static-method" }) public void outerAdds() {
-      @SuppressWarnings({ "rawtypes" }) final Outer o = new Outer(10);
-      @SuppressWarnings({ "rawtypes" }) final Outer o1 = new Outer(10);
-      azzert.assertTrue(o.equals(o1));
-      o.set(11);
-      azzert.assertTrue((int) o.get() == 11);
-    }
-  }
+  
 }

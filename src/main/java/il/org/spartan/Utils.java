@@ -540,13 +540,11 @@ import il.org.spartan.Utils.FoundHandleForT.*;
       @SuppressWarnings("rawtypes") final List listSource = new ArrayList();
       listSource.add("123");
       listSource.add("456");
-      @SuppressWarnings("rawtypes") final List newList = new ArrayList();
-      azzert.assertTrue(add(newList, listSource.iterator()).size() > 0);
+      assert add(new ArrayList(), listSource.iterator()).size() > 0;
     }
 
     @Test @SuppressWarnings("unchecked") public void addTest2() {
-      @SuppressWarnings("rawtypes") final List newList = new ArrayList();
-      azzert.assertTrue(add(newList, "a", "a", "b", "c").size() == 4);
+      assert add(new ArrayList(), "a", "a", "b", "c").size() == 4;
     }
 
     @Test public void hasNullTest() {
@@ -562,23 +560,23 @@ import il.org.spartan.Utils.FoundHandleForT.*;
       list.add("123");
       list.add("123");
       removeDuplicates(list);
-      azzert.assertTrue(list.size() == 1);
+      assert list.size() == 1;
     }
 
     @Test public void removeSuffixTest() {
-      assert removeSuffix("12345", "45").equals("123");
+      assert "123".equals(removeSuffix("12345", "45"));
     }
 
     @Test public void removePrefixTest() {
-      assert removePrefix("12345", "123").equals("45");
+      assert "45".equals(removePrefix("12345", "123"));
     }
 
     @Test public void removeFromArrayTest() {
-      azzert.assertTrue(delete((new String[] { "1", "2", "3" }), 1).length == 2);
+      assert delete(new String[] { "1", "2", "3" }, 1).length == 2;
     }
 
     @Test public void appendToArrayTest() {
-      azzert.assertTrue(append((new String[] { "1", "2", "3" }), "5").length == 4);
+      assert append(new String[] { "1", "2", "3" }, "5").length == 4;
     }
   }
 

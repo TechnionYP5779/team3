@@ -12,7 +12,7 @@ public class angle{
   }
 
   public static angle radians(int ¢) {
-    return new angle((¢*180)/Math.PI);
+    return new angle((180 * ¢)/Math.PI);
   }
 
   public static angle pi() {
@@ -52,7 +52,7 @@ public class angle{
   }
 
   public angle negated() {
-      return new angle(-this.degree*(1));
+      return new angle(-this.degree);
   } 
 }
   
