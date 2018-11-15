@@ -14,7 +14,7 @@ import il.org.spartan.utils.*;
     azzert.assertTrue( Int.valueOf(0).inner == 0);
   }
 
-  @SuppressWarnings({ "boxing", "static-method" }) @Test public void set_get_change_test() {
+  @SuppressWarnings({ "static-method" }) @Test public void set_get_change_test() {
     final Int a = new Int(), b = new Int(3);
     a.set(4);
     azzert.assertTrue( a.get() == 4);
@@ -28,7 +28,7 @@ import il.org.spartan.utils.*;
     b.clear();
     azzert.assertTrue( b.get() == 0);
     b.step();
-    azzert.assertTrue( b.inner() == b.get());
+    azzert.assertTrue( b.inner().equals(box.box(b.get())));
     azzert.assertTrue( b.next() == 2);
     azzert.assertTrue( b.next() == Int.valueOf(3).get());
     azzert.assertTrue( "3".equals(b + ""));
