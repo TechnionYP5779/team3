@@ -10,6 +10,7 @@ import org.jetbrains.annotations.*;
 import org.junit.*;
 
 import fluent.ly.*;
+import fluent.ly.idiomatic;
 import il.org.spartan.Utils.FoundHandleForT.*;
 import il.org.spartan.etc.*;
 
