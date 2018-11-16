@@ -4,7 +4,6 @@ import java.util.*;
 
 import org.junit.*;
 
-
 import fluent.ly.*;
 
 public class singleTest {

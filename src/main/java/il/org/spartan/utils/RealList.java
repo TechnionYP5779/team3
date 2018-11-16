@@ -6,20 +6,21 @@ import java.util.stream.*;
 import fluent.ly.*;
 
 public class RealList {
-  private List<Pair<Double,Double>> li;
+  private List<Pair<Double, Double>> li;
   private List<Double> x;
   private List<Double> y;
-  
-  public RealList(){
-    li=new ArrayList<>();
-    x=new ArrayList<>();
-    y=new ArrayList<>();
+
+  public RealList() {
+    li = new ArrayList<>();
+    x = new ArrayList<>();
+    y = new ArrayList<>();
   }
 
   @SuppressWarnings({ "unchecked", "rawtypes"}) public void record(double d, double e) {
     li.add(new Pair(box.box(d),box.box(e)));
     x.add(box.box(d));
     y.add(box.box(e));
+
   }
 
   public int count() {
@@ -33,18 +34,16 @@ public class RealList {
  }
   
 
-
   @SuppressWarnings({ "rawtypes", "unchecked" }) public Iterator iteratorX() {
-    @SuppressWarnings("unused") List $=new ArrayList<Pair<Double,Double>>(li);
-    
-    Collections.sort($,new Comparator<Pair<Double,Double>>(){
-      @Override public int compare(final Pair first,final Pair second){
-        return (int) (first(first)- first(second));
+    @SuppressWarnings("unused") List $ = new ArrayList<Pair<Double, Double>>(li);
+    Collections.sort($, new Comparator<Pair<Double, Double>>() {
+      @Override public int compare(final Pair first, final Pair second) {
+        return (int) (first(first) - first(second));
       }
     });
     return $.iterator();
   }
-  
+
   @SuppressWarnings({ "rawtypes", "unchecked" }) public Iterator iteratorY() {
     List $=new ArrayList<>(li);
     

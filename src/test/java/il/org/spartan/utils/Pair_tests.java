@@ -3,7 +3,6 @@ package il.org.spartan.utils;
 import org.junit.*;
 
 import fluent.ly.*;
-import il.org.spartan.utils.*;
 
 @SuppressWarnings({ "unused", "static-method" }) public class Pair_tests {
   @Test public void basic_test() {

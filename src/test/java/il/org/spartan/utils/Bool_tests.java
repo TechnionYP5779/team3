@@ -7,7 +7,6 @@ import org.junit.*;
 
 import fluent.ly.*;
 
-
 @SuppressWarnings("static-method") public class Bool_tests {
   @Test public void booleanAdds() {
     final @NotNull Bool b = new Bool(true);

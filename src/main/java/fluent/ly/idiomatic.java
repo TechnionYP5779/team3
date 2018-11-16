@@ -1,5 +1,5 @@
 /* Part of the "Spartan Blog"; mutate the rest / but leave this line as is */
-package il.org.spartan.etc;
+package fluent.ly;
 
 import static fluent.ly.azzert.*;
 
@@ -7,8 +7,6 @@ import java.util.function.*;
 
 import org.jetbrains.annotations.*;
 import org.junit.*;
-
-import fluent.ly.*;
 
 /** An empty <code><b>enum</b></code> with a variety of <code>public
  * static</code> utility functions of reasonably wide use.
@@ -173,13 +171,13 @@ public interface idiomatic {
     }
   }
 
-  @SuppressWarnings("static-method") class TEST {
+  @SuppressWarnings("static-method") public static class TEST {
     @Test public void use0() {
       assert new Storer<>(this) != null;
     }
 
     @Test public void use08() {
-      azzert.isNull(unless(true).eval(() -> new Object()));
+      isNull(unless(true).eval(() -> new Object()));
     }
 
     @Test public void use09() {
@@ -196,22 +194,21 @@ public interface idiomatic {
     }
 
     @Test public void use11() {
-      azzert.isNull(when(false).eval(() -> new Object()));
+      isNull(when(false).eval(() -> new Object()));
     }
 
     @Test public void use12() {
-      assert "'ABBA'".equals(quote("ABBA"));
+      assert quote("ABBA").equals("'ABBA'");
     }
 
-    @Test public void use13() {
-      assert (incase(true, box.box(4)) == box.box(4));
-      assert (incase(false, box.box(4)) == null);
+    @SuppressWarnings("boxing") @Test public void use13() {
+      assert incase(true, 4) == 4;
+      assert incase(false, 4) == null;
     }
-    
-  
+
     @Test public void use2() {
       assert take(this) != null;
-      azzert.isNull(take(this).when(false));
+      isNull(take(this).when(false));
     }
 
     @Test public void use3() {
@@ -219,7 +216,7 @@ public interface idiomatic {
     }
 
     @Test public void use4() {
-      azzert.isNull(take(this).when(false));
+      isNull(take(this).when(false));
     }
 
     @Test public void use5() {
@@ -227,24 +224,23 @@ public interface idiomatic {
     }
 
     @Test public void use6() {
-      azzert.isNull(take(this).unless(true));
+      isNull(take(this).unless(true));
     }
 
     @Test public void use7() {
-      azzert.isNull(take(this).unless(true));
-      azzert.isNull(take(null).unless(true));
-      azzert.isNull(take(null).unless(false));
+      isNull(take(this).unless(true));
+      isNull(take(null).unless(true));
+      isNull(take(null).unless(false));
     }
 
-
-    @Test public void use14() {
-      assert (eval(() -> "12534").get().equals("12534"));
+    @SuppressWarnings("null") @Test public void use14() {
+      final Supplier<String> s = () -> "12534";
+      assert eval(s).get().equals("12534");
     }
 
-    @Test public void use15() {
-      assert (unless(true, box.box(4)) == null);
-      assert (unless(false, box.box(4)) == box.box(4));
-
+    @SuppressWarnings("boxing") @Test public void use15() {
+      assert unless(true, 4) == null;
+      assert unless(false, 4) == 4;
     }
 
     @Test public void use16() {
@@ -258,7 +254,9 @@ public interface idiomatic {
     }
 
     @Test public void use18() {
-      assert (run(()->{return;}) != null);
+      final Runnable myRunnable = () -> System.out.println("Runnable running");
+      final Runner r = run(myRunnable);
+      assert r != null;
     }
   }
 

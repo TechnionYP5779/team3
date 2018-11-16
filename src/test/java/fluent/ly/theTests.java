@@ -4,9 +4,8 @@ import java.util.*;
 
 import org.junit.*;
 
-
-
 public class theTests {
+
   
   @SuppressWarnings({ "null", "unused", "static-method" }) @Test public void testos() {
     azzert.assertTrue(the.nil()==null);
@@ -31,10 +30,8 @@ public class theTests {
     azzert.assertTrue(the.max(0,1,2,3,4,5)==5);
     azzert.assertTrue(the.min(0,1,2,3,4,5)==0);
     Integer[] anArray;
-
     // allocates memory for 10 integers
     anArray = new Integer[10];
-       
     // initialize first element
     anArray[0] = box.box(100);
     // initialize second element

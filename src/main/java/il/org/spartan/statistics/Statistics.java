@@ -29,7 +29,7 @@ public abstract class Statistics {
     return (¢[¢.length / 2] + ¢[(¢.length - 1) / 2]) / 2;
   }
 
-  @SuppressWarnings("null") public static double @NotNull [] prune(final double @NotNull [] ds) {
+  public static double @NotNull [] prune(final double @NotNull [] ds) {
     final @NotNull List<Double> $ = new ArrayList<>();
     final double median = median(ds), mad = mad(ds);
     for (final double ¢ : ds)

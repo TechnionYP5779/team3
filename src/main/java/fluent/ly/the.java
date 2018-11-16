@@ -15,7 +15,7 @@ public interface the {
   @SuppressWarnings("null") static int index(final int i, final int... is) {
     for (final Integer $ : range.from(0).to(is.length))
       if (is[unbox.unbox($)] == i)
-        return $;
+        return unbox.unbox($);
     return -1;
   }
 
@@ -166,7 +166,7 @@ public interface the {
     return ¢.substring(1);
   }
 
-  static <T> T[] tailOf(T[] ¢) {
+  static <T> T[] tailOf(final T[] ¢) {
     return Arrays.copyOfRange(¢, 1, ¢.length);
   }
 }

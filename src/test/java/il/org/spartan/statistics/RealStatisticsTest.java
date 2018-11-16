@@ -1,5 +1,6 @@
 package il.org.spartan.statistics;
 
+import static org.junit.Assert.assertEquals;
 
 import static fluent.ly.azzert.*;
 
@@ -7,7 +8,6 @@ import org.jetbrains.annotations.*;
 import org.junit.*;
 
 import fluent.ly.*;
-
 
 @SuppressWarnings("static-method") public class RealStatisticsTest {
   final RealStatistics s11_20_5 = new RealStatistics().record(11).record(20).record(5);

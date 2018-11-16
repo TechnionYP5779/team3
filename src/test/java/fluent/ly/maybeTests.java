@@ -2,10 +2,9 @@ package fluent.ly;
 
 import org.junit.*;
 
-import fluent.ly.*;
 import il.org.spartan.etc.*;
 
-@SuppressWarnings({ "static-method", "unused" }) public class maybeTests {
+@SuppressWarnings({ "static-method" }) public class maybeTests {
   @Test public void usecase0() {
     azzert.isNull(maybe.no().get());
   }
@@ -15,6 +14,6 @@ import il.org.spartan.etc.*;
   }
 
   @Test public void usecase2() {
-    azzert.assertTrue( maybe.yes(new Object()).get() != null);
+    azzert.assertTrue(maybe.yes(new Object()).get() != null);
   }
 }

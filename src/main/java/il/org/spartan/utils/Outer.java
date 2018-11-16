@@ -1,9 +1,7 @@
 package il.org.spartan.utils;
 
 import org.jetbrains.annotations.*;
-import org.junit.*;
 
-import fluent.ly.*;
 import il.org.spartan.*;
 
 /** TODO Yossi Gil: document class
@@ -52,5 +50,4 @@ public class Outer<@Nullable Inner> {
   public Inner get() {
     return inner;
   }
-  
 }

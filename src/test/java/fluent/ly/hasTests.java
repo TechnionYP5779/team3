@@ -3,8 +3,6 @@ package fluent.ly;
 import org.jetbrains.annotations.*;
 import org.junit.*;
 
-
-
 public class hasTests {
   @Nullable private final String nul = null;
 

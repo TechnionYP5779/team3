@@ -95,7 +95,7 @@ import il.org.spartan.etc.*;
     azzert.that(separate.these(ts).by(' '), is("'Hello' 'World'"));
   }
 
-   @Test public final void byFOfTTArrayString() {
+  @Test public final void byFOfTTArrayString() {
     azzert.that(separate.these(apply(quote).to("Hello", "World")).by(", "), is("'Hello', 'World'"));
   }
 
@@ -108,7 +108,7 @@ import il.org.spartan.etc.*;
   }
 
   @Test public final void byIterableOfChar() {
-    azzert.that(separate.these(new String[] {"Hello","World"}).by(','), is("Hello,World"));
+    azzert.that(separate.these(new String[] { "Hello", "World" }).by(','), is("Hello,World"));
   }
 
   @Test public final void byIterableOfString() {
@@ -172,10 +172,10 @@ import il.org.spartan.etc.*;
     final @NotNull SeparationSubject these = separate.these();
     azzert.assertTrue(these != null);
     final Iterable<?> os = these.os;
-    azzert.assertTrue( os != null);
+    azzert.assertTrue(os != null);
     azzert.aye(is.empty(os));
     final @NotNull String[] ss = as.strings(os);
-    azzert.assertTrue( ss != null);
+    azzert.assertTrue(ss != null);
     azzert.zero(ss.length);
     final @NotNull String[] noWhites = prune.whites(ss);
     azzert.zero(noWhites.length);
@@ -222,15 +222,15 @@ import il.org.spartan.etc.*;
   }
 
   @Test public final void theseArraySize1() {
-    azzert.that(count.of(separate.these(new String[] {"Rosebud"}).os), is(1));
+    azzert.that(count.of(separate.these(new String[] { "Rosebud" }).os), is(1));
   }
 
   @Test public final void theseArraySize2() {
-    azzert.that(count.of(separate.these(new String[] {"Hello","World"}).os), is(2));
+    azzert.that(count.of(separate.these(new String[] { "Hello", "World" }).os), is(2));
   }
 
   @Test public final void theseArraySize3() {
-    azzert.that(count.of(separate.these(new String[] {"A", "B", "C"}).os), is(3));
+    azzert.that(count.of(separate.these(new String[] { "A", "B", "C" }).os), is(3));
   }
 
   @Test public final void theseFromOneItem() {

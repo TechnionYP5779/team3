@@ -6,7 +6,9 @@ import org.junit.*;
 
 
 
+
 public class boxTests {
+
   @SuppressWarnings("static-method") @Test public void boxAdds() {
     final Boolean b = box.box(true);
     final Boolean b1 = Boolean.valueOf(true);

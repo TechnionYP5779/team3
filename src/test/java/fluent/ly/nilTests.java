@@ -2,8 +2,6 @@ package fluent.ly;
 
 import org.junit.*;
 
-
-
 @SuppressWarnings("static-method") public class nilTests {
   @Test public void usecase0() {
     azzert.isNull(nil.ignoring(true));

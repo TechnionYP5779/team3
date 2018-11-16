@@ -2,7 +2,6 @@ package il.org.spartan.utils;
 
 import java.util.function.*;
 
-import fluent.ly.*;
 import il.org.spartan.utils.Proposition.*;
 
 /** Yossi Gil: document class

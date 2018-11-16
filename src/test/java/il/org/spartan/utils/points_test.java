@@ -1,15 +1,13 @@
 package il.org.spartan.utils;
 
-
-
 import java.util.*;
 
 import org.junit.*;
 
 import fluent.ly.*;
 
-
 public class points_test {
+
   @SuppressWarnings({ "static-method", "rawtypes" }) @Test public void MajorGeneralTest() {
    RealList li= new RealList();
    li.record(1.0,1.0);
@@ -34,5 +32,4 @@ public class points_test {
    
    
   }
-  
 }
