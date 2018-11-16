@@ -7,7 +7,6 @@ import org.junit.*;
     final Object o1 = new Object();
     final Object o2 = new Object();
     final Runnable f = () -> {
-      return;
     };
     azzert.assertTrue(yes.forgetting(o1, o2));
     azzert.assertTrue(yes.ignoring(true));
