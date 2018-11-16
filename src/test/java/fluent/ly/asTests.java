@@ -72,6 +72,6 @@ import org.junit.*;
   @Test public void stringsTest() {
     final String[] expected = new String[] { "a", "b", "c", "1" };
     final String[] actual = as.strings(as.list("a", "b", "c", Integer.valueOf(1), null));
-    Assert.assertArrayEquals(expected, actual);
+    assertArrayEquals(expected, actual);
   }
 }
