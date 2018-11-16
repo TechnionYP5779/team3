@@ -7,7 +7,6 @@ import org.junit.*;
 
 import fluent.ly.*;
 
-
 /** A JUnit test class for the enclosing class.
  * @author Yossi Gil, the Technion.
  * @since 05/08/2008 */
@@ -23,11 +22,11 @@ import fluent.ly.*;
   @Test public void emptyFalse() {
     final @NotNull Tab t = new Tab("abc");
     t.more();
-    azzert.assertTrue( !t.isEmpty());
+    azzert.assertTrue(!t.isEmpty());
   }
 
   @Test public void emtpyTrue() {
-    azzert.assertTrue( new Tab().isEmpty());
+    azzert.assertTrue(new Tab().isEmpty());
   }
 
   @SuppressWarnings("null") @Test public void testBeginAtLevelOne() {
@@ -47,7 +46,7 @@ import fluent.ly.*;
   }
 
   @Test public void testDone() {
-    azzert.assertTrue( new Tab().isEmpty());
+    azzert.assertTrue(new Tab().isEmpty());
   }
 
   @SuppressWarnings("null") @Test public void testEndAtLevelOne() {

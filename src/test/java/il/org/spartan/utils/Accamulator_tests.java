@@ -33,6 +33,4 @@ import il.org.spartan.utils.Accumulator.*;
     c.add(11);
     azzert.that(c.value(), is(11));
   }
-  
-  
 }

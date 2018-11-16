@@ -209,7 +209,7 @@ import fluent.ly.___.Variant;
       v.check(2);
       v.check(1);
       v.check(0);
-      azzert.assertTrue(0==v.value());
+      azzert.assertTrue(0 == v.value());
     }
     try {
       ___.unused(new Variant(-1));

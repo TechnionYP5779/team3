@@ -539,10 +539,10 @@ import il.org.spartan.etc.*;
       @SuppressWarnings("rawtypes") final List listSource = new ArrayList();
       listSource.add("123");
       listSource.add("456");
-      assert add(new ArrayList(), listSource.iterator()).size() > 0;
+      assert add(new ArrayList<>(), listSource.iterator()).size() > 0;
     }
 
-    @Test @SuppressWarnings("unchecked") public void addTest2() {
+    @Test @SuppressWarnings({ "unchecked", "rawtypes" }) public void addTest2() {
       assert add(new ArrayList(), "a", "a", "b", "c").size() == 4;
     }
 
@@ -579,7 +579,7 @@ import il.org.spartan.etc.*;
     }
   }
 
-  static int hash(Object ¢) {
+  static int hash(final Object ¢) {
     return ¢ == null ? 0 : ¢.hashCode();
   }
 }

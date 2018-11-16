@@ -36,5 +36,4 @@ public class Rectangle {
   @SuppressWarnings("null") public double perimiter() {
     return Math.abs(2.0 * (unbox.unbox(first.first) - unbox.unbox(second.first))) + 2.0 * Math.abs(unbox.unbox(first.second) - unbox.unbox(second.second)) ;
   }
-  
 }

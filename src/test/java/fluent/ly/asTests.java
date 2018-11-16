@@ -1,13 +1,11 @@
 package fluent.ly;
 
-
 import static fluent.ly.azzert.*;
 
 import java.util.*;
 
 import org.jetbrains.annotations.*;
 import org.junit.*;
-
 
 @SuppressWarnings("static-method") public class asTests {
   @Test public void asBitOfFalse() {
@@ -54,30 +52,26 @@ import org.junit.*;
 
   @SuppressWarnings("null") @Test public void asIteretableLambdaTest() {
     Integer val = Integer.valueOf(1);
-    for(Integer ¢ : as.asIterableLambda(Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3))) {
-      azzert.assertTrue( ¢.equals(val));
-      val = Integer.valueOf(val.intValue()+1);
-
+    for (final Integer ¢ : as.asIterableLambda(Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3))) {
+      azzert.assertTrue(¢.equals(val));
+      val = Integer.valueOf(val.intValue() + 1);
     }
   }
 
   @Test public void bitObjectTest() {
-    azzert.assertTrue( as.bit(null) == 0);
-    azzert.assertTrue( as.bit("false") == 1);
+    azzert.assertTrue(as.bit(null) == 0);
+    azzert.assertTrue(as.bit("false") == 1);
   }
 
   @Test @SuppressWarnings("unlikely-arg-type") public void setTest() {
-
-    Set<? extends String> s1 = as.set("a", "b", "c");
-    azzert.assertTrue( s1.size() == 3);
+    final Set<? extends String> s1 = as.set("a", "b", "c");
+    azzert.assertTrue(s1.size() == 3);
     azzert.assertTrue(s1.containsAll(as.list("a", "b", "c")));
   }
-  
-  @SuppressWarnings("static-access") @Test public void stringsTest() {
-    String [] expected = new String[] { "a", "b", "c", "1" };
-    String [] actual = as.strings(as.list("a", "b", "c", Integer.valueOf(1), null));
-    
-    azzert.assertArrayEquals(expected, actual);
 
+  @Test public void stringsTest() {
+    final String[] expected = new String[] { "a", "b", "c", "1" };
+    final String[] actual = as.strings(as.list("a", "b", "c", Integer.valueOf(1), null));
+    Assert.assertArrayEquals(expected, actual);
   }
 }

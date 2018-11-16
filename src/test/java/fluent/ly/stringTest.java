@@ -4,43 +4,35 @@ import org.junit.*;
 
 @SuppressWarnings("static-method") public class stringTest {
   @Test public void use0() {
-    azzert.assertTrue(string.atod("5.5") == 5.5);
-
+    assert string.atod("5.5") == 5.5;
   }
 
   @Test public void use1() {
-    azzert.assertTrue(string.atof("5.5") == 5.5);
-
+    assert string.atof("5.5") == 5.5;
   }
 
   @Test public void use2() {
-    azzert.assertTrue(string.atoi("5") == 5);
-
+    assert string.atoi("5") == 5;
   }
 
   @Test public void use3() {
-    azzert.assertTrue(string.atol("5") == 5);
-
+    assert string.atol("5") == 5;
   }
 
   @Test public void use4() {
-    azzert.assertTrue(string.capitalize("aAAAA").equals("Aaaaa"));
-
+    assert "Aaaaa".equals(string.capitalize("aAAAA"));
   }
 
   @Test public void use5() {
-    azzert.assertTrue(string.cat("a", "b").equals("ab"));
-
+    assert "ab".equals(string.cat("a", "b"));
   }
 
   @SuppressWarnings("null") @Test public void use6() {
-    azzert.assertTrue(string.cat(new String[] { "a" }, new String[] { "b", "c" }).equals("abc"));
-
+    assert "abc".equals(string.cat(new String[] { "a" }, new String[] { "b", "c" }));
   }
 
   @Test public void use7() {
-    azzert.assertTrue(string.dtoa(5.5).equals("5.5"));
-
+    assert "5.5".equals(string.dtoa(5.5));
   }
 
   @Test public void use8() {
@@ -48,33 +40,30 @@ import org.junit.*;
     assert !string.eq("a", "A");
     assert !string.eq(null, "a");
     assert string.eq(null, null);
-
   }
 
   @Test public void use9() {
-    assert string.esc("a").equals("a");
-    assert string.esc("\n").equals("\\n");
-    assert string.esc("\r").equals("\\r");
-    assert string.esc("\t").equals("\\t");
-    assert string.esc("\f").equals("\\f");
-    assert string.esc("\b").equals("\\b");
-    assert string.esc("\\").equals("\\\\");
-    assert string.esc(null).equals("(null)");
+    assert "a".equals(string.esc("a"));
+    assert "\\n".equals(string.esc("\n"));
+    assert "\\r".equals(string.esc("\r"));
+    assert "\\t".equals(string.esc("\t"));
+    assert "\\f".equals(string.esc("\f"));
+    assert "\\b".equals(string.esc("\b"));
+    assert "\\\\".equals(string.esc("\\"));
+    assert "(null)".equals(string.esc(null));
   }
 
   @Test public void use10() {
-    assert string.expandLeadingTabs("bla").equals("bla");
+    assert "bla".equals(string.expandLeadingTabs("bla"));
   }
 
   @Test public void use11() {
-    assert string.fill(5, 'a').equals("aaaaa");
-    assert string.fill(2, "aa").equals("aaaa");
-
+    assert "aaaaa".equals(string.fill(5, 'a'));
+    assert "aaaa".equals(string.fill(2, "aa"));
   }
 
   @Test public void use12() {
-    azzert.assertTrue(string.ftoa((1 / 2)).equals("0.0"));
-
+    assert "0.0".equals(string.ftoa(1 / 2));
   }
 
   @Test public void use13() {
@@ -89,50 +78,49 @@ import org.junit.*;
   }
 
   @Test public void use14() {
-    assert string.itoa(5).equals("5");
+    assert "5".equals(string.itoa(5));
   }
 
   @Test public void ordinalTest() {
-    azzert.assertTrue(string.ordinal(1).equals("1st"));
-    azzert.assertTrue(string.ordinal(2).equals("2nd"));
-    azzert.assertTrue(string.ordinal(3).equals("3th"));
-    azzert.assertTrue(string.ordinal(11).equals("11th"));
-    azzert.assertTrue(string.ordinal(12).equals("12th"));
+    assert "1st".equals(string.ordinal(1));
+    assert "2nd".equals(string.ordinal(2));
+    assert "3th".equals(string.ordinal(3));
+    assert "11th".equals(string.ordinal(11));
+    assert "12th".equals(string.ordinal(12));
   }
 
   @Test public void pluralizeTest() {
-    azzert.assertTrue(string.pluralize(0, "cat").equals("no cats"));
-    azzert.assertTrue(string.pluralize(1, "cat").equals("cat"));
-    azzert.assertTrue(string.pluralize(2, "cat").equals("two cats"));
-    azzert.assertTrue(string.pluralize(3, "cat").equals("three cats"));
-    azzert.assertTrue(string.pluralize(4, "cat").equals("four cats"));
-    azzert.assertTrue(string.pluralize(5, "cat").equals("five cats"));
-    azzert.assertTrue(string.pluralize(6, "cat").equals("six cats"));
-    azzert.assertTrue(string.pluralize(7, "cat").equals("seven cats"));
-    azzert.assertTrue(string.pluralize(8, "cat").equals("eight cats"));
-    azzert.assertTrue(string.pluralize(9, "cat").equals("nine cats"));
-    azzert.assertTrue(string.pluralize(999, "cat").equals("999 cats"));
+    assert "no cats".equals(string.pluralize(0, "cat"));
+    assert "cat".equals(string.pluralize(1, "cat"));
+    assert "two cats".equals(string.pluralize(2, "cat"));
+    assert "three cats".equals(string.pluralize(3, "cat"));
+    assert "four cats".equals(string.pluralize(4, "cat"));
+    assert "five cats".equals(string.pluralize(5, "cat"));
+    assert "six cats".equals(string.pluralize(6, "cat"));
+    assert "seven cats".equals(string.pluralize(7, "cat"));
+    assert "eight cats".equals(string.pluralize(8, "cat"));
+    assert "nine cats".equals(string.pluralize(9, "cat"));
+    assert "999 cats".equals(string.pluralize(999, "cat"));
   }
-  
+
   @Test @SuppressWarnings("null") public void use15() {
-    azzert.assertTrue(string.javaCase("AaaA").equals("aaaA"));
-    azzert.assertTrue(string.javaCase("").equals(""));
-    azzert.assertTrue(string.last("blabla") == 'a');
-    azzert.assertTrue(string.lowCounter(-1).equals(""));
-    azzert.assertTrue(string.lowCounter(0).equals("a"));
-    azzert.assertTrue((string.lowCounter(5)).equals("f"));
-    azzert.assertTrue(string.delta(1, 1) == 0.0);
-    azzert.assertTrue(string.wrap("with", "s").equals("withswith"));
-    azzert.assertTrue(string.wrap('a', "s").equals("asa"));
-    azzert.assertTrue(string.visualize("balkjg\n").equals("balkjg\\n"));
-    azzert.assertTrue(string.upCounter(-1).equals(""));
-    azzert.assertTrue(string.upCounter(0).equals("A"));
-    azzert.assertTrue((string.upCounter(5)).equals("F"));
-    azzert.assertTrue((string.strip("blabla")).equals("labl"));
-    azzert.assertTrue(string.sprintf(new String[] {}).equals(""));
-    azzert.assertTrue(string.sprintf(new String[] { "a" }).equals("a"));
-    azzert.assertTrue(string.sprintf(new String[] { "a", "b" }).equals("a"));
-    azzert.assertTrue(string.repeat(2, "n").equals("nn"));
+    assert "aaaA".equals(string.javaCase("AaaA"));
+    assert "".equals(string.javaCase(""));
+    assert string.last("blabla") == 'a';
+    assert "".equals(string.lowCounter(-1));
+    assert "a".equals(string.lowCounter(0));
+    assert "f".equals(string.lowCounter(5));
+    assert string.delta(1, 1) == 0.0;
+    assert "withswith".equals(string.wrap("with", "s"));
+    assert "asa".equals(string.wrap('a', "s"));
+    assert "balkjg\\n".equals(string.visualize("balkjg\n"));
+    assert "".equals(string.upCounter(-1));
+    assert "A".equals(string.upCounter(0));
+    assert "F".equals(string.upCounter(5));
+    assert "labl".equals(string.strip("blabla"));
+    assert "".equals(string.sprintf(new String[] {}));
+    assert "a".equals(string.sprintf(new String[] { "a" }));
+    assert "a".equals(string.sprintf(new String[] { "a", "b" }));
+    assert "nn".equals(string.repeat(2, "n"));
   }
-  
 }

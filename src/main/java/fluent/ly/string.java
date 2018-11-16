@@ -345,4 +345,129 @@ public enum string {
   @NotNull private static String toup(final int ¢) {
     return ¢ == 0 ? "" : toup(¢ / 26) + (char) (¢ % 26 + 'A');
   }
+
+  @SuppressWarnings("static-method") public static class TEST {
+    @Test public void use0() {
+      assert atod("5.5") == 5.5;
+    }
+
+    @Test public void use1() {
+      assert atof("5.5") == 5.5;
+    }
+
+    @Test public void use2() {
+      assert atoi("5") == 5;
+    }
+
+    @Test public void use3() {
+      assert atol("5") == 5;
+    }
+
+    @Test public void use4() {
+      assert "Aaaaa".equals(capitalize("aAAAA"));
+    }
+
+    @Test public void use5() {
+      assert "ab".equals(cat("a", "b"));
+    }
+
+    @Test public void use6() {
+      @SuppressWarnings("null") final String res = cat(new String[] { "a" }, new String[] { "b", "c" });
+      assert "abc".equals(res);
+    }
+
+    @Test public void use7() {
+      assert "5.5".equals(dtoa(5.5));
+    }
+
+    @Test public void use8() {
+      assert eq("a", "a");
+      assert !eq("a", "A");
+      assert !eq(null, "a");
+      assert eq(null, null);
+    }
+
+    @Test public void use9() {
+      assert "a".equals(esc("a"));
+      assert "\\n".equals(esc("\n"));
+      assert "\\r".equals(esc("\r"));
+      assert "\\t".equals(esc("\t"));
+      assert "\\f".equals(esc("\f"));
+      assert "\\b".equals(esc("\b"));
+      assert "\\\\".equals(esc("\\"));
+      assert "(null)".equals(esc(null));
+    }
+
+    @Test public void use10() {
+      assert "bla".equals(expandLeadingTabs("bla"));
+    }
+
+    @Test public void use11() {
+      assert "aaaaa".equals(fill(5, 'a'));
+      assert "aaaa".equals(fill(2, "aa"));
+    }
+
+    @Test public void use12() {
+      assert "0.0".equals(ftoa(1 / 2));
+    }
+
+    @Test public void use13() {
+      assert isDouble("4.4");
+      assert !isDouble("a");
+      assert isInt("1");
+      assert !isInt("1.1");
+      assert isLong("1");
+      assert !isLong("...");
+      assert isFloat("1");
+      assert !isFloat("...");
+    }
+
+    @Test public void use14() {
+      assert "5".equals(itoa(5));
+    }
+
+    @Test public void ordinalTest() {
+      assert "1st".equals(ordinal(1));
+      assert "2nd".equals(ordinal(2));
+      assert "3th".equals(ordinal(3));
+      assert "11th".equals(ordinal(11));
+      assert "12th".equals(ordinal(12));
+    }
+
+    @Test public void pluralizeTest() {
+      assert "no cats".equals(pluralize(0, "cat"));
+      assert "cat".equals(pluralize(1, "cat"));
+      assert "two cats".equals(pluralize(2, "cat"));
+      assert "three cats".equals(pluralize(3, "cat"));
+      assert "four cats".equals(pluralize(4, "cat"));
+      assert "five cats".equals(pluralize(5, "cat"));
+      assert "six cats".equals(pluralize(6, "cat"));
+      assert "seven cats".equals(pluralize(7, "cat"));
+      assert "eight cats".equals(pluralize(8, "cat"));
+      assert "nine cats".equals(pluralize(9, "cat"));
+      assert "999 cats".equals(pluralize(999, "cat"));
+    }
+
+    @SuppressWarnings("null") @Test public void use15() {
+      assert "aaaA".equals(javaCase("AaaA"));
+      assert "".equals(javaCase(""));
+      assert last("blabla") == 'a';
+      assert "".equals(lowCounter(-1));
+      assert "a".equals(lowCounter(0));
+      assert "f".equals(lowCounter(5));
+      assert delta(1, 1) == 0.0;
+      assert "withswith".equals(wrap("with", "s"));
+      assert "asa".equals(wrap('a', "s"));
+      assert "balkjg\\n".equals(visualize("balkjg\n"));
+      assert "".equals(upCounter(-1));
+      assert "A".equals(upCounter(0));
+      assert "F".equals(upCounter(5));
+      assert "labl".equals(strip("blabla"));
+      assert "".equals(sprintf(new String[] {}));
+      assert "a".equals(sprintf(new String[] { "a" }));
+      assert "a".equals(sprintf(new String[] { "a", "b" }));
+      assert pretty("a", as.list(1, 2)) != null;
+      assert "nn".equals(repeat(2, "n"));
+    }
+  }
 }

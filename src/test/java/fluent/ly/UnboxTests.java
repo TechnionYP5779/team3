@@ -4,8 +4,6 @@ import java.util.*;
 
 import org.junit.*;
 
-import fluent.ly.*;
-
 @SuppressWarnings({ "all" }) public class UnboxTests {
   // NOTE: apparently not all functions are implemented
   private final double EPS = 0.001;
@@ -69,13 +67,13 @@ import fluent.ly.*;
     azzert.assertEquals(res.length, arr.length);
     int j = 0;
     for (final double i : arr)
-      azzert.assertTrue( Math.abs(i - res[j++]) < EPS);
-      azzert.assertTrue( Math.abs(unbox.unbox(Double.valueOf(5.0)) - 5.0) < EPS);
+      azzert.assertTrue(Math.abs(i - res[j++]) < EPS);
+    azzert.assertTrue(Math.abs(unbox.unbox(Double.valueOf(5.0)) - 5.0) < EPS);
     res = unbox.unbox(arrDouble);
     azzert.assertEquals(res.length, arr.length);
     j = 0;
     for (final double i : arr)
-      azzert.assertTrue( Math.abs(i - res[j++]) < EPS);
+      azzert.assertTrue(Math.abs(i - res[j++]) < EPS);
   }
 
   @Test public void testFloats() {
@@ -85,13 +83,13 @@ import fluent.ly.*;
     azzert.assertEquals(res.length, arr.length);
     int j = 0;
     for (final float i : arr)
-      azzert.assertTrue( Math.abs(i - res[j++]) < (float) EPS);
-      azzert.assertTrue( Math.abs(unbox.unbox(Float.valueOf(5.0f)) - 5.0f) < (float) EPS);
+      azzert.assertTrue(Math.abs(i - res[j++]) < (float) EPS);
+    azzert.assertTrue(Math.abs(unbox.unbox(Float.valueOf(5.0f)) - 5.0f) < (float) EPS);
     res = unbox.unbox(arrFloat);
     azzert.assertEquals(res.length, arr.length);
     j = 0;
     for (final float i : arr)
-      azzert.assertTrue( Math.abs(i - res[j++]) < (float) EPS);
+      azzert.assertTrue(Math.abs(i - res[j++]) < (float) EPS);
   }
 
   @Test public void testBools() {
@@ -109,12 +107,12 @@ import fluent.ly.*;
   @Test public void testLongs() {
     final long[] arr = { 1, 2, 3, 4, 5, 6 };
     final Long[] arrLong = { 1l, 2l, 3l, 4l, 5l, 6l };
-    azzert.assertTrue( unbox.unbox(Long.valueOf(5l)) == 5l);
+    azzert.assertTrue(unbox.unbox(Long.valueOf(5l)) == 5l);
     final long[] res = unbox.unbox(arrLong);
     azzert.assertEquals(res.length, arr.length);
     int j = 0;
     for (final long i : arr)
-      azzert.assertTrue( i == res[j++]);
+      azzert.assertTrue(i == res[j++]);
   }
 
   @Test public void testChars() {

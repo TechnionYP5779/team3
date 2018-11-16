@@ -1,5 +1,6 @@
 package fluent.ly;
 
+import static org.junit.Assert.assertEquals;
 
 import static fluent.ly.azzert.*;
 import static fluent.ly.azzert.assertEquals;
@@ -141,6 +142,6 @@ import il.org.spartan.etc.*;
   }
 
   @SuppressWarnings("null") @Test public void testPrunNotNull() {
-    azzert.assertTrue( prune.nulls(sparseCollection) != null);
+    azzert.assertTrue(prune.nulls(sparseCollection) != null);
   }
 }
