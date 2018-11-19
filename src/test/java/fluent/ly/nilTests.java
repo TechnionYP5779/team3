@@ -16,10 +16,10 @@ import org.junit.*;
   }
 
   @Test public void usecase3() {
-    azzert.isNull(nil.forgetting(Integer.valueOf(1), Double.valueOf(4), "hi"));
+    azzert.isNull(nil.forgetting(box.box(1), box.box(4), "hi"));
   }
 
   @Test public void usecase4() {
-    azzert.isNull(nil.guardingly(λ -> Boolean.valueOf("hi".equals(λ))).on(null));
+    azzert.isNull(nil.guardingly(λ -> box.box("hi".equals(λ))).on(null));
   }
 }
