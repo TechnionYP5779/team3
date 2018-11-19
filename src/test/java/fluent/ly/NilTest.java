@@ -6,7 +6,7 @@ import java.util.function.*;
 
 import org.junit.*;
 
-import fluent.ly.TestFluent_nil.*;
+import fluent.ly.NilTest.*;
 
 @SuppressWarnings("static-method") public class NilTest {
   static String helloString = "Hello";
