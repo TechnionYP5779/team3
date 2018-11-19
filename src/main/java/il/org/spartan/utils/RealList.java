@@ -91,7 +91,7 @@ public class RealList {
             .get();
 
     double slopeNominator = unbox.unbox(numberOfDataValues) * unbox.unbox(sumOfXMultipliedByY) - unbox.unbox(ySummed) * unbox.unbox(xSummed);
-    double slopeDenominator = unbox.unbox(numberOfDataValues) * unbox.unbox(sumOfXSquared) - Math.pow(xSummed, 2);
+    double slopeDenominator = unbox.unbox(numberOfDataValues) * unbox.unbox(sumOfXSquared) - Math.pow(unbox.unbox(xSummed), 2);
     double slope = slopeNominator / slopeDenominator;
 
     double interceptNominator = unbox.unbox(ySummed) - slope * unbox.unbox(xSummed);

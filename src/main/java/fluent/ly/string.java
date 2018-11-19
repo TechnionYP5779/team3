@@ -6,7 +6,6 @@ import java.io.*;
 import java.util.*;
 
 import org.jetbrains.annotations.*;
-import org.junit.*;
 
 /** A bunch of string functions.
  * @author Yossi Gil */
