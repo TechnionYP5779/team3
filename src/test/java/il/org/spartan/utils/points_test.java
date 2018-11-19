@@ -29,6 +29,9 @@ public class points_test {
    azzert.assertTrue(ite2.next().second .equals(box.box(1.0)));
    
    azzert.assertTrue(ite2.next().second .equals(box.box(1.3)));
+   RealList li2= new RealList();
+   azzert.assertTrue(li2.averageX()==0);
+   azzert.assertTrue(li2.averageY()==0);
    
    
   }
