@@ -10,7 +10,7 @@ import fluent.ly.*;
 /** A JUnit test class for the enclosing class.
  * @author Yossi Gil, the Technion.
  * @since 05/08/2008 */
-@SuppressWarnings({"static-method", "null"}) public class Tab_tests {
+@SuppressWarnings({ "static-method", "null" }) public class Tab_tests {
   @NotNull private static String cat(final @NotNull String s1, final @NotNull String s2) {
     return "[[" + s1 + "]][[" + s2 + "]]";
   }
@@ -49,7 +49,7 @@ import fluent.ly.*;
     azzert.assertTrue(new Tab().isEmpty());
   }
 
- @Test public void testEndAtLevelOne() {
+  @Test public void testEndAtLevelOne() {
     final @NotNull Tab t = new Tab("abc");
     t.more();
     azzert.that(cat(t.end(), t + ""), is(cat("", "")));

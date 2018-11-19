@@ -99,11 +99,11 @@ public interface system {
           $.push(box.box(¢));
           continue;
         case ')':
-          if ($.isEmpty() || unbox.unbox( $.pop()) != '(')
+          if ($.isEmpty() || unbox.unbox($.pop()) != '(')
             return false;
           continue;
         case ']':
-          if ($.isEmpty() ||unbox.unbox( $.pop()) != '[')
+          if ($.isEmpty() || unbox.unbox($.pop()) != '[')
             return false;
           continue;
         case '}':

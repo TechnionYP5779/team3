@@ -207,8 +207,7 @@ public interface idiomatic {
       assert (incase(true, box.box(4)) == box.box(4));
       assert (incase(false, box.box(4)) == null);
     }
-    
-  
+
     @Test public void use2() {
       assert take(this) != null;
       azzert.isNull(take(this).when(false));
@@ -236,7 +235,6 @@ public interface idiomatic {
       azzert.isNull(take(null).unless(false));
     }
 
-
     @Test public void use14() {
       assert (eval(() -> "12534").get().equals("12534"));
     }
@@ -244,7 +242,6 @@ public interface idiomatic {
     @Test public void use15() {
       assert (unless(true, box.box(4)) == null);
       assert (unless(false, box.box(4)) == box.box(4));
-
     }
 
     @Test public void use16() {
@@ -258,7 +255,9 @@ public interface idiomatic {
     }
 
     @Test public void use18() {
-      assert (run(()->{return;}) != null);
+      assert (run(() -> {
+        return;
+      }) != null);
     }
   }
 

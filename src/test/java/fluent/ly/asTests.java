@@ -7,7 +7,7 @@ import java.util.*;
 import org.jetbrains.annotations.*;
 import org.junit.*;
 
-@SuppressWarnings({"static-method", "null"}) public class asTests {
+@SuppressWarnings({ "static-method", "null" }) public class asTests {
   @Test public void asBitOfFalse() {
     azzert.that(as.bit(false), is(0));
   }
@@ -16,14 +16,14 @@ import org.junit.*;
     azzert.that(as.bit(true), is(1));
   }
 
-   @Test public void asIntArraySimple() {
+  @Test public void asIntArraySimple() {
     final int @NotNull [] is = as.intArray(100, 200, 200, 12, 13, 0);
     azzert.assertCollectionsEqual(as.list(is), as.ingeterList(is));
   }
 
   @Test public void asListSimple() {
     // direct call `as.list(12, 13, 14)` kills Travis --or
-     final @NotNull List<Integer> is = as.list(new int @NotNull [] { 12, 13, 14 });
+    final @NotNull List<Integer> is = as.list(new int @NotNull [] { 12, 13, 14 });
     azzert.that(is.get(0), is(fluent.ly.box.it(12)));
     azzert.that(is.get(1), is(fluent.ly.box.it(13)));
     azzert.that(is.get(2), is(fluent.ly.box.it(14)));
