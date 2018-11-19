@@ -41,7 +41,7 @@ public class BoxTest {
       azzert.that(arrdb[i].equals(arrd1[i]), is(true));
     final float f = 56;
     final Float fb = box.box(f);
-    final Float f1 = box.box((float)56);
+    final Float f1 = box.box((float) 56);
     azzert.that(fb.equals(f1), is(true));
     final float[] arrf = { 56f, 50f, 40f };
     final Float[] arrfb = box.box(arrf);
@@ -59,7 +59,7 @@ public class BoxTest {
       azzert.that(arrib[j].equals(arri1[j]), is(true));
     final long l = 56;
     final Long lb = box.box(l);
-    final Long l1 = box.box((long)56);
+    final Long l1 = box.box((long) 56);
     azzert.that(lb.equals(l1), is(true));
     final long[] arrl = { 56L, 50L, 40L };
     final Long[] arrlb = box.box(arrl);
@@ -110,7 +110,7 @@ public class BoxTest {
       azzert.that(ITarrdb[j].equals(ITarrd1[j]), is(true));
     final float ITf = 56;
     final Float ITfb = box.it(ITf);
-    final Float ITf1 = box.box((float)56);
+    final Float ITf1 = box.box((float) 56);
     azzert.that(ITfb.equals(ITf1), is(true));
     final float[] ITarrf = { 56f, 50f, 40f };
     final Float[] ITarrfb = box.it(ITarrf);
@@ -128,7 +128,7 @@ public class BoxTest {
       azzert.that(ITarrib[j].equals(ITarri1[j]), is(true));
     final long ITl = 56;
     final Long ITlb = box.it(ITl);
-    final Long ITl1 = box.box((long)56);
+    final Long ITl1 = box.box((long) 56);
     azzert.that(ITlb.equals(ITl1), is(true));
     final long[] ITarrl = { 56L, 50L, 40L };
     final Long[] ITarrlb = box.it(ITarrl);
