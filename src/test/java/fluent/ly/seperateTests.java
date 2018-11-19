@@ -12,6 +12,7 @@ import org.junit.*;
 
 import an.*;
 import fluent.ly.separate.*;
+import il.org.spartan.*;
 import il.org.spartan.etc.*;
 
 @SuppressWarnings("static-method") public class seperateTests {
@@ -22,7 +23,7 @@ import il.org.spartan.etc.*;
   }
 
   @Test public final void asArrayBetweenChar() {
-    azzert.that(separate.these(as.array("Hello", "World")).by(','), is("Hello,World"));
+    azzert.that(separate.these(Utils.cantBeNull(as.array("Hello", "World"))).by(','), is("Hello,World"));
   }
 
   @Test public final void byArrayString() {
@@ -30,7 +31,7 @@ import il.org.spartan.etc.*;
   }
 
   @Test public final void byArrayStringUsingLiterals() {
-    azzert.that(separate.these(as.array("Hello", "World")).by(", "), is("Hello, World"));
+    azzert.that(separate.these(Utils.cantBeNull(as.array("Hello", "World"))).by(", "), is("Hello, World"));
   }
 
   @Test public final void byBooleanArrayChar() {
@@ -78,11 +79,11 @@ import il.org.spartan.etc.*;
   }
 
   @Test public final void byFOfTIterableOfTChar() {
-    azzert.that(separate.these(apply(λ -> "<" + λ + ">").to("A", "B")).by(' '), is("<A> <B>"));
+    azzert.that(separate.these(Utils.cantBeNull(apply(λ -> "<" + λ + ">").to("A", "B"))).by(' '), is("<A> <B>"));
   }
 
   @Test public final void byFOfTIterableOfTString() {
-    azzert.that(separate.these(new Applicator<>(quote).to(as.list("Hello", "World"))).by(", "), is("'Hello', 'World'"));
+    azzert.that(separate.these(Utils.cantBeNull(new Applicator<>(quote).to(as.list("Hello", "World")))).by(", "), is("'Hello', 'World'"));
   }
 
   @SuppressWarnings("null") @Test public final void byFOfTTArrayChar() {
@@ -96,7 +97,7 @@ import il.org.spartan.etc.*;
   }
 
   @Test public final void byFOfTTArrayString() {
-    azzert.that(separate.these(apply(quote).to("Hello", "World")).by(", "), is("'Hello', 'World'"));
+    azzert.that(separate.these(Utils.cantBeNull(apply(quote).to("Hello", "World"))).by(", "), is("'Hello', 'World'"));
   }
 
   @Test public final void byIntArrayChar() {

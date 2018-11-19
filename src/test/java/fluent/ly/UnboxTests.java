@@ -1,5 +1,7 @@
 package fluent.ly;
 
+import static fluent.ly.azzert.*;
+
 import java.util.*;
 
 import org.junit.*;
@@ -25,22 +27,23 @@ import org.junit.*;
     lst.add(e);
     lst.add(f);
     int[] res = unbox.it(lst);
-    azzert.assertEquals(res.length, arr.length);
+    azzert.that(res.length, is(arr.length));
     int j = 0;
     for (final int ¢ : arr)
       azzert.assertEquals(¢, res[j++]);
     final Integer[] arrInt = { a, b, c, d, e, f };
+
     res = unbox.it(arrInt);
     azzert.assertEquals(res.length, arr.length);
     j = 0;
     for (final int ¢ : arr)
       azzert.assertEquals(¢, res[j++]);
-    azzert.assertEquals(unbox.unbox(Integer.valueOf(5)), 5);
+    azzert.that(unbox.unbox(box.box(5)), is(5));
     res = unbox.unbox(arrInt);
-    azzert.assertEquals(res.length, arr.length);
+    azzert.that(res.length, is(arr.length));
     j = 0;
     for (final int ¢ : arr)
-      azzert.assertEquals(¢, res[j++]);
+      azzert.that(¢, is(res[j++]));
   }
 
   @Test public void testShorts() {
@@ -103,10 +106,10 @@ import org.junit.*;
   @Test public void testBools() {
     final boolean[] arr = { true, false, true, true, false, false };
     final Boolean[] arrBool = box.box(arr);
-    azzert.assertEquals(unbox.unbox(Boolean.TRUE), true);
-    azzert.assertEquals(unbox.unbox(Boolean.FALSE), false);
+    assert unbox.unbox(Boolean.TRUE);
+    assert !unbox.unbox(Boolean.FALSE);
     final boolean[] res = unbox.unbox(arrBool);
-    azzert.assertEquals(res.length, arr.length);
+    azzert.that(res.length, is(arr.length));
     int j = 0;
     for (final boolean i : arr)
       azzert.assertEquals(i, res[j++]);
