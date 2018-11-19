@@ -3,7 +3,7 @@ package fluent.ly;
 import org.jetbrains.annotations.*;
 import org.junit.*;
 
-@SuppressWarnings("static-method")  public class hasTests {
+@SuppressWarnings("static-method") public class hasTests {
   @Nullable private final String nul = null;
 
   @Test public void seriesA01() {

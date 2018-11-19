@@ -18,12 +18,12 @@ import fluent.ly.*;
     azzert.assertTrue(aHp.add(ad).degrees() == 110);
   }
 
-   @Test public void anglePiDegrees() {
+  @Test public void anglePiDegrees() {
     final angle ap = angle.pi();
     azzert.assertTrue(ap.degrees() == 180);
   }
 
-   @Test public void anglePiDegrees2() {
+  @Test public void anglePiDegrees2() {
     final angle ap = angle.pi();
     azzert.assertTrue(ap.radians() == Math.PI);
   }
@@ -33,7 +33,7 @@ import fluent.ly.*;
     azzert.assertTrue(ar.radians() == 1);
   }
 
- @Test public void angleSubtracted() {
+  @Test public void angleSubtracted() {
     final angle aHp = angle.halfPi();
     final angle ap = angle.pi();
     azzert.assertTrue(ap.subtracted(aHp).degrees() == aHp.degrees());
