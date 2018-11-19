@@ -2,7 +2,6 @@ package il.org.spartan.tables;
 
 import org.junit.*;
 
-import fluent.ly.*;
 import il.org.spartan.tables.TableRenderer.*;
 
 @SuppressWarnings({"static-method"}) public class TableRendererTest {
