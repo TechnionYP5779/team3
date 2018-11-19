@@ -8,8 +8,7 @@ import org.junit.*;
 import fluent.ly.range.*;
 
 public class Tests_range_tdd {
-  @SuppressWarnings({ "static-method", "unused", "null" }) @Test public void test() {
-    new range();
+  @SuppressWarnings({ "static-method", "null" }) @Test public void test() {
     final inner_range a = range.from(2);
     azzert.assertTrue(a != null);
     azzert.assertTrue(a.getClass().equals(inner_range.class));

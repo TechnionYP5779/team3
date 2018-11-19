@@ -28,7 +28,9 @@ import org.junit.*;
   }
 
   @SuppressWarnings("null") @Test public void use6() {
-    assert "abc".equals(string.cat(new String[] { "a" }, new String[] { "b", "c" }));
+    String[] a = new String[] {"a"};
+    String[] bc = new String[] { "b", "c" };
+    assert "abc".equals(string.cat(a, bc));
   }
 
   @Test public void use7() {

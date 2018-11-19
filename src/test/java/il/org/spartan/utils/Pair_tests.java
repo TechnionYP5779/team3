@@ -4,7 +4,7 @@ import org.junit.*;
 
 import fluent.ly.*;
 
-@SuppressWarnings({ "unused", "static-method" }) public class Pair_tests {
+@SuppressWarnings({ "static-method" }) public class Pair_tests {
   @Test public void basic_test() {
     final Pair<Integer, String> p = new Pair<>(box.box(1), "abc"), p2 = new Pair<>(box.box(1), "abc"),
         p3 = new Pair<>(box.box(3), "aaaa"), p4 = new Pair<>(box.box(1), "ac");
@@ -19,9 +19,7 @@ import fluent.ly.*;
   }
 
   @Test public void Pairs_nulls_test() {
-    new Pair<>(box.box(1), "abc");
-    new Pair<>(box.box(3), "aaaa");
-    new Pair<>(box.box(1), "abc");
+
     final Pair<Integer, String> p = new Pair<>(box.box(1), "abc"), p4 = new Pair<>(box.box(1), "ac"), a[] = Pair.makePairs(3),
         b[] = Pair.makePairs(6);
     azzert.assertTrue( !p.equals(a[1]));
