@@ -137,15 +137,15 @@ public class azzert extends org.junit.Assert {
   }
 
   public static void assertEquals(final boolean a, final boolean b) {
-    assertEquals(Boolean.valueOf(a), Boolean.valueOf(b));
+    assertEquals(box.box(a), box.box(b));
   }
 
   public static void assertEquals(final boolean b1, final Boolean b2) {
-    assertEquals(Boolean.valueOf(b1), b2);
+    assertEquals(box.box(b1), b2);
   }
 
   public static void assertEquals(final Boolean b1, final boolean b2) {
-    assertEquals(b1, Boolean.valueOf(b2));
+    assertEquals(b1, box.box(b2));
   }
 
   public static void assertEquals(final int expected, final int actual) {
@@ -153,23 +153,23 @@ public class azzert extends org.junit.Assert {
   }
 
   public static void assertEquals(final int a, final Integer b) {
-    assertEquals(Integer.valueOf(a), b);
+    assertEquals(box.box(a), b);
   }
 
   public static void assertEquals(final Integer a, final int b) {
-    assertEquals(a, Integer.valueOf(b));
+    assertEquals(a, box.box(b));
   }
 
   public static void assertEquals(final @NotNull String message, final boolean b1, final boolean b2) {
-    assertEquals(message, Boolean.valueOf(b1), Boolean.valueOf(b2));
+    assertEquals(message, box.box(b1), box.box(b2));
   }
 
   public static void assertEquals(final @NotNull String message, final boolean b1, final Boolean b2) {
-    assertEquals(message, Boolean.valueOf(b1), b2);
+    assertEquals(message, box.box(b1), b2);
   }
 
   public static void assertEquals(final @NotNull String message, final Boolean b1, final boolean b2) {
-    assertEquals(message, b1, Boolean.valueOf(b2));
+    assertEquals(message, b1, box.box(b2));
   }
 
   public static void assertEquals(final @NotNull String reason, final int i1, final int i2) {
@@ -177,15 +177,15 @@ public class azzert extends org.junit.Assert {
   }
 
   public static void assertEquals(final @NotNull String message, final int a, final Integer b) {
-    assertEquals(message, Integer.valueOf(a), b);
+    assertEquals(message, box.box(a), b);
   }
 
   public static void assertEquals(final @NotNull String message, final Integer a, final int b) {
-    assertEquals(message, a, Integer.valueOf(b));
+    assertEquals(message, a, box.box(b));
   }
 
   public static void assertFalse(final boolean ¢) {
-    that("", Boolean.valueOf(¢), is(Boolean.FALSE));
+    that("", box.box(¢), is(Boolean.FALSE));
   }
 
   public static void assertFalse(final @NotNull String s, final boolean b) {
@@ -237,11 +237,11 @@ public class azzert extends org.junit.Assert {
   }
 
   public static void assertTrue(final boolean ¢) {
-    that("", Boolean.valueOf(¢), is(Boolean.TRUE));
+    that("", box.box(¢), is(Boolean.TRUE));
   }
 
   public static void assertTrue(final @NotNull String s, final boolean b) {
-    that(s, Boolean.valueOf(b), is(Boolean.TRUE));
+    that(s, box.box(b), is(Boolean.TRUE));
   }
 
   public static void assertZero(final int ¢) {
