@@ -1,4 +1,5 @@
 package fluent.ly;
+
 import static org.junit.Assert.assertEquals;
 
 import static fluent.ly.azzert.*;
@@ -63,8 +64,7 @@ import il.org.spartan.*;
     assertEquals(0, prune.whites().length);
   }
 
-  final String @NotNull [] alternatingArray1 = new String[] { null, "A", null, null, "B", null, null, null, "C",
-      null };
+  final String @NotNull [] alternatingArray1 = new String[] { null, "A", null, null, "B", null, null, null, "C", null };
   @NotNull final String @NotNull [] nonNullArray1 = { "1", "2", "4" };
   @NotNull final Supplier<List<String>> x = () -> {
     final List<String> $ = an.empty.list();

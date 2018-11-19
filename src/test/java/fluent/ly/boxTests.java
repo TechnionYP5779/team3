@@ -4,11 +4,7 @@ import static fluent.ly.azzert.*;
 
 import org.junit.*;
 
-
-
-
 public class boxTests {
-
   @SuppressWarnings("static-method") @Test public void boxAdds() {
     final Boolean b = box.box(true);
     final Boolean b1 = Boolean.valueOf(true);
@@ -24,7 +20,7 @@ public class boxTests {
     azzert.that(by.equals(n), is(true));
     final byte[] arrb = { 10, 1, 4 };
     final Byte[] arrBy = box.box(arrb);
-    final Byte[] arrb1 = { box.box((byte)10), box.box((byte)1), box.box((byte)4) };
+    final Byte[] arrb1 = { box.box((byte) 10), box.box((byte) 1), box.box((byte) 4) };
     for (int i = 0; i < 3; i++)
       azzert.that(arrBy[i].equals(arrb1[i]), is(true));
     final Character cb = box.box('a');
@@ -76,7 +72,7 @@ public class boxTests {
     azzert.that(sb.equals(s1), is(true));
     final short[] arrs = { 5, 6, 7 };
     final Short[] arrsb = box.box(arrs);
-    final Short[] arrs1 = { box.box((short)5),box.box((short) 6), box.box((short)7) };
+    final Short[] arrs1 = { box.box((short) 5), box.box((short) 6), box.box((short) 7) };
     for (int j = 0; j < 3; j++)
       azzert.that(arrsb[j].equals(arrs1[j]), is(true));
     final Boolean ITb = box.it(true);
@@ -84,7 +80,7 @@ public class boxTests {
     azzert.that(ITb1.equals(ITb), is(true));
     final boolean[] ITarr = { true, false, true };
     final Boolean[] ITb2 = box.it(ITarr);
-    final Boolean[] ITarr1 = {box.box( true), box.box(false), box.box(true) };
+    final Boolean[] ITarr1 = { box.box(true), box.box(false), box.box(true) };
     for (int j = 0; j < 3; j++)
       azzert.that(ITb2[j].equals(ITarr1[j]), is(true));
     final byte ITnum = 10;
@@ -93,7 +89,7 @@ public class boxTests {
     azzert.that(ITby.equals(ITn), is(true));
     final byte[] ITarrb = { 10, 1, 4 };
     final Byte[] ITarrBy = box.it(ITarrb);
-    final Byte[] ITarrb1 = { box.box((byte)10), box.box((byte)1),box.box((byte) 4) };
+    final Byte[] ITarrb1 = { box.box((byte) 10), box.box((byte) 1), box.box((byte) 4) };
     for (int j = 0; j < 3; j++)
       azzert.that(ITarrBy[j].equals(ITarrb1[j]), is(true));
     final Character ITcb = box.it('a');
@@ -118,7 +114,7 @@ public class boxTests {
     azzert.that(ITfb.equals(ITf1), is(true));
     final float[] ITarrf = { 56f, 50f, 40f };
     final Float[] ITarrfb = box.it(ITarrf);
-    final Float[] ITarrf1 = { box.box(56f), box.box(50f),box.box( 40f) };
+    final Float[] ITarrf1 = { box.box(56f), box.box(50f), box.box(40f) };
     for (int j = 0; j < 3; j++)
       azzert.that(ITarrfb[j].equals(ITarrf1[j]), is(true));
     final int ITi = 56;
@@ -127,7 +123,7 @@ public class boxTests {
     azzert.that(ITib.equals(ITi1), is(true));
     final int[] ITarri = { 56, 50, 40 };
     final Integer[] ITarrib = box.it(ITarri);
-    final Integer[] ITarri1 = {box.box( 56), box.box(50),box.box( 40) };
+    final Integer[] ITarri1 = { box.box(56), box.box(50), box.box(40) };
     for (int j = 0; j < 3; j++)
       azzert.that(ITarrib[j].equals(ITarri1[j]), is(true));
     final long ITl = 56;
@@ -136,7 +132,7 @@ public class boxTests {
     azzert.that(ITlb.equals(ITl1), is(true));
     final long[] ITarrl = { 56L, 50L, 40L };
     final Long[] ITarrlb = box.it(ITarrl);
-    final Long[] ITarrl1 = { box.box(56L), box.box(50L), box.box(40L )};
+    final Long[] ITarrl1 = { box.box(56L), box.box(50L), box.box(40L) };
     for (int j = 0; j < 3; j++)
       azzert.that(ITarrlb[j].equals(ITarrl1[j]), is(true));
     final short ITs = 5;
@@ -145,7 +141,7 @@ public class boxTests {
     azzert.that(ITsb.equals(ITs1), is(true));
     final short[] ITarrs = { 5, 6, 7 };
     final Short[] ITarrsb = box.it(ITarrs);
-    final Short[] ITarrs1 = { box.box((short)5),box.box((short) 6),box.box((short) 7) };
+    final Short[] ITarrs1 = { box.box((short) 5), box.box((short) 6), box.box((short) 7) };
     for (int j = 0; j < 3; j++)
       azzert.that(ITarrsb[j].equals(ITarrs1[j]), is(true));
   }

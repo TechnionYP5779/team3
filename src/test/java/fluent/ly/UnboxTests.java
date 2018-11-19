@@ -6,7 +6,7 @@ import java.util.*;
 
 import org.junit.*;
 
-@SuppressWarnings({ "static-method", "null"}) public class UnboxTests {
+@SuppressWarnings({ "static-method", "null" }) public class UnboxTests {
   // NOTE: apparently not all functions are implemented
   private final double EPS = 0.001;
 
@@ -19,7 +19,6 @@ import org.junit.*;
     Integer d = new Integer(4);
     Integer e = new Integer(5);
     Integer f = new Integer(6);
-    
     lst.add(a);
     lst.add(b);
     lst.add(c);
@@ -32,7 +31,6 @@ import org.junit.*;
     for (final int ¢ : arr)
       azzert.assertEquals(¢, res[j++]);
     final Integer[] arrInt = { a, b, c, d, e, f };
-
     res = unbox.it(arrInt);
     azzert.assertEquals(res.length, arr.length);
     j = 0;
@@ -48,9 +46,8 @@ import org.junit.*;
 
   @Test public void testShorts() {
     final short[] arr = { 1, 2, 3, 4, 5, 6 };
-
     short[] res;
-    final Short[] arrShort = box.box(arr); 
+    final Short[] arrShort = box.box(arr);
     azzert.assertEquals(unbox.unbox(Short.valueOf((short) 5)), 5);
     res = unbox.unbox(arrShort);
     azzert.assertEquals(res.length, arr.length);
