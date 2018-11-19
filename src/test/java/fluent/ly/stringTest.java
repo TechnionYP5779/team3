@@ -3,6 +3,8 @@ package fluent.ly;
 import org.junit.*;
 
 @SuppressWarnings("static-method") public class stringTest {
+  
+  
   @Test public void use0() {
     assert string.atod("5.5") == 5.5;
   }
