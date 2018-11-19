@@ -11,7 +11,7 @@ public class TheTest {
     azzert.assertTrue(the.nth(1, 2).equals(" #1/2"));
     azzert.assertTrue(the.nth(1, new ArrayList<Integer>()).equals(" #1/0"));
     azzert.assertTrue(the.penultimateOf(new ArrayList<Integer>()) == null);
-    List<Integer> li = new ArrayList<>();
+    final List<Integer> li = new ArrayList<>();
     li.add(0, box.box(0));
     li.add(1, box.box(1));
     li.add(2, box.box(2));

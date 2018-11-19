@@ -8,7 +8,7 @@ import fluent.ly.*;
 
 public class LispTest {
   @SuppressWarnings({ "static-method", "boxing", "null" }) @Test public void test() {
-    List<Integer> li = new ArrayList<>();
+    final List<Integer> li = new ArrayList<>();
     li.add(0, 0);
     li.add(1, 1);
     li.add(2, 2);
@@ -30,7 +30,7 @@ public class LispTest {
     azzert.assertTrue(lisp.replaceLast(li, 1).get(3).equals(1));
     azzert.assertTrue(lisp.chopLast(li).size() == 3);
     azzert.assertTrue(lisp.areEqual("1", "1", "1", "1"));
-    List<Integer> li2 = new ArrayList<>();
+    final List<Integer> li2 = new ArrayList<>();
     li2.add(0, 0);
     li2.add(1, 1);
     li2.add(2, 2);
@@ -40,7 +40,7 @@ public class LispTest {
     azzert.assertTrue(lisp.swap(li2, 0, 1).get(0).equals(1));
     azzert.assertTrue(lisp.swap(li2, 0, 100) == li2);
     azzert.assertTrue(lisp.swap(li2, 100, 0) == li2);
-    Set<Integer> s = new HashSet<>();
+    final Set<Integer> s = new HashSet<>();
     s.add(1);
     lisp.removeFromList(s, li2);
     azzert.assertTrue(li2.size() == 2);

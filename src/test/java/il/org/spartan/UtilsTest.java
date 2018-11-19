@@ -8,6 +8,7 @@ import org.jetbrains.annotations.*;
 import org.junit.*;
 
 import fluent.ly.*;
+import il.org.spartan.Utils.FoundHandleForT.*;
 
 @SuppressWarnings( "static-method" )  public class UtilsTest {
   @SuppressWarnings("null") @NotNull public static Integer[] intToIntegers(final int... is) {
@@ -145,4 +146,61 @@ import fluent.ly.*;
     assert Utils.append(new String[] { "1", "2", "3" }, "5").length == 4;
   }
 
+  @Test public void test2() {
+    final List<String> li1 = new ArrayList<>();
+    li1.add("1");
+    final List<String> li2 = new ArrayList<>();
+    li2.add("2");
+    li2.add(null);
+    assert Utils.add(li1, li2).size() == 2;
+    assert Utils.add(li1, "2", null).size() == 3;
+    assert Utils.addAll(li1, li2).size() == 5;
+    assert Utils.add(li1, "3", "3", null).size() == 7;
+    assert Utils.add(li1, "3", "3", null).size() == 9;
+    @NotNull final String[] arr = { "1", "2", "3" };
+    assert Utils.append(arr, "4").length == 4;
+    assert Utils.compare(true, true) == 0;
+    assert Utils.compare(true, false) == 1;
+    assert Utils.compare(false, true) == -1;
+    assert Utils.compare(false, false) == 0;
+    assert Utils.compare(false, false) == 0;
+    assert Utils.compressSpaces("a b     c    ").equals("a b c");
+    assert Utils.delete(arr, 2).length == 2;
+    assert Utils.inRange(3, li1);
+    assert Utils.inRange(-1, li1) == false;
+    assert Utils.intIsIn(3, 4, 4, 4, 4, 3);
+    assert Utils.lastIn(null, li2);
+    assert Utils.lastIn("5", li2) == false;
+    assert Utils.found(1) != null;
+    assert Utils.found("1") != null;
+    assert Utils.mustBeNull(null) == null;
+    assert Utils.prepend(new StringBuilder("12"), '0').length() == 3;
+    assert Utils.prepend(new StringBuilder("12"), "00").length() == 4;
+    assert Utils.quote("123").equals("'123'");
+    assert Utils.quote(null).equals("<null reference>");
+    final List<String> li3 = new ArrayList<>();
+    li3.add("3");
+    li3.add("3");
+    Utils.removeDuplicates(li3);
+    assert Utils.removePrefix("123", "12").length() == 1;
+    assert Utils.removeSuffix("123", "3").length() == 2;
+    assert Utils.removeWhites("a b     c    ").equals("abc");
+    final int[] arr2 = { 3, 2, 1 };
+    assert Utils.sort(arr2)[0] == 1;
+    assert Utils.sqr(2) == 4;
+    assert Utils.suffixedBy("123", "1", "2", "3");
+    assert !Utils.suffixedBy("123", "3342");
+    assert Utils.suffixedBy("123", li3);
+    @NotNull final String[] arr3 = { "1", "2", "3" };
+    Utils.swap(arr3, 0, 2);
+    assert arr3[0].equals("3");
+    assert new Utils.FoundHandleForT<>("1") != null;
+    final Utils.FoundHandleForT<String> t = new Utils.FoundHandleForT<>("1");
+    assert t.in("1");
+    assert t.in("2") == false;
+    assert new FoundHandleForInt(1) != null;
+    final FoundHandleForInt t1 = new FoundHandleForInt(1);
+    assert t1.in(1);
+    assert t1.in(2) == false;
+  }
 }
