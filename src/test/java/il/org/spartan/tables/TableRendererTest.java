@@ -4,7 +4,7 @@ import org.junit.*;
 
 import il.org.spartan.tables.TableRenderer.*;
 
-public class TableRendererTest {
+@SuppressWarnings("static-method") public class TableRendererTest {
   String NL = System.getProperty("line.separator");
 
   @Test public void afterHeader() {
