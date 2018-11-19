@@ -5,8 +5,8 @@ import java.util.*;
 import org.jetbrains.annotations.*;
 import org.junit.*;
 
-public class isTest {
-  @SuppressWarnings({ "static-method", "null" }) @Test public void intTest() {
+@SuppressWarnings({ "static-method"}) public class isTest {
+  @SuppressWarnings({ "null" }) @Test public void intTest() {
     final @NotNull List<Integer> li = as.list(new int @NotNull [] { 12, 13, 14 });
 
     azzert.assertTrue( is.intIsIn(12, new int @NotNull [] { 12, 13, 14 }) == true);
@@ -16,7 +16,7 @@ public class isTest {
 
   }
 
-  @SuppressWarnings("static-method") @Test public void strTest() {
+  @Test public void strTest() {
     final List<String> li = as.list("a", "b", "c");
     azzert.assertTrue(is.in("a", "a", "b", "c"));
     azzert.assertTrue(!is.in("d", "a", "b", "c"));
@@ -24,7 +24,7 @@ public class isTest {
     azzert.assertTrue(is.empty(li) == false);
   }
 
-  @SuppressWarnings({ "static-method"}) @Test public void emptyTest() {
+   @Test public void emptyTest() {
     final List<? extends String> li = new ArrayList<>();
 
     azzert.assertTrue( is.out("1", li));

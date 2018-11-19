@@ -6,9 +6,9 @@ import org.junit.*;
 
 import fluent.ly.*;
 
-public class points_test {
+@SuppressWarnings({ "static-method", "rawtypes" }) public class points_test {
 
-  @SuppressWarnings({ "static-method", "rawtypes" }) @Test public void MajorGeneralTest() {
+   @Test public void MajorGeneralTest() {
    RealList li= new RealList();
    li.record(1.0,1.0);
    azzert.assertTrue(li.count()==1);

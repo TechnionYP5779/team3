@@ -13,7 +13,7 @@ public interface yes {
     return true;
   }
 
-  @SuppressWarnings("unused") static boolean forgetting(final Object _1, final Object... _2) {
+  static boolean forgetting(final Object _1, final Object... _2) {
     return true;
   }
 
