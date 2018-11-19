@@ -164,7 +164,7 @@ import il.org.spartan.*;
       for (final @Nullable Object ¢ : os)
         if (¢ != null)
           $.add(¢ + "");
-    return cantBeNull($.toArray(new String @NotNull [$.size()]));
+    return Utils.cantBeNull($.toArray(new String @NotNull [$.size()]));
   }
 
   static Iterable<Integer> asIterableEssence(final @NotNull Integer... is) {
