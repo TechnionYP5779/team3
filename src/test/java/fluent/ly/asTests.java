@@ -43,18 +43,18 @@ import org.junit.*;
   }
 
   @Test public void asIteretableTest() {
-    Integer val = Integer.valueOf(1);
-    for (final Integer ¢ : as.asIterable(Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3))) {
+    Integer val = box.box(1);
+    for (final Integer ¢ : as.asIterable(box.box(1), box.box(2), box.box(3))) {
       azzert.assertTrue(¢.equals(val));
-      val = Integer.valueOf(val.intValue() + 1);
+      val = box.box(val.intValue() + 1);
     }
   }
 
   @Test public void asIteretableLambdaTest() {
-    Integer val = Integer.valueOf(1);
-    for (final Integer ¢ : as.asIterableLambda(Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3))) {
+    Integer val = box.box(1);
+    for (final Integer ¢ : as.asIterableLambda(box.box(1), box.box(2), box.box(3))) {
       azzert.assertTrue(¢.equals(val));
-      val = Integer.valueOf(val.intValue() + 1);
+      val = box.box(val.intValue() + 1);
     }
   }
 
@@ -71,7 +71,7 @@ import org.junit.*;
 
   @Test public void stringsTest() {
     final String[] expected = new String[] { "a", "b", "c", "1" };
-    final String[] actual = as.strings(as.list("a", "b", "c", Integer.valueOf(1), null));
+    final String[] actual = as.strings(as.list("a", "b", "c", box.box(1), null));
     assertArrayEquals(expected, actual);
   }
 }
