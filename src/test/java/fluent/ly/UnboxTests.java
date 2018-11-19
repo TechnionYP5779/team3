@@ -13,12 +13,12 @@ import org.junit.*;
   @Test public void testInts() {
     final int[] arr = { 1, 2, 3, 4, 5, 6 };
     final ArrayList<Integer> lst = new ArrayList<>();
-    Integer a = box.box(1);
-    Integer b = box.box(2);
-    Integer c = box.box(3);
-    Integer d = box.box(4);
-    Integer e = box.box(5);
-    Integer f = box.box(6);
+    final Integer a = box.box(1);
+    final Integer b = box.box(2);
+    final Integer c = box.box(3);
+    final Integer d = box.box(4);
+    final Integer e = box.box(5);
+    final Integer f = box.box(6);
     lst.add(a);
     lst.add(b);
     lst.add(c);

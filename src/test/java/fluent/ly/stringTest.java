@@ -28,8 +28,8 @@ import org.junit.*;
   }
 
   @SuppressWarnings("null") @Test public void use6() {
-    String[] a = new String[] { "a" };
-    String[] bc = new String[] { "b", "c" };
+    final String[] a = new String[] { "a" };
+    final String[] bc = new String[] { "b", "c" };
     assert "abc".equals(string.cat(a, bc));
   }
 

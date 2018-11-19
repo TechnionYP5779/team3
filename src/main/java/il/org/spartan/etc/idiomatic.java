@@ -204,8 +204,8 @@ public interface idiomatic {
     }
 
     @Test public void use13() {
-      assert (incase(true, box.box(4)) == box.box(4));
-      assert (incase(false, box.box(4)) == null);
+      assert incase(true, box.box(4)) == box.box(4);
+      assert incase(false, box.box(4)) == null;
     }
 
     @Test public void use2() {
@@ -236,12 +236,12 @@ public interface idiomatic {
     }
 
     @Test public void use14() {
-      assert (eval(() -> "12534").get().equals("12534"));
+      assert eval(() -> "12534").get().equals("12534");
     }
 
     @Test public void use15() {
-      assert (unless(true, box.box(4)) == null);
-      assert (unless(false, box.box(4)) == box.box(4));
+      assert unless(true, box.box(4)) == null;
+      assert unless(false, box.box(4)) == box.box(4);
     }
 
     @Test public void use16() {
@@ -255,9 +255,9 @@ public interface idiomatic {
     }
 
     @Test public void use18() {
-      assert (run(() -> {
+      assert run(() -> {
         return;
-      }) != null);
+      }) != null;
     }
   }
 

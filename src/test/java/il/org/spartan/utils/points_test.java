@@ -8,7 +8,7 @@ import fluent.ly.*;
 
 @SuppressWarnings({ "static-method", "rawtypes" }) public class points_test {
   @Test public void MajorGeneralTest() {
-    RealList li = new RealList();
+    final RealList li = new RealList();
     li.record(1.0, 1.0);
     azzert.assertTrue(li.count() == 1);
     li.record(2.0, 2.0);
@@ -19,13 +19,13 @@ import fluent.ly.*;
     azzert.assertTrue(Math.abs(li.LinearRegressionpredict(2) - 1.64) <= 0.01);
     azzert.assertTrue(li.averageX() == 3.0);
     azzert.assertTrue(li.averageY() == 2.06);
-    Iterator<Pair> ite = li.iteratorX();
+    final Iterator<Pair> ite = li.iteratorX();
     azzert.assertTrue(ite.next().first.equals(box.box(1.0)));
     azzert.assertTrue(ite.next().first.equals(box.box(2.0)));
-    Iterator<Pair> ite2 = li.iteratorY();
+    final Iterator<Pair> ite2 = li.iteratorY();
     azzert.assertTrue(ite2.next().second.equals(box.box(1.0)));
     azzert.assertTrue(ite2.next().second.equals(box.box(1.3)));
-    RealList li2 = new RealList();
+    final RealList li2 = new RealList();
     azzert.assertTrue(li2.averageX() == 0);
     azzert.assertTrue(li2.averageY() == 0);
   }
