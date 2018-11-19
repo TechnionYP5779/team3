@@ -14,18 +14,23 @@ public interface yes {
   }
 
   static boolean forgetting(final Object _1, final Object... _2) {
+    forget.it(_1);
+    forget.it(_2);
     return true;
   }
 
-  @SuppressWarnings("unused") static boolean ignoring(final boolean __) {
+  static boolean ignoring(final boolean __) {
+    forget.it(__);
     return true;
   }
 
-  @SuppressWarnings("unused") static boolean ignoring(final double __) {
+  static boolean ignoring(final double __) {
+    forget.it(__);
     return true;
   }
 
-  @SuppressWarnings("unused") static boolean ignoring(final long __) {
+  static boolean ignoring(final long __) {
+    forget.it(__);
     return true;
   }
 }

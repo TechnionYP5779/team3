@@ -20,10 +20,10 @@ import fluent.ly.*;
   }
 
   @Test public void usecase3() {
-    isNull(nil.forgetting(Integer.valueOf(1), Double.valueOf(4), "hi"));
+    isNull(nil.forgetting(box.box(1), box.box(4), "hi"));
   }
 
   @Test public void usecase4() {
-    isNull(nil.guardingly(λ -> Boolean.valueOf("hi".equals(λ))).on(null));
+    isNull(nil.guardingly(λ -> box.box("hi".equals(λ))).on(null));
   }
 }

@@ -4,7 +4,7 @@ import org.junit.*;
 
 import fluent.ly.*;
 
-@SuppressWarnings({ "static-method"}) public class Int_tests {
+@SuppressWarnings({ "static-method" }) public class Int_tests {
   @Test public void basic_test() {
     final Int b = new Int(3);
     azzert.assertTrue(b.equals(b));
@@ -12,7 +12,7 @@ import fluent.ly.*;
     azzert.assertTrue(Int.valueOf(0).inner == 0);
   }
 
- @Test public void set_get_change_test() {
+  @Test public void set_get_change_test() {
     final Int a = new Int(), b = new Int(3);
     a.set(4);
     azzert.assertTrue(a.get() == 4);
@@ -26,14 +26,13 @@ import fluent.ly.*;
     b.clear();
     azzert.assertTrue(b.get() == 0);
     b.step();
-
-    azzert.assertTrue( b.inner().equals(box.box(b.get())));
-    azzert.assertTrue( b.next() == 2);
-    azzert.assertTrue( b.next() == Int.valueOf(3).get());
-    azzert.assertTrue( "3".equals(b + ""));
+    azzert.assertTrue(b.inner().equals(box.box(b.get())));
+    azzert.assertTrue(b.next() == 2);
+    azzert.assertTrue(b.next() == Int.valueOf(3).get());
+    azzert.assertTrue("3".equals(b + ""));
   }
 
-   @Test public void math_test() {
+  @Test public void math_test() {
     final Int a = new Int(5), b = new Int(3);
     a.add(b);
     azzert.assertTrue(a.get() == 8);
