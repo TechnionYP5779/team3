@@ -2,7 +2,7 @@ package fluent.ly;
 
 import org.junit.*;
 
-@SuppressWarnings("static-method") public class stringTest {
+@SuppressWarnings("static-method") public class StringTest {
   @Test public void use0() {
     assert string.atod("5.5") == 5.5;
   }
@@ -27,10 +27,8 @@ import org.junit.*;
     assert "ab".equals(string.cat("a", "b"));
   }
 
-  @SuppressWarnings("null") @Test public void use6() {
-    String[] a = new String[] { "a" };
-    String[] bc = new String[] { "b", "c" };
-    assert "abc".equals(string.cat(a, bc));
+  @Test @SuppressWarnings("null") public void use6() {
+    assert "abc".equals(string.cat(new String[] { "a" }, new String[] { "b", "c" }));
   }
 
   @Test public void use7() {
@@ -65,7 +63,7 @@ import org.junit.*;
   }
 
   @Test public void use12() {
-    assert "0.0".equals(string.ftoa(1 / 2));
+    assert "0.0".equals(string.ftoa(0));
   }
 
   @Test public void use13() {

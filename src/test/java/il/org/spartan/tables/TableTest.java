@@ -1,10 +1,6 @@
 package il.org.spartan.tables;
 
-
-
 import org.junit.*;
-
-
 
 @SuppressWarnings({"static-method","resource"}) public class TableTest {
   

@@ -1,16 +1,12 @@
 package il.org.spartan;
 
-import static fluent.ly.azzert.*;
-
 import java.io.*;
 import java.util.*;
 import java.util.function.*;
 
 import org.jetbrains.annotations.*;
-import org.junit.*;
 
 import fluent.ly.*;
-import fluent.ly.idiomatic;
 import il.org.spartan.Utils.FoundHandleForT.*;
 
 /** An empty <code><b>interface</b></code> with a variety of <code>public
