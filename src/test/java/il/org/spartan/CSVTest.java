@@ -1,11 +1,10 @@
 package il.org.spartan;
 
 
-
+import static il.org.spartan.Utils.*;
 import java.io.*;
 
-import javax.lang.model.type.*;
-
+import org.jetbrains.annotations.*;
 import org.junit.*;
 
 import fluent.ly.*;
@@ -17,23 +16,18 @@ import fluent.ly.*;
   
   
   @Test public void combine1() {
-    int[] arr = { 56, 50, 40 };
-    Integer[] cs = box.box(arr); 
-    assert(CSV.combine(cs).equals("56,50,40")); 
+    assert "56,50,40".equals(cantBeNull(CSV.combine(cantBeNull(box.box(new int[] { 56, 50, 40 }))))); 
   }
   
    @Test public void combine2() {
-    Class<?>[] cs = {Integer.class, Long.class}; 
-    assert(CSV.combine(cs).equals(Integer.class.getName() + "," + Long.class.getName())); 
+    assert (CSV.combine(new Class<?>[] { Integer.class, Long.class }).equals(Integer.class.getName() + "," + Long.class.getName())); 
   }
    
    @Test public void combine3() {
-     Enum[] cs = {M.a, M.b}; 
-     assert(CSV.combine(cs).equals("a,b")); 
+     assert ("a,b".equals(CSV.combine(new M[] { M.a, M.b }))); 
    }
    @Test public void load() throws IOException {
-      File f=  new File("test.csv");
-      PrintWriter p = new PrintWriter(f); 
+      File f=  new File("test.csv"); 
       StringBuilder b = new StringBuilder();
       b.append("1"); 
       b.append(","); 
@@ -44,9 +38,10 @@ import fluent.ly.*;
       b.append(","); 
       b.append("2"); 
       b.append("\n"); 
-      
-      p.write(b.toString());
-      p.close();
+      try(PrintWriter p = new PrintWriter(f)){
+        p.write(b + "");
+        p.close();
+      }
       String[][] s = CSV.load(f); 
            
       StringBuffer results = new StringBuffer();
@@ -61,11 +56,11 @@ import fluent.ly.*;
             results.append(s[i][j]).append(separator);
         results.append(']');
       }
-      azzert.that(results.toString(), azzert.is("[1,2][1,2]")); 
+      azzert.that(results + "", azzert.is("[1,2][1,2]")); 
    }
    @Test public void save() throws IOException{
      File f=  new File("test.csv");
-     String[][] values = new String[2][2];
+     @NotNull String[][] values = new @NotNull String[2][2];
      values[0][0] = "1"; 
      values[0][1] = "2"; 
      values[1][0] = "1"; 
@@ -74,12 +69,11 @@ import fluent.ly.*;
      CSV.save(f,values); 
    }
    
-   @Test public void splitToClasses() throws ClassNotFoundException {
+   @Test public void splitToClasses() {
      azzert.that(new String[0], azzert.is(CSV.splitToClasses("")));
      
-     String s = "java.lang.Integer,java.lang.String,java.lang.Long"; 
-     Class<?>[] c = {Integer.class, String.class, Long.class};
-     azzert.that(c, azzert.is(CSV.splitToClasses(s)));
+     azzert.that(new Class<?>[] { Integer.class, String.class, Long.class },
+        azzert.is(CSV.splitToClasses("java.lang.Integer,java.lang.String,java.lang.Long")));
     
      
    }

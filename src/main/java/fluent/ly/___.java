@@ -1,5 +1,5 @@
 package fluent.ly;
-
+import static il.org.spartan.Utils.*;
 import static fluent.ly.box.*;
 import static fluent.ly.string.*;
 
@@ -19,7 +19,7 @@ import il.org.spartan.etc.*;
  * <code><b>static import</b></code>.
  * @author Yossi Gil (
  * @since 11/01/2006) */
-@SuppressWarnings("null") public abstract class ___ {
+public abstract class ___ {
   /** A do nothing method to document the fact that a <code><b>long</b></code>
    * parameter, along with a optional list of {@link Object}s are not used by a
    * function, and to suppress the warning.
@@ -78,7 +78,7 @@ import il.org.spartan.etc.*;
    *                       <code>condition</code> was <code><b>false</b></code> */
   public static void ensure(final boolean condition, final @NotNull String format, final Object... args) throws Postcondition {
     if (!condition)
-      throw new Postcondition(nprintf(format, args));
+      throw new Postcondition(cantBeNull(nprintf(format, args)));
   }
 
   /** A possibly non-returning method to be used for checking integers which must
@@ -462,7 +462,7 @@ import il.org.spartan.etc.*;
    *                      <code>condition</code> was <code><b>false</b></code> */
   public static void require(final boolean condition, final @NotNull String format, final Object... args) throws Precondition {
     if (!condition)
-      throw new Precondition(nprintf(format, args));
+      throw new Precondition(cantBeNull(nprintf(format, args)));
   }
 
   /** A possibly non-returning method to be used for checking assertions.
@@ -497,7 +497,7 @@ import il.org.spartan.etc.*;
    *                   <code>condition</code> was <code><b>false</b></code> */
   public static void sure(final boolean condition, final @NotNull String format, final Object... args) throws Invariant {
     if (!condition)
-      throw new Invariant(nprintf(format, args));
+      throw new Invariant(cantBeNull(nprintf(format, args)));
   }
 
   /** A never-returning method indicating code sites with missing functionality
@@ -523,7 +523,7 @@ import il.org.spartan.etc.*;
   }
 
   public static void unreachable(final @NotNull String format, final Object... args) throws Reachability {
-    throw new Reachability(nprintf(format, args));
+    throw new Reachability(cantBeNull(nprintf(format, args)));
   }
 
   public static void unuse(final long __, final Object... ____) {
@@ -656,7 +656,7 @@ import il.org.spartan.etc.*;
         }
 
         public Value(final @NotNull String format, final Object... args) {
-          super(nprintf(format, args));
+          super(cantBeNull(nprintf(format, args)));
         }
 
         /** Thrown in case a value was <code><b>null</b></code>, when it was expected to
@@ -712,7 +712,7 @@ import il.org.spartan.etc.*;
             }
 
             public Negative(final double d, final @NotNull String format, final Object... args) {
-              this(d, nprintf(format, args));
+              this(d, cantBeNull(nprintf(format, args)));
             }
 
             public Negative(final int n) {
@@ -724,7 +724,7 @@ import il.org.spartan.etc.*;
             }
 
             public Negative(final int n, final @NotNull String format, final Object... args) {
-              this(n, nprintf(format, args));
+              this(n, cantBeNull(nprintf(format, args)));
             }
           }
 
@@ -744,7 +744,7 @@ import il.org.spartan.etc.*;
             }
 
             public NonNan(final double d, final @NotNull String format, final Object... args) {
-              this(d, nprintf(format, args));
+              this(d, cantBeNull(nprintf(format, args)));
             }
 
             public NonNan(final int n) {
@@ -756,7 +756,7 @@ import il.org.spartan.etc.*;
             }
 
             public NonNan(final int n, final @NotNull String format, final Object... args) {
-              this(n, nprintf(format, args));
+              this(n, cantBeNull(nprintf(format, args)));
             }
           }
 
@@ -776,7 +776,7 @@ import il.org.spartan.etc.*;
             }
 
             public NonNegative(final double d, final @NotNull String format, final Object... args) {
-              this(d, nprintf(format, args));
+              this(d, cantBeNull(nprintf(format, args)));
             }
 
             public NonNegative(final int n) {
@@ -788,7 +788,7 @@ import il.org.spartan.etc.*;
             }
 
             public NonNegative(final int n, final @NotNull String format, final Object... args) {
-              this(n, nprintf(format, args));
+              this(n, cantBeNull(nprintf(format, args)));
             }
           }
 
@@ -807,7 +807,7 @@ import il.org.spartan.etc.*;
             }
 
             public NonPositive(final double d, final @NotNull String format, final Object... args) {
-              this(d, nprintf(format, args));
+              this(d, cantBeNull(nprintf(format, args)));
             }
 
             public NonPositive(final int n) {
@@ -819,7 +819,7 @@ import il.org.spartan.etc.*;
             }
 
             public NonPositive(final int n, final @NotNull String format, final Object... args) {
-              this(n, nprintf(format, args));
+              this(n, cantBeNull(nprintf(format, args)));
             }
           }
 
@@ -839,7 +839,7 @@ import il.org.spartan.etc.*;
             }
 
             public Positive(final double d, final @NotNull String format, final Object... args) {
-              this(d, nprintf(format, args));
+              this(d, cantBeNull(nprintf(format, args)));
             }
 
             public Positive(final int n) {
@@ -851,7 +851,7 @@ import il.org.spartan.etc.*;
             }
 
             public Positive(final int n, final @NotNull String format, final Object... args) {
-              this(n, nprintf(format, args));
+              this(n, cantBeNull(nprintf(format, args)));
             }
           }
         }
@@ -876,7 +876,7 @@ import il.org.spartan.etc.*;
           private static final long serialVersionUID = -0x5D41A321B4183C1AL;
 
           public Initial(final int value) {
-            super(nprintf("Initial variant value (%d) is negative", box.it(value)));
+            super(cantBeNull(nprintf("Initial variant value (%d) is negative", box.it(value))));
           }
         }
 
@@ -888,7 +888,7 @@ import il.org.spartan.etc.*;
           private static final long serialVersionUID = 0x457A0D93D1F47D17L;
 
           public Nondecreasing(final int newValue, final int oldValue) {
-            super(nprintf("New variant value (%d) should be less than previous value (%d)", newValue, oldValue));
+            super(cantBeNull(nprintf("New variant value (%d) should be less than previous value (%d)", newValue, oldValue)));
           }
         }
 
@@ -900,7 +900,7 @@ import il.org.spartan.etc.*;
           private static final long serialVersionUID = 0x740EDCFDC38B6562L;
 
           public Underflow(final int newValue) {
-            super(nprintf("New variant value (%d) is negative", box.it(newValue)));
+            super(cantBeNull(nprintf("New variant value (%d) is negative", box.it(newValue))));
           }
         }
       }
