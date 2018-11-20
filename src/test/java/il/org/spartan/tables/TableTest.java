@@ -1,7 +1,7 @@
 package il.org.spartan.tables;
 
 import org.junit.*;
-
+import static il.org.spartan.Utils.*;
 @SuppressWarnings({"static-method","resource"}) public class TableTest {
   
   @Test public void Table1() {
@@ -17,27 +17,27 @@ import org.junit.*;
   }
   
   @Test public void Table3() {
-    assert(new Table("123",System.getProperty("user.dir")) != null); 
+    assert(new Table("123",cantBeNull(System.getProperty("user.dir"))) != null); 
   }
   
   @Test public void Table4() {
-    assert(new Table("1".getClass(),System.getProperty("user.dir")) != null); 
+    assert(new Table("1".getClass(),cantBeNull(System.getProperty("user.dir"))) != null); 
   }
   
   @Test public void baseName() {
-    Table t = new Table("1".getClass(), System.getProperty("user.dir")); 
+    Table t = new Table("1".getClass(), cantBeNull(System.getProperty("user.dir"))); 
     assert(t != null); 
     assert(t.baseName().contains("\\")); 
   }
   
   @Test public void close() {
-    Table t = new Table("1".getClass(), System.getProperty("user.dir")); 
+    Table t = new Table("1".getClass(), cantBeNull(System.getProperty("user.dir"))); 
     assert(t.add(Statistic.NA).length()==1);
     t.close(); 
   }
   
   @Test public void col() {
-    Table t = new Table("1".getClass(), System.getProperty("user.dir")); 
+    Table t = new Table("1".getClass(), cantBeNull(System.getProperty("user.dir"))); 
     Table t1 = t.col("1", 1.5);
     assert(t1.toString().equals("{null=1, 1=1.5}"));
     assert(t.col("2", 2).toString().equals("{null=1, 1=1.5, 2=2}"));
@@ -45,18 +45,18 @@ import org.junit.*;
    
   }
   @Test public void noStatistics() {
-    Table t = new Table("1".getClass(), System.getProperty("user.dir")); 
+    Table t = new Table("1".getClass(), cantBeNull(System.getProperty("user.dir"))); 
     assert(t.noStatistics() == t);
     t.nl();
     assert(t.length() == 2);
   }
     
   @Test public void description() {
-    Table t = new Table("1".getClass(), System.getProperty("user.dir")); 
+    Table t = new Table("1".getClass(), cantBeNull(System.getProperty("user.dir"))); 
     assert(t.description().contains("The table has"));
   }
   
   @Test public void lastEmptyColumn() {
-    Table t = new Table("1".getClass(), System.getProperty("user.dir")); 
+    Table t = new Table("1".getClass(), cantBeNull(System.getProperty("user.dir"))); 
   }
 }
