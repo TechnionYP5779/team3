@@ -1,5 +1,7 @@
 package il.org.spartan.etc;
 
+
+import static fluent.ly.box.*;
 import static fluent.ly.azzert.*;
 
 import org.junit.*;
@@ -38,9 +40,9 @@ public class IdiomaticTest {
     assert "'ABBA'".equals(idiomatic.quote("ABBA"));
   }
 
-  @Test @SuppressWarnings("boxing") public void use13() {
-    assert idiomatic.incase(true, 4) == 4;
-    assert idiomatic.incase(false, 4) == null;
+  @Test public void use13() {
+    azzert.that(idiomatic.incase(true, box(4)), is(box(4)));
+    assert idiomatic.incase(false, box(4)) == null;
   }
 
   @Test public void use2() {
@@ -74,9 +76,9 @@ public class IdiomaticTest {
     assert "12534".equals(idiomatic.eval(() -> "12534").get());
   }
 
-  @Test @SuppressWarnings("boxing") public void use15() {
-    assert idiomatic.unless(true, 4) == null;
-    assert idiomatic.unless(false, 4) == 4;
+  @Test public void use15() {
+    assert idiomatic.unless(true, box(4)) == null;
+    azzert.that(idiomatic.unless(false, box(4)), is(4));
   }
 
   @Test public void use16() {
