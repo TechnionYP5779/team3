@@ -30,6 +30,18 @@ import fluent.ly.___.Variant;
     }
   }
   
+  
+  @Test public void unuse() {
+    long a = 1;
+    ___.unuse(a);
+    double b = 1;
+    ___.unused(b, new double[] {});
+    ___.unused(b, new Object[] {});
+    ___.unused(a, new long[] {});
+    ___.unused(a, new Object[] {});
+  }
+  
+  
   @Test public void unused() {
     String a = "a";
     String b = "b";
@@ -213,7 +225,7 @@ import fluent.ly.___.Variant;
     try {
       ___.unreachable();
     } catch (final Reachability ¢) {
-      azzert.assertTrue("".equals(¢.getMessage()));
+      azzert.that(¢.getMessage() , is(""));
     }
     try {
       ___.unreachable("unreachable message");
