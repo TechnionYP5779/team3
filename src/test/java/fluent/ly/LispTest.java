@@ -30,7 +30,7 @@ import org.junit.*;
     assert cantBeNull(lisp.prev(3, li)).equals(box(2));
     assert cantBeNull(cantBeNull(lisp.replace(li, box(1), 0)).get(0)).equals(box(1));
     assert cantBeNull(cantBeNull(lisp.replace(li, box(0), 0)).get(0)).equals(box(0));
-    assert lisp.replace(null, 0, 0) == null;
+    assert lisp.replace(null, box(0), 0) == null;
     assert cantBeNull(lisp.replace(new ArrayList<Integer>(), box(0), 2)).equals(new ArrayList<Integer>());
     assert cantBeNull(cantBeNull(lisp.replaceFirst(li, box(1))).get(0)).equals(box(1));
     assert cantBeNull(cantBeNull(lisp.replaceLast(li, box(1))).get(3)).equals(box(1));

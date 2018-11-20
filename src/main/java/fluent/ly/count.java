@@ -5,7 +5,6 @@ public interface count {
     int $ = 0;
     for (final T __ : ts)
       forget.it( __ );
-      ++$;
-    return $;
+      return ++$;
   }
 }
