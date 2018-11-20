@@ -6,8 +6,8 @@ import fluent.ly.*;
 
 @SuppressWarnings("static-method") public class PairTest {
   @Test public void basic_test() {
-    final Pair<Integer, String> p = new Pair<>(box.box(1), "abc"), p2 = new Pair<>(box.box(1), "abc"), p3 = new Pair<>(box.box(3), "aaaa"),
-        p4 = new Pair<>(box.box(1), "ac");
+    final Pair<Integer, String> p = new Pair<>(box.it(1), "abc"), p2 = new Pair<>(box.it(1), "abc"), p3 = new Pair<>(box.it(3), "aaaa"),
+        p4 = new Pair<>(box.it(1), "ac");
     assert p.equals(p);
     assert p.equals(p2);
     assert !p.equals(p3);
@@ -19,11 +19,11 @@ import fluent.ly.*;
   }
 
   @Test public void Pairs_nulls_test() {
-    final Pair<Integer, String> p = new Pair<>(box.box(1), "abc"), p4 = new Pair<>(box.box(1), "ac"), a[] = Pair.makePairs(3),
+    final Pair<Integer, String> p = new Pair<>(box.it(1), "abc"), p4 = new Pair<>(box.it(1), "ac"), a[] = Pair.makePairs(3),
         b[] = Pair.makePairs(6);
     assert !p.equals(a[1]);
     b[3] = p;
-    a[1] = new Pair<>(box.box(1), "ac");
+    a[1] = new Pair<>(box.it(1), "ac");
     assert b[3].equals(p);
     assert a[1].equals(p4);
   }
