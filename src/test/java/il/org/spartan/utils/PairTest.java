@@ -15,7 +15,7 @@ import fluent.ly.*;
     assert p.hashCode() != p4.hashCode();
     assert p.hashCode() == p2.hashCode();
     assert "<1,abc>".equals(p + "");
-    assert !p.equals(Pair.newPair("X", box.box(22)));
+    assert !p.equals(Pair.newPair("X", box.it(22)));
   }
 
   @Test public void Pairs_nulls_test() {
