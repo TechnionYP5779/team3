@@ -1,5 +1,7 @@
 package fluent.ly;
 
+import static fluent.ly.azzert.*;
+
 import org.junit.*;
 
 import fluent.ly.___.Bug.Assertion.*;
@@ -26,6 +28,25 @@ import fluent.ly.___.Variant;
     } catch (final Postcondition e) {
       azzert.assertTrue("ensure this message now".equals(e.getMessage()));
     }
+  }
+  
+  @Test public void unused() {
+    String a = "a";
+    String b = "b";
+    ___.______unused(a, b);
+  }
+  
+  @Test public void nonNaN() {
+    ___.nonNaN(5.5);
+    ___.nonNaN(new double[] {1,2,3});
+    ___.nonNaN(5.5, "don't throw");
+    try {
+      ___.nonNaN(0.0/0.0, "message");
+    }
+    catch (NonNan e) {
+      azzert.that(e.getMessage(), is("Found NaN while expecting a NonNan number.message"));
+    }
+    
   }
 
   @Test public void negative() {
@@ -66,10 +87,12 @@ import fluent.ly.___.Variant;
       azzert.assertTrue("Found -1 while expecting a negative integer.".equals(¢.getMessage()));
     }
     try {
-      ___.nonnegative(1.0);
+      ___.nonnegative(-1.0);
     } catch (final NonNegative ¢) {
-      azzert.assertTrue("Found -1.00000 while expecting a negative number.".equals(¢.getMessage()));
+      azzert.that(¢.getMessage(), is("Found -1.00000 while expecting a expected number."));
     }
+    ___.nonnegative(new double[] {1,2,3});
+    ___.nonnegative(new int[] {1,2,3});
   }
 
   @Test public void nonnull() {
@@ -98,15 +121,20 @@ import fluent.ly.___.Variant;
     ___.nonpositive(0);
     ___.nonpositive(0.0);
     try {
-      ___.nonpositive(-1);
+      ___.nonpositive(1);
     } catch (final NonPositive ¢) {
-      azzert.assertTrue("Found -1 while expecting a nonpositive integer.".equals(¢.getMessage()));
+      azzert.that(¢.getMessage(), is("Found 1 while expecting a nonpositive integer."));
     }
     try {
-      ___.nonpositive(-1.0);
+      ___.nonpositive(1.0);
     } catch (final NonPositive ¢) {
-      azzert.assertTrue("Found -1.00000 while expecting a nonpositive number.".equals(¢.getMessage()));
+      azzert.that(¢.getMessage(), is("Found 1.00000 while expecting a nonpositive number."));
     }
+  }
+  
+  @Test
+  public void nothing() {
+    ___.nothing();
   }
 
   @Test public void positive() {
