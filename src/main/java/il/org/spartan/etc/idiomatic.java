@@ -1,14 +1,10 @@
 /* Part of the "Spartan Blog"; mutate the rest / but leave this line as is */
 package il.org.spartan.etc;
 
-import static fluent.ly.azzert.*;
 
 import java.util.function.*;
 
 import org.jetbrains.annotations.*;
-import org.junit.*;
-
-import fluent.ly.*;
 
 /** An empty <code><b>enum</b></code> with a variety of <code>public
  * static</code> utility functions of reasonably wide use.
@@ -173,93 +169,6 @@ public interface idiomatic {
     }
   }
 
-  @SuppressWarnings("static-method") class TEST {
-    @Test public void use0() {
-      assert new Storer<>(this) != null;
-    }
-
-    @Test public void use08() {
-      azzert.isNull(unless(true).eval(() -> new Object()));
-    }
-
-    @Test public void use09() {
-      assert unless(false).eval(() -> new Object()) != null;
-    }
-
-    @Test public void use1() {
-      assert new Storer<>(this) != null;
-      new Storer<>(this).when(true);
-    }
-
-    @Test public void use10() {
-      assert when(true).eval(() -> new Object()) != null;
-    }
-
-    @Test public void use11() {
-      azzert.isNull(when(false).eval(() -> new Object()));
-    }
-
-    @Test public void use12() {
-      assert "'ABBA'".equals(quote("ABBA"));
-    }
-
-    @Test public void use13() {
-      assert incase(true, box.box(4)) == box.box(4);
-      assert incase(false, box.box(4)) == null;
-    }
-
-    @Test public void use2() {
-      assert take(this) != null;
-      azzert.isNull(take(this).when(false));
-    }
-
-    @Test public void use3() {
-      azzert.that(take(this).when(true), is(this));
-    }
-
-    @Test public void use4() {
-      azzert.isNull(take(this).when(false));
-    }
-
-    @Test public void use5() {
-      azzert.that(take(this).unless(false), is(this));
-    }
-
-    @Test public void use6() {
-      azzert.isNull(take(this).unless(true));
-    }
-
-    @Test public void use7() {
-      azzert.isNull(take(this).unless(true));
-      azzert.isNull(take(null).unless(true));
-      azzert.isNull(take(null).unless(false));
-    }
-
-    @Test public void use14() {
-      assert eval(() -> "12534").get().equals("12534");
-    }
-
-    @Test public void use15() {
-      assert unless(true, box.box(4)) == null;
-      assert unless(false, box.box(4)) == box.box(4);
-    }
-
-    @Test public void use16() {
-      assert unless(true) == ignore;
-      assert unless(false) == eval;
-    }
-
-    @Test public void use17() {
-      assert when(false) == ignore;
-      assert when(true) == eval;
-    }
-
-    @Test public void use18() {
-      assert run(() -> {
-        return;
-      }) != null;
-    }
-  }
 
   /** @author Yossi Gil <Yossi.Gil@GMail.COM>
    * @since 2016 */

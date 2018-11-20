@@ -9,12 +9,13 @@ import fluent.ly.*;
 public final class Int {
   public int inner;
 
-  public Int() {
-    ___.______unused();
-  }
 
   public Int(final int inner) {
     this.inner = inner;
+  }
+
+  public Int() {
+    
   }
 
   /** Function form, good substitute for auto-boxing */
