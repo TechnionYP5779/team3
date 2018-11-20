@@ -31,20 +31,6 @@ import fluent.ly.___.Variant;
   }
   
   
-  @Test public void unuse() {
-    long a = 1;
-    ___.unuse(a);
-    double b = 1;
-    ___.unused(b, new double[] {});
-    ___.unused(b, new Object[] {});
-    ___.unused(a, new long[] {});
-    ___.unused(a, new Object[] {});
-  }
-  
-  
-  @Test public void unused() {
-    ___.______unused("a", "b");
-  }
   
   @Test public void nonNaN() {
     ___.nonNaN(5.5);
@@ -250,7 +236,7 @@ import fluent.ly.___.Variant;
       assert v.value() == 0;
     }
     try {
-      ___.unused(new Variant(-1));
+      forget.unused(new Variant(-1));
     } catch (final Initial e) {
       assert "Initial variant value (-1) is negative".equals(e.getMessage());
     }
