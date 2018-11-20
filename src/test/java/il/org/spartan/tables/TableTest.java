@@ -31,7 +31,7 @@ import static il.org.spartan.Utils.*;
   @Test public void baseName() {
     Table t = new Table("1".getClass(), cantBeNull(System.getProperty("user.dir"))); 
     assert(t != null); 
-    assert(t.baseName().contains("\\")); 
+    assert(t.baseName().contains("/")); 
   }
   
   @Test public void close() {
