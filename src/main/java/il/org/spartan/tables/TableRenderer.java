@@ -3,6 +3,7 @@ package il.org.spartan.tables;
 import java.util.*;
 
 import org.jetbrains.annotations.*;
+import static fluent.ly.box.*;
 
 import fluent.ly.*;
 import il.org.spartan.*;
@@ -132,7 +133,7 @@ import il.org.spartan.*;
   String NL = System.getProperty("line.separator");
 
   default String cellReal(final Double ¢) {
-    return ¢.longValue() != ¢.doubleValue() ? ¢ + "" : cellInt(box.box(¢.longValue()));
+    return ¢.longValue() != ¢.doubleValue() ? ¢ + "" : cellInt(box(¢.longValue()));
   }
 
   static String empty() {
@@ -221,7 +222,7 @@ import il.org.spartan.*;
 
   default String recordSeparator() {
     return tab();
-  }
+  }s
 
   default String render(final Statistic ¢) {
     return ¢ + "";
@@ -232,7 +233,7 @@ import il.org.spartan.*;
     final Separator s = new Separator(recordSeparator());
     values.forEach(λ -> $.append(s)
         .append(λ instanceof Object[] ? cellArray((Object[]) λ)
-            : λ instanceof Integer ? cellInt(box.box((long)((Integer) λ).intValue()))
+            : λ instanceof Integer ? cellInt(box((long)((Integer) λ).intValue()))
                 : λ instanceof Long ? cellInt((Long) λ) : λ instanceof Double ? cellReal((Double) λ) : λ));
     return $ + recordEnd();
   }
