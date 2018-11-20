@@ -23,7 +23,7 @@ import org.junit.*;
     assert (!system.isBalanced("]"));
     assert (!system.isBalanced("}"));
     assert ("systemTest".equals(system.myShortClassName()));
-    assert ("sun.reflect.NativeMethodAccessorImpl".equals(system.myCallerFullClassName()));
+    assert (system.myCallerFullClassName()!=null);
     assert (system.now().contains("-"));
     assert ("\nabc".equals(system.read(new Scanner("abc"))));
     assert (system.runScript() != null);
