@@ -6,6 +6,8 @@ import java.util.stream.*;
 
 import org.jetbrains.annotations.*;
 
+import fluent.ly.*;
+
 /** Fluent API
  * @author Yossi Gil
  * @since 2016 */
@@ -52,7 +54,8 @@ public interface fault {
     return "\n " + name + "=[" + value + "]";
   }
 
-  static boolean bool(@SuppressWarnings("unused") final Object __) {
+  static boolean bool(final Object __) {
+    forget.it(__);
     return false;
   }
 }
