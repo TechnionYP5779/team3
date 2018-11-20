@@ -2,8 +2,8 @@ package fluent.ly;
 
 import org.junit.*;
 
-public class BoxTest {
-  @Test @SuppressWarnings("static-method") public void boxAdds() {
+@SuppressWarnings("static-method") public class BoxTest {
+  @Test public void boxAdds() {
     assert box.box(true).equals(box.box(true));
     final Boolean[] b2 = box.box(new boolean[] { true, false, true }), arr1 = { box.box(true), box.box(false), box.box(true) };
     for (int ¢ = 0; ¢ < 3; ++¢)
