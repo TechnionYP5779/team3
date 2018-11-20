@@ -7,6 +7,7 @@ import org.jetbrains.annotations.*;
 import org.junit.*;
 
 import fluent.ly.*;
+import il.org.spartan.bench.*;
 
 @SuppressWarnings("static-method") public class RealStatisticsTest {
   final RealStatistics s11_20_5 = new RealStatistics().record(11).record(20).record(5);
@@ -200,6 +201,8 @@ import fluent.ly.*;
     assert(t.sd()==0.5);
     assert(t.missing()==0);
     assert(t.v()==0.2999999999999998);
+    assert(t.flipping()==0.5);
+    assert(t.format(Unit.INTEGER,"abcxnrxji").equals("mean=1.50bcmax=2.00n=6range=1.00⋯2.00]max=2.001.50min=1.00"));
 
 
   }
