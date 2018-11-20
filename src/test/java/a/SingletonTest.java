@@ -1,8 +1,6 @@
 package a;
 
 
-import java.util.*;
-import static fluent.ly.box.*;
 import org.junit.*;
 
 import fluent.ly.*;

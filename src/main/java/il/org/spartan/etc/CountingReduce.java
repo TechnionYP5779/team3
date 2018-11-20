@@ -2,16 +2,19 @@ package il.org.spartan.etc;
 import static il.org.spartan.Utils.*;
 import fluent.ly.*;
 import il.org.spartan.utils.*;
-
+import static fluent.ly.unbox.*;
+import static fluent.ly.box.*;
+import static il.org.spartan.Utils.*;
 /** Reducer that concatenate strings
  * @author Yossi Gil
  * @since 2017-03-19 */
 public class CountingReduce extends Reduce<Integer> {
   @Override public final Integer reduce(final Integer i1, final Integer i2) {
-    return box.box(unbox.unbox(cantBeNull(i1)) + unbox.unbox(cantBeNull(i2)));
+    return box(unbox(cantBeNull(i1)) + unbox(cantBeNull(i2)));
+
   }
 
   @Override public final Integer reduce() {
-    return box.box(0);
+    return box(0);
   }
 }

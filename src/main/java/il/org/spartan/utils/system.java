@@ -5,6 +5,8 @@ import static java.lang.System.*;
 import java.io.*;
 import java.text.*;
 import java.util.*;
+import static fluent.ly.unbox.*;
+import static fluent.ly.box.*;
 
 import org.jetbrains.annotations.*;
 
@@ -96,18 +98,18 @@ public interface system {
         case '(':
         case '[':
         case '{':
-          $.push(box.box(¢));
+          $.push(box(¢));
           continue;
         case ')':
-          if ($.isEmpty() || unbox.unbox($.pop()) != '(')
+          if ($.isEmpty() || unbox($.pop()) != '(')
             return false;
           continue;
         case ']':
-          if ($.isEmpty() || unbox.unbox($.pop()) != '[')
+          if ($.isEmpty() || unbox($.pop()) != '[')
             return false;
           continue;
         case '}':
-          if ($.isEmpty() || unbox.unbox($.pop()) != '{')
+          if ($.isEmpty() || unbox($.pop()) != '{')
             return false;
           continue;
       }
