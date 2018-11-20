@@ -1,19 +1,15 @@
 package il.org.spartan.utils;
 
-import static fluent.ly.azzert.*;
-
 import org.jetbrains.annotations.*;
 import org.junit.*;
-
-import fluent.ly.*;
 
 @SuppressWarnings("static-method") public class BoolTest {
   @Test public void booleanAdds() {
     final @NotNull Bool b = new Bool(true);
-    azzert.that(b.get(), is(true));
+    assert b.get();
     b.clear();
-    azzert.that(b.get(), is(false));
+    assert !b.get();
     b.set(true);
-    azzert.that(b.get(), is(true));
+    assert b.get();
   }
 }

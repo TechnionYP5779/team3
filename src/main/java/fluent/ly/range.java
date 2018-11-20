@@ -43,31 +43,19 @@ public class range {
 
     public inner_range interset(final inner_range ¢) {
       final inner_range $ = new inner_range();
-      if (!¢.from_defined) {
-        if (this.from_defined)
-          $.set_from(this.from.intValue());
-      } else if (this.from_defined && this.from.intValue() > ¢.from.intValue())
+      if (¢.from_defined)
+        $.set_from((!this.from_defined || this.from.intValue() <= ¢.from.intValue() ? ¢.from : this.from).intValue());
+      else if (this.from_defined)
         $.set_from(this.from.intValue());
-      else
-        $.set_from(¢.from.intValue());
-      if (!¢.to_defined) {
-        if (this.to_defined)
-          $.set_to(this.to.intValue());
-      } else if (this.to_defined && this.to.intValue() < ¢.to.intValue())
+      if (¢.to_defined)
+        $.set_to((!this.to_defined || this.to.intValue() >= ¢.to.intValue() ? ¢.to : this.to).intValue());
+      else if (this.to_defined)
         $.set_to(this.to.intValue());
-      else
-        $.set_to(¢.to.intValue());
       return $;
     }
 
     public boolean includes(final int a) {
-      if (!from_defined)
-        return !to_defined || a < to.intValue();
-      if (a < from.intValue())
-        return false;
-      if (to_defined)
-        return a < to.intValue();
-      return true;
+      return !from_defined ? !to_defined || a < to.intValue() : a >= from.intValue() && (!to_defined || a < to.intValue());
     }
 
     public Iterator<Integer> numbers() {

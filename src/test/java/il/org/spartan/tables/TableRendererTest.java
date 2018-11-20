@@ -4,7 +4,7 @@ import org.junit.*;
 
 import il.org.spartan.tables.TableRenderer.*;
 
-@SuppressWarnings({ "static-method" }) public class TableRendererTest {
+@SuppressWarnings("static-method") public class TableRendererTest {
   String NL = System.getProperty("line.separator");
 
   @Test public void afterHeader() {
@@ -21,8 +21,8 @@ import il.org.spartan.tables.TableRenderer.*;
   }
 
   @Test public void arraySeparator() {
-    assert builtin.TEX.arraySeparator().equals(", ");
-    assert builtin.TEX2.arraySeparator().equals(", ");
+    assert ", ".equals(builtin.TEX.arraySeparator());
+    assert ", ".equals(builtin.TEX2.arraySeparator());
   }
 
   @Test public void beforeFooter() {
@@ -37,7 +37,7 @@ import il.org.spartan.tables.TableRenderer.*;
   }
 
   @Test public void nil() {
-    assert builtin.TEX.nil().equals("$\\#$");
+    assert "$\\#$".equals(builtin.TEX.nil());
   }
 
   @Test public void recordEnd() {
@@ -51,29 +51,29 @@ import il.org.spartan.tables.TableRenderer.*;
   }
 
   @Test public void recordSeparator() {
-    assert builtin.TEX.recordSeparator().equals("\t&\t");
-    assert builtin.TEX2.recordSeparator().equals("\t&\t");
-    assert builtin.CSV.recordSeparator().equals(",");
-    assert builtin.MARKDOWN.recordSeparator().equals(" | ");
+    assert "\t&\t".equals(builtin.TEX.recordSeparator());
+    assert "\t&\t".equals(builtin.TEX2.recordSeparator());
+    assert ",".equals(builtin.CSV.recordSeparator());
+    assert " | ".equals(builtin.MARKDOWN.recordSeparator());
   }
 
   @Test public void render() {
-    assert builtin.TEX.render(Statistic.Σ).equals("\\hfill$\\Sum$");
-    assert builtin.TEX.render(Statistic.σ).equals("\\hfill$\\sigma$");
-    assert builtin.TEX.render(Statistic.min).equals("\\hfill$\\min$");
-    assert builtin.TEX.render(Statistic.max).equals("\\hfill$\\max$");
-    assert builtin.TEX.render(Statistic.median).equals("\\hfillmedian");
+    assert "\\hfill$\\Sum$".equals(builtin.TEX.render(Statistic.Σ));
+    assert "\\hfill$\\sigma$".equals(builtin.TEX.render(Statistic.σ));
+    assert "\\hfill$\\min$".equals(builtin.TEX.render(Statistic.min));
+    assert "\\hfill$\\max$".equals(builtin.TEX.render(Statistic.max));
+    assert "\\hfillmedian".equals(builtin.TEX.render(Statistic.median));
   }
 
   @Test public void recordBegin() {
-    assert builtin.MARKDOWN.recordBegin().equals("|");
+    assert "|".equals(builtin.MARKDOWN.recordBegin());
   }
 
   @Test public void tab() {
-    assert TableRenderer.tab().equals("\t");
+    assert "\t".equals(TableRenderer.tab());
   }
 
   @Test public void empty() {
-    assert TableRenderer.empty().equals("");
+    assert "".equals(TableRenderer.empty());
   }
 }

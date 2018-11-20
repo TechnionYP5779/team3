@@ -55,28 +55,26 @@ public class RealList {
   }
 
   @SuppressWarnings("null") public double LinearRegressionpredict(double predictForDependentVariable) {
-    Integer numberOfDataValues = box.box(x.size());
-    List<Double> xSquared = x.stream().map(position -> box.box(Math.pow(unbox.unbox(position), 2))).collect(Collectors.toList());
-    List<Double> xMultipliedByY = IntStream.range(0, unbox.unbox(numberOfDataValues)).mapToDouble(i -> unbox.unbox(x.get(i)) * unbox.unbox(y.get(i)))
-        .boxed().collect(Collectors.toList());
-    Double xSummed = x.stream().reduce((prev, next) -> box.box(unbox.unbox(prev) + unbox.unbox(next))).get();
-    Double ySummed = y.stream().reduce((prev, next) -> box.box(unbox.unbox(prev) + unbox.unbox(next))).get();
-    Double sumOfXSquared = xSquared.stream().reduce((prev, next) -> box.box(unbox.unbox(prev) + unbox.unbox(next))).get();
-    Double sumOfXMultipliedByY = xMultipliedByY.stream().reduce((prev, next) -> box.box(unbox.unbox(prev) + unbox.unbox(next))).get();
-    double slopeNominator = unbox.unbox(numberOfDataValues) * unbox.unbox(sumOfXMultipliedByY) - unbox.unbox(ySummed) * unbox.unbox(xSummed);
-    double slopeDenominator = unbox.unbox(numberOfDataValues) * unbox.unbox(sumOfXSquared) - Math.pow(unbox.unbox(xSummed), 2);
-    double slope = slopeNominator / slopeDenominator;
-    double interceptNominator = unbox.unbox(ySummed) - slope * unbox.unbox(xSummed);
-    double interceptDenominator = unbox.unbox(numberOfDataValues);
-    double intercept = interceptNominator / interceptDenominator;
-    return (slope * predictForDependentVariable) + intercept;
+    Integer $ = box.box(x.size());
+    List<Double> xSquared = x.stream().map(position -> box.box(Math.pow(unbox.unbox(position), 2))).collect(Collectors.toList()),
+        xMultipliedByY = IntStream.range(0, unbox.unbox($)).mapToDouble(λ -> unbox.unbox(x.get(λ)) * unbox.unbox(y.get(λ))).boxed()
+            .collect(Collectors.toList());
+    Double xSummed = x.stream().reduce((prev, next) -> box.box(unbox.unbox(prev) + unbox.unbox(next))).get(),
+        ySummed = y.stream().reduce((prev, next) -> box.box(unbox.unbox(prev) + unbox.unbox(next))).get(),
+        sumOfXMultipliedByY = xMultipliedByY.stream().reduce((prev, next) -> box.box(unbox.unbox(prev) + unbox.unbox(next))).get();
+    double slopeNominator = unbox.unbox($) * unbox.unbox(sumOfXMultipliedByY) - unbox.unbox(ySummed) * unbox.unbox(xSummed),
+        slopeDenominator = unbox.unbox($)
+            * unbox.unbox(xSquared.stream().reduce((prev, next) -> box.box(unbox.unbox(prev) + unbox.unbox(next))).get())
+            - Math.pow(unbox.unbox(xSummed), 2);
+    return slopeNominator * predictForDependentVariable / slopeDenominator
+        + (unbox.unbox(ySummed) - slopeNominator / slopeDenominator * unbox.unbox(xSummed)) / unbox.unbox($);
   }
 
   @SuppressWarnings("null") public double averageX() {
     return x.isEmpty() ? 0 : unbox.unbox(x.stream().reduce((prev, next) -> box.box(unbox.unbox(prev) + unbox.unbox(next))).get()) / x.size();
   }
 
-  @SuppressWarnings({ "null" }) public double averageY() {
+  @SuppressWarnings("null") public double averageY() {
     return y.isEmpty() ? 0 : unbox.unbox(y.stream().reduce((prev, next) -> box.box(unbox.unbox(prev) + unbox.unbox(next))).get()) / y.size();
   }
 }

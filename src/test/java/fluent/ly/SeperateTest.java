@@ -86,9 +86,9 @@ import il.org.spartan.etc.*;
     azzert.that(separate.these(Utils.cantBeNull(new Applicator<>(quote).to(as.list("Hello", "World")))).by(", "), is("'Hello', 'World'"));
   }
 
-  @SuppressWarnings("null") @Test public final void byFOfTTArrayChar() {
+  @Test @SuppressWarnings("null") public final void byFOfTTArrayChar() {
     final @NotNull Applicator<Object, String> f = new Applicator<>(λ -> "'" + λ + "'");
-    azzert.assertTrue("Function literals should never by null.", f != null);
+    assert f != null : "Function literals should never by null.";
     final @NotNull Collection<String> c = as.list("Hello", "World");
     azzert.that(c.size(), is(2));
     final @NotNull Iterable<String> ts = f.to(c);
@@ -169,17 +169,16 @@ import il.org.spartan.etc.*;
     azzert.that(separate.these("Hello", "World").byNLs(), is("Hello\nWorld"));
   }
 
-  @SuppressWarnings("null") @Test public final void separateByNoItemslPruneWhitesSpaceSeparated() {
+  @Test @SuppressWarnings("null") public final void separateByNoItemslPruneWhitesSpaceSeparated() {
     final @NotNull SeparationSubject these = separate.these();
-    azzert.assertTrue(these != null);
+    assert these != null;
     final Iterable<?> os = these.os;
-    azzert.assertTrue(os != null);
+    assert os != null;
     azzert.aye(is.empty(os));
     final @NotNull String[] ss = as.strings(os);
-    azzert.assertTrue(ss != null);
+    assert ss != null;
     azzert.zero(ss.length);
-    final @NotNull String[] noWhites = prune.whites(ss);
-    azzert.zero(noWhites.length);
+    azzert.zero(prune.whites(ss).length);
   }
 
   @Test public void separateBySpaceEmpty() {

@@ -8,80 +8,72 @@ import org.junit.*;
 import fluent.ly.range.*;
 
 public class RangeTest {
-  @SuppressWarnings({ "static-method", "null" }) @Test public void test() {
+  @Test @SuppressWarnings("static-method") public void test() {
     final inner_range a = range.from(2);
-    azzert.assertTrue(a != null);
-    azzert.assertTrue(a.getClass().equals(inner_range.class));
-    // box3
-    azzert.assertTrue(a.from().equals(box.box(2)));
-    azzert.assertTrue(range.from(2).from().equals(box.box(2)));
-    // box4
-    azzert.assertTrue(a.to(6).getClass().equals(inner_range.class));
-    azzert.assertTrue(range.from(2).to(6).getClass().equals(inner_range.class));
-    // box5
+    assert a != null;
+    assert a.getClass().equals(inner_range.class);
+    assert a.from().equals(box.box(2));
+    assert range.from(2).from().equals(box.box(2));
+    assert a.to(6).getClass().equals(inner_range.class);
+    assert range.from(2).to(6).getClass().equals(inner_range.class);
     final inner_range b = range.to(2);
-    azzert.assertTrue(b != null);
-    azzert.assertTrue(b.getClass().equals(inner_range.class));
-    // box6
-    azzert.assertTrue(a.to(6).from().equals(box.box(2)));
-    azzert.assertTrue(b.from() == null);
-    azzert.assertTrue(range.to(2).from() == null);
-    // box7
-    azzert.assertTrue(b.from(3).from().equals(box.box(3)));
-    azzert.assertTrue(range.to(2).from(3).from().equals(box.box(3)));
-    azzert.assertTrue(b.from().equals(box.box(3)));
-    // box8
+    assert b != null;
+    assert b.getClass().equals(inner_range.class);
+    assert a.to(6).from().equals(box.box(2));
+    assert b.from() == null;
+    assert range.to(2).from() == null;
+    assert b.from(3).from().equals(box.box(3));
+    assert range.to(2).from(3).from().equals(box.box(3));
+    assert b.from().equals(box.box(3));
     final Iterator<Integer> iter = range.from(-2).numbers();
-    for (int i = -1; i < 2; i++) {
-      azzert.assertTrue(iter.hasNext());
-      azzert.assertTrue(iter.next().equals(box.box(i)));
+    for (int ¢ = -1; ¢ < 2; ++¢) {
+      assert iter.hasNext();
+      assert iter.next().equals(box.box(¢));
     }
     final Iterator<Integer> iter2 = range.to(Integer.MIN_VALUE + 3).numbers();
-    for (int i = Integer.MIN_VALUE + 1; i < Integer.MIN_VALUE + 3; i++) {
-      azzert.assertTrue(iter2.hasNext());
-      azzert.assertTrue(iter2.next().equals(box.box(i)));
+    for (int ¢ = Integer.MIN_VALUE + 1; ¢ < Integer.MIN_VALUE + 3; ++¢) {
+      assert iter2.hasNext();
+      assert iter2.next().equals(box.box(¢));
     }
-    azzert.assertTrue(!iter2.hasNext());
+    assert !iter2.hasNext();
     final Iterator<Integer> iter3 = range.to(10).from(0).numbers();
-    for (int i = 1; i < 10; i++) {
-      azzert.assertTrue(iter3.hasNext());
-      azzert.assertTrue(iter3.next().equals(box.box(i)));
+    for (int ¢ = 1; ¢ < 10; ++¢) {
+      assert iter3.hasNext();
+      assert iter3.next().equals(box.box(¢));
     }
-    azzert.assertTrue(!iter3.hasNext());
-    // box9
-    azzert.assertTrue(range.to(10).interset(range.from(3)).from().equals(box.box(3)));
+    assert !iter3.hasNext();
+    assert range.to(10).interset(range.from(3)).from().equals(box.box(3));
     final Iterator<Integer> iter4 = range.to(10).interset(range.from(3)).numbers();
-    for (int i = 4; i < 10; i++) {
-      azzert.assertTrue(iter4.hasNext());
-      azzert.assertTrue(iter4.next().equals(box.box(i)));
+    for (int ¢ = 4; ¢ < 10; ++¢) {
+      assert iter4.hasNext();
+      assert iter4.next().equals(box.box(¢));
     }
-    azzert.assertTrue(!iter4.hasNext());
-    azzert.assertTrue(range.to(10).from(5).interset(range.from(3).to(8)).from().equals(box.box(5)));
+    assert !iter4.hasNext();
+    assert range.to(10).from(5).interset(range.from(3).to(8)).from().equals(box.box(5));
     final Iterator<Integer> iter5 = range.to(10).from(5).interset(range.from(3).to(8)).numbers();
-    for (int i = 6; i < 8; i++) {
-      azzert.assertTrue(iter5.hasNext());
-      azzert.assertTrue(iter5.next().equals(box.box(i)));
+    for (int ¢ = 6; ¢ < 8; ++¢) {
+      assert iter5.hasNext();
+      assert iter5.next().equals(box.box(¢));
     }
-    azzert.assertTrue(!iter5.hasNext());
-    azzert.assertTrue(range.to(10).interset(range.to(Integer.MIN_VALUE + 3)).from() == null);
+    assert !iter5.hasNext();
+    assert range.to(10).interset(range.to(Integer.MIN_VALUE + 3)).from() == null;
     final Iterator<Integer> iter6 = range.to(10).interset(range.to(Integer.MIN_VALUE + 3)).numbers();
-    for (int i = Integer.MIN_VALUE + 1; i < Integer.MIN_VALUE + 3; i++) {
-      azzert.assertTrue(iter6.hasNext());
-      azzert.assertTrue(iter6.next().equals(box.box(i)));
+    for (int ¢ = Integer.MIN_VALUE + 1; ¢ < Integer.MIN_VALUE + 3; ++¢) {
+      assert iter6.hasNext();
+      assert iter6.next().equals(box.box(¢));
     }
-    azzert.assertTrue(!iter6.hasNext());
-    azzert.assertTrue(range.from(10).interset(range.from(3)).from().equals(box.box(10)));
-    // box10
-    azzert.assertTrue(range.from(2).to(5).includes(4));
-    azzert.assertTrue(range.from(2).to(5).includes(2));
-    azzert.assertTrue(range.from(2).to(5).includes(3));
-    azzert.assertTrue(!range.from(2).to(5).includes(5));
-    azzert.assertTrue(!range.from(2).to(5).includes(0));
-    azzert.assertTrue(!range.from(2).includes(1));
-    azzert.assertTrue(range.from(2).includes(2));
-    azzert.assertTrue(range.from(2).includes(7));
-    azzert.assertTrue(!range.to(2).includes(2));
-    azzert.assertTrue(!range.to(2).includes(3));
-    azzert.assertTrue(range.to(2).includes(1));
+    assert !iter6.hasNext();
+    assert range.from(10).interset(range.from(3)).from().equals(box.box(10));
+    assert range.from(2).to(5).includes(4);
+    assert range.from(2).to(5).includes(2);
+    assert range.from(2).to(5).includes(3);
+    assert !range.from(2).to(5).includes(5);
+    assert !range.from(2).to(5).includes(0);
+    assert !range.from(2).includes(1);
+    assert range.from(2).includes(2);
+    assert range.from(2).includes(7);
+    assert !range.to(2).includes(2);
+    assert !range.to(2).includes(3);
+    assert range.to(2).includes(1);
   }
 }

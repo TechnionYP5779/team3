@@ -13,12 +13,7 @@ import org.junit.*;
   @Test public void testInts() {
     final int[] arr = { 1, 2, 3, 4, 5, 6 };
     final ArrayList<Integer> lst = new ArrayList<>();
-    final Integer a = box.box(1);
-    final Integer b = box.box(2);
-    final Integer c = box.box(3);
-    final Integer d = box.box(4);
-    final Integer e = box.box(5);
-    final Integer f = box.box(6);
+    final Integer a = box.box(1), b = box.box(2), c = box.box(3), d = box.box(4), e = box.box(5), f = box.box(6);
     lst.add(a);
     lst.add(b);
     lst.add(c);
@@ -75,13 +70,13 @@ import org.junit.*;
     azzert.assertEquals(res.length, arr.length);
     int j = 0;
     for (final double i : arr)
-      azzert.assertTrue(Math.abs(i - res[j++]) < EPS);
-    azzert.assertTrue(Math.abs(unbox.unbox(Double.valueOf(5.0)) - 5.0) < EPS);
+      assert Math.abs(i - res[j++]) < EPS;
+    assert Math.abs(unbox.unbox(Double.valueOf(5.0)) - 5.0) < EPS;
     res = unbox.unbox(arrDouble);
     azzert.assertEquals(res.length, arr.length);
     j = 0;
     for (final double i : arr)
-      azzert.assertTrue(Math.abs(i - res[j++]) < EPS);
+      assert Math.abs(i - res[j++]) < EPS;
   }
 
   @Test public void testFloats() {
@@ -91,13 +86,13 @@ import org.junit.*;
     azzert.assertEquals(res.length, arr.length);
     int j = 0;
     for (final float i : arr)
-      azzert.assertTrue(Math.abs(i - res[j++]) < (float) EPS);
-    azzert.assertTrue(Math.abs(unbox.unbox(Float.valueOf(5.0f)) - 5.0f) < (float) EPS);
+      assert Math.abs(i - res[j++]) < (float) EPS;
+    assert Math.abs(unbox.unbox(Float.valueOf(5.0f)) - 5.0f) < (float) EPS;
     res = unbox.unbox(arrFloat);
     azzert.assertEquals(res.length, arr.length);
     j = 0;
     for (final float i : arr)
-      azzert.assertTrue(Math.abs(i - res[j++]) < (float) EPS);
+      assert Math.abs(i - res[j++]) < (float) EPS;
   }
 
   @Test public void testBools() {
@@ -115,12 +110,12 @@ import org.junit.*;
   @Test public void testLongs() {
     final long[] arr = { 1, 2, 3, 4, 5, 6 };
     final Long[] arrLong = box.box(arr);
-    azzert.assertTrue(unbox.unbox(Long.valueOf(5l)) == 5l);
+    assert unbox.unbox(Long.valueOf(5l)) == 5l;
     final long[] res = unbox.unbox(arrLong);
     azzert.assertEquals(res.length, arr.length);
     int j = 0;
     for (final long i : arr)
-      azzert.assertTrue(i == res[j++]);
+      assert i == res[j++];
   }
 
   @Test public void testChars() {

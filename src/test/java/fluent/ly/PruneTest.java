@@ -14,7 +14,7 @@ import org.junit.*;
 import il.org.spartan.*;
 import il.org.spartan.etc.*;
 
-@SuppressWarnings({ "static-method" }) public class PruneTest {
+@SuppressWarnings("static-method") public class PruneTest {
   @Nullable final String[] alternatingArray = new @Nullable String[] { null, "A", null, null, "B", null, null, null, "C", null };
   @NotNull final String[] nonNullArray = { "1", "2", "4" };
   @NotNull private final List<String> sparseCollection = as.list(null, null, null, null, null, "A", null, null, null, "B", null, "C", null, null,
@@ -107,7 +107,7 @@ import il.org.spartan.etc.*;
     azzert.that(prune.nulls(Utils.cantBeNull(alternatingArray)).length, is(3));
   }
 
-  @SuppressWarnings("null") @Test public void testPruneSparseCollectionContents() {
+  @Test @SuppressWarnings("null") public void testPruneSparseCollectionContents() {
     final @NotNull String[] a = prune.nulls(sparseCollection).toArray(new String[3]);
     azzert.that(a[0], is("A"));
     azzert.that(a[1], is("B"));
@@ -119,7 +119,7 @@ import il.org.spartan.etc.*;
     azzert.that(prune.nulls(sparseCollection).size(), is(3));
   }
 
-  @SuppressWarnings("null") @Test public void testPrunNotNull() {
-    azzert.assertTrue(prune.nulls(sparseCollection) != null);
+  @Test public void testPrunNotNull() {
+    assert prune.nulls(sparseCollection) != null;
   }
 }

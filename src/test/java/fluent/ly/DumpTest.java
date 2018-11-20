@@ -33,6 +33,6 @@ public class DumpTest {
     dump.go(getClass());
     dump.go(new String[] {"a", "b"}, "a", "b");
     dump.go((Object)null, "a", "b");
-    assert outContent.toString() != null;
+    assert outContent + "" != null;
   }
 }

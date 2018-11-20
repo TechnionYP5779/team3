@@ -1,148 +1,73 @@
 package fluent.ly;
 
-import static fluent.ly.azzert.*;
-
 import org.junit.*;
 
 public class BoxTest {
-  @SuppressWarnings("static-method") @Test public void boxAdds() {
-    final Boolean b = box.box(true);
-    final Boolean b1 = box.box(true);
-    azzert.that(b1.equals(b), is(true));
-    final boolean[] arr = { true, false, true };
-    final Boolean[] b2 = box.box(arr);
-    final Boolean[] arr1 = { box.box(true), box.box(false), box.box(true) };
-    for (int i = 0; i < 3; i++)
-      azzert.that(b2[i].equals(arr1[i]), is(true));
+  @Test @SuppressWarnings("static-method") public void boxAdds() {
+    assert box.box(true).equals(box.box(true));
+    final Boolean[] b2 = box.box(new boolean[] { true, false, true }), arr1 = { box.box(true), box.box(false), box.box(true) };
+    for (int ¢ = 0; ¢ < 3; ++¢)
+      assert b2[¢].equals(arr1[¢]);
     final byte num = 10;
-    final Byte by = box.box(num);
-    final Byte n = box.box(num);
-    azzert.that(by.equals(n), is(true));
-    final byte[] arrb = { 10, 1, 4 };
-    final Byte[] arrBy = box.box(arrb);
-    final Byte[] arrb1 = { box.box((byte) 10), box.box((byte) 1), box.box((byte) 4) };
-    for (int i = 0; i < 3; i++)
-      azzert.that(arrBy[i].equals(arrb1[i]), is(true));
-    final Character cb = box.box('a');
-    final Character c1 = box.box('a');
-    azzert.that(cb.equals(c1), is(true));
-    final char[] arrc = { 'a', 'b', 'c' };
-    final Character[] arrcb = box.box(arrc);
-    final Character[] arrc1 = { box.box('a'), box.box('b'), box.box('c') };
-    for (int i = 0; i < 3; i++)
-      azzert.that(arrcb[i].equals(arrc1[i]), is(true));
-    final Double db = box.box(5.0);
-    final Double d1 = box.box(5.0);
-    azzert.that(db.equals(d1), is(true));
-    final double[] arrd = { 5.0, 6.1, 7.2 };
-    final Double[] arrdb = box.box(arrd);
-    final Double[] arrd1 = { box.box(5.0), box.box(6.1), box.box(7.2) };
-    for (int i = 0; i < 3; i++)
-      azzert.that(arrdb[i].equals(arrd1[i]), is(true));
-    final float f = 56;
-    final Float fb = box.box(f);
-    final Float f1 = box.box((float) 56);
-    azzert.that(fb.equals(f1), is(true));
-    final float[] arrf = { 56f, 50f, 40f };
-    final Float[] arrfb = box.box(arrf);
-    final Float[] arrf1 = { box.box(56f), box.box(50f), box.box(40f) };
-    for (int i = 0; i < 3; i++)
-      azzert.that(arrfb[i].equals(arrf1[i]), is(true));
-    final int i = 56;
-    final Integer ib = box.box(i);
-    final Integer i1 = box.box(56);
-    azzert.that(ib.equals(i1), is(true));
-    final int[] arri = { 56, 50, 40 };
-    final Integer[] arrib = box.box(arri);
-    final Integer[] arri1 = { box.box(56), box.box(50), box.box(40) };
-    for (int j = 0; j < 3; j++)
-      azzert.that(arrib[j].equals(arri1[j]), is(true));
-    final long l = 56;
-    final Long lb = box.box(l);
-    final Long l1 = box.box((long) 56);
-    azzert.that(lb.equals(l1), is(true));
-    final long[] arrl = { 56L, 50L, 40L };
-    final Long[] arrlb = box.box(arrl);
-    final Long[] arrl1 = { box.box(56L), box.box(50L), box.box(40L) };
-    for (int j = 0; j < 3; j++)
-      azzert.that(arrlb[j].equals(arrl1[j]), is(true));
-    final short s = 5;
-    final Short sb = box.box(s);
-    final Short s1 = Short.valueOf("5");
-    azzert.that(sb.equals(s1), is(true));
-    final short[] arrs = { 5, 6, 7 };
-    final Short[] arrsb = box.box(arrs);
-    final Short[] arrs1 = { box.box((short) 5), box.box((short) 6), box.box((short) 7) };
-    for (int j = 0; j < 3; j++)
-      azzert.that(arrsb[j].equals(arrs1[j]), is(true));
-    final Boolean ITb = box.it(true);
-    final Boolean ITb1 = box.box(true);
-    azzert.that(ITb1.equals(ITb), is(true));
-    final boolean[] ITarr = { true, false, true };
-    final Boolean[] ITb2 = box.it(ITarr);
-    final Boolean[] ITarr1 = { box.box(true), box.box(false), box.box(true) };
-    for (int j = 0; j < 3; j++)
-      azzert.that(ITb2[j].equals(ITarr1[j]), is(true));
+    assert box.box(num).equals(box.box(num));
+    final Byte[] arrBy = box.box(new byte[] { 10, 1, 4 }), arrb1 = { box.box((byte) 10), box.box((byte) 1), box.box((byte) 4) };
+    for (int ¢ = 0; ¢ < 3; ++¢)
+      assert arrBy[¢].equals(arrb1[¢]);
+    assert box.box('a').equals(box.box('a'));
+    final Character[] arrcb = box.box(new char[] { 'a', 'b', 'c' }), arrc1 = { box.box('a'), box.box('b'), box.box('c') };
+    for (int ¢ = 0; ¢ < 3; ++¢)
+      assert arrcb[¢].equals(arrc1[¢]);
+    assert box.box(5.0).equals(box.box(5.0));
+    final Double[] arrdb = box.box(new double[] { 5.0, 6.1, 7.2 }), arrd1 = { box.box(5.0), box.box(6.1), box.box(7.2) };
+    for (int ¢ = 0; ¢ < 3; ++¢)
+      assert arrdb[¢].equals(arrd1[¢]);
+    assert box.box(56.0f).equals(box.box((float) 56));
+    final Float[] arrfb = box.box(new float[] { 56f, 50f, 40f }), arrf1 = { box.box(56f), box.box(50f), box.box(40f) };
+    for (int ¢ = 0; ¢ < 3; ++¢)
+      assert arrfb[¢].equals(arrf1[¢]);
+    assert box.box(56).equals(box.box(56));
+    final Integer[] arrib = box.box(new int[] { 56, 50, 40 }), arri1 = { box.box(56), box.box(50), box.box(40) };
+    for (int j = 0; j < 3; ++j)
+      assert arrib[j].equals(arri1[j]);
+    assert box.box(56L).equals(box.box(56L));
+    final Long[] arrlb = box.box(new long[] { 56L, 50L, 40L }), arrl1 = { box.box(56L), box.box(50L), box.box(40L) };
+    for (int j = 0; j < 3; ++j)
+      assert arrlb[j].equals(arrl1[j]);
+    assert box.box((short) 5).equals(Short.valueOf("5"));
+    final Short[] arrsb = box.box(new short[] { 5, 6, 7 }), arrs1 = { box.box((short) 5), box.box((short) 6), box.box((short) 7) };
+    for (int j = 0; j < 3; ++j)
+      assert arrsb[j].equals(arrs1[j]);
+    assert box.box(true).equals(box.it(true));
+    final Boolean[] ITb2 = box.it(new boolean[] { true, false, true }), ITarr1 = { box.box(true), box.box(false), box.box(true) };
+    for (int j = 0; j < 3; ++j)
+      assert ITb2[j].equals(ITarr1[j]);
     final byte ITnum = 10;
-    final Byte ITby = box.it(ITnum);
-    final Byte ITn = box.box(ITnum);
-    azzert.that(ITby.equals(ITn), is(true));
-    final byte[] ITarrb = { 10, 1, 4 };
-    final Byte[] ITarrBy = box.it(ITarrb);
-    final Byte[] ITarrb1 = { box.box((byte) 10), box.box((byte) 1), box.box((byte) 4) };
-    for (int j = 0; j < 3; j++)
-      azzert.that(ITarrBy[j].equals(ITarrb1[j]), is(true));
-    final Character ITcb = box.it('a');
-    final Character ITc1 = box.box('a');
-    azzert.that(ITcb.equals(ITc1), is(true));
-    final char[] ITarrc = { 'a', 'b', 'c' };
-    final Character[] ITarrcb = box.it(ITarrc);
-    final Character[] ITarrc1 = { box.box('a'), box.box('b'), box.box('c') };
-    for (int j = 0; j < 3; j++)
-      azzert.that(ITarrcb[j].equals(ITarrc1[j]), is(true));
-    final Double ITdb = box.it(5.0);
-    final Double ITd1 = box.box(5.0);
-    azzert.that(ITdb.equals(ITd1), is(true));
-    final double[] ITarrd = { 5.0, 6.1, 7.2 };
-    final Double[] ITarrdb = box.it(ITarrd);
-    final Double[] ITarrd1 = { box.box(5.0), box.box(6.1), box.box(7.2) };
-    for (int j = 0; j < 3; j++)
-      azzert.that(ITarrdb[j].equals(ITarrd1[j]), is(true));
-    final float ITf = 56;
-    final Float ITfb = box.it(ITf);
-    final Float ITf1 = box.box((float) 56);
-    azzert.that(ITfb.equals(ITf1), is(true));
-    final float[] ITarrf = { 56f, 50f, 40f };
-    final Float[] ITarrfb = box.it(ITarrf);
-    final Float[] ITarrf1 = { box.box(56f), box.box(50f), box.box(40f) };
-    for (int j = 0; j < 3; j++)
-      azzert.that(ITarrfb[j].equals(ITarrf1[j]), is(true));
-    final int ITi = 56;
-    final Integer ITib = box.it(ITi);
-    final Integer ITi1 = box.box(56);
-    azzert.that(ITib.equals(ITi1), is(true));
-    final int[] ITarri = { 56, 50, 40 };
-    final Integer[] ITarrib = box.it(ITarri);
-    final Integer[] ITarri1 = { box.box(56), box.box(50), box.box(40) };
-    for (int j = 0; j < 3; j++)
-      azzert.that(ITarrib[j].equals(ITarri1[j]), is(true));
-    final long ITl = 56;
-    final Long ITlb = box.it(ITl);
-    final Long ITl1 = box.box((long) 56);
-    azzert.that(ITlb.equals(ITl1), is(true));
-    final long[] ITarrl = { 56L, 50L, 40L };
-    final Long[] ITarrlb = box.it(ITarrl);
-    final Long[] ITarrl1 = { box.box(56L), box.box(50L), box.box(40L) };
-    for (int j = 0; j < 3; j++)
-      azzert.that(ITarrlb[j].equals(ITarrl1[j]), is(true));
-    final short ITs = 5;
-    final Short ITsb = box.it(ITs);
-    final Short ITs1 = Short.valueOf("5");
-    azzert.that(ITsb.equals(ITs1), is(true));
-    final short[] ITarrs = { 5, 6, 7 };
-    final Short[] ITarrsb = box.it(ITarrs);
-    final Short[] ITarrs1 = { box.box((short) 5), box.box((short) 6), box.box((short) 7) };
-    for (int j = 0; j < 3; j++)
-      azzert.that(ITarrsb[j].equals(ITarrs1[j]), is(true));
+    assert box.it(ITnum).equals(box.box(ITnum));
+    final Byte[] ITarrBy = box.it(new byte[] { 10, 1, 4 }), ITarrb1 = { box.box((byte) 10), box.box((byte) 1), box.box((byte) 4) };
+    for (int j = 0; j < 3; ++j)
+      assert ITarrBy[j].equals(ITarrb1[j]);
+    assert box.it('a').equals(box.box('a'));
+    final Character[] ITarrcb = box.it(new char[] { 'a', 'b', 'c' }), ITarrc1 = { box.box('a'), box.box('b'), box.box('c') };
+    for (int j = 0; j < 3; ++j)
+      assert ITarrcb[j].equals(ITarrc1[j]);
+    assert box.it(5.0).equals(box.box(5.0));
+    final Double[] ITarrdb = box.it(new double[] { 5.0, 6.1, 7.2 }), ITarrd1 = { box.box(5.0), box.box(6.1), box.box(7.2) };
+    for (int j = 0; j < 3; ++j)
+      assert ITarrdb[j].equals(ITarrd1[j]);
+    assert box.it(56.0f).equals(box.box((float) 56));
+    final Float[] ITarrfb = box.it(new float[] { 56f, 50f, 40f }), ITarrf1 = { box.box(56f), box.box(50f), box.box(40f) };
+    for (int j = 0; j < 3; ++j)
+      assert ITarrfb[j].equals(ITarrf1[j]);
+    assert box.it(56).equals(box.box(56));
+    final Integer[] ITarrib = box.it(new int[] { 56, 50, 40 }), ITarri1 = { box.box(56), box.box(50), box.box(40) };
+    for (int j = 0; j < 3; ++j)
+      assert ITarrib[j].equals(ITarri1[j]);
+    assert box.it(56L).equals(box.box(56L));
+    final Long[] ITarrlb = box.it(new long[] { 56L, 50L, 40L }), ITarrl1 = { box.box(56L), box.box(50L), box.box(40L) };
+    for (int j = 0; j < 3; ++j)
+      assert ITarrlb[j].equals(ITarrl1[j]);
+    assert box.it((short) 5).equals(Short.valueOf("5"));
+    for (int j = 0; j < 3; ++j)
+      assert box.it(new short[] { 5, 6, 7 })[j].equals((new Short[] { box.box((short) 5), box.box((short) 6), box.box((short) 7) })[j]);
   }
 }

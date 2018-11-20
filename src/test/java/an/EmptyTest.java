@@ -6,12 +6,12 @@ import fluent.ly.*;
 
 @SuppressWarnings("static-method") public class EmptyTest {
   @Test public void testListEmpty() {
-    azzert.assertTrue(empty.list().isEmpty());
-    azzert.assertTrue(empty.list().isEmpty());
+    assert empty.list().isEmpty();
+    assert empty.list().isEmpty();
   }
 
   @Test public void testIterator() {
-    azzert.assertTrue(!empty.iterable().iterator().hasNext());
+    assert !empty.iterable().iterator().hasNext();
     azzert.assertNull(empty.iterable().iterator().next());
   }
 }

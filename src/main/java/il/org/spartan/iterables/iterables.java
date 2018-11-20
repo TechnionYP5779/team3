@@ -58,7 +58,7 @@ public enum iterables {
       }
 
       @Override public T next() {
-        return current++ % 2 == 0 ? (i1.hasNext() ? i1 : i2).next() : (i2.hasNext() ? i2 : i1).next();
+        return (current++ % 2 == 0 ? i1.hasNext() ? i1 : i2 : i2.hasNext() ? i2 : i1).next();
       }
     } : it1 == null ? it2 : it1;
   }
