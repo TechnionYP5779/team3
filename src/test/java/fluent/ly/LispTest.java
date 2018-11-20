@@ -1,10 +1,9 @@
-package tests;
+package fluent.ly;
 
 import java.util.*;
 
 import org.junit.*;
 
-import fluent.ly.*;
 
 public class LispTest {
   @SuppressWarnings({ "static-method", "boxing", "null" }) @Test public void test() {
