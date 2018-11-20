@@ -47,7 +47,7 @@ import org.junit.*;
   @Test public void asIteretableTest() {
     Integer val = box.box(1);
     for (final Integer ¢ : as.asIterable(box.box(1), box.box(2), box.box(3))) {
-      azzert.assertTrue(¢.equals(val));
+      assert ¢.equals(val);
       val = box.box(val.intValue() + 1);
     }
   }
@@ -55,25 +55,23 @@ import org.junit.*;
   @Test public void asIteretableLambdaTest() {
     Integer val = box.box(1);
     for (final Integer ¢ : as.asIterableLambda(box.box(1), box.box(2), box.box(3))) {
-      azzert.assertTrue(¢.equals(val));
+      assert ¢.equals(val);
       val = box.box(val.intValue() + 1);
     }
   }
 
   @Test public void bitObjectTest() {
-    azzert.assertTrue(as.bit(null) == 0);
-    azzert.assertTrue(as.bit("false") == 1);
+    assert as.bit(null) == 0;
+    assert as.bit("false") == 1;
   }
 
-  @SuppressWarnings("unlikely-arg-type") @Test public void setTest() {
+  @Test @SuppressWarnings("unlikely-arg-type") public void setTest() {
     final Set<? extends String> s1 = as.set("a", "b", "c");
-    azzert.assertTrue(s1.size() == 3);
-    azzert.assertTrue(s1.containsAll(as.list("a", "b", "c")));
+    assert s1.size() == 3;
+    assert s1.containsAll(as.list("a", "b", "c"));
   }
 
   @Test public void stringsTest() {
-    final String[] expected = new String[] { "a", "b", "c", "1" };
-    final String[] actual = as.strings(as.list("a", "b", "c", box.box(1), null));
-    assertArrayEquals(expected, actual);
+    assertArrayEquals(new String[] { "a", "b", "c", "1" }, as.strings(as.list("a", "b", "c", box.box(1), null)));
   }
 }

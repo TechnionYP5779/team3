@@ -7,14 +7,14 @@ import org.junit.*;
 import fluent.ly.*;
 import il.org.spartan.etc.idiomatic.*;
 
-@SuppressWarnings("static-method") public class Idiomatic_test {
-
+@SuppressWarnings("static-method")
+public class IdiomaticTest {
   @Test public void use0() {
     assert new Storer<>(this) != null;
   }
 
   @Test public void use08() {
-    azzert.isNull(idiomatic.unless(true).eval(() -> new Object()));
+    isNull(idiomatic.unless(true).eval(() -> new Object()));
   }
 
   @Test public void use09() {
@@ -31,21 +31,21 @@ import il.org.spartan.etc.idiomatic.*;
   }
 
   @Test public void use11() {
-    azzert.isNull(idiomatic.when(false).eval(() -> new Object()));
+    isNull(idiomatic.when(false).eval(() -> new Object()));
   }
 
   @Test public void use12() {
     assert "'ABBA'".equals(idiomatic.quote("ABBA"));
   }
 
-  @Test public void use13() {
-    assert idiomatic.incase(true, box.box(4)) == box.box(4);
-    assert idiomatic.incase(false, box.box(4)) == null;
+  @Test @SuppressWarnings("boxing") public void use13() {
+    assert idiomatic.incase(true, 4) == 4;
+    assert idiomatic.incase(false, 4) == null;
   }
 
   @Test public void use2() {
     assert idiomatic.take(this) != null;
-    azzert.isNull(idiomatic.take(this).when(false));
+    isNull(idiomatic.take(this).when(false));
   }
 
   @Test public void use3() {
@@ -53,7 +53,7 @@ import il.org.spartan.etc.idiomatic.*;
   }
 
   @Test public void use4() {
-    azzert.isNull(idiomatic.take(this).when(false));
+    isNull(idiomatic.take(this).when(false));
   }
 
   @Test public void use5() {
@@ -61,22 +61,22 @@ import il.org.spartan.etc.idiomatic.*;
   }
 
   @Test public void use6() {
-    azzert.isNull(idiomatic.take(this).unless(true));
+    isNull(idiomatic.take(this).unless(true));
   }
 
   @Test public void use7() {
-    azzert.isNull(idiomatic.take(this).unless(true));
-    azzert.isNull(idiomatic.take(null).unless(true));
-    azzert.isNull(idiomatic.take(null).unless(false));
+    isNull(idiomatic.take(this).unless(true));
+    isNull(idiomatic.take(null).unless(true));
+    isNull(idiomatic.take(null).unless(false));
   }
 
   @Test public void use14() {
-    assert idiomatic.eval(() -> "12534").get().equals("12534");
+    assert "12534".equals(idiomatic.eval(() -> "12534").get());
   }
 
-  @Test public void use15() {
-    assert idiomatic.unless(true, box.box(4)) == null;
-    assert idiomatic.unless(false, box.box(4)) == box.box(4);
+  @Test @SuppressWarnings("boxing") public void use15() {
+    assert idiomatic.unless(true, 4) == null;
+    assert idiomatic.unless(false, 4) == 4;
   }
 
   @Test public void use16() {
@@ -90,8 +90,6 @@ import il.org.spartan.etc.idiomatic.*;
   }
 
   @Test public void use18() {
-    assert idiomatic.run(() -> {
-      return;
-    }) != null;
+    assert idiomatic.run(() -> System.out.println("Runnable running")) != null;
   }
 }

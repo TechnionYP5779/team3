@@ -4,42 +4,40 @@ import java.io.*;
 
 import org.junit.*;
 
-import fluent.ly.*;
-
 @SuppressWarnings("static-method") public class TruthTest {
   @Test public void testTruthOf() {
-    azzert.assertTrue(Truth.truthOf(() -> true) == Truth.T);
-    azzert.assertTrue(Truth.truthOf(() -> false) == Truth.F);
-    azzert.assertTrue(Truth.truthOf(() -> {
+    assert Truth.truthOf(() -> true) == Truth.T;
+    assert Truth.truthOf(() -> false) == Truth.F;
+    assert Truth.truthOf(() -> {
       throw new NullPointerException();
-    }) == Truth.N);
-    azzert.assertTrue(Truth.truthOf(null) == Truth.N);
-    azzert.assertTrue(Truth.truthOf(() -> {
+    }) == Truth.N;
+    assert Truth.truthOf(null) == Truth.N;
+    assert Truth.truthOf(() -> {
       throw new AssertionError();
-    }) == Truth.X);
-    azzert.assertTrue(Truth.truthOf(() -> {
+    }) == Truth.X;
+    assert Truth.truthOf(() -> {
       throw new RuntimeException();
-    }) == Truth.R);
-    azzert.assertTrue(Truth.truthOf(() -> {
+    }) == Truth.R;
+    assert Truth.truthOf(() -> {
       throw new IOError(null);
-    }) == Truth.Ħ);
+    }) == Truth.Ħ;
   }
 
   @Test public void testLetterOf() {
-    azzert.assertTrue(Truth.letterOf(() -> true).equals(Truth.T + ""));
-    azzert.assertTrue(Truth.letterOf(() -> false).equals(Truth.F + ""));
-    azzert.assertTrue(Truth.letterOf(() -> {
+    assert Truth.letterOf(() -> true).equals(Truth.T + "");
+    assert Truth.letterOf(() -> false).equals(Truth.F + "");
+    assert Truth.letterOf(() -> {
       throw new NullPointerException();
-    }).equals(Truth.N + ""));
-    azzert.assertTrue(Truth.letterOf(null).equals(Truth.N + ""));
-    azzert.assertTrue(Truth.letterOf(() -> {
+    }).equals(Truth.N + "");
+    assert Truth.letterOf(null).equals(Truth.N + "");
+    assert Truth.letterOf(() -> {
       throw new AssertionError();
-    }).equals(Truth.X + ""));
-    azzert.assertTrue(Truth.letterOf(() -> {
+    }).equals(Truth.X + "");
+    assert Truth.letterOf(() -> {
       throw new RuntimeException();
-    }).equals(Truth.R + ""));
-    azzert.assertTrue(Truth.letterOf(() -> {
+    }).equals(Truth.R + "");
+    assert Truth.letterOf(() -> {
       throw new IOError(null);
-    }).equals(Truth.Ħ + ""));
+    }).equals(Truth.Ħ + "");
   }
 }

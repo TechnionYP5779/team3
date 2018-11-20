@@ -6,18 +6,18 @@ import fluent.ly.*;
 
 @SuppressWarnings("static-method") public class AnonymousTest {
   @Test public void usecase0() {
-    azzert.assertTrue(anonymous.ly(() -> true));
+    assert anonymous.ly(() -> true);
   }
 
   @Test public void usecase1() {
-    azzert.assertTrue(anonymous.ly(() -> 2) == 2);
+    assert anonymous.ly(() -> 2) == 2;
   }
 
   @Test public void usecase2() {
-    azzert.assertTrue(anonymous.ly(() -> 2.5) == 2.5);
+    assert anonymous.ly(() -> 2.5) == 2.5;
   }
 
   @Test public void usecase3() {
-    azzert.assertTrue("hello".equals(anonymous.ly(() -> "hello")));
+    assert "hello".equals(anonymous.ly(() -> "hello"));
   }
 }

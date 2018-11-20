@@ -24,7 +24,7 @@ public class Rectangle {
     return unbox.unbox(second.first);
   }
 
-  @SuppressWarnings({ "null" }) public double secondY() {
+  @SuppressWarnings("null") public double secondY() {
     return unbox.unbox(second.second);
   }
 

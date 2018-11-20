@@ -7,7 +7,7 @@ import il.org.spartan.utils.*;
  * @author Yossi Gil
  * @since 2017-03-19 */
 public class CountingReduce extends Reduce<Integer> {
-  @SuppressWarnings("null") @Override public final Integer reduce(final Integer i1, final Integer i2) {
+  @Override @SuppressWarnings("null") public final Integer reduce(final Integer i1, final Integer i2) {
     return box.box(unbox.unbox(i1) + unbox.unbox(i2));
   }
 
