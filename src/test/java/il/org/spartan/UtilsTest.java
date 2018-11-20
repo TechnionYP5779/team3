@@ -24,7 +24,7 @@ import il.org.spartan.Utils.FoundHandleForT.*;
     azzert.nay(ss.contains("E"));
     azzert.nay(ss.contains(null));
     azzert.that(ss.size(), is(4));
-    for (final @NotNull String ¢ : ss)
+    for (final String ¢ : ss)
       azzert.aye("", ss.contains(¢));
   }
 
@@ -34,7 +34,7 @@ import il.org.spartan.Utils.FoundHandleForT.*;
     azzert.nay(ss.contains("E"));
     azzert.nay(ss.contains(null));
     azzert.that(ss.size(), is(4));
-    for (final @NotNull String ¢ : ss)
+    for (final String ¢ : ss)
       azzert.aye("", ss.contains(¢));
     azzert.aye(ss.contains("A"));
   }
@@ -86,19 +86,19 @@ import il.org.spartan.Utils.FoundHandleForT.*;
   }
 
   @Test public void swapDegenerate() {
-    final @NotNull String @NotNull [] ss = as.array("A", "B", "C", "D");
+    final String [] ss = as.array("A", "B", "C", "D");
     Utils.swap(ss, 1, 1);
     azzert.assertCollectionsEqual(as.list("A", "B", "C", "D"), ss);
   }
 
   @Test public void swapTypical() {
-    final @NotNull String @NotNull [] ss = as.array("A", "B", "C", "D");
+    final String [] ss = as.array("A", "B", "C", "D");
     Utils.swap(ss, 1, 2);
     azzert.assertCollectionsEqual(as.list("A", "C", "B", "D"), ss);
   }
 
   @Test public void swapTypicalCase() {
-    final Integer @NotNull [] $ = intToIntegers(29, 1, 60);
+    final @NotNull Integer [] $ = intToIntegers(29, 1, 60);
     Utils.swap($, 0, 1);
     azzert.assertCollectionsEqual(as.list(intToIntegers(1, 29, 60)), $);
   }
@@ -139,11 +139,11 @@ import il.org.spartan.Utils.FoundHandleForT.*;
   }
 
   @Test public void removeFromArrayTest() {
-    assert Utils.delete(new String[] { "1", "2", "3" }, 1).length == 2;
+    assert Utils.delete(new @NotNull String[] { "1", "2", "3" }, 1).length == 2;
   }
 
   @Test public void appendToArrayTest() {
-    assert Utils.append(new String[] { "1", "2", "3" }, "5").length == 4;
+    assert Utils.append(new @NotNull String[] { "1", "2", "3" }, "5").length == 4;
   }
 
   @Test public void test2() {

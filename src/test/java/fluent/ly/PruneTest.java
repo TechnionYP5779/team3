@@ -86,28 +86,6 @@ import il.org.spartan.etc.*;
     $.add(null);
     return $;
   };
-  @NotNull private final List<String> sparseCollection1 = new Supplier<List<String>>() {
-    @Override @NotNull public List<String> get() {
-      @NotNull final List<String> $ = an.empty.list();
-      $.add(null);
-      $.add(null);
-      $.add(null);
-      $.add(null);
-      $.add(null);
-      $.add("A");
-      $.add(null);
-      $.add(null);
-      $.add(null);
-      $.add("B");
-      $.add(null);
-      $.add("C");
-      $.add(null);
-      $.add(null);
-      $.add(null);
-      $.add(null);
-      return $;
-    }
-  }.get();
 
   @Test public void testNotNullArrayItems() {
     azzert.that(prune.nulls(Utils.cantBeNull(nonNullArray))[0], is("1"));

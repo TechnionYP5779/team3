@@ -2,8 +2,6 @@ package fluent.ly;
 
 import org.junit.*;
 
-import il.org.spartan.etc.*;
-
 @SuppressWarnings({ "static-method" }) public class MaybeTest {
   @Test public void usecase0() {
     azzert.isNull(maybe.no().get());
