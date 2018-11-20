@@ -1,4 +1,4 @@
-package tests;
+package il.org.spartan.utils;
 
 import org.junit.*;
 
