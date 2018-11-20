@@ -127,25 +127,4 @@ import il.org.spartan.*;
     out.out("--END OBJECT--\n\n");
     System.out.flush();
   }
-
-  public static void main(final @NotNull String[] args) {
-    // Explore.go(Package.class);
-    final ClassLoadingMXBean a = ManagementFactory.getClassLoadingMXBean();
-    System.out.println(a.getLoadedClassCount());
-    System.out.println(a.getTotalLoadedClassCount());
-    System.out.println(a.getUnloadedClassCount());
-    dump.go(ManagementFactory.getClassLoadingMXBean());
-    final CompilationMXBean b = ManagementFactory.getCompilationMXBean();
-    System.out.println(b.getTotalCompilationTime());
-    System.out.println(b.getName());
-    System.out.println(b.isCompilationTimeMonitoringSupported());
-    System.exit(1);
-    dump.go(ManagementFactory.getGarbageCollectorMXBeans());
-    dump.go(ManagementFactory.getMemoryManagerMXBeans());
-    dump.go(ManagementFactory.getMemoryPoolMXBeans());
-    dump.go(ManagementFactory.getOperatingSystemMXBean());
-    dump.go(ManagementFactory.getPlatformMBeanServer());
-    dump.go(ManagementFactory.getRuntimeMXBean());
-    dump.go(ManagementFactory.getThreadMXBean());
-  }
 }

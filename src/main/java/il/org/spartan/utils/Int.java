@@ -15,7 +15,6 @@ public final class Int {
   }
 
   public Int() {
-    
   }
 
   /** Function form, good substitute for auto-boxing */
