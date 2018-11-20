@@ -1,4 +1,4 @@
-package il.org.spartan.etc;
+package fluent.ly;
 
 public interface count {
   static <T> int of(final Iterable<T> ts) {
