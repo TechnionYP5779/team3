@@ -1,5 +1,5 @@
 package il.org.spartan.etc;
-
+import static il.org.spartan.Utils.*;
 import fluent.ly.*;
 import il.org.spartan.utils.*;
 
@@ -7,8 +7,8 @@ import il.org.spartan.utils.*;
  * @author Yossi Gil
  * @since 2017-03-19 */
 public class CountingReduce extends Reduce<Integer> {
-  @Override @SuppressWarnings("null") public final Integer reduce(final Integer i1, final Integer i2) {
-    return box.box(unbox.unbox(i1) + unbox.unbox(i2));
+  @Override public final Integer reduce(final Integer i1, final Integer i2) {
+    return box.box(unbox.unbox(cantBeNull(i1)) + unbox.unbox(cantBeNull(i2)));
   }
 
   @Override public final Integer reduce() {

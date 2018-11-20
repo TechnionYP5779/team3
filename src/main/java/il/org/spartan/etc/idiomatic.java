@@ -30,7 +30,7 @@ public interface idiomatic {
    * @param   <T> JD
    * @param $ result
    * @return an identical supplier which is also a {@link Holder} */
-  static <T> Holder<T> eval(final @NotNull Supplier<@Nullable T> $) {
+  static <T> Holder<T> eval(final @NotNull Supplier< T> $) {
     return () -> $.get();
   }
 
@@ -96,7 +96,7 @@ public interface idiomatic {
      * @param unless condition on which value is returned
      * @return {@link #get()} when the parameter is <code><b>true</b></code> ,
      *         otherwise code><b>null</b></code>. */
-    @Nullable default T unless(final boolean unless) {
+    default T unless(final boolean unless) {
       return when(!unless);
     }
 

@@ -1,5 +1,5 @@
 package il.org.spartan.etc;
-
+import static il.org.spartan.Utils.*;
 import java.text.*;
 import java.util.*;
 import java.util.function.*;
@@ -14,7 +14,7 @@ import il.org.spartan.utils.*;
 /** Utility class for linguistic issues. Used by GUI dialogs.
  * @author Ori Roth
  * @since 2.6 */
-@SuppressWarnings("null") public interface English {
+public interface English {
   interface Inflection {
     static Inflection stem(final @NotNull String base) {
       return new Inflection() {
@@ -51,9 +51,9 @@ import il.org.spartan.utils.*;
   }
 
   @NotNull static String indefinite(final @NotNull String className) {
-    final @NotNull String $ = cCamelCase.components(className)[0];
+    final @NotNull String $ = cantBeNull(cCamelCase.components(className)[0]);
     final char openingLetter = the.characterOf($);
-    return isAcronym($) ? indefinite(pronounce(openingLetter)) : //
+    return isAcronym($) ? indefinite(cantBeNull(pronounce(openingLetter))) : //
         (Utils.intIsIn(openingLetter, 'i', 'e', 'o', 'u', 'y') ? "an" : "a") + " " + className;
   }
 
@@ -64,9 +64,9 @@ import il.org.spartan.utils.*;
   /** Constructs linguistic list of items: [i1, i2, i3] --> "i1, i2 and i3"
    * @param ¢ list of items
    * @return a linguistic list of the items */
-  @NotNull static String list(final List<String> ¢) {
+  @NotNull static String list(final List<@NotNull String> ¢) {
     return ¢ == null || ¢.isEmpty() ? "nothing"
-        : ¢.size() == 1 ? the.headOf(¢) : separate.these(¢.subList(0, ¢.size() - 1)).by(SEPARATOR) + " and " + the.lastOf(¢);
+        : ¢.size() == 1 ? the.headOf(¢) : separate.these(cantBeNull(¢.subList(0, ¢.size() - 1))).by(SEPARATOR) + " and " + the.lastOf(¢);
   }
 
   @NotNull static String lowerFirstLetter(final @NotNull String input) {
@@ -74,7 +74,7 @@ import il.org.spartan.utils.*;
   }
 
   @NotNull static String name(final Class<?> ¢) {
-    return ¢.getEnclosingClass() == null ? English.selfName(¢) : English.selfName(¢) + "." + name(¢.getEnclosingClass());
+    return ¢.getEnclosingClass() == null ? cantBeNull(English.selfName(¢)) : English.selfName(¢) + "." + name(¢.getEnclosingClass());
   }
 
   @NotNull static String name(final @Nullable Object ¢) {
@@ -205,11 +205,11 @@ import il.org.spartan.utils.*;
   /** Cut string's suffix to maximal length for every row.
    * @param s JD
    * @return cut string */
-  static String trim(final @Nullable String s) {
+  static String trim(final String s) {
     if (s == null)
       return null;
-    final @NotNull String @NotNull [] $ = s.split("\n");
-    IntStream.range(0, $.length).forEach(λ -> $[λ] = trimAbsolute($[λ], TRIM_THRESHOLD, TRIM_SUFFIX));
+    final String @NotNull [] $ = cantBeNull(s.split("\n"));
+    IntStream.range(0, $.length).forEach(λ -> $[λ] = trimAbsolute(cantBeNull($[λ]), TRIM_THRESHOLD, cantBeNull(TRIM_SUFFIX)));
     return String.join("\n", $);
   }
 

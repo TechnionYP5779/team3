@@ -1,5 +1,7 @@
 package il.org.spartan.etc;
 
+import static il.org.spartan.Utils.*;
+
 import org.jetbrains.annotations.*;
 
 import fluent.ly.*;
@@ -14,8 +16,8 @@ public interface cCamelCase {
     return javaName.split(JAVA_CAMEL_CASE_SEPARATOR);
   }
 
-  @SuppressWarnings("null") static String lastComponent(final Class<?> ¢) {
-    return lastComponent(¢.getCanonicalName());
+  static String lastComponent(final Class<?> ¢) {
+    return lastComponent(cantBeNull(¢.getCanonicalName()));
   }
 
   static String lastComponent(final @NotNull String fullClassName) {

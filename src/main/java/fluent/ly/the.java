@@ -1,5 +1,5 @@
 package fluent.ly;
-
+import static il.org.spartan.Utils.*;
 import static il.org.spartan.etc.idiomatic.*;
 
 import static fluent.ly.___.*;
@@ -12,10 +12,10 @@ import org.jetbrains.annotations.*;
  * @author Yossi Gil
  * @since 2017-04-12 */
 public interface the {
-  @SuppressWarnings("null") static int index(final int i, final int... is) {
+  static int index(final int i, final int... is) {
     for (final Integer $ : range.from(0).to(is.length))
-      if (is[unbox.unbox($)] == i)
-        return unbox.unbox($);
+      if (is[unbox.unbox(cantBeNull($))] == i)
+        return unbox.unbox(cantBeNull($));
     return -1;
   }
 
@@ -79,7 +79,7 @@ public interface the {
     return s.charAt(i);
   }
 
-  @Contract("null -> null") @Nullable static <@Nullable T> T lastOf(final @Nullable List<@Nullable T> ¢) {
+  @Contract("null -> null") @Nullable static < T> T lastOf(final  List< T> ¢) {
     return ¢ == null || ¢.isEmpty() ? null : ¢.get(¢.size() - 1);
   }
 
@@ -146,7 +146,7 @@ public interface the {
    * @param ¢ JD
    * @return last item in a list or <code><b>null</b></code> if the parameter is
    *         <code><b>null</b></code> or empty */
-  @SuppressWarnings("null") static <T> @Nullable T last(final @Nullable List<T> ¢) {
+  static <T>  T last(final  List<T> ¢) {
     return eval(() -> ¢.get(¢.size() - 1)).unless(¢ == null || ¢.isEmpty());
   }
 

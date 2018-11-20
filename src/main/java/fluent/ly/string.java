@@ -1,5 +1,5 @@
 package fluent.ly;
-
+import static il.org.spartan.Utils.*;
 import static fluent.ly.___.*;
 
 import java.io.*;
@@ -92,7 +92,7 @@ public enum string {
   @NotNull public static String expandLeadingTabs(final @NotNull String s) {
     nonnull(s);
     for (@NotNull String $ = s;;) {
-      @SuppressWarnings("null") final @NotNull String newValue = $.replaceAll("(?m)^([\t]*)\t", "$1    ");
+      final @NotNull String newValue = cantBeNull($.replaceAll("(?m)^([\t]*)\t", "$1    "));
       if ($.equals(newValue))
         return $;
       $ = newValue;

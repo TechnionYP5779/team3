@@ -22,10 +22,10 @@ import fluent.ly.*;
  *
  * @author Yossi Gil
  * @since 27/08/2008 */
-@SuppressWarnings("null") public enum prune {
+public enum prune {
   ;
   @NotNull private static String @NotNull [] asArrray(final @NotNull List<String> $) {
-    return cantBeNull($.toArray(new String[0]));
+    return cantBeNull($.toArray(new @NotNull String [0]));
   }
 
   @NotNull public static <T, C extends Collection<T>> C nulls(final @NotNull C $) {
@@ -43,10 +43,10 @@ import fluent.ly.*;
     return $;
   }
 
-  @NotNull public static <T> T[] nulls(final T[] ts) {
+  @NotNull @SuppressWarnings("null") public static <T> T[] nulls(final T[] ts) {
     final @NotNull List<@NotNull T> $ = new ArrayList<>();
     if (ts != null)
-      for (final @Nullable T ¢ : ts)
+      for (final T ¢ : ts)
         if (¢ != null)
           $.add(¢);
     return cantBeNull($.toArray(shrink(ts)));
