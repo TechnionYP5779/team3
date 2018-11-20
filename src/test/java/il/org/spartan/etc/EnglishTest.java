@@ -1,13 +1,15 @@
 package il.org.spartan.etc;
 
+import static fluent.ly.box.*;
+
 import java.util.*;
 
 import org.junit.*;
 
 import il.org.spartan.utils.*;
 
-public class EnglishTest {
-  @Test @SuppressWarnings("static-method") public void basic_test() {
+@SuppressWarnings("static-method") public class EnglishTest {
+  @Test public void basic_test() {
     final String abc = "abc", zero = "";
     assert ("abc".equals(English.Inflection.stem(abc).get()));
     assert ("".equals(English.Inflection.stem(zero).get()));
@@ -60,14 +62,14 @@ public class EnglishTest {
     assert ("2 verbs".equals(English.plurals("verb", new Int(2))));
     assert ("one verb".equals(English.plurals("verb", new Int(1))));
     assert ("??? verbs".equals(English.plurals("verb", (Int) null)));
-    assert ("2 verbs".equals(English.plurals("verb", Integer.valueOf(2))));
-    assert ("one verb".equals(English.plurals("verb", Integer.valueOf(1))));
+    assert ("2 verbs".equals(English.plurals("verb", box(2))));
+    assert ("one verb".equals(English.plurals("verb", box(1))));
     assert ("??? verbs".equals(English.plurals("verb", (Integer) null)));
     assert ("2 verbes".equals(English.plurales("verb", new Int(2))));
     assert ("one verb".equals(English.plurales("verb", new Int(1))));
     assert ("??? verbes".equals(English.plurales("verb", (Int) null)));
-    assert ("2 verbes".equals(English.plurales("verb", Integer.valueOf(2))));
-    assert ("one verb".equals(English.plurales("verb", Integer.valueOf(1))));
+    assert ("2 verbes".equals(English.plurales("verb", box(2))));
+    assert ("one verb".equals(English.plurales("verb", box(1))));
     assert ("??? verbes".equals(English.plurales("verb", (Integer) null)));
     assert ("String".equals(English.name("1".getClass())));
     assert ("String".equals(English.name("1".getClass())));

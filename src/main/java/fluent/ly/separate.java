@@ -94,13 +94,6 @@ import il.org.spartan.etc.*;
     return new SeparationSubject(¢);
   }
 
-  static <T> void assertEquals(final @NotNull String reason, final T t1, final T t2) {
-    azzert.that(reason, t2, is(t1));
-  }
-
-  static <T> void assertEquals(final T t1, final T t2) {
-    azzert.that(t2, is(t1));
-  }
 
   static void assertFalse(final boolean ¢) {
     azzert.nay(¢);

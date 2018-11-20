@@ -18,10 +18,6 @@ import il.org.spartan.etc.*;
 @SuppressWarnings("static-method") public class SeperateTest {
   private static final Function<String, String> quote = λ -> "'" + λ + "'";
 
-  static <T> void assertEquals(final @NotNull String reason, final T t1, final T t2) {
-    azzert.that(reason, t2, is(t1));
-  }
-
   @Test public final void asArrayBetweenChar() {
     azzert.that(separate.these(Utils.cantBeNull(as.array("Hello", "World"))).by(','), is("Hello,World"));
   }
