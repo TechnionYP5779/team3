@@ -3,8 +3,8 @@ package il.org.spartan.utils;
 import org.junit.*;
 import il.org.spartan.etc.*;
 
-public class RectangleTest {
-  @Test @SuppressWarnings("static-method") public void test() {
+@SuppressWarnings("static-method")public class RectangleTest {
+  @Test public void test() {
     final Rectangle rec = new Rectangle(1.0, 1.0, 2.0, 2.0);
     assert rec != null;
     assert rec.firstX() == 1.0;
