@@ -222,7 +222,7 @@ import il.org.spartan.*;
 
   default String recordSeparator() {
     return tab();
-  }s
+  }
 
   default String render(final Statistic ¢) {
     return ¢ + "";
