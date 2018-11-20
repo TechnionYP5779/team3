@@ -1,7 +1,7 @@
 package fluent.ly;
 
 import static fluent.ly.azzert.*;
-
+import static fluent.ly.box.*;
 import java.util.function.*;
 
 import org.junit.*;
@@ -21,11 +21,11 @@ import org.junit.*;
   }
 
   @Test public void usecase3() {
-    azzert.isNull(nil.forgetting(box.box(1), box.box(4), "hi"));
+    azzert.isNull(nil.forgetting(box(1), box(4), "hi"));
   }
 
   @Test public void usecase4() {
-    azzert.isNull(nil.guardingly(λ -> box.box("hi".equals(λ))).on(null));
+    azzert.isNull(nil.guardingly(λ -> box("hi".equals(λ))).on(null));
   }
   @Test public void t() {
     final Integer i1 = nil.guardingly(String::length).on(helloString);
