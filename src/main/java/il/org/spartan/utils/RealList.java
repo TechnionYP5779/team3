@@ -49,7 +49,7 @@ public class RealList {
     List<Pair<Double, Double>> $ = new ArrayList<>(li);
     Collections.sort($, new Comparator<Pair<Double, Double>>() {
       @Override public int compare(final Pair<Double, Double> first, final Pair<Double, Double> second) {
-        return (( first.second).intValue() - ( second.second).intValue());
+        return (first.second.intValue() - second.second.intValue());
       }
     });
     return $.iterator();

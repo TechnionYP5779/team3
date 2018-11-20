@@ -5,26 +5,22 @@ import java.io.*;
 
 import org.junit.*;
 
-public class FileUtilsTest {
-  @SuppressWarnings("resource") @Test public void test() {
+@SuppressWarnings("static-method") public class FileUtilsTest {
+  @Test @SuppressWarnings("resource") public void test() {
     try {
-    PrintWriter writer = new PrintWriter("the-file-name.txt", "UTF-8");
-    writer.println("The first line");
-
-    writer.close();
-    assert(FileUtils.findAllJavaFiles("").isEmpty());
-    }
-    catch(Exception e) {
-      e.printStackTrace();
+      PrintWriter writer = new PrintWriter("the-file-name.txt", "UTF-8");
+      writer.println("The first line");
+      writer.close();
+      assert (FileUtils.findAllJavaFiles("").isEmpty());
+    } catch (Exception ¢) {
+      ¢.printStackTrace();
     }
     try {
-      assert(FileUtils.read("the-file-name.txt")!=null);
-      FileUtils.writeToFile("the-file-name.txt","The second line");
-      assert(FileUtils.read("the-file-name.txt").equals("The second line"));
-      
-      
-    } catch (IOException e) {
-      e.printStackTrace();
+      assert (FileUtils.read("the-file-name.txt") != null);
+      FileUtils.writeToFile("the-file-name.txt", "The second line");
+      assert ("The second line".equals(FileUtils.read("the-file-name.txt")));
+    } catch (IOException ¢) {
+      ¢.printStackTrace();
     }
   }
 
