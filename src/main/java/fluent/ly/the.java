@@ -146,7 +146,7 @@ public interface the {
    * @param ¢ JD
    * @return last item in a list or <code><b>null</b></code> if the parameter is
    *         <code><b>null</b></code> or empty */
-  static <T>  T last(final  List<T> ¢) {
+  static <T>  @Nullable T last(final  List<T> ¢) {
     return eval(() -> ¢.get(¢.size() - 1)).unless(¢ == null || ¢.isEmpty());
   }
 

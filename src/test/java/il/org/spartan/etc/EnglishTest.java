@@ -4,6 +4,7 @@ import static fluent.ly.box.*;
 
 import java.util.*;
 
+import org.jetbrains.annotations.*;
 import org.junit.*;
 
 import il.org.spartan.utils.*;
@@ -74,11 +75,11 @@ import il.org.spartan.utils.*;
     assert ("String".equals(English.name("1".getClass())));
     assert ("String".equals(English.name("1".getClass())));
     assert (English.isAcronym("212"));
-    List<String> li = new ArrayList<>();
+    List<@NotNull String> li = new ArrayList<>();
     li.add(0, "1");
     li.add(1, "2");
     assert ("1 and 2".equals(English.list(li)));
-    List<String> li2 = new ArrayList<>();
+    List<@NotNull String> li2 = new ArrayList<>();
     li2.add(0, "1");
     assert ("1".equals(English.list(li2)));
     assert ("abc".equals(English.lowerFirstLetter("Abc")));

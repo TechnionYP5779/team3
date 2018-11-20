@@ -1,10 +1,8 @@
 package il.org.spartan.etc;
 import static il.org.spartan.Utils.*;
-import fluent.ly.*;
 import il.org.spartan.utils.*;
 import static fluent.ly.unbox.*;
 import static fluent.ly.box.*;
-import static il.org.spartan.Utils.*;
 /** Reducer that concatenate strings
  * @author Yossi Gil
  * @since 2017-03-19 */

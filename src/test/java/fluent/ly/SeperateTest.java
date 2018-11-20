@@ -12,7 +12,6 @@ import org.junit.*;
 
 import an.*;
 import fluent.ly.separate.*;
-import il.org.spartan.*;
 import il.org.spartan.etc.*;
 
 @SuppressWarnings("static-method") public class SeperateTest {

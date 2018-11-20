@@ -4,7 +4,7 @@ import org.junit.*;
 
 import fluent.ly.*;
 
-@SuppressWarnings({ "null", "static-method" }) public class OuterTest {
+@SuppressWarnings("static-method") public class OuterTest {
   @Test public void outerAdds() {
     final Outer<Integer> o = new Outer<>(box.it(10));
     assert o.equals(new Outer<>(box.it(10)));

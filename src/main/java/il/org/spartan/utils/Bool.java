@@ -1,6 +1,5 @@
 package il.org.spartan.utils;
 
-import fluent.ly.*;
 import static fluent.ly.box.*;
 
 /** A poor man's approximation of a mutable boolean, which is so much more

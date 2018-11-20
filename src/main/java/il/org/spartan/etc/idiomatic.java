@@ -96,7 +96,7 @@ public interface idiomatic {
      * @param unless condition on which value is returned
      * @return {@link #get()} when the parameter is <code><b>true</b></code> ,
      *         otherwise code><b>null</b></code>. */
-    default T unless(final boolean unless) {
+    @Nullable default T unless(final boolean unless) {
       return when(!unless);
     }
 

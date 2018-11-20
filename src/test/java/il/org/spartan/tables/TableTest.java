@@ -1,18 +1,21 @@
 package il.org.spartan.tables;
 
 import org.junit.*;
+
+import fluent.ly.*;
+
 import static il.org.spartan.Utils.*;
 
 @SuppressWarnings({"static-method","resource"}) public class TableTest {
   
   @Test public void Table1() {
-    Integer n = new Integer(11245);
+    Integer n = box.it(11245);
     Table t = new Table(n);
     Table t1= new Table("",TableRenderer.builtin.values()); 
     assert(t.equals(t1));
   }
   @Test public void Table2() {
-    assert(new Table(new Integer(1))!=null);
+    assert(new Table(box.it(1))!=null);
     assert(new Table("1".getClass())!=null);
     assert(new Table("123", TableRenderer.builtin.TEX) != null); 
   }
