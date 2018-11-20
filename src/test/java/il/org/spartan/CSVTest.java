@@ -3,6 +3,7 @@ package il.org.spartan;
 
 import static il.org.spartan.Utils.*;
 import java.io.*;
+import static fluent.ly.box.*;
 
 import org.jetbrains.annotations.*;
 import org.junit.*;
@@ -16,7 +17,7 @@ import fluent.ly.*;
   
   
   @Test public void combine1() {
-    assert "56,50,40".equals(cantBeNull(CSV.combine(cantBeNull(box.box(new int[] { 56, 50, 40 }))))); 
+    assert "56,50,40".equals(cantBeNull(CSV.combine(cantBeNull(box(new int[] { 56, 50, 40 }))))); 
   }
   
    @Test public void combine2() {

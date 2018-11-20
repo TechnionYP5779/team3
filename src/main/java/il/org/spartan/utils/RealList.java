@@ -3,6 +3,9 @@ package il.org.spartan.utils;
 import java.util.*;
 import java.util.stream.*;
 import static il.org.spartan.Utils.*;
+import static fluent.ly.unbox.*;
+import static fluent.ly.box.*;
+
 import fluent.ly.*;
 
 public class RealList {
@@ -17,9 +20,9 @@ public class RealList {
   }
 
   public void record(double d, double e) {
-    li.add(new Pair<>(box.box(d), box.box(e)));
-    x.add(box.box(d));
-    y.add(box.box(e));
+    li.add(new Pair<>(box(d), box(e)));
+    x.add(box(d));
+    y.add(box(e));
   }
 
   public int count() {
@@ -27,11 +30,11 @@ public class RealList {
   }
 
   public static double first(Pair<Double, Double> x) {
-    return unbox.unbox( cantBeNull(x.first));
+    return unbox( cantBeNull(x.first));
   }
 
   public static double second(Pair<Double, Double> x) {
-    return unbox.unbox( cantBeNull(x.second));
+    return unbox( cantBeNull(x.second));
   }
 
   public Iterator<Pair<Double, Double>> iteratorX() {
@@ -56,26 +59,26 @@ public class RealList {
   }
 
   public double LinearRegressionpredict(double predictForDependentVariable) {
-    Integer $ = box.box(x.size());
-    List<Double> xSquared = x.stream().map(position -> box.box(Math.pow(unbox.unbox(cantBeNull(position)), 2))).collect(Collectors.toList()),
-        xMultipliedByY = IntStream.range(0, unbox.unbox(cantBeNull($))).mapToDouble(λ -> unbox.unbox(cantBeNull(x.get(λ))) * unbox.unbox(cantBeNull(y.get(λ)))).boxed()
+    Integer $ = box(x.size());
+    List<Double> xSquared = x.stream().map(position -> box(Math.pow(unbox(cantBeNull(position)), 2))).collect(Collectors.toList()),
+        xMultipliedByY = IntStream.range(0, unbox(cantBeNull($))).mapToDouble(λ -> unbox(cantBeNull(x.get(λ))) * unbox(cantBeNull(y.get(λ)))).boxed()
             .collect(Collectors.toList());
-    Double xSummed = x.stream().reduce((prev, next) -> box.box(unbox.unbox(cantBeNull(prev)) + unbox.unbox(cantBeNull(next)))).get(),
-        ySummed = y.stream().reduce((prev, next) -> box.box(unbox.unbox(cantBeNull(prev)) + unbox.unbox(cantBeNull(next)))).get(),
-        sumOfXMultipliedByY = xMultipliedByY.stream().reduce((prev, next) -> box.box(unbox.unbox(cantBeNull(prev)) + unbox.unbox(cantBeNull(next)))).get();
-    double slopeNominator = unbox.unbox(cantBeNull($)) * unbox.unbox(cantBeNull(sumOfXMultipliedByY)) - unbox.unbox(cantBeNull(ySummed)) * unbox.unbox(cantBeNull(xSummed)),
-        slopeDenominator = unbox.unbox(cantBeNull($))
-            * unbox.unbox(cantBeNull(xSquared.stream().reduce((prev, next) -> box.box(unbox.unbox(cantBeNull(prev)) + unbox.unbox(cantBeNull(next)))).get()))
-            - Math.pow(unbox.unbox(cantBeNull(xSummed)), 2);
+    Double xSummed = x.stream().reduce((prev, next) -> box(unbox(cantBeNull(prev)) + unbox(cantBeNull(next)))).get(),
+        ySummed = y.stream().reduce((prev, next) -> box(unbox(cantBeNull(prev)) + unbox(cantBeNull(next)))).get(),
+        sumOfXMultipliedByY = xMultipliedByY.stream().reduce((prev, next) -> box(unbox(cantBeNull(prev)) + unbox(cantBeNull(next)))).get();
+    double slopeNominator = unbox(cantBeNull($)) * unbox(cantBeNull(sumOfXMultipliedByY)) - unbox(cantBeNull(ySummed)) * unbox(cantBeNull(xSummed)),
+        slopeDenominator = unbox(cantBeNull($))
+            * unbox(cantBeNull(xSquared.stream().reduce((prev, next) -> box(unbox(cantBeNull(prev)) + unbox(cantBeNull(next)))).get()))
+            - Math.pow(unbox(cantBeNull(xSummed)), 2);
     return slopeNominator * predictForDependentVariable / slopeDenominator
-        + (unbox.unbox(cantBeNull(ySummed)) - slopeNominator / slopeDenominator * unbox.unbox(cantBeNull(xSummed))) / unbox.unbox(cantBeNull($));
+        + (unbox(cantBeNull(ySummed)) - slopeNominator / slopeDenominator * unbox(cantBeNull(xSummed))) / unbox(cantBeNull($));
   }
 
   public double averageX() {
-    return x.isEmpty() ? 0 : unbox.unbox(cantBeNull(x.stream().reduce((prev, next) -> box.box(unbox.unbox(cantBeNull(prev)) + unbox.unbox(cantBeNull(next)))).get())) / x.size();
+    return x.isEmpty() ? 0 : unbox(cantBeNull(x.stream().reduce((prev, next) -> box(unbox(cantBeNull(prev)) + unbox(cantBeNull(next)))).get())) / x.size();
   }
 
   public double averageY() {
-    return y.isEmpty() ? 0 : unbox.unbox(cantBeNull(y.stream().reduce((prev, next) -> box.box(unbox.unbox(cantBeNull(prev)) + unbox.unbox(cantBeNull(next)))).get())) / y.size();
+    return y.isEmpty() ? 0 : unbox(cantBeNull(y.stream().reduce((prev, next) -> box(unbox(cantBeNull(prev)) + unbox(cantBeNull(next)))).get())) / y.size();
   }
 }

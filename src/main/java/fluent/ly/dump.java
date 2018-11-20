@@ -1,5 +1,7 @@
 package fluent.ly;
 
+import static il.org.spartan.Utils.*;
+
 import java.lang.reflect.*;
 import java.util.*;
 
@@ -12,7 +14,7 @@ import il.org.spartan.*;
  * methods (i.e., isXXX()), as can be determined by reflection information.
  * @author Yossi Gil
  * @since 24/07/2007 */
-@SuppressWarnings("null") public class dump {
+public class dump {
   /** Dump a class object
    * @param ¢ JD */
   public static void go(final @NotNull Class<?> ¢) {
@@ -93,7 +95,7 @@ import il.org.spartan.*;
     out.out("\n\n--BEGIN " + c.getSimpleName() + " object: " + o + "\n");
     out.out("Class canonical name", c.getCanonicalName());
     out.out("Class name", c.getName());
-    for (final @NotNull Method m : c.getMethods()) {
+    for (final Method m : c.getMethods()) {
       if (m.getParameterTypes().length != 0)
         continue;
       String name = m.getName();
@@ -110,17 +112,17 @@ import il.org.spartan.*;
       try {
         final Object $ = m.invoke(o);
         if ($ == null) {
-          out.out(name, "null");
+          out.out(cantBeNull(name), "null");
           continue;
         }
         if ($ instanceof Object[])
-          out.out(name, (Object[]) $);
-        out.out(name, !($ instanceof Collection) ? $ : (Collection<?>) $);
+          out.out(cantBeNull(name), (Object[]) $);
+        out.out(cantBeNull(name), !($ instanceof Collection) ? $ : (Collection<?>) $);
       } catch (final Throwable ¢) {
         // For some reason, a reflection call to method
         // getContent() in URL objects throws this exception.
         // We do not have much to do in this and other similar cases.
-        out.out(name, m.getName() + " THROWS " + ¢);
+        out.out(cantBeNull(name), m.getName() + " THROWS " + ¢);
       }
     }
     out.out("--END OBJECT--\n\n");

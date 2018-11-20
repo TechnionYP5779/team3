@@ -1,7 +1,7 @@
 package fluent.ly;
 
 import static il.org.spartan.etc.idiomatic.*;
-
+import static fluent.ly.unbox.*;
 import static fluent.ly.___.*;
 
 import java.util.*;
@@ -14,8 +14,8 @@ import org.jetbrains.annotations.*;
 public interface the {
   @SuppressWarnings("null") static int index(final int i, final int... is) {
     for (final Integer $ : range.from(0).to(is.length))
-      if (is[unbox.unbox($)] == i)
-        return unbox.unbox($);
+      if (is[unbox($)] == i)
+        return unbox($);
     return -1;
   }
 

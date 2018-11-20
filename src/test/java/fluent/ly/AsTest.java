@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import static fluent.ly.azzert.*;
 
 import java.util.*;
-
+import static fluent.ly.box.*;
 import org.jetbrains.annotations.*;
 import org.junit.*;
 
@@ -45,18 +45,18 @@ import org.junit.*;
   }
 
   @Test public void asIteretableTest() {
-    Integer val = box.box(1);
-    for (final Integer ¢ : as.asIterable(box.box(1), box.box(2), box.box(3))) {
+    Integer val = box(1);
+    for (final Integer ¢ : as.asIterable(box(1), box(2), box(3))) {
       assert ¢.equals(val);
-      val = box.box(val.intValue() + 1);
+      val = box(val.intValue() + 1);
     }
   }
 
   @Test public void asIteretableLambdaTest() {
-    Integer val = box.box(1);
-    for (final Integer ¢ : as.asIterableLambda(box.box(1), box.box(2), box.box(3))) {
+    Integer val = box(1);
+    for (final Integer ¢ : as.asIterableLambda(box(1), box(2), box(3))) {
       assert ¢.equals(val);
-      val = box.box(val.intValue() + 1);
+      val = box(val.intValue() + 1);
     }
   }
 
@@ -72,6 +72,6 @@ import org.junit.*;
   }
 
   @Test public void stringsTest() {
-    assertArrayEquals(new String[] { "a", "b", "c", "1" }, as.strings(as.list("a", "b", "c", box.box(1), null)));
+    assertArrayEquals(new String[] { "a", "b", "c", "1" }, as.strings(as.list("a", "b", "c", box(1), null)));
   }
 }

@@ -1,7 +1,7 @@
 package il.org.spartan.utils;
 
 import static fluent.ly.azzert.*;
-
+import static il.org.spartan.Utils.*;
 import org.jetbrains.annotations.*;
 import org.junit.*;
 
@@ -10,7 +10,7 @@ import fluent.ly.*;
 /** A JUnit test class for the enclosing class.
  * @author Yossi Gil, the Technion.
  * @since 05/08/2008 */
-@SuppressWarnings({ "static-method", "null" }) public class TabTest {
+@SuppressWarnings( "static-method") public class TabTest {
   @NotNull private static String cat(final @NotNull String s1, final @NotNull String s2) {
     return "[[" + s1 + "]][[" + s2 + "]]";
   }
@@ -32,12 +32,12 @@ import fluent.ly.*;
   @Test public void testBeginAtLevelOne() {
     final @NotNull Tab t = new Tab("abc");
     t.more();
-    azzert.that(cat(t.begin(), t + ""), is(cat("abc", "abcabc")));
+    azzert.that(cat(cantBeNull(t.begin()), t + ""), is(cat("abc", "abcabc")));
   }
 
   @Test public void testBeginAtZero() {
     final @NotNull Tab t = new Tab("abc");
-    azzert.that(cat(t.begin(), t + ""), is(cat("", "abc")));
+    azzert.that(cat(cantBeNull(t.begin()), t + ""), is(cat("", "abc")));
   }
 
   @Test(expected = ___.Bug.Contract.Precondition.class) //
@@ -52,20 +52,20 @@ import fluent.ly.*;
   @Test public void testEndAtLevelOne() {
     final @NotNull Tab t = new Tab("abc");
     t.more();
-    azzert.that(cat(t.end(), t + ""), is(cat("", "")));
+    azzert.that(cat(cantBeNull(t.end()), t + ""), is(cat("", "")));
   }
 
   @Test public void testEndAtLevelTwo() {
     final @NotNull Tab t = new Tab("abc");
     t.more();
     t.more();
-    azzert.that(cat(t.end(), t + ""), is(cat("abc", "abc")));
+    azzert.that(cat(cantBeNull(t.end()), t + ""), is(cat("abc", "abc")));
   }
 
   @Test(expected = ___.Bug.Contract.Precondition.class) //
   public void testEndAtLevelZero() {
     final @NotNull Tab t = new Tab("abc");
-    azzert.that(cat(t.end(), t + ""), is(cat("", "")));
+    azzert.that(cat(cantBeNull(t.end()), t + ""), is(cat("", "")));
   }
 
   @Test public void testOneMore() {

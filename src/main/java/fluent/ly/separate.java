@@ -18,14 +18,14 @@ import il.org.spartan.etc.*;
  * collection, separated by a given {@link String} or <code><b>char</b></code>.
  * @author Yossi Gil
  * @since 07/08/2008 */
-@SuppressWarnings("null") public enum separate {
+public enum separate {
   ;
   @NotNull public static final String COMMA = ",";
   @NotNull public static final String DOT = ".";
   @NotNull public static final String NL = "\n";
   @NotNull public static final String SPACE = " ";
 
-  @NotNull public static String bySpaces(final @NotNull String... $) {
+  @NotNull public static String bySpaces(final String... $) {
     return separateBySpaces(as.list($));
   }
 
@@ -38,7 +38,7 @@ import il.org.spartan.etc.*;
   }
 
   @NotNull public static String separateBySpaces(final Iterable<String> $) {
-    return as.string(separateBySpaces($.iterator()));
+    return as.string(separateBySpaces(cantBeNull($.iterator())));
   }
 
   @NotNull public static String separateBySpaces(final @NotNull Iterator<String> s) {
@@ -82,8 +82,7 @@ import il.org.spartan.etc.*;
 
   @NotNull public static <Key, Value> SeparationSubject these(final @NotNull Map<Key, Value> ¢) {
     cantBeNull(¢);
-    final @NotNull List<Object> $ = ¢.keySet().stream().map(λ -> λ + "->" + ¢.get(λ)).collect(Collectors.toList());
-    return new SeparationSubject($);
+    return new SeparationSubject(¢.keySet().stream().map(λ -> λ + "->" + ¢.get(λ)).collect(Collectors.toList()));
   }
 
   @NotNull public static SeparationSubject these(final short @NotNull [] ¢) {
@@ -177,7 +176,7 @@ import il.org.spartan.etc.*;
     }
 
     @NotNull public String by(final @NotNull String between) {
-      return separateBy(os, between);
+      return separateBy(cantBeNull(os), between);
     }
 
     @NotNull public String byCommas() {

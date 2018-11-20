@@ -10,7 +10,7 @@ import static il.org.spartan.Utils.*;
  * aggregate type to another.
  * @author Yossi Gil
  * @since Jul 8, 2014 */
-@SuppressWarnings("null") public enum as {
+public enum as {
   ;
   /** Convert an array of {@link Integer}s into an {@link Iterable}. For example,
    * to print the first Fibonacci numbers multiplied by the first prime numbers,
@@ -84,7 +84,7 @@ import static il.org.spartan.Utils.*;
    * @return parameters, organized as an array with entries whose type is the type
    *         parameter */
   public static int @NotNull [] intArray(final int... $) {
-    return $;
+    return cantBeNull($);
   }
 
   /** Return a compact representation of a list of {@link Integer}s as an array of
@@ -112,7 +112,7 @@ import static il.org.spartan.Utils.*;
    * @param ¢ what to convert
    * @return a {@link List} of of all <code><b>int</b></code>s in the parameter */
   public static List<Integer> list(final int... ¢) {
-    return as.list(box.it(¢));
+    return as.list(box.it(cantBeNull(¢)));
   }
 
   /** Converts an {@link Iterable} of a given type into a {@link List} of values
@@ -130,18 +130,18 @@ import static il.org.spartan.Utils.*;
    * @param $ what to covert
    * @return result parameter, converted into a {@link List} */
   @SafeVarargs public static <T> @NotNull List<T> list(final T... $) {
-    return accumulate.to(new ArrayList<@Nullable T>()).add($).elements();
+    return accumulate.to(new ArrayList< T>()).add(cantBeNull($)).elements();
   }
 
   /** Converts a sequence of objects of a given type into a {@link Set} of values
    * @param   <T> type of objects to be converted
    * @param ¢ what to covert
    * @return parameter, converted into a {@link Set} */
-  @SafeVarargs public static <T> Set<? extends T> set(final @Nullable T... ¢) {
-    return accumulate.to(new HashSet<T>()).add(¢).elements();
+  @SafeVarargs public static <T> Set<? extends T> set(final T... ¢) {
+    return accumulate.to(new HashSet<T>()).add(cantBeNull(¢)).elements();
   }
 
-  @NotNull public static String string(final @Nullable Object $) {
+  @NotNull public static String string(final  Object $) {
     return $ == null ? "null" : as.string($ + "");
   }
 
@@ -157,7 +157,7 @@ import static il.org.spartan.Utils.*;
    * @param os what to covert
    * @return an array of the parameter values, each converted to i
    *         {@link String} */
-  public static String @NotNull [] strings(final @Nullable Iterable<? extends @Nullable Object> os) {
+  public static String @NotNull [] strings(final Iterable<?> os) {
     final @NotNull List<@NotNull String> $ = new ArrayList<>();
     if (os != null)
       for (final @Nullable Object ¢ : os)

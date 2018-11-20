@@ -56,6 +56,5 @@ import static il.org.spartan.Utils.*;
     Table t = new Table("1".getClass(), cantBeNull(System.getProperty("user.dir"))); 
     assert(t.description().contains("The table has"));
   }
-  
-
+ 
 }
