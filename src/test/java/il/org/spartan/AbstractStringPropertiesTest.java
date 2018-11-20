@@ -49,8 +49,4 @@ import il.org.spartan.AbstractStringProperties.*;
     
     assert(AbstractStringProperties.Renderer.CSV.makeLine(list).equals("1,2,3,4,5"));
   }
-  
-  @Test public void AbstractStringProperties1() {
-   
-  }
 }
