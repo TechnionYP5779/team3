@@ -25,13 +25,13 @@ import org.junit.*;
     azzert.that(res.length, is(arr.length));
     int j = 0;
     for (final int ¢ : arr)
-      azzert.assertEquals(¢, res[j++]);
+      azzert.that(¢, is(res[j++]));
     final Integer[] arrInt = { a, b, c, d, e, f };
     res = unbox.it(arrInt);
-    azzert.assertEquals(res.length, arr.length);
+    azzert.that(res.length, is(arr.length));
     j = 0;
     for (final int ¢ : arr)
-      azzert.assertEquals(¢, res[j++]);
+      azzert.that(¢, is(res[j++]));
     azzert.that(unbox(box(5)), is(5));
     res = unbox(arrInt);
     azzert.that(res.length, is(arr.length));
@@ -44,37 +44,37 @@ import org.junit.*;
     final short[] arr = { 1, 2, 3, 4, 5, 6 };
     short[] res;
     final Short[] arrShort = box(arr);
-    azzert.assertEquals(unbox(box((short) 5)), 5);
+    azzert.that(unbox(box((short) 5)), is(5));
     res = unbox(arrShort);
-    azzert.assertEquals(res.length, arr.length);
+    azzert.that(res.length, is(arr.length));
     int j = 0;
     for (final short i : arr)
-      azzert.assertEquals(i, res[j++]);
+      azzert.that(i, is(res[j++]));
   }
 
   @Test public void testBytes() {
     final byte[] arr = { 1, 2, 3, 4, 5, 6 };
     byte[] res;
     final Byte[] arrByte = box(arr);
-    azzert.assertEquals(unbox(box((byte) 5)), 5);
+    azzert.that(unbox(box((byte) 5)), is(5));
     res = unbox(arrByte);
-    azzert.assertEquals(res.length, arr.length);
+    azzert.that(res.length, is(arr.length));
     int j = 0;
     for (final byte i : arr)
-      azzert.assertEquals(i, res[j++]);
+      azzert.that(i, is(res[j++]));
   }
 
   @Test public void testDoubles() {
     final double[] arr = { 1.0, 2.0, 3.0, 4.0, 5.0, 6.0 };
     final Double[] arrDouble = box(arr);
     double[] res = unbox.it(arrDouble);
-    azzert.assertEquals(res.length, arr.length);
+    azzert.that(res.length, is(arr.length));
     int j = 0;
     for (final double i : arr)
       assert Math.abs(i - res[j++]) < EPS;
     assert Math.abs(unbox(box(5.0)) - 5.0) < EPS;
     res = unbox(arrDouble);
-    azzert.assertEquals(res.length, arr.length);
+    azzert.that(res.length, is(arr.length));
     j = 0;
     for (final double i : arr)
       assert Math.abs(i - res[j++]) < EPS;
@@ -84,13 +84,13 @@ import org.junit.*;
     final float[] arr = { 1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f };
     final Float[] arrFloat = box(arr);
     float[] res = unbox.it(arrFloat);
-    azzert.assertEquals(res.length, arr.length);
+    azzert.that(res.length, is(arr.length));
     int j = 0;
     for (final float i : arr)
       assert Math.abs(i - res[j++]) < (float) EPS;
     assert Math.abs(unbox(box(5.0f)) - 5.0f) < (float) EPS;
     res = unbox(arrFloat);
-    azzert.assertEquals(res.length, arr.length);
+    azzert.that(res.length, is(arr.length));
     j = 0;
     for (final float i : arr)
       assert Math.abs(i - res[j++]) < (float) EPS;
@@ -105,7 +105,7 @@ import org.junit.*;
     azzert.that(res.length, is(arr.length));
     int j = 0;
     for (final boolean i : arr)
-      azzert.assertEquals(i, res[j++]);
+      azzert.that(i, is(res[j++]));
   }
 
   @Test public void testLongs() {
@@ -113,20 +113,20 @@ import org.junit.*;
     final Long[] arrLong = box(arr);
     assert unbox(box(5l)) == 5l;
     final long[] res = unbox(arrLong);
-    azzert.assertEquals(res.length, arr.length);
+    azzert.that(res.length, is(arr.length));
     int j = 0;
     for (final long i : arr)
-      assert i == res[j++];
+      azzert.that(i, is(res[j++]));
   }
 
   @Test public void testChars() {
     final char[] arr = { 1, 2, 3, 4, 5, 6 };
     final Character[] arrChar = box(arr);
-    azzert.assertEquals(unbox(box((char) 5)), 5);
+    azzert.that(unbox(box((char) 5)), is(5));
     final char[] res = unbox(arrChar);
-    azzert.assertEquals(res.length, arr.length);
+    azzert.that(res.length, is(arr.length));
     int j = 0;
     for (final char i : arr)
-      azzert.assertEquals(i, res[j++]);
+      azzert.that(i, is(res[j++]));
   }
 }
