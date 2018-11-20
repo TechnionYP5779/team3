@@ -4,9 +4,9 @@ import java.util.*;
 
 import org.junit.*;
 
-public class systemTest {
+@SuppressWarnings("static-method") public class systemTest {
   
-  @Test @SuppressWarnings({ "deprecation", "static-method", "resource" }) public void basic_test() {
+  @Test @SuppressWarnings({ "deprecation", "resource" }) public void basic_test() {
     if (!system.isWindows())
       return;
     assert (system.isWindows());

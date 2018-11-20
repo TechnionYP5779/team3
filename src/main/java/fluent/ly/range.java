@@ -1,5 +1,7 @@
 package fluent.ly;
 
+import static fluent.ly.box.*;
+
 import java.util.*;
 // import java.util.*;
 // import java.util.stream.*;
@@ -18,12 +20,12 @@ public class range {
     }
 
     void set_from(final int f) {
-      from = Integer.valueOf(f);
+      from = box(f);
       from_defined = true;
     }
 
     void set_to(final int f) {
-      to = Integer.valueOf(f);
+      to = box(f);
       to_defined = true;
     }
 
@@ -59,7 +61,7 @@ public class range {
     }
 
     public Iterator<Integer> numbers() {
-      return from_defined ? iterator() : new MyIterator(Integer.valueOf(Integer.MIN_VALUE));
+      return from_defined ? iterator() : new MyIterator(box(Integer.MIN_VALUE));
     }
 
     @Override public Iterator<Integer> iterator() {
@@ -68,7 +70,7 @@ public class range {
 
     public class MyIterator implements Iterator<Integer> {
       MyIterator(final Integer f) {
-        curr = Integer.valueOf(f.intValue());
+        curr = box(f.intValue());
       }
 
       Integer curr;
@@ -78,7 +80,7 @@ public class range {
       }
 
       @Override public Integer next() {
-        return curr = Integer.valueOf(curr.intValue() + 1);
+        return curr = box(curr.intValue() + 1);
       }
     }
   }
