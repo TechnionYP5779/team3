@@ -183,4 +183,24 @@ import fluent.ly.*;
     assertEquals(28, s07.sum(), 1E-6);
     assertEquals(5.0, s_4x0_5x1.sum(), 1E-6);
   }
+  @Test public void test() {
+    final double @NotNull [] vs = {1.1,1.1,1.1};
+    double d=Statistics.sampleMean(vs);
+    assert(d==1.1);
+    assert(Statistics.sampleVariance(vs)==0.0);
+    RealStatistics t=new RealStatistics();
+    t.record(1.0,1.0,1.0,2.0);
+    assert(t.isEmpty()==false);
+    assert(t.max()==2.0);
+    t.record(2.0,2.0);
+    assert(t.min()==1.0);
+    assert(t.mean()==1.5);
+    assert(t.v()==0.2999999999999998);
+    assert(t.variance()==0.25);
+    assert(t.sd()==0.5);
+    assert(t.missing()==0);
+    assert(t.v()==0.2999999999999998);
+
+
+  }
 }

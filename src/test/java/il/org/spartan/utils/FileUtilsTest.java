@@ -6,9 +6,9 @@ import java.io.*;
 import org.junit.*;
 
 @SuppressWarnings("static-method") public class FileUtilsTest {
-  @Test @SuppressWarnings("resource") public void test() {
-    try {
-      PrintWriter writer = new PrintWriter("the-file-name.txt", "UTF-8");
+  @Test public void test() {
+    try (PrintWriter writer = new PrintWriter("the-file-name.txt", "UTF-8")){
+     
       writer.println("The first line");
       writer.close();
       assert (FileUtils.findAllJavaFiles("").isEmpty());

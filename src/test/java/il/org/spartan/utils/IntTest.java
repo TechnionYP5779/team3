@@ -26,7 +26,7 @@ import fluent.ly.*;
     b.clear();
     assert b.get() == 0;
     b.step();
-    assert b.inner().equals(box.box(b.get()));
+    assert b.inner().equals(box.it(b.get()));
     assert b.next() == 2;
     assert b.next() == Int.valueOf(3).get();
     assert "3".equals(b + "");
