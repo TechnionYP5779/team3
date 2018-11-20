@@ -1,17 +1,15 @@
 package fluent.ly;
 
-import static org.junit.Assert.assertEquals;
 
 import static fluent.ly.azzert.*;
-import static fluent.ly.azzert.assertEquals;
 
 import java.util.*;
 import java.util.function.*;
 
 import org.jetbrains.annotations.*;
 import org.junit.*;
+import static il.org.spartan.Utils.*;
 
-import il.org.spartan.*;
 import il.org.spartan.etc.*;
 
 @SuppressWarnings("static-method") public class PruneTest {
@@ -21,35 +19,35 @@ import il.org.spartan.etc.*;
       null, null, null);
 
   @Test public void nullsNotNullArrayLength() {
-    assertEquals(nonNullArray.length, prune.nulls(Utils.cantBeNull(nonNullArray)).length);
+    azzert.that(nonNullArray.length, is(prune.nulls(cantBeNull(nonNullArray)).length));
   }
 
   @Test public void nullsNullArrayItems() {
-    assertEquals("1", prune.nulls(Utils.cantBeNull(nonNullArray))[0]);
-    assertEquals("2", prune.nulls(Utils.cantBeNull(nonNullArray))[1]);
-    assertEquals("4", prune.nulls(Utils.cantBeNull(nonNullArray))[2]);
+    azzert.that(prune.nulls(cantBeNull(nonNullArray))[0], is("1"));
+    azzert.that(prune.nulls(cantBeNull(nonNullArray))[1], is("2"));
+    azzert.that(prune.nulls(cantBeNull(nonNullArray))[2], is("4"));
   }
 
   @Test public void nullsPruneArrayAltenatingItems() {
-    assertEquals("A", prune.nulls(Utils.cantBeNull(alternatingArray))[0]);
-    assertEquals("B", prune.nulls(Utils.cantBeNull(alternatingArray))[1]);
-    assertEquals("C", prune.nulls(Utils.cantBeNull(alternatingArray))[2]);
+    azzert.that(prune.nulls(cantBeNull(alternatingArray))[0], is("A"));
+    azzert.that(prune.nulls(cantBeNull(alternatingArray))[1], is("B"));
+    azzert.that(prune.nulls(cantBeNull(alternatingArray))[2], is("C"));
   }
 
   @Test public void nullsPruneArrayAltenatingLength() {
-    assertEquals(3, prune.nulls(Utils.cantBeNull(alternatingArray)).length);
+    azzert.that(prune.nulls(cantBeNull(alternatingArray)).length, is(3));
   }
 
   @Test public void nullsPruneSparseCollectionContents() {
     final String[] a = prune.nulls(sparseCollection).toArray(new String[3]);
-    assertEquals("A", a[0]);
-    assertEquals("B", a[1]);
-    assertEquals("C", a[2]);
-    assertEquals(3, a.length);
+    azzert.that(a[0], is("A"));
+    azzert.that(a[1], is("B"));
+    azzert.that(a[2], is("C"));
+    azzert.that(a.length, is(3));
   }
 
   @Test public void nullsPruneSparseCollectionLength() {
-    assertEquals(3, prune.nulls(sparseCollection).size());
+    azzert.that(prune.nulls(sparseCollection).size(), is(3));
   }
 
   @Test public void nullsPrunNotNull() {
@@ -57,11 +55,11 @@ import il.org.spartan.etc.*;
   }
 
   @Test public void whitesEmptyArray() {
-    assertEquals(0, prune.whites().length);
+    azzert.that(prune.whites().length, is(0));
   }
 
   @Test public void whitesEmptyList() {
-    assertEquals(0, prune.whites().length);
+    azzert.that(prune.whites().length, is(0));
   }
 
   final String @NotNull [] alternatingArray1 = new String[] { null, "A", null, null, "B", null, null, null, "C", null };
@@ -88,23 +86,23 @@ import il.org.spartan.etc.*;
   };
 
   @Test public void testNotNullArrayItems() {
-    azzert.that(prune.nulls(Utils.cantBeNull(nonNullArray))[0], is("1"));
-    azzert.that(prune.nulls(Utils.cantBeNull(nonNullArray))[1], is("2"));
-    azzert.that(prune.nulls(Utils.cantBeNull(nonNullArray))[2], is("4"));
+    azzert.that(prune.nulls(cantBeNull(nonNullArray))[0], is("1"));
+    azzert.that(prune.nulls(cantBeNull(nonNullArray))[1], is("2"));
+    azzert.that(prune.nulls(cantBeNull(nonNullArray))[2], is("4"));
   }
 
   @Test public void testNotNullArrayLength() {
-    azzert.that(prune.nulls(Utils.cantBeNull(nonNullArray)).length, is(nonNullArray.length));
+    azzert.that(prune.nulls(cantBeNull(nonNullArray)).length, is(nonNullArray.length));
   }
 
   @Test public void testPruneArrayAltenatingItems() {
-    azzert.that(prune.nulls(Utils.cantBeNull(alternatingArray))[0], is("A"));
-    azzert.that(prune.nulls(Utils.cantBeNull(alternatingArray))[1], is("B"));
-    azzert.that(prune.nulls(Utils.cantBeNull(alternatingArray))[2], is("C"));
+    azzert.that(prune.nulls(cantBeNull(alternatingArray))[0], is("A"));
+    azzert.that(prune.nulls(cantBeNull(alternatingArray))[1], is("B"));
+    azzert.that(prune.nulls(cantBeNull(alternatingArray))[2], is("C"));
   }
 
   @Test public void testPruneArrayAltenatingLength() {
-    azzert.that(prune.nulls(Utils.cantBeNull(alternatingArray)).length, is(3));
+    azzert.that(prune.nulls(cantBeNull(alternatingArray)).length, is(3));
   }
 
   @Test @SuppressWarnings("null") public void testPruneSparseCollectionContents() {
