@@ -41,8 +41,6 @@ public interface accumulate<T, C extends Collection<T>> {
    * @return <code><b>this</b></code> */
   @NotNull accumulate<T, C> add(@Nullable T t);
 
-  /** @param ts JD
-   * @return <code><b>this</b></code> */
   @NotNull default accumulate<T, C> add(@SuppressWarnings("unchecked") final T... ts) {
     if (ts != null)
       for (final @Nullable T ¢ : ts)
