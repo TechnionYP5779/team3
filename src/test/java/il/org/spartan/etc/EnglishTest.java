@@ -4,7 +4,6 @@ import java.util.*;
 
 import org.junit.*;
 
-import fluent.ly.*;
 import il.org.spartan.utils.*;
 
 public class EnglishTest {
@@ -64,8 +63,8 @@ public class EnglishTest {
     assert(English.plurals("verb",new Int(1)).equals("one verb"));
     assert(English.plurals("verb",(Int)null).equals("??? verbs"));
     
-    assert(English.plurals("verb",new Integer(2)).equals("2 verbs"));
-    assert(English.plurals("verb",new Integer(1)).equals("one verb"));
+    assert(English.plurals("verb",Integer.valueOf(2)).equals("2 verbs"));
+    assert(English.plurals("verb",Integer.valueOf(1)).equals("one verb"));
     assert(English.plurals("verb",(Integer)null).equals("??? verbs"));
     
     assert(English.plurales("verb",new Int(2)).equals("2 verbes"));
@@ -73,8 +72,8 @@ public class EnglishTest {
     assert(English.plurales("verb",(Int)null).equals("??? verbes"));
     
     
-    assert(English.plurales("verb",new Integer(2)).equals("2 verbes"));
-    assert(English.plurales("verb",new Integer(1)).equals("one verb"));
+    assert(English.plurales("verb",Integer.valueOf(2)).equals("2 verbes"));
+    assert(English.plurales("verb",Integer.valueOf(1)).equals("one verb"));
     assert(English.plurales("verb",(Integer)null).equals("??? verbes"));
     
     assert(English.name("1".getClass()).equals("String"));
