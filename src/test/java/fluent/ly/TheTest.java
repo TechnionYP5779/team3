@@ -4,8 +4,8 @@ import java.util.*;
 
 import org.junit.*;
 
-public class TheTest {
-  @Test @SuppressWarnings({ "null", "static-method" }) public void testos() {
+@SuppressWarnings("static-method") public class TheTest {
+  @Test @SuppressWarnings("null") public void testos() {
     assert the.nil() == null;
     assert " #1/2".equals(the.nth("1", "2"));
     assert " #1/2".equals(the.nth(1, 2));
