@@ -4,7 +4,7 @@ import java.util.*;
 
 import org.junit.*;
 
-@SuppressWarnings("static-method") public class Range_tests {
+@SuppressWarnings("static-method") public class RangeTest {
   @Test public void test() {
     final Range zero = new Range(0, 0), zero_from1 = new Range(1, 1), r = new Range(1, 10), r2 = new Range(1, 11), r3 = new Range(-3, 50),
         r4 = new Range(Integer.MIN_VALUE, Integer.MAX_VALUE), bo = new Range(-5, 2), ao = new Range(9, 11), r_copy = new Range(r);
