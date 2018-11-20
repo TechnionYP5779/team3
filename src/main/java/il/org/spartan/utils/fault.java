@@ -6,6 +6,8 @@ import java.util.stream.*;
 
 import org.jetbrains.annotations.*;
 
+import fluent.ly.*;
+
 /** Fluent API
  * @author Yossi Gil
  * @since 2016 */
