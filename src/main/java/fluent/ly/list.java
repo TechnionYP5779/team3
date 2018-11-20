@@ -1,5 +1,5 @@
 package fluent.ly;
-
+import static il.org.spartan.Utils.*;
 import static il.org.spartan.etc.idiomatic.*;
 
 import java.util.*;
@@ -16,7 +16,7 @@ public interface list {
   interface Operator<T> extends UnaryOperator<List<T>> {
     /**/}
 
-  @SuppressWarnings("null") class Operators<T> extends Outer<List<Operator<T>>> {
+  class Operators<T> extends Outer<List<Operator<T>>> {
     public Operators() {
       super(an.empty.list());
     }
@@ -39,16 +39,16 @@ public interface list {
       super(other);
     }
 
-    @SuppressWarnings("null") public ToCallExpected<T> append(final T x) {
-      inner.add(λ -> {
+    public ToCallExpected<T> append(final T x) {
+      cantBeNull(inner).add(λ -> {
         λ.add(x);
         return λ;
       });
       return new ToCallExpected<>(this);
     }
 
-    @SuppressWarnings("null") public ToCallExpected<T> prepend(final T t) {
-      inner.add(λ -> {
+    public ToCallExpected<T> prepend(final T t) {
+      cantBeNull(inner).add(λ -> {
         λ.add(0, t);
         return λ;
       });
@@ -65,9 +65,9 @@ public interface list {
       return new PrependOrAppend<>(this);
     }
 
-    @SuppressWarnings("null") public List<T> to(final List<T> xs) {
+    public List<T> to(final List<T> xs) {
       List<T> $ = new ArrayList<>(xs);
-      for (final Operator<T> ¢ : inner)
+      for (final Operator<T> ¢ : cantBeNull(inner))
         $ = ¢.apply($);
       return $;
     }

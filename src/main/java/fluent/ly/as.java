@@ -129,19 +129,19 @@ public enum as {
    * @param   <T> type of objects to be converted
    * @param $ what to covert
    * @return result parameter, converted into a {@link List} */
-  @SafeVarargs public static <T> @NotNull List<T> list(final @Nullable T... $) {
-    return accumulate.to(new ArrayList<@Nullable T>()).add($).elements();
+  @SafeVarargs public static <T> @NotNull List<T> list(final T... $) {
+    return accumulate.to(new ArrayList< T>()).add(cantBeNull($)).elements();
   }
 
   /** Converts a sequence of objects of a given type into a {@link Set} of values
    * @param   <T> type of objects to be converted
    * @param ¢ what to covert
    * @return parameter, converted into a {@link Set} */
-  @SafeVarargs public static <T> Set<? extends T> set(final @Nullable T... ¢) {
-    return accumulate.to(new HashSet<T>()).add(¢).elements();
+  @SafeVarargs public static <T> Set<? extends T> set(final T... ¢) {
+    return accumulate.to(new HashSet<T>()).add(cantBeNull(¢)).elements();
   }
 
-  @NotNull public static String string(final @Nullable Object $) {
+  @NotNull public static String string(final  Object $) {
     return $ == null ? "null" : as.string($ + "");
   }
 
@@ -157,7 +157,7 @@ public enum as {
    * @param os what to covert
    * @return an array of the parameter values, each converted to i
    *         {@link String} */
-  public static String @NotNull [] strings(final @Nullable Iterable<? extends @Nullable Object> os) {
+  public static String @NotNull [] strings(final Iterable<?> os) {
     final @NotNull List<@NotNull String> $ = new ArrayList<>();
     if (os != null)
       for (final @Nullable Object ¢ : os)

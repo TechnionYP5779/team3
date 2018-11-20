@@ -8,7 +8,7 @@ import static il.org.spartan.Utils.*;
 /** TODO Yossi Gil: document class
  * @author Yossi Gil
  * @since 2017-03-21 */
-public class Outer<@Nullable Inner> {
+public class Outer< Inner> {
   @Nullable public Inner inner;
 
   public Outer(final Inner inner) {
@@ -27,7 +27,7 @@ public class Outer<@Nullable Inner> {
    * @return <code><b>true</b></code> <i>iff</i> method <code>equals</code>
    *         returns <code><b>true</b></code> for the wrapped objects. */
   public boolean equals(final Outer<Inner> ¢) {
-    return inner == null ? ¢.inner == null : equalsAux(¢.inner);
+    return inner == null ? ¢.inner == null : equalsAux(cantBeNull(¢.inner));
   }
 
   private boolean equalsAux(final Inner ¢) {
@@ -49,6 +49,6 @@ public class Outer<@Nullable Inner> {
 
   /** @return value wrapped in this object. */
   public Inner get() {
-    return inner;
+    return cantBeNull(inner);
   }
 }
