@@ -526,8 +526,9 @@ import il.org.spartan.etc.*;
     throw new Reachability(nprintf(format, args));
   }
 
-  @SuppressWarnings("unused") public static void unuse(final long __, final Object... ____) {
-    // empty
+  public static void unuse(final long __, final Object... ____) {
+    forget.it(__);
+    forget.it(____);
   }
 
   /** A do nothing method to document the fact that a <code><b>double</b></code>
@@ -535,21 +536,14 @@ import il.org.spartan.etc.*;
    * function, and to suppress the warning.
    * @param __   the unused parameter
    * @param ____ more unused parameters */
-  @SuppressWarnings("unused") public static void unused(final double __, final double... ____) {
-    // empty
+  public static void unused(final double __, final double... ____) {
+    forget.it(__);
+    forget.it(____);
   }
 
-  @SuppressWarnings("unused") public static void unused(final double __, final Object... ____) {
-    // empty
-  }
-
-  /** A do nothing method to document the fact that a <code><b>long</b></code>
-   * parameter, along with a optional list of {@link Object}s are not used by a
-   * function, and to suppress the warning.
-   * @param __   the unused parameter
-   * @param ____ more unused parameters */
-  @SuppressWarnings("unused") public static void unused(final int __, final int... ____) {
-    // empty
+  public static void unused(final double __, final Object... ____) {
+    forget.it(__);
+    forget.it(____);
   }
 
   /** A do nothing method to document the fact that a <code><b>long</b></code>
@@ -557,8 +551,19 @@ import il.org.spartan.etc.*;
    * function, and to suppress the warning.
    * @param __   the unused parameter
    * @param ____ more unused parameters */
-  @SuppressWarnings("unused") public static void unused(final long __, final long... ____) {
-    // empty
+  public static void unused(final int __, final int... ____) {
+    forget.it(__);
+    forget.it(____);
+  }
+
+  /** A do nothing method to document the fact that a <code><b>long</b></code>
+   * parameter, along with a optional list of {@link Object}s are not used by a
+   * function, and to suppress the warning.
+   * @param __   the unused parameter
+   * @param ____ more unused parameters */
+  public static void unused(final long __, final long... ____) {
+    forget.it(__);
+    forget.it(____);
   }
 
   /** A do nothing method to document the fact that some <code>Object</code>(s)

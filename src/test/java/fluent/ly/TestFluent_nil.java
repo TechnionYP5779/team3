@@ -14,11 +14,11 @@ public class TestFluent_nil {
     azzert.that(i1, is(5));
     final Integer i2 = nil.guardingly(String::length).on(nullString);
     azzert.that(i1, is(5));
-    azzert.isNull(i2);
+    isNull(i2);
     final Integer i3 = nil.guardingly(f).on(nullString);
     azzert.that(i1, is(5));
-    azzert.isNull(i2);
-    azzert.isNull(i3);
+    isNull(i2);
+    isNull(i3);
     nil.guardingly(State::getName).on(null);
     nil.guardingly(State::getName).on(californiaCustomer.getAddress().getState());
   }
