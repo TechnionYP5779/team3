@@ -60,7 +60,7 @@ import fluent.ly.*;
     return Arrays.copyOf(¢, 0);
   }
 
-  @SafeVarargs public static <T> @NotNull String @NotNull [] whites(final @Nullable T @Nullable... ts) {
+  @SafeVarargs public static <T> @NotNull String @NotNull [] whites(final T ... ts) {
     final @NotNull List<@NotNull String> $ = an.empty.list();
     if (ts != null)
       for (final @Nullable T ¢ : ts)
