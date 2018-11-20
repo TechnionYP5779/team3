@@ -4,7 +4,8 @@ package il.org.spartan;
 
 import java.io.*;
 
-import org.jetbrains.annotations.*;
+import javax.lang.model.type.*;
+
 import org.junit.*;
 
 import fluent.ly.*;
@@ -74,10 +75,28 @@ import fluent.ly.*;
    }
    
    @Test public void splitToClasses() throws ClassNotFoundException {
+     azzert.that(new String[0], azzert.is(CSV.splitToClasses("")));
+     
      String s = "java.lang.Integer,java.lang.String,java.lang.Long"; 
      Class<?>[] c = {Integer.class, String.class, Long.class};
-     CSV.splitToClasses(s);
+     azzert.that(c, azzert.is(CSV.splitToClasses(s)));
     
+     
    }
+
+      @Test public void unescape()  {
+        assert(CSV.unescape("\\0") == null);
+        azzert.that(CSV.unescape("\\n"), azzert.is("\n"));
+        azzert.that(CSV.unescape("\\r"), azzert.is("\r"));
+        azzert.that(CSV.unescape("\\t"), azzert.is("\t"));
+        azzert.that(CSV.unescape("\\."), azzert.is(","));
+        azzert.that(CSV.unescape("\\\\"), azzert.is("\\"));
+
+      }
+      
+      @Test public void escape()  {
+        azzert.that(CSV.escape(null), azzert.is("\\0"));
+
+      }
 }
 
