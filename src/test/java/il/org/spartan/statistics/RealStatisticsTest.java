@@ -186,12 +186,11 @@ import il.org.spartan.bench.*;
   }
   @Test public void test() {
     final double @NotNull [] vs = {1.1,1.1,1.1};
-    double d=Statistics.sampleMean(vs);
-    assert(d==1.1);
+    assert(Statistics.sampleMean(vs)==1.1);
     assert(Statistics.sampleVariance(vs)==0.0);
     RealStatistics t=new RealStatistics();
     t.record(1.0,1.0,1.0,2.0);
-    assert(t.isEmpty()==false);
+    assert(!t.isEmpty());
     assert(t.max()==2.0);
     t.record(2.0,2.0);
     assert(t.min()==1.0);
@@ -202,7 +201,7 @@ import il.org.spartan.bench.*;
     assert(t.missing()==0);
     assert(t.v()==0.2999999999999998);
     assert(t.flipping()==0.5);
-    assert(t.format(Unit.INTEGER,"abcxnrxji").equals("mean=1.50bcmax=2.00n=6range=1.00⋯2.00]max=2.001.50min=1.00"));
+    assert("mean=1.50bcmax=2.00n=6range=1.00⋯2.00]max=2.001.50min=1.00".equals(t.format(Unit.INTEGER, "abcxnrxji")));
     assert(t.relativeMedianError()==0.3333333333333333);
     assert(t.relativeMinError()==0.5);
   }

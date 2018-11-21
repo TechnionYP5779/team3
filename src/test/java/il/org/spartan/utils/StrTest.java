@@ -4,11 +4,10 @@ import org.junit.*;
 
 @SuppressWarnings("static-method") public class StrTest {
   @Test public void test() {
-    Str st=new Str();
-    st=new Str("abc");
+    Str st=new Str("abc");
     st.set("0");
-    assert(st.inner().equals("0"));
-    assert(st.isEmptyx()==false);
+    assert("0".equals(st.inner()));
+    assert(!st.isEmptyx());
     assert(st.notEmpty());
   }
 }
