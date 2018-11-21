@@ -1,5 +1,7 @@
 package il.org.spartan.utils;
 
+import static fluent.ly.box.*;
+
 import org.junit.*;
 
 @SuppressWarnings("static-method") public class faultTest {
@@ -19,13 +21,11 @@ import org.junit.*;
    }
   
   @Test public void bool() {
-    Integer i = new Integer(1);
-    assert(!fault.bool(i)); 
+    assert(!fault.bool(box(1))); 
    }
   
     @Test public void specifically() {
-    Integer i = new Integer(1);
-    String value = fault.specifically("test failed because", i); 
+    String value = fault.specifically("test failed because", box(1)); 
     assert(value.contains("FAULT:") &&value.contains("test failed because")); 
    }
 }
