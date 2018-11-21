@@ -44,10 +44,10 @@ import org.junit.*;
     assert the.lastOf(li).equals(box(3));
     final List<String> li2 = new ArrayList<>();
     li2.add(0, "1");
-    assert(the.onlyOneOf(li2).equals("1"));
+    assert("1".equals(the.onlyOneOf(li2)));
     assert(the.onlyOneOf(null)==null);
     li2.add(1,"2");
-    assert(the.secondOf(li2).equals("2"));
+    assert("2".equals(the.secondOf(li2)));
     assert(the.secondOf(null)==null);
     
     

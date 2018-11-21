@@ -9,10 +9,7 @@ import static il.org.spartan.Utils.*;
 @SuppressWarnings({"static-method","resource"}) public class TableTest {
   
   @Test public void Table1() {
-    Integer n = box.it(11245);
-    Table t = new Table(n);
-    Table t1= new Table("",TableRenderer.builtin.values()); 
-    assert(t.equals(t1));
+    assert ((new Table(box.it(11245))).equals(new Table("", TableRenderer.builtin.values())));
   }
   @Test public void Table2() {
     assert(new Table(box.it(1))!=null);
@@ -42,10 +39,9 @@ import static il.org.spartan.Utils.*;
   
   @Test public void col() {
     Table t = new Table("1".getClass(), cantBeNull(System.getProperty("user.dir"))); 
-    Table t1 = t.col("1", 1.5);
-    assert(t1.toString().equals("{null=1, 1=1.5}"));
-    assert(t.col("2", 2).toString().equals("{null=1, 1=1.5, 2=2}"));
-    assert(t.col("3",(long) 3).toString().equals("{null=1, 1=1.5, 2=2, 3=3}"));
+    assert("{null=1, 1=1.5}".equals(t.col("1", 1.5) + ""));
+    assert("{null=1, 1=1.5, 2=2}".equals(t.col("2", 2) + ""));
+    assert("{null=1, 1=1.5, 2=2, 3=3}".equals(t.col("3", 3L) + ""));
    
   }
   @Test public void noStatistics() {
@@ -56,8 +52,7 @@ import static il.org.spartan.Utils.*;
   }
     
   @Test public void description() {
-    Table t = new Table("1".getClass(), cantBeNull(System.getProperty("user.dir"))); 
-    assert(t.description().contains("The table has"));
+    assert ((new Table("1".getClass(), cantBeNull(System.getProperty("user.dir")))).description().contains("The table has"));
   }
  
 }
