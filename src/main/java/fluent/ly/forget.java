@@ -35,7 +35,7 @@ package fluent.ly;
   
   
   
-  public static void ______unused(final long l, final Object... os) {
+  static void ______unused(final long l, final Object... os) {
     forget.it(l);
     forget.all(os);
   }
@@ -45,12 +45,12 @@ package fluent.ly;
    * method saves the caller the trouble of suppressing a "variable unused"
    * warnings on the argument(s).
    * @param ____ the unused parameters */
-  public static void ______unused(final Object... ____) {
+  static void ______unused(final Object... ____) {
     unused(____);
   }
   
   
-  public static void unuse(final long __, final Object... ____) {
+  static void unuse(final long __, final Object... ____) {
     forget.it(__);
     forget.it(____);
   }
@@ -60,22 +60,12 @@ package fluent.ly;
    * function, and to suppress the warning.
    * @param __   the unused parameter
    * @param ____ more unused parameters */
-  public static void unused(final double __, final double... ____) {
+  static void unused(final double __, final double... ____) {
     forget.it(__);
     forget.it(____);
   }
 
-  public static void unused(final double __, final Object... ____) {
-    forget.it(__);
-    forget.it(____);
-  }
-
-  /** A do nothing method to document the fact that a <code><b>long</b></code>
-   * parameter, along with a optional list of {@link Object}s are not used by a
-   * function, and to suppress the warning.
-   * @param __   the unused parameter
-   * @param ____ more unused parameters */
-  public static void unused(final int __, final int... ____) {
+  static void unused(final double __, final Object... ____) {
     forget.it(__);
     forget.it(____);
   }
@@ -85,7 +75,17 @@ package fluent.ly;
    * function, and to suppress the warning.
    * @param __   the unused parameter
    * @param ____ more unused parameters */
-  public static void unused(final long __, final long... ____) {
+  static void unused(final int __, final int... ____) {
+    forget.it(__);
+    forget.it(____);
+  }
+
+  /** A do nothing method to document the fact that a <code><b>long</b></code>
+   * parameter, along with a optional list of {@link Object}s are not used by a
+   * function, and to suppress the warning.
+   * @param __   the unused parameter
+   * @param ____ more unused parameters */
+  static void unused(final long __, final long... ____) {
     forget.it(__);
     forget.it(____);
   }
@@ -95,7 +95,7 @@ package fluent.ly;
    * method saves the caller the trouble of suppressing a "variable unused"
    * warnings on the argument(s).
    * @param ____ the unused parameters */
-  public static void unused(final Object... ____) {
+  static void unused(final Object... ____) {
     forget.it(____);
   }
 
