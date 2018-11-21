@@ -1,5 +1,7 @@
 package il.org.spartan;
 
+import static fluent.ly.azzert.*;
+
 
 import static il.org.spartan.Utils.*;
 import java.io.*;
@@ -57,7 +59,7 @@ import fluent.ly.*;
             results.append(s[i][j]).append(separator);
         results.append(']');
       }
-      azzert.that(results + "", azzert.is("[1,2][1,2]")); 
+      azzert.that(results + "", is("[1,2][1,2]")); 
    }
    @Test public void save() throws IOException{
      File f=  new File("test.csv");
@@ -71,26 +73,26 @@ import fluent.ly.*;
    }
    
    @Test public void splitToClasses() {
-     azzert.that(new String[0], azzert.is(CSV.splitToClasses("")));
+     azzert.that(new String[0], is(CSV.splitToClasses("")));
      
      azzert.that(new Class<?>[] { Integer.class, String.class, Long.class },
-        azzert.is(CSV.splitToClasses("java.lang.Integer,java.lang.String,java.lang.Long")));
+        is(CSV.splitToClasses("java.lang.Integer,java.lang.String,java.lang.Long")));
     
      
    }
 
       @Test public void unescape()  {
         assert(CSV.unescape("\\0") == null);
-        azzert.that(CSV.unescape("\\n"), azzert.is("\n"));
-        azzert.that(CSV.unescape("\\r"), azzert.is("\r"));
-        azzert.that(CSV.unescape("\\t"), azzert.is("\t"));
-        azzert.that(CSV.unescape("\\."), azzert.is(","));
-        azzert.that(CSV.unescape("\\\\"), azzert.is("\\"));
+        azzert.that(CSV.unescape("\\n"), is("\n"));
+        azzert.that(CSV.unescape("\\r"), is("\r"));
+        azzert.that(CSV.unescape("\\t"), is("\t"));
+        azzert.that(CSV.unescape("\\."), is(","));
+        azzert.that(CSV.unescape("\\\\"),is("\\"));
 
       }
       
       @Test public void escape()  {
-        azzert.that(CSV.escape(null), azzert.is("\\0"));
+        azzert.that(CSV.escape(null), is("\\0"));
 
       }
 }

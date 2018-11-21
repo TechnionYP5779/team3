@@ -1,5 +1,7 @@
 package fluent.ly;
 
+import static fluent.ly.azzert.*;
+
 import java.util.*;
 
 import org.junit.*;
@@ -75,15 +77,15 @@ import static fluent.ly.box.*;
     azzert.equalTo(box(1));
     azzert.instanceOf(String.class);
     azzert.isA(String.class);
-    azzert.is(true);
-    azzert.is((byte) 1);
-    azzert.is((char) 1);
-    azzert.is((short) 1);
-    azzert.is(1.0);
-    azzert.is(1.0f);
-    azzert.is(1);
-    azzert.is(1L);
-    azzert.is(azzert.is(1));
+    is(true);
+    is((byte) 1);
+    is((char) 1);
+    is((short) 1);
+    is(1.0);
+    is(1.0f);
+    is(1);
+    is(1L);
+    is(is(1));
     azzert.lessThan(true);
     azzert.lessThan((byte) 1);
     azzert.lessThan((char) 1);
@@ -108,7 +110,7 @@ import static fluent.ly.box.*;
     azzert.not(1.0f);
     azzert.not(1);
     azzert.not(1L);
-    azzert.not(azzert.is(1));
+    azzert.not(is(1));
     azzert.notNull(new Object());
     azzert.notNull("bla", new Object());
     azzert.startsWith("bla");
