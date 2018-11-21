@@ -33,9 +33,6 @@ public class RealList {
     return unbox( cantBeNull(x.first));
   }
 
-  public static double second(Pair<Double, Double> x) {
-    return unbox( cantBeNull(x.second));
-  }
 
   public Iterator<Pair<Double, Double>> iteratorX() {
     List<Pair<Double, Double>> $ = new ArrayList<>(li);
