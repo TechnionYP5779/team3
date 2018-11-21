@@ -60,6 +60,7 @@ import fluent.ly.*;
         results.append(']');
       }
       azzert.that(results + "", is("[1,2][1,2]")); 
+      f.delete();
    }
    @Test public void save() throws IOException{
      File f=  new File("test.csv");
@@ -70,6 +71,7 @@ import fluent.ly.*;
      values[1][1] = "2";
      
      CSV.save(f,values); 
+     f.delete();
    }
    
    @Test public void splitToClasses() {

@@ -6,6 +6,8 @@ import fluent.ly.*;
 
 import static il.org.spartan.Utils.*;
 
+import java.io.*;
+
 @SuppressWarnings({"static-method","resource"}) public class TableTest {
   
   @Test public void Table1() {
@@ -13,22 +15,62 @@ import static il.org.spartan.Utils.*;
   }
   @Test public void Table2() {
     assert(new Table(box.it(1))!=null);
-    assert(new Table("1".getClass())!=null);
-    assert(new Table("123", TableRenderer.builtin.TEX) != null); 
+    Table t = new Table("1".getClass()); 
+    assert(t!=null);
+    t.reset();
+    t = new Table("123", TableRenderer.builtin.TEX);
+    assert(t != null);
   }
   
   @Test public void Table3() {
-    assert(new Table("123",cantBeNull(System.getProperty("user.dir"))) != null); 
+    Table t = new Table("a",cantBeNull(System.getProperty("user.dir")));
+    assert(t != null); 
+    t.close();
+    File file1 = new File("a.csv"); 
+    file1.delete();
+    File file2 = new File("a.markdown"); 
+    file2.delete();
+    File file3 = new File("a.tex"); 
+    file3.delete();
+    File file4 = new File("a.tex2"); 
+    file4.delete();
+    File file5 = new File("a.txt"); 
+    file5.delete();
   }
   
   @Test public void Table4() {
-    assert(new Table("1".getClass(),cantBeNull(System.getProperty("user.dir"))) != null); 
+    Table t = new Table("1".getClass(),cantBeNull(System.getProperty("user.dir"))); 
+   assert(t != null); 
+   t.close();
+   File file1 = new File(".csv"); 
+   file1.delete();
+   File file2 = new File(".markdown"); 
+   file2.delete();
+   File file3 = new File(".tex"); 
+   file3.delete();
+   File file4 = new File(".tex2"); 
+   file4.delete();
+   File file5 = new File(".txt"); 
+   file5.delete();
   }
+  
   
   @Test public void baseName() {
     Table t = new Table("1".getClass(), cantBeNull(System.getProperty("user.dir"))); 
     assert(t != null); 
     assert(t.baseName().contains("/") || t.baseName().contains("\\") ); 
+    t.close();
+    File file1 = new File(".csv"); 
+    file1.delete();
+    File file2 = new File(".markdown"); 
+    file2.delete();
+    File file3 = new File(".tex"); 
+    file3.delete();
+    File file4 = new File(".tex2"); 
+    file4.delete();
+    File file5 = new File(".txt"); 
+    file5.delete();
+    
   }
   
   @Test public void close() {
@@ -39,9 +81,23 @@ import static il.org.spartan.Utils.*;
   
   @Test public void col() {
     Table t = new Table("1".getClass(), cantBeNull(System.getProperty("user.dir"))); 
+    t.close();
+    File file1 = new File(".csv"); 
+    file1.delete();
+    File file2 = new File(".markdown"); 
+    file2.delete();
+    File file3 = new File(".tex"); 
+    file3.delete();
+    File file4 = new File(".tex2"); 
+    file4.delete();
+    File file5 = new File(".txt"); 
+    file5.delete();
     assert("{null=1, 1=1.5}".equals(t.col("1", 1.5) + ""));
     assert("{null=1, 1=1.5, 2=2}".equals(t.col("2", 2) + ""));
     assert("{null=1, 1=1.5, 2=2, 3=3}".equals(t.col("3", 3L) + ""));
+    
+  
+    
    
   }
   @Test public void noStatistics() {
@@ -49,10 +105,33 @@ import static il.org.spartan.Utils.*;
     assert(t.noStatistics() == t);
     t.nl();
     assert(t.length() == 2);
+    t.close();
+    File file1 = new File(".csv"); 
+    file1.delete();
+    File file2 = new File(".markdown"); 
+    file2.delete();
+    File file3 = new File(".tex"); 
+    file3.delete();
+    File file4 = new File(".tex2"); 
+    file4.delete();
+    File file5 = new File(".txt"); 
+    file5.delete();
   }
     
   @Test public void description() {
-    assert ((new Table("1".getClass(), cantBeNull(System.getProperty("user.dir")))).description().contains("The table has"));
+    Table t = new Table("1".getClass(), cantBeNull(System.getProperty("user.dir")));
+    assert (t.description().contains("The table has"));
+    t.close();
+    File file1 = new File(".csv"); 
+    file1.delete();
+    File file2 = new File(".markdown"); 
+    file2.delete();
+    File file3 = new File(".tex"); 
+    file3.delete();
+    File file4 = new File(".tex2"); 
+    file4.delete();
+    File file5 = new File(".txt"); 
+    file5.delete();
   }
  
 }

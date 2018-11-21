@@ -22,7 +22,10 @@ import org.junit.*;
     } catch (IOException ¢) {
       ¢.printStackTrace();
     }
-  }
-
+    File file = new File("the-file-name.txt"); 
+    file.delete();
   
+
+  }
 }
+
