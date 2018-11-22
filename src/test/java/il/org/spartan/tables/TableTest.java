@@ -26,32 +26,22 @@ import java.io.*;
     Table t = new Table("a",cantBeNull(System.getProperty("user.dir")));
     assert(t != null); 
     t.close();
-    File file1 = new File("a.csv"); 
-    file1.delete();
-    File file2 = new File("a.markdown"); 
-    file2.delete();
-    File file3 = new File("a.tex"); 
-    file3.delete();
-    File file4 = new File("a.tex2"); 
-    file4.delete();
-    File file5 = new File("a.txt"); 
-    file5.delete();
+    new File("a.csv").delete();
+    new File("a.markdown").delete();
+    new File("a.tex").delete();
+    new File("a.tex2").delete();
+    new File("a.txt").delete();
   }
   
   @Test public void Table4() {
     Table t = new Table("1".getClass(),cantBeNull(System.getProperty("user.dir"))); 
    assert(t != null); 
    t.close();
-   File file1 = new File(".csv"); 
-   file1.delete();
-   File file2 = new File(".markdown"); 
-   file2.delete();
-   File file3 = new File(".tex"); 
-   file3.delete();
-   File file4 = new File(".tex2"); 
-   file4.delete();
-   File file5 = new File(".txt"); 
-   file5.delete();
+   new File(".csv").delete();
+   new File(".markdown").delete();
+   new File(".tex").delete();
+   new File(".tex2").delete();
+   (new File(".txt")).delete();
   }
   
   
@@ -60,16 +50,11 @@ import java.io.*;
     assert(t != null); 
     assert(t.baseName().contains("/") || t.baseName().contains("\\") ); 
     t.close();
-    File file1 = new File(".csv"); 
-    file1.delete();
-    File file2 = new File(".markdown"); 
-    file2.delete();
-    File file3 = new File(".tex"); 
-    file3.delete();
-    File file4 = new File(".tex2"); 
-    file4.delete();
-    File file5 = new File(".txt"); 
-    file5.delete();
+    new File(".csv").delete();
+    new File(".markdown").delete();
+    new File(".tex").delete();
+    new File(".tex2").delete();
+    (new File(".txt")).delete();
     
   }
   
@@ -82,16 +67,11 @@ import java.io.*;
   @Test public void col() {
     Table t = new Table("1".getClass(), cantBeNull(System.getProperty("user.dir"))); 
     t.close();
-    File file1 = new File(".csv"); 
-    file1.delete();
-    File file2 = new File(".markdown"); 
-    file2.delete();
-    File file3 = new File(".tex"); 
-    file3.delete();
-    File file4 = new File(".tex2"); 
-    file4.delete();
-    File file5 = new File(".txt"); 
-    file5.delete();
+    new File(".csv").delete();
+    new File(".markdown").delete();
+    new File(".tex").delete();
+    new File(".tex2").delete();
+    new File(".txt").delete();
     assert("{null=1, 1=1.5}".equals(t.col("1", 1.5) + ""));
     assert("{null=1, 1=1.5, 2=2}".equals(t.col("2", 2) + ""));
     assert("{null=1, 1=1.5, 2=2, 3=3}".equals(t.col("3", 3L) + ""));
@@ -106,32 +86,22 @@ import java.io.*;
     t.nl();
     assert(t.length() == 2);
     t.close();
-    File file1 = new File(".csv"); 
-    file1.delete();
-    File file2 = new File(".markdown"); 
-    file2.delete();
-    File file3 = new File(".tex"); 
-    file3.delete();
-    File file4 = new File(".tex2"); 
-    file4.delete();
-    File file5 = new File(".txt"); 
-    file5.delete();
+    new File(".csv").delete();
+    new File(".markdown").delete();
+    new File(".tex").delete();
+    new File(".tex2").delete();
+    (new File(".txt")).delete();
   }
     
   @Test public void description() {
     Table t = new Table("1".getClass(), cantBeNull(System.getProperty("user.dir")));
     assert (t.description().contains("The table has"));
     t.close();
-    File file1 = new File(".csv"); 
-    file1.delete();
-    File file2 = new File(".markdown"); 
-    file2.delete();
-    File file3 = new File(".tex"); 
-    file3.delete();
-    File file4 = new File(".tex2"); 
-    file4.delete();
-    File file5 = new File(".txt"); 
-    file5.delete();
+    new File(".csv").delete();
+    new File(".markdown").delete();
+    new File(".tex").delete();
+    new File(".tex2").delete();
+    (new File(".txt")).delete();
   }
  
 }
