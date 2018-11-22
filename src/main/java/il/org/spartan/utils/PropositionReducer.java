@@ -1,5 +1,6 @@
 package il.org.spartan.utils;
 
+import static il.org.spartan.Utils.*;
 import java.util.function.*;
 
 import fluent.ly.*;
@@ -32,10 +33,10 @@ public abstract class PropositionReducer<R> extends Reduce<R> {
     return inner.reduce(r1, r2);
   }
 
-  @SuppressWarnings("null") private R reduce(final And a) {
+  private R reduce(final And a) {
     R $ = ante(a);
-    for (int size = a.inner.size(), ¢ = 0; ¢ < size; ++¢) {
-      $ = reduce($, reduce(a.inner.get(¢)));
+    for (int size = cantBeNull(a.inner).size(), ¢ = 0; ¢ < size; ++¢) {
+      $ = reduce($, reduce(cantBeNull(a.inner).get(¢)));
       if (¢ < size - 1)
         $ = reduce($, inter(a));
     }

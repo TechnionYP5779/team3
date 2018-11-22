@@ -42,7 +42,7 @@ import fluent.ly.*;
    * @param parts Input array
    * @return Combined string
    * @see CSV#escape(String) */
-  public static <T> String combine(final @NotNull T @NotNull [] parts) {
+  public static <T> String combine(final T @NotNull [] parts) {
     nonnull(parts);
     final @NotNull StringBuilder $ = new StringBuilder(10 * parts.length);
     final @NotNull Separator sep = new Separator(",");

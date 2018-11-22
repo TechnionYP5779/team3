@@ -222,7 +222,9 @@ public interface Rule<T, R> extends Function<T, R>, Recursive<Rule<T, R>> {
       this.inner = inner;
     }
 
-    @SuppressWarnings({ "static-method", "unused" }) public Void before(final @NotNull String key, final Object... arguments) {
+    @SuppressWarnings("static-method") public Void before(final @NotNull String key, final Object... arguments) {
+      forget.it(key);
+      forget.it(arguments);
       return null;
     }
 
@@ -276,7 +278,7 @@ public interface Rule<T, R> extends Function<T, R>, Recursive<Rule<T, R>> {
    * @param <R> {@see Rule}
    * @author Yossi Gil
    * @since 2017-03-13 */
-  abstract class Stateful<@Nullable T, R> implements Rule<T, R> {
+  abstract class Stateful<@Nullable T, @Nullable R> implements Rule<T, R> {
     public T current;
 
     @Override public final R apply(final T ¢) {

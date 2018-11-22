@@ -1,5 +1,6 @@
 package il.org.spartan.utils;
 
+import static il.org.spartan.Utils.*;
 import java.util.*;
 import java.util.function.*;
 import java.util.stream.*;
@@ -15,13 +16,13 @@ import fluent.ly.*;
  * </ol>
  * @author Yossi Gil
  * @since 2017-03-06 */
-@SuppressWarnings("null") public interface Proposition extends BooleanSupplier {
+public interface Proposition extends BooleanSupplier {
   static Proposition AND(final BooleanSupplier s1, final BooleanSupplier s2, final BooleanSupplier... ss) {
     return AND(null, s1, s2, ss);
   }
 
   static Proposition AND(final @Nullable String toString, final BooleanSupplier s1, final BooleanSupplier s2, final BooleanSupplier... ss) {
-    return new And(toString, s1, s2, ss);
+    return new And(cantBeNull(toString), s1, s2, ss);
   }
 
   static Proposition not(final BooleanSupplier ¢) {
@@ -99,12 +100,12 @@ import fluent.ly.*;
 
   final class And extends Some {
     And(final BooleanSupplier s1, final BooleanSupplier s2, final BooleanSupplier[] ss) {
-      super(null);
+      super("");
       add(s1, s2, ss);
     }
 
     And(final BooleanSupplier s, final BooleanSupplier[] ss) {
-      super(null);
+      super("");
       add(s, ss);
     }
 
@@ -132,18 +133,18 @@ import fluent.ly.*;
     }
 
     @Override public boolean getAsBoolean() {
-      return !inner.getAsBoolean();
+      return !cantBeNull(inner).getAsBoolean();
     }
   }
 
   final class Or extends Some {
     public Or(final BooleanSupplier s, final BooleanSupplier... cs) {
-      super(null);
+      super("");
       add(s, cs);
     }
 
     public Or(final BooleanSupplier s1, final BooleanSupplier s2, final BooleanSupplier[] ss) {
-      super(null);
+      super("");
       add(s1, s2, ss);
     }
 
@@ -182,7 +183,7 @@ import fluent.ly.*;
     }
 
     @Override public boolean getAsBoolean() {
-      return inner.getAsBoolean();
+      return cantBeNull(inner).getAsBoolean();
     }
 
     @Override public Proposition or(final BooleanSupplier s, final BooleanSupplier... cs) {
@@ -203,34 +204,34 @@ import fluent.ly.*;
     }
 
     protected Stream<BooleanSupplier> stream() {
-      return inner.stream();
+      return cantBeNull(inner).stream();
     }
 
     protected void simplify() {
-      final List<BooleanSupplier> newInner = stream().map(λ -> {
+      @SuppressWarnings("null") final List<BooleanSupplier> newInner = stream().map(λ -> {
         if (!getClass().isInstance(λ))
           return Stream.of(λ);
         if (((Some) λ).toString != null)
           toString += ", " + λ;
         return ((Some) λ).inner.stream();
       }).flatMap(λ -> λ).collect(Collectors.toList());
-      inner.clear();
-      inner.addAll(newInner);
+      cantBeNull(inner).clear();
+      cantBeNull(inner).addAll(newInner);
     }
 
     final Proposition add(final BooleanSupplier... ¢) {
-      inner.addAll(as.list(¢));
+      cantBeNull(inner).addAll(as.list(¢));
       simplify();
       return this;
     }
 
     final Proposition add(final BooleanSupplier s, final BooleanSupplier... cs) {
-      inner.add(s);
+      cantBeNull(inner).add(s);
       return add(cs);
     }
 
     final Proposition add(final BooleanSupplier s1, final BooleanSupplier s2, final BooleanSupplier... cs) {
-      inner.add(s1);
+      cantBeNull(inner).add(s1);
       return add(s2, cs);
     }
   }
