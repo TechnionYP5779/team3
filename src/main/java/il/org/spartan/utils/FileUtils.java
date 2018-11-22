@@ -1,5 +1,6 @@
 package il.org.spartan.utils;
 
+import static il.org.spartan.Utils.*;
 import java.io.*;
 import java.nio.charset.*;
 import java.nio.file.*;
@@ -10,7 +11,7 @@ import org.jetbrains.annotations.*;
 /** A class for utility methods when working with files and directories
  * @author Daniel Mittelman <code><mittelmania [at] gmail.com></code>
  * @since 2015/09/19 */
-@SuppressWarnings("null") public class FileUtils {
+public class FileUtils {
   @NotNull public static List<String> findAllJavaFiles(final String... paths) {
     final @NotNull List<String> $ = new ArrayList<>();
     if (paths == null || paths.length == 0)
@@ -26,7 +27,7 @@ import org.jetbrains.annotations.*;
   }
 
   @NotNull public static String read(final @NotNull String fileName) throws IOException {
-    return read(Paths.get(fileName));
+    return read(cantBeNull(Paths.get(fileName)));
   }
 
   /** @param fileName where to write
@@ -41,7 +42,7 @@ import org.jetbrains.annotations.*;
 
   private static void iterateFiles(final @Nullable File dir, final @NotNull List<String> files) {
     if (dir != null)
-      for (final @NotNull File ¢ : dir.listFiles()) {
+      for (final File ¢ : dir.listFiles()) {
         if (¢.isDirectory())
           iterateFiles(¢, files);
         if (¢.isFile() && ¢.getName().endsWith(".java"))

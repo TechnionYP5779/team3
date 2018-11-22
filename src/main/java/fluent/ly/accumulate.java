@@ -9,7 +9,7 @@ import org.jetbrains.annotations.*;
  * @param <T> JD
  * @param <C> JD
  * @since 2016 */
-public interface accumulate<T, C extends Collection<T>> {
+@SuppressWarnings("unchecked") public interface accumulate<T, C extends Collection<T>> {
   /** @param <T> JD
    * @param   <C> JD
    * @param c JD */
@@ -41,7 +41,7 @@ public interface accumulate<T, C extends Collection<T>> {
    * @return <code><b>this</b></code> */
   @NotNull accumulate<T, C> add(@Nullable T t);
 
-  @NotNull default accumulate<T, C> add(@SuppressWarnings("unchecked") final T... ts) {
+  @NotNull default accumulate<T, C> add( final T... ts) {
     if (ts != null)
       for (final @Nullable T ¢ : ts)
         if (¢ != null)
@@ -61,7 +61,8 @@ public interface accumulate<T, C extends Collection<T>> {
 
   /** @param tss JD
    * @return <code><b>this</b></code> */
-  @NotNull default accumulate<T, C> addAll(@SuppressWarnings("unchecked") final @Nullable Iterable<? extends T>... tss) {
+  
+  @NotNull default accumulate<T, C> addAll(final @Nullable Iterable<? extends T>... tss) {
     if (tss != null)
       for (final Iterable<? extends T> ¢ : tss)
         addAll(¢);

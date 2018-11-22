@@ -1,5 +1,6 @@
 package il.org.spartan.tables;
 
+import static il.org.spartan.Utils.*;
 import java.io.*;
 import java.util.*;
 
@@ -16,7 +17,7 @@ import il.org.spartan.utils.*;
  * including aggregation information.
  * @author Yossi Gil
  * @since 2016-12-25 */
-@SuppressWarnings("null") public class Table extends Row<Table> implements Closeable {
+public class Table extends Row<Table> implements Closeable {
   private static final long serialVersionUID = 0x4AA7BE471985E874L;
   String path;
 
@@ -25,7 +26,7 @@ import il.org.spartan.utils.*;
   }
 
   public Table(final Class<?> c) {
-    this(classToNormalizedFileName(c));
+    this(cantBeNull(classToNormalizedFileName(c)));
   }
 
   public Table(final @NotNull String name) {
@@ -38,7 +39,7 @@ import il.org.spartan.utils.*;
    * @author oran1248
    * @since 2017-04-21 */
   @SuppressWarnings("resource") public Table(final @NotNull String name, final TableRenderer... rs) {
-    this.name = name.toLowerCase();
+    this.name = cantBeNull(name.toLowerCase());
     as.list(rs).forEach(r -> {
       try {
         writers.add(new RecordWriter(r, path()));
@@ -50,7 +51,7 @@ import il.org.spartan.utils.*;
   }
 
   @SuppressWarnings("resource") public Table(final @NotNull String name, final @NotNull String outputFolder) {
-    this.name = name.toLowerCase();
+    this.name = cantBeNull(name.toLowerCase());
     path = outputFolder.lastIndexOf('/') == outputFolder.length() ? outputFolder : outputFolder + System.getProperty("file.separator", "/");
     as.list(TableRenderer.builtin.values()).forEach(r -> {
       try {
@@ -63,7 +64,7 @@ import il.org.spartan.utils.*;
   }
 
   public Table(final Class<?> c, final @NotNull String outputFolder) {
-    this(classToNormalizedFileName(c), outputFolder);
+    this(cantBeNull(classToNormalizedFileName(c)), outputFolder);
   }
 
   private int length;
@@ -82,11 +83,11 @@ import il.org.spartan.utils.*;
   @Override public void close() {
     if (!stats.isEmpty())
       for (final Statistic s : statisics) {
-        for (final @NotNull String key : keySet()) {
-          final RealStatistics r = getRealStatistics(key);
+        for (final String key : keySet()) {
+          final RealStatistics r = getRealStatistics(cantBeNull(key));
           put(key, r == null || r.n() == 0 ? "" : box.it(s.of(r)));
         }
-        final @NotNull String key = lastEmptyColumn();
+        final @NotNull String key = cantBeNull(lastEmptyColumn());
         for (final RecordWriter ¢ : writers) {
           put(key, ¢.renderer.render(s));
           ¢.writeFooter(this);
@@ -97,8 +98,8 @@ import il.org.spartan.utils.*;
 
   private String lastEmptyColumn() {
     String $ = null;
-    for (final @NotNull String key : keySet()) {
-      final RealStatistics r = getRealStatistics(key);
+    for (final String key : keySet()) {
+      final RealStatistics r = getRealStatistics(cantBeNull(key));
       if (r != null && r.n() != 0)
         break;
       $ = key;
@@ -187,10 +188,10 @@ import il.org.spartan.utils.*;
   }
 
   public static String classToNormalizedFileName(final Class<?> ¢) {
-    return classToNormalizedFileName(¢.getSimpleName());
+    return classToNormalizedFileName(cantBeNull(¢.getSimpleName()));
   }
 
   static String classToNormalizedFileName(final @NotNull String className) {
-    return separate.these(the.lastOf(iterable.over(cCamelCase.components(className)))).by('-').toLowerCase();
+    return separate.these(the.lastOf(iterable.over(cantBeNull(cCamelCase.components(className))))).by('-').toLowerCase();
   }
 }

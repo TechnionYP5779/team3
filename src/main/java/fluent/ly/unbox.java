@@ -44,7 +44,7 @@ import org.jetbrains.annotations.*;
   }
 
   public static int @NotNull [] it(final @NotNull List<Integer> ¢) {
-    return it(¢.toArray(new Integer[¢.size()]));
+    return it(¢.toArray(new @NotNull Integer [¢.size()]));
   }
 
   public static boolean unbox(final @NotNull Boolean ¢) {
@@ -98,7 +98,7 @@ import org.jetbrains.annotations.*;
   public static short @NotNull [] unbox(final @NotNull Collection<Short> ss) {
     final short @NotNull [] $ = new short[ss.size()];
     int i = 0;
-    for (final @NotNull Short v : ss)
+    for (final Short v : ss)
       $[i++] = v.shortValue();
     return $;
   }

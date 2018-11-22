@@ -25,18 +25,18 @@ import il.org.spartan.*;
     return Boolean.valueOf(¢);
   }
 
-  @NotNull public static Boolean[] box(final boolean bs[]) {
-    final @NotNull Boolean[] $ = new Boolean[bs.length];
+  public static Boolean @NotNull [] box(final boolean bs[]) {
+    final Boolean[] $ = new Boolean[bs.length];
     for (int ¢ = 0; ¢ < $.length; ++¢)
       $[¢] = box(bs[¢]);
-    return $;
+    return cantBeNull($);
   }
 
-  @NotNull public static Byte box(final byte ¢) {
-    return Utils.canBeNull(Byte.valueOf(¢));
+  public static Byte box(final byte ¢) {
+    return cantBeNull(Utils.canBeNull(Byte.valueOf(¢)));
   }
 
-  @NotNull public static Byte[] box(final byte bs[]) {
+  public static Byte @NotNull [] box(final byte bs[]) {
     final Byte @NotNull [] $ = new Byte[bs.length];
     for (int ¢ = 0; ¢ < $.length; ++¢)
       $[¢] = box(bs[¢]);
@@ -51,7 +51,7 @@ import il.org.spartan.*;
     return Character.valueOf(¢);
   }
 
-  @NotNull public static Character @NotNull [] box(final char cs[]) {
+  public static Character @NotNull [] box(final char cs[]) {
     final Character @NotNull [] $ = new Character[cs.length];
     for (int ¢ = 0; ¢ < $.length; ++¢)
       $[¢] = box(cs[¢]);
@@ -66,7 +66,7 @@ import il.org.spartan.*;
     return Double.valueOf(¢);
   }
 
-  @NotNull public static Double[] box(final double ds[]) {
+  public static Double @NotNull [] box(final double ds[]) {
     final Double @NotNull [] $ = new Double[ds.length];
     for (int ¢ = 0; ¢ < $.length; ++¢)
       $[¢] = box(ds[¢]);
@@ -81,8 +81,8 @@ import il.org.spartan.*;
     return Float.valueOf(¢);
   }
 
-  @NotNull public static Float[] box(final float fs[]) {
-    final @NotNull Float[] $ = new Float[fs.length];
+  public static Float @NotNull [] box(final float fs[]) {
+    final Float @NotNull [] $ = new Float[fs.length];
     for (int ¢ = 0; ¢ < $.length; ++¢)
       $[¢] = box(fs[¢]);
     return $;
@@ -96,7 +96,7 @@ import il.org.spartan.*;
     return Integer.valueOf(¢);
   }
 
-  @NotNull public static Integer[] box(final int is[]) {
+  public static Integer @NotNull [] box(final int is[]) {
     final Integer @NotNull [] $ = new Integer[is.length];
     for (int ¢ = 0; ¢ < $.length; ++¢)
       $[¢] = box(is[¢]);
@@ -104,10 +104,10 @@ import il.org.spartan.*;
   }
 
   @NotNull public static Long box(final long ¢) {
-    return Long.valueOf(¢);
+    return cantBeNull(Long.valueOf(¢));
   }
 
-  @NotNull public static Long @NotNull [] box(final long ls[]) {
+  public static Long @NotNull [] box(final long ls[]) {
     final Long @NotNull [] $ = new Long[ls.length];
     for (int ¢ = 0; ¢ < $.length; ++¢)
       $[¢] = box(ls[¢]);
@@ -122,7 +122,7 @@ import il.org.spartan.*;
     return Short.valueOf(¢);
   }
 
-  @NotNull public static Short[] box(final short ss[]) {
+  public static Short @NotNull [] box(final short ss[]) {
     final Short @NotNull [] $ = new Short[ss.length];
     for (int ¢ = 0; ¢ < $.length; ++¢)
       $[¢] = box(ss[¢]);
@@ -137,7 +137,7 @@ import il.org.spartan.*;
     return cantBeNull(Boolean.valueOf(¢));
   }
 
-  @NotNull public static Boolean[] it(final boolean bs[]) {
+  public static Boolean @NotNull [] it(final boolean bs[]) {
     final Boolean @NotNull [] $ = new Boolean @NotNull [bs.length];
     for (int ¢ = 0; ¢ < $.length; ++¢)
       $[¢] = box(bs[¢]);
@@ -152,7 +152,7 @@ import il.org.spartan.*;
     return cantBeNull(Byte.valueOf(¢));
   }
 
-  @NotNull public static Byte[] it(final byte bs[]) {
+  public static Byte @NotNull [] it(final byte bs[]) {
     final Byte @NotNull [] $ = new Byte @NotNull [bs.length];
     for (int ¢ = 0; ¢ < $.length; ++¢)
       $[¢] = box(bs[¢]);
@@ -163,8 +163,8 @@ import il.org.spartan.*;
     return cantBeNull(Character.valueOf(¢));
   }
 
-  @NotNull public static Character @NotNull [] it(final char cs[]) {
-    final @NotNull Character @NotNull [] $ = new Character @NotNull [cs.length];
+  public static Character @NotNull [] it(final char cs[]) {
+    final Character @NotNull [] $ = new Character @NotNull [cs.length];
     for (int ¢ = 0; ¢ < $.length; ++¢)
       $[¢] = it(cs[¢]);
     return $;
@@ -178,7 +178,7 @@ import il.org.spartan.*;
     return cantBeNull(Double.valueOf(¢));
   }
 
-  @NotNull public static Double[] it(final double ds[]) {
+  public static Double @NotNull [] it(final double ds[]) {
     final Double @NotNull [] $ = new Double[ds.length];
     for (int ¢ = 0; ¢ < $.length; ++¢)
       $[¢] = box(ds[¢]);
@@ -193,8 +193,8 @@ import il.org.spartan.*;
     return cantBeNull(Float.valueOf(¢));
   }
 
-  @NotNull public static Float[] it(final float fs[]) {
-    final @NotNull Float @NotNull [] $ = new Float @NotNull [fs.length];
+  public static Float @NotNull [] it(final float fs[]) {
+    final Float @NotNull [] $ = new Float @NotNull [fs.length];
     for (int ¢ = 0; ¢ < $.length; ++¢)
       $[¢] = it(fs[¢]);
     return $;
@@ -209,7 +209,7 @@ import il.org.spartan.*;
     return box(¢);
   }
 
-  @NotNull public static Integer[] it(final int ¢[]) {
+  public static Integer @NotNull [] it(final int ¢[]) {
     return box(¢);
   }
 
@@ -217,8 +217,8 @@ import il.org.spartan.*;
     return cantBeNull(Long.valueOf(¢));
   }
 
-  @NotNull public static Long @NotNull [] it(final long ls[]) {
-    final @NotNull Long @NotNull [] $ = new Long[ls.length];
+   public static Long @NotNull [] it(final long ls[]) {
+    final Long @NotNull [] $ = new Long[ls.length];
     for (int ¢ = 0; ¢ < $.length; ++¢)
       $[¢] = it(ls[¢]);
     return $;
@@ -228,8 +228,8 @@ import il.org.spartan.*;
     return cantBeNull(Short.valueOf(¢));
   }
 
-  @NotNull public static Short @NotNull [] it(final short ss[]) {
-    final @NotNull Short @NotNull [] $ = new Short @NotNull [ss.length];
+  public static Short @NotNull [] it(final short ss[]) {
+    final Short @NotNull [] $ = new Short @NotNull [ss.length];
     for (int ¢ = 0; ¢ < $.length; ++¢)
       $[¢] = it(ss[¢]);
     return $;

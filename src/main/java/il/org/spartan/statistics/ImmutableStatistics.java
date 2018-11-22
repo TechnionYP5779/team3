@@ -1,5 +1,5 @@
 package il.org.spartan.statistics;
-
+import static il.org.spartan.Utils.*;
 import static il.org.spartan.bench.Unit.*;
 
 import java.util.*;
@@ -29,8 +29,8 @@ public abstract class ImmutableStatistics extends Statistics implements java.io.
 
   /** Generate a copy of the set of all recorded values
    * @return an array containing all recorded values */
-  @SuppressWarnings("null") public final double @NotNull [] all() {
-    return Arrays.copyOf(values, n);
+  public final double @NotNull [] all() {
+    return cantBeNull(Arrays.copyOf(values, n));
   }
 
   public double flipping() {
@@ -131,7 +131,7 @@ public abstract class ImmutableStatistics extends Statistics implements java.io.
     return unit;
   }
 
-  @NotNull @SuppressWarnings("null") private StringBuilder appendError(final @NotNull StringBuilder b, final double d) {
-    return n() <= 1 ? b : b.append('±' + RELATIVE.format(d));
+  @NotNull private StringBuilder appendError(final @NotNull StringBuilder b, final double d) {
+    return n() <= 1 ? b : cantBeNull(b.append('±' + RELATIVE.format(d)));
   }
 }

@@ -43,13 +43,13 @@ public enum prune {
     return $;
   }
 
-  @NotNull @SuppressWarnings("null") public static <T> T[] nulls(final T[] ts) {
+   public static <T> T @NotNull [] nulls(final T[] ts) {
     final @NotNull List<@NotNull T> $ = new ArrayList<>();
     if (ts != null)
       for (final T ¢ : ts)
         if (¢ != null)
           $.add(¢);
-    return cantBeNull($.toArray(shrink(ts)));
+    return cantBeNull($.toArray(shrink(cantBeNull(ts))));
   }
 
   /** Shrink an array size to zero.

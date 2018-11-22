@@ -1,6 +1,7 @@
 // <a href=http://ssdl-linux.cs.technion.ac.il/wiki/index.php>SSDLPedia</a>
 package il.org.spartan.tables;
 
+import static il.org.spartan.Utils.*;
 import java.util.*;
 
 import org.jetbrains.annotations.*;
@@ -13,7 +14,7 @@ import il.org.spartan.utils.*;
  * @param <Self> uses for fluent API, __ of subclass
  * @author Yossi Gil
  * @since 2017-01-04 */
-@SuppressWarnings("null") public abstract class Row<Self extends Row<?>> extends LinkedHashMap<String, Object> {
+public abstract class Row<Self extends Row<?>> extends LinkedHashMap<String, Object> {
   private static final long serialVersionUID = 0x5F4CC2841512340L;
 
   public Row() {
@@ -21,7 +22,7 @@ import il.org.spartan.utils.*;
   }
 
   public Self col(final Accumulator ¢) {
-    return col(¢.name(), ¢.value());
+    return col(cantBeNull(¢.name()), ¢.value());
   }
 
   public Self col(final Accumulator... ¢) {
@@ -102,7 +103,7 @@ import il.org.spartan.utils.*;
   /** A mutator to add a key and a general {@link String} value to this instance
    * @param key The key to be added; must not be {@code null @param value The
    *            value associated with the key @return {@code this} */
-  public final Self col(final @NotNull String key, final @NotNull String value) {
+  public final Self col(final String key, final String value) {
     super.put(key, value);
     return self();
   }

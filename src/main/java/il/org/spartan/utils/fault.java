@@ -3,6 +3,7 @@ package il.org.spartan.utils;
 import java.io.*;
 import java.nio.charset.*;
 import java.util.stream.*;
+import static il.org.spartan.Utils.*;
 
 import org.jetbrains.annotations.*;
 
@@ -46,8 +47,8 @@ public interface fault {
     return false;
   }
 
-  @NotNull @SuppressWarnings("null") static String specifically(final @NotNull String explanation, final Object... os) {
-    return dump("\n " + explanation) + Stream.of(os).map(λ -> dump(λ.getClass().getSimpleName(), λ)).reduce((x, y) -> x + y).get() + done();
+  @NotNull static String specifically(final @NotNull String explanation, final Object... os) {
+    return dump("\n " + explanation) + Stream.of(os).map(λ -> dump(cantBeNull(λ.getClass().getSimpleName()), λ)).reduce((x, y) -> x + y).get() + done();
   }
 
   @NotNull static String dump(final @NotNull String name, final Object value) {

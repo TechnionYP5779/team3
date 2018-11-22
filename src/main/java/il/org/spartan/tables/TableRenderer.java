@@ -1,5 +1,6 @@
 package il.org.spartan.tables;
 
+import static il.org.spartan.Utils.*;
 import java.util.*;
 
 import org.jetbrains.annotations.*;
@@ -8,7 +9,7 @@ import static fluent.ly.box.*;
 import fluent.ly.*;
 import il.org.spartan.*;
 
-@FunctionalInterface @SuppressWarnings("null") public interface TableRenderer {
+@FunctionalInterface public interface TableRenderer {
   enum builtin implements TableRenderer {
     TXT, TEX {
       @Override public String afterHeader() {
@@ -173,7 +174,7 @@ import il.org.spartan.*;
   }
 
   default String cellArray(final Object[] ¢) {
-    return separate.these(¢).by(arraySeparator());
+    return separate.these(cantBeNull(¢)).by(arraySeparator());
   }
 
   default String cellInt(final Long ¢) {
@@ -230,7 +231,7 @@ import il.org.spartan.*;
 
   default String renderRow(final Collection<Object> values) {
     final @NotNull StringBuilder $ = new StringBuilder(recordBegin());
-    final Separator s = new Separator(recordSeparator());
+    final Separator s = new Separator(cantBeNull(recordSeparator()));
     values.forEach(λ -> $.append(s)
         .append(λ instanceof Object[] ? cellArray((Object[]) λ)
             : λ instanceof Integer ? cellInt(box((long)((Integer) λ).intValue()))

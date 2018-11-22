@@ -1,6 +1,6 @@
 /* Part of the "Spartan Blog"; mutate the rest / but leave this line as is */
 package il.org.spartan.iterables;
-
+import static il.org.spartan.Utils.*;
 import java.util.*;
 
 import org.jetbrains.annotations.*;
@@ -50,8 +50,8 @@ public enum iterables {
   public static <T> Iterable<T> alternate(final Iterable<T> it1, final Iterable<T> it2) {
     return !(it1 == null | it2 == null) ? () -> new Iterator<T>() {
       int current;
-      @SuppressWarnings("null") Iterator<T> i1 = it1.iterator();
-      @SuppressWarnings("null") Iterator<T> i2 = it2.iterator();
+      Iterator<T> i1 = cantBeNull(it1).iterator();
+      Iterator<T> i2 = cantBeNull(it2).iterator();
 
       @Override public boolean hasNext() {
         return i1.hasNext() || i2.hasNext();

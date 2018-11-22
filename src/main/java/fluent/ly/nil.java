@@ -2,15 +2,20 @@ package fluent.ly;
 
 import java.util.function.*;
 
+import org.jetbrains.annotations.*;
+
+
 /** TODO Yossi Gil: document class
  * @author Yossi Gil
  * @since 2017-04-10 */
-@SuppressWarnings({ "unused", "null" }) public interface nil {
+public interface nil {
   interface On<T, R> {
     R on(T t);
   }
 
-  static <T> T forgetting(final Object _1, final Object... _2) {
+  static <@Nullable T> T forgetting(final Object _1, final Object... _2) {
+    forget.it(_1);
+    forget.it(_2);
     return null;
   }
 
@@ -18,15 +23,18 @@ import java.util.function.*;
     return λ -> λ == null ? null : f.apply(λ);
   }
 
-  static <T> T ignoring(final boolean __) {
+  static <@Nullable T> T ignoring(final boolean __) {
+    forget.it(__);
     return null;
   }
 
-  static <T> T ignoring(final double __) {
+  static <@Nullable T> T ignoring(final double __) {
+    forget.it(__);
     return null;
   }
 
-  static <T> T ignoring(final long __) {
+  static <@Nullable T> T ignoring(final long __) {
+    forget.it(__);
     return null;
   }
 }

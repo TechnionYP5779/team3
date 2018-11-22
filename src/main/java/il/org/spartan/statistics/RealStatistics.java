@@ -1,5 +1,5 @@
 package il.org.spartan.statistics;
-
+import static il.org.spartan.Utils.*;
 import java.util.*;
 
 import org.jetbrains.annotations.*;
@@ -37,13 +37,13 @@ public class RealStatistics extends ImmutableStatistics {
     return this;
   }
 
-  @NotNull @SuppressWarnings("null") protected RealStatistics recordValue(final double v) {
+  @NotNull protected RealStatistics recordValue(final double v) {
     if (n() == 0) {
       min = max = v;
       flips = 2;
     }
     if (n == values.length)
-      values = increase(values);
+      values = cantBeNull(increase(values));
     values[n++] = v;
     flips += as.bit(min > v || max < v);
     min = Math.min(min, v);

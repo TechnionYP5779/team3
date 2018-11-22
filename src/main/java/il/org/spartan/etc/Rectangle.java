@@ -34,12 +34,12 @@ public class Rectangle {
     return Math.abs((unbox(cantBeNull(first.first)) - unbox(cantBeNull(second.first))) * (unbox(cantBeNull(first.second)) - unbox(cantBeNull(second.second))));
   }
 
-  @SuppressWarnings({ "rawtypes", "unchecked" }) public void changeFirst(final double x1, final double y1) {
-    first = new Pair(box(x1), box(y1));
+  public void changeFirst(final double x1, final double y1) {
+    first = new Pair<>(box(x1), box(y1));
   }
 
-  @SuppressWarnings({ "rawtypes", "unchecked" }) public void changeSecond(final double x2, final double y2) {
-    second = new Pair(box(x2), box(y2));
+  public void changeSecond(final double x2, final double y2) {
+    second = new Pair<>(box(x2), box(y2));
   }
 
   public double perimiter() {
