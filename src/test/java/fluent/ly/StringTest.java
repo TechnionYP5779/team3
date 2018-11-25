@@ -21,6 +21,7 @@ import org.junit.*;
 
   @Test public void use4() {
     assert "Aaaaa".equals(string.capitalize("aAAAA"));
+    assert "".equals(string.capitalize(""));
   }
 
   @Test public void use5() {
@@ -122,5 +123,20 @@ import org.junit.*;
     assert "a".equals(string.sprintf(new String[] { "a" }));
     assert "a".equals(string.sprintf(new String[] { "a", "b" }));
     assert "nn".equals(string.repeat(2, "n"));
+    assert Double.isNaN(string.delta(0, 4));
+    assert string.delta(2, 4) == 2.0/3.0;
+    assert "1".equals(string.ltoa(1));
+    assert "(a)".equals(string.paren("a"));
+    assert "2 cats:\n\t1) a\n\t2) b\n".equals(string.pretty("cat", as.list(new String[] {"a","b"})));
+    assert "1 cat: x\n".equals(string.pretty("cat", as.list(new String[] {"x"})));
+    assert "".equals(string.pretty("cat", as.list(new String[] {})));
+    assert "".equals(string.pretty("cat", null));
+    assert "\'a\'".equals(string.quote("a"));
+    assert "aa".equals(string.repeat(2, "a"));
+    assert "aa".equals(string.repeat(2, 'a'));
+    assert string.signum(0) == 0;
+    assert string.signum(-20) == -1;
+    assert string.signum(10) == 1;
+    assert "hello 1".equals(string.sprintf("hello %d", 1));
   }
 }
