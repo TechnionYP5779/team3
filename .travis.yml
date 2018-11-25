@@ -6,7 +6,7 @@ addons:
   sonarcloud:
     organization: "team3" # the key of the org
     token:
-      secure: dHI5zGvCrwsM6R7OO1XwDsrdf88L5hEeAMBtT68JRCucm1Ldup5mE0YOUtHid8BWWZfIJCe9eL9Xk9B779xr2O2cLWIh2pEpCg7pe+cdNaCAJW2A2Kbg2woSjwCpcNzUopgofJhx9F65rwpwRQI662EQzPWXeqyGLpT8f5dBRdo+BnkQyi5uAvybfHNfXU4ExZ5dQig10NeEOhD8iHb+Ljn01uquhmh4N4JqPnpYX4AtkUKY3QZTuZxttAEUDrwlEmkHHMFXKXlsjdWk6ErI+qfEcz2XbTysqQ0CxtEY5+1n3l3lRVb11YhT7lSaFnu64ZDauMchljZip6B0YpMRSSCJJgW7mtFluTliBUQpi+yXjwU2kkEHOK0uD5JA0X/6EM016gUngS6BX+tB6zbTSaxnHofXGNNRF/L4Gk3c9O6eFCWRlnRFU3tJnWW7+36CBs/R1T/dYi+Qr1jzjjsr2OwbFIxmLE181z3PdFKr2IrRKwNVTzSswRgHF/4xqlgi8TN9RwaUEnHv1GTKfKPaMwIgEeJSLy/e/Ak8y+jqpjXTqv8p+GUqmxZbBL/jeRmX9w7jpHgW50RJU6lWJJ0z/kT8/Vg0jNLq9wZmYTbD4XVNEywUagQid5M+nF3odMVgtb/LFVeauF/gGQQI2Mw7qVFnjFhVEiMeCSq2DfzKSFo=
+      secure: 3d51747a4d189b1d746a5397df734fd21938d410
 
 script:
   # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
