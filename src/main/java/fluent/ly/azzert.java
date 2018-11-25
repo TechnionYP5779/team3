@@ -57,29 +57,6 @@ public class azzert extends org.junit.Assert {
     return AnyOf.anyOf(¢);
   }
 
-  public static <T>  AnyOf<T> anyOf(final Matcher<T> first, final Matcher<? super T> second) {
-    return AnyOf.anyOf(first, second);
-  }
-
-  public static <T>  AnyOf<T> anyOf(final Matcher<T> first, final Matcher<? super T> second, final Matcher<? super T> third) {
-    return AnyOf.anyOf(first, second, third);
-  }
-
-  public static <T>  AnyOf<T> anyOf(final Matcher<T> first, final Matcher<? super T> second, final Matcher<? super T> third,
-      final Matcher<? super T> fourth) {
-    return AnyOf.anyOf(first, second, third, fourth);
-  }
-
-  public static <T>  AnyOf< T> anyOf(final Matcher< T> first, final Matcher< ? super T> second, final Matcher< ? super T> third,
-      final Matcher< ? super T> fourth, final Matcher< ? super T> fifth) {
-    return AnyOf.anyOf(first, second, third, fourth, fifth);
-  }
-
-  public static <T>  AnyOf<T> anyOf(final Matcher<T> first, final Matcher<? super T> second, final Matcher<? super T> third,
-      final Matcher<? super T> fourth, final Matcher<? super T> fifth, final Matcher<? super T> sixth) {
-    return AnyOf.anyOf(first, second, third, fourth, fifth, sixth);
-  }
-
   public static Matcher< Object> anything() {
     return IsAnything.anything();
   }
@@ -149,7 +126,7 @@ public class azzert extends org.junit.Assert {
   }
 
   public static void assertEquals(final int expected, final int actual) {
-    assertEquals(fluent.ly.box.it(expected), fluent.ly.box.it(actual));
+    assertEquals(box.it(expected), box.it(actual));
   }
 
   public static void assertEquals(final int a, final Integer b) {

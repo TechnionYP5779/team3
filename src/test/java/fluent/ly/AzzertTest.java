@@ -1,5 +1,5 @@
 package fluent.ly;
-
+import static il.org.spartan.Utils.*;
 import static fluent.ly.azzert.*;
 
 import java.util.*;
@@ -114,5 +114,45 @@ import static fluent.ly.box.*;
     azzert.notNull(new Object());
     azzert.notNull("bla", new Object());
     azzert.startsWith("bla");
+    azzert.that(cantBeNull(box(5)), cantBeNull(any(Integer.class)));
+    azzert.that(cantBeNull(box(5)), cantBeNull(anyOf(as.list(any(Integer.class)))));
+    azzert.that(cantBeNull(box(5)), cantBeNull(anyOf(any(Integer.class))));
+    azzert.that(cantBeNull(box(5)), cantBeNull(allOf(any(Integer.class))));
+    azzert.that(cantBeNull(box(5)), cantBeNull(allOf(as.list(any(Integer.class)))));
+    azzert.that(cantBeNull(box(5)), cantBeNull(allOf(any(Integer.class), is(box(5)))));
+    azzert.that(cantBeNull(box(5)), cantBeNull(anything()));
+    azzert.that(cantBeNull(box(5)), cantBeNull(anything("dont care")));
+    azzert.assertEquals(true, true);
+    azzert.assertEquals(1, 1);
+    azzert.assertLE("error", 5, 5);
+    azzert.that(cantBeNull(box(5)), cantBeNull(azzert.describedAs("desc", is(5))));
+    azzert.that("bla", cantBeNull(equalToIgnoringCase("BLA")));
+    azzert.that("bla", cantBeNull(equalToIgnoringWhiteSpace("bla")));
+    azzert.that(as.list("a","a"), cantBeNull(everyItem(is("a"))));
+    azzert.that(as.list("a","b"), cantBeNull(hasItem(is("a"))));
+    azzert.that(as.list("a","b"), cantBeNull(hasItem("a")));
+    azzert.that(as.list("a","b"), cantBeNull(hasItems(is("a"), is("b"))));
+    azzert.that(as.list("a","b"), cantBeNull(hasItems("a", "b")));
+    azzert.isNull(null);
+    azzert.nonNulls(as.list("a","b"));
+    azzert.that("a", not("b"));
+    azzert.notNullz("a","b");
+    String a = "";
+    forget.it(a);
+    azzert.that(a, sameInstance(a));
+    azzert.that('c', is('c'));
+    long l = 5;
+    forget.it(l);
+    azzert.that(l, is(l));
+    byte b = 5;
+    forget.it(b);
+    azzert.that(b, is(b));
+    float f = 5;
+    forget.it(f);
+    azzert.that(f, is(f));
+    short s = 5;
+    forget.it(s);
+    azzert.that(s, is(s));
+    azzert.that(4.4, is(4.4));
   }
 }
