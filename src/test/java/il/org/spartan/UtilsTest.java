@@ -1,5 +1,5 @@
 package il.org.spartan;
-
+import static fluent.ly.box.*;
 import static fluent.ly.azzert.*;
 import static il.org.spartan.Utils.*;
 import java.util.*;
@@ -202,5 +202,17 @@ import il.org.spartan.etc.*;
     final FoundHandleForInt t1 = new FoundHandleForInt(1);
     assert t1.in(1);
     assert !t1.in(2);
-  }
+    assert Utils.addAll(as.list("a"), "b", "c").size() == 3;
+    assert Utils.addAll(as.list("a"), "b", null).size() == 2;
+    Utils.canBeNull(box(5));
+    assert Utils.contains("blabla", "bla");
+    assert !Utils.contains("blabla", "x", null);
+    assert !Utils.hasNull("a","b");
+    assert !Utils.inRange(5, as.list("a"));
+    assert Utils.inRange(0, as.list("a"));
+    assert !Utils.intIsIn(5, 1,2,3);
+    assert !Utils.suffixedBy("bla", as.list("x"));
+    assert Utils.hash(null) == 0;
+    assert Utils.hash("a") == "a".hashCode();
+   }
 }

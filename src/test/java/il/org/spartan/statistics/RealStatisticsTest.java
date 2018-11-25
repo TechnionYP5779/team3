@@ -1,6 +1,6 @@
 package il.org.spartan.statistics;
 
-
+import static fluent.ly.box.*;
 import static fluent.ly.azzert.*;
 
 import org.jetbrains.annotations.*;
@@ -204,5 +204,11 @@ import il.org.spartan.bench.*;
     assert("mean=1.50bcmax=2.00n=6range=1.00⋯2.00]max=2.001.50min=1.00".equals(t.format(Unit.INTEGER, "abcxnrxji")));
     assert(t.relativeMedianError()==0.3333333333333333);
     assert(t.relativeMinError()==0.5);
+    assert t.record(Double.NaN).missing() == 1;
+    assert t.record(Double.POSITIVE_INFINITY).missing() == 2;
+    Double d = null;
+    forget.it(d);
+    assert t.record(d).missing() == 3;
+    assert t.record(box(10.0)).max() == 10.0;
   }
 }

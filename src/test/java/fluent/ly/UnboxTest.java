@@ -129,4 +129,11 @@ import org.junit.*;
     for (final char i : arr)
       azzert.that(i, is(res[j++]));
   }
+  
+  @Test public void more() {
+    assert unbox.it(box(1)) == 1;
+    short s = 7;
+    forget.it(s);
+    assertArrayEquals(unbox(as.list(new Short[] {box(s)})), new short[] {s});
+  }
 }
