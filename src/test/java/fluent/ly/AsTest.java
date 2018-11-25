@@ -76,7 +76,7 @@ import org.junit.*;
   }
   
   @Test public void moreTests() {
-    assertArrayEquals(as.intArray(as.list(1,2,3)), new int[] {1,2,3});
+    assertArrayEquals(as.intArray(as.list(new int[] {1,2,3})), new int[] {1,2,3});
     assert as.iterator(box(1)).next().equals(box(1));
     Iterator<Integer> i = null;
     forget.it(i);
