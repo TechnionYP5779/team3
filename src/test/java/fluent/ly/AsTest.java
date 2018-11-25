@@ -74,4 +74,16 @@ import org.junit.*;
   @Test public void stringsTest() {
     assertArrayEquals(new String[] { "a", "b", "c", "1" }, as.strings(as.list("a", "b", "c", box(1), null)));
   }
+  
+  @Test public void moreTests() {
+    assertArrayEquals(as.intArray(as.list(1,2,3)), new int[] {1,2,3});
+    assert as.iterator(box(1)).next().equals(box(1));
+    Iterator<Integer> i = null;
+    forget.it(i);
+    assert as.list(i).isEmpty();
+    assert "a".equals(as.string('a'));
+    assert "null".equals(as.string(null));
+    assert "1".equals(as.string(box(1)));
+    
+  }
 }
