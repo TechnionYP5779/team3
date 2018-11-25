@@ -2,3 +2,15 @@ language: java
 install: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -Dgpg.skip=true -B -V
 jdk:
   - oraclejdk8
+addons:
+  sonarcloud:
+    organization: "team3" # the key of the org
+    token:
+      secure: CulmF5UY6DntOTL1GjWNQSK/xu9+6TmsBKW4AB/yQtj5Go6EHpuW4yxuHWpxO2a8ENiahi6dYvMQNW3edTYN+YIFzn4KM9CMNZEyEnkj1OKRqoaHeC9uOAeVXdI3UV3aUawuei4cz4l8zszCHgW041an9qvEiQVfbMWVYFcZ45TVvxgVafAltX8sHToKiQhVyd+1JsPqJzC+j83TB7/aWmhovgjqsYEyGoqDmE5lgjvFxoMCU+AMIZpv/xXHCmVQ0USr7g72DO6b/M4A/ydlAJnuk8vOIFQlLJ0lafhIB8oyS9JwB3Xmq0MzMDnei8PL6oIz/pt8ymgL6svyj7p6KfRDm8gAirI7rskxWt9dJYOClDMOV9o7KJUCqv6Y1qcZkNPbrGDT635Onh+TkMaIhS7qF8OI747ZUPXBSP030bqKAo+oxFwihtoq7AJbnignY4vFseeGJMqEq7zIBNv5eGIzTLj5yPCVM3n90UphoEUonQkiGNRlDe2g2GKxS6lJTWsYDJl9j0STbpxWuGXHtAinuK2bYOamuUXkBfCEUAM/c8/CWk/FgY87CseJ0vtuKcnS8P0m0qWpoeOOw5vBaW1NoZR8VwKt7RX/UClenfTqV0YuUW0bR6Hwuv/l7enJMdwGgkuuW0NnPrGKdEQtNtLcVx5fApydwrj1PQVzOw0=
+script:
+  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+  - "mvn cobertura:cobertura"
+  - "mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar"
+  
+after_success:
+- bash <(curl -s https://codecov.io/bash)
