@@ -1,4 +1,4 @@
-package il.org.spartan.utils;
+package il.org.spartan.etc;
 
 import org.junit.*;
 import il.org.spartan.etc.*;
