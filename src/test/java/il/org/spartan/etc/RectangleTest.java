@@ -1,7 +1,6 @@
 package il.org.spartan.etc;
 
 import org.junit.*;
-import il.org.spartan.etc.*;
 
 @SuppressWarnings("static-method")public class RectangleTest {
   @Test public void test() {

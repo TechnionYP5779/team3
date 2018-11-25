@@ -1,5 +1,7 @@
 package fluent.ly;
 
+import static fluent.ly.box.*;
+
 import org.junit.*;
 
 @SuppressWarnings("static-method") public class StringTest {
@@ -137,6 +139,6 @@ import org.junit.*;
     assert string.signum(0) == 0;
     assert string.signum(-20) == -1;
     assert string.signum(10) == 1;
-    assert "hello 1".equals(string.sprintf("hello %d", 1));
+    assert "hello 1".equals(string.sprintf("hello %d", box(1)));
   }
 }
