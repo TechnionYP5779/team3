@@ -5,7 +5,7 @@ import org.junit.*;
 
 import fluent.ly.*;
 
-@SuppressWarnings( "static-method" ) public class SingletonTest {
+@SuppressWarnings( "static-method" ) public class singletonTest {
   static int n = 5;
 
   @Test public void lisTest() {

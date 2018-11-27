@@ -3,7 +3,7 @@ package fluent.ly;
 import org.junit.*;
 import static fluent.ly.box.*;
 
-@SuppressWarnings("static-method") public class BoxTest {
+@SuppressWarnings("static-method") public class boxTest {
   @Test public void boxAdds() {
     assert box(true).equals(box(true));
     final Boolean[] b2 = box(new boolean[] { true, false, true }), arr1 = { box(true), box(false), box(true) };

@@ -4,7 +4,7 @@ import java.util.*;
 import static fluent.ly.box.*;
 import org.junit.*;
 
-@SuppressWarnings("static-method") public class TheTest {
+@SuppressWarnings("static-method") public class theTest {
   @Test @SuppressWarnings("null") public void testos() {
     assert the.nil() == null;
     assert " #1/2".equals(the.nth("1", "2"));

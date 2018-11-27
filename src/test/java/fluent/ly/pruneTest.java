@@ -12,7 +12,7 @@ import static il.org.spartan.Utils.*;
 
 import il.org.spartan.etc.*;
 
-@SuppressWarnings("static-method") public class PruneTest {
+@SuppressWarnings("static-method") public class pruneTest {
   @Nullable final String[] alternatingArray = new @Nullable String[] { null, "A", null, null, "B", null, null, null, "C", null };
   @NotNull final String[] nonNullArray = { "1", "2", "4" };
   @NotNull private final List<String> sparseCollection = as.list(null, null, null, null, null, "A", null, null, null, "B", null, "C", null, null,

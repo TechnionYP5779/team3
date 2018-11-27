@@ -10,7 +10,7 @@ import fluent.ly.*;
 import il.org.spartan.etc.idiomatic.*;
 
 @SuppressWarnings("static-method")
-public class IdiomaticTest {
+public class idiomaticTest {
   @Test public void use0() {
     assert new Storer<>(this) != null;
   }

@@ -14,7 +14,7 @@ import an.*;
 import fluent.ly.separate.*;
 import il.org.spartan.etc.*;
 
-@SuppressWarnings("static-method") public class SeperateTest {
+@SuppressWarnings("static-method") public class seperateTest {
   private static final Function<String, String> quote = λ -> "'" + λ + "'";
 
   @Test public final void asArrayBetweenChar() {

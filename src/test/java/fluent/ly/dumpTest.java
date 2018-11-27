@@ -7,7 +7,7 @@ import org.junit.*;
 
 import il.org.spartan.*;
 
-public class DumpTest {
+public class dumpTest {
   private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
   private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
   private final PrintStream originalOut = System.out;

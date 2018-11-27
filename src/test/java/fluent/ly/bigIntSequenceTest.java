@@ -7,7 +7,7 @@ import org.junit.*;
 
 import il.org.spartan.etc.*;
 
-@SuppressWarnings("static-method")public class BigIntSequenceTest {
+@SuppressWarnings("static-method")public class bigIntSequenceTest {
   @Test public void testDefaults() {
     final Iterable<BigInteger> seq1 = bigIntSequence.from(BigInteger.ONE);
     assert seq1.iterator().hasNext();

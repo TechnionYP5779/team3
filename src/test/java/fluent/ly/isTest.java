@@ -7,7 +7,7 @@ import org.junit.*;
 import static fluent.ly.box.*;
 
 
-@SuppressWarnings("static-method") public class IsTest {
+@SuppressWarnings("static-method") public class isTest {
   @Test @SuppressWarnings("null") public void intTest() {
     @NotNull List<Integer> li = as.list(new int @NotNull [] { 12, 13, 14 });
     assert is.intIsIn(12, new int @NotNull [] { 12, 13, 14 });

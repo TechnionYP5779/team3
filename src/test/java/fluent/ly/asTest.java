@@ -9,7 +9,7 @@ import static fluent.ly.box.*;
 import org.jetbrains.annotations.*;
 import org.junit.*;
 
-@SuppressWarnings({ "static-method", "null" }) public class AsTest {
+@SuppressWarnings({ "static-method", "null" }) public class asTest {
   @Test public void asBitOfFalse() {
     azzert.that(as.bit(false), is(0));
   }

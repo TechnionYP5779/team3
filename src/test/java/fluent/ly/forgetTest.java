@@ -2,7 +2,7 @@ package fluent.ly;
 
 import org.junit.*;
 
-@SuppressWarnings("static-method") public class ForgetTest {
+@SuppressWarnings("static-method") public class forgetTest {
   @Test public void testForget() {
     forget.it(5);
     forget.it(false);
