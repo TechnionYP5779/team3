@@ -7,7 +7,7 @@ import java.util.*;
 
 import org.junit.*;
 
-@SuppressWarnings({ "static-method", "null" }) public class UnboxTest {
+@SuppressWarnings({ "static-method", "null" }) public class unboxTest {
   // NOTE: apparently not all functions are implemented
   private final double EPS = 0.001;
 

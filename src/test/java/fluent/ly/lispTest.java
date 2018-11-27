@@ -12,7 +12,7 @@ import org.jetbrains.annotations.*;
 import org.junit.*;
 
 
-@SuppressWarnings( "static-method" ) public class LispTest {
+@SuppressWarnings( "static-method" ) public class lispTest {
   @Test public void test() {
     final @Nullable List<@Nullable Integer> li = new ArrayList<>();
     li.add(0, box(0));

@@ -2,7 +2,7 @@ package il.org.spartan.etc;
 
 import org.junit.*;
 
-@SuppressWarnings("static-method") public class AngleTest {
+@SuppressWarnings("static-method") public class angleTest {
   @Test public void creatAngle() {
     angle.degree(20);
     angle.radians(1);

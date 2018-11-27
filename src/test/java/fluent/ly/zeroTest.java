@@ -2,7 +2,7 @@ package fluent.ly;
 
 import org.junit.*;
 
-@SuppressWarnings("static-method") public class ZeroTest {
+@SuppressWarnings("static-method") public class zeroTest {
   @Test public void zerotest() {
     final Object o2 = new Object();
     assert zero.forgetting(new Object(), o2) == 0;

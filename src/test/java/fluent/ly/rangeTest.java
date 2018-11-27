@@ -7,7 +7,7 @@ import org.junit.*;
 // import il.org.spartan.utils.*;
 import fluent.ly.range.*;
 
-public class RangeTest {
+public class rangeTest {
   @Test @SuppressWarnings("static-method") public void test() {
     final inner_range a = range.from(2);
     assert a != null;

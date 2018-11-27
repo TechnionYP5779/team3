@@ -1,10 +1,10 @@
-package il.org.spartan.etc;
+package fluent.ly;
 
 import org.junit.*;
 
 import fluent.ly.*;
 
-@SuppressWarnings("static-method") public class AnonymousTest {
+@SuppressWarnings("static-method") public class anonymousTest {
   @Test public void usecase0() {
     assert anonymous.ly(() -> true);
   }

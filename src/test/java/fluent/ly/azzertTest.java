@@ -7,7 +7,7 @@ import java.util.*;
 import org.junit.*;
 import static fluent.ly.box.*; 
 
-@SuppressWarnings("static-method") public class AzzertTest {
+@SuppressWarnings("static-method") public class azzertTest {
   @Test public void testStuff() {
     final List<Integer> lst = new ArrayList<>();
     lst.add(box(0));

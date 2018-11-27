@@ -2,7 +2,7 @@ package fluent.ly;
 
 import org.junit.*;
 
-@SuppressWarnings("static-method") public class YesTest {
+@SuppressWarnings("static-method") public class yesTest {
   @Test public void yestest() {
     final Object o1 = new Object(), o2 = new Object();
     final Runnable f = () -> {
