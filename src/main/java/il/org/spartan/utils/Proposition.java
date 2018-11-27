@@ -208,12 +208,12 @@ public interface Proposition extends BooleanSupplier {
     }
 
     protected void simplify() {
-      @SuppressWarnings("null") final List<BooleanSupplier> newInner = stream().map(λ -> {
+      final List<BooleanSupplier> newInner = stream().map(λ -> {
         if (!getClass().isInstance(λ))
           return Stream.of(λ);
         if (((Some) λ).toString != null)
           toString += ", " + λ;
-        return ((Some) λ).inner.stream();
+        return cantBeNull(((Some) λ).inner).stream();
       }).flatMap(λ -> λ).collect(Collectors.toList());
       cantBeNull(inner).clear();
       cantBeNull(inner).addAll(newInner);

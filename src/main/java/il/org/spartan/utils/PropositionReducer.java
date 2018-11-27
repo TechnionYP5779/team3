@@ -51,10 +51,10 @@ public abstract class PropositionReducer<R> extends Reduce<R> {
     return reduce(ante(¢), map(¢), post(¢));
   }
 
-  @SuppressWarnings("null") private R reduce(final Or o) {
+  private R reduce(final Or o) {
     R $ = ante(o);
-    for (int size = o.inner.size(), ¢ = 0; ¢ < size; ++¢) {
-      $ = reduce($, reduce(o.inner.get(¢)));
+    for (int size = cantBeNull(o.inner).size(), ¢ = 0; ¢ < size; ++¢) {
+      $ = reduce($, reduce(cantBeNull(o.inner).get(¢)));
       if (¢ < size - 1)
         $ = reduce($, inter(o));
     }

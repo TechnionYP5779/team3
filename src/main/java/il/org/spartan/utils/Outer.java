@@ -19,8 +19,11 @@ public class Outer< Inner> {
     inner = null;
   }
 
-  @Override @NotNull @SuppressWarnings("unchecked") public Outer<Inner> clone() throws CloneNotSupportedException {
-    return (Outer<Inner>) cantBeNull(super.clone());
+  @Override @NotNull public Outer<Inner> clone() throws CloneNotSupportedException {
+    @NotNull Object o = cantBeNull(super.clone());
+    @SuppressWarnings("unchecked")
+    Outer<Inner> o2 = (Outer<Inner>) o;
+    return o2;
   }
 
   /** @param ¢ JD
