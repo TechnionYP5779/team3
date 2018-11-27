@@ -1,6 +1,7 @@
 // <a href=http://ssdl-linux.cs.technion.ac.il/wiki/index.php>SSDLPedia</a>
 package il.org.spartan;
 
+import static il.org.spartan.Utils.*;
 import static fluent.ly.box.*;
 
 import java.util.*;
@@ -24,7 +25,7 @@ import il.org.spartan.utils.Separate.*;
  * /** Create a line in an "Comma Separated Values" format from a sequence of
  * named values.
  * @author Yossi Gil */
-@SuppressWarnings("null") public abstract class CSVLine extends AbstractStringProperties implements Cloneable {
+public abstract class CSVLine extends AbstractStringProperties implements Cloneable {
   @NotNull public static final String ARRAY_SEPARATOR = ";";
   final Map<String, String> map;
   protected final Aggregator aggregator = new Aggregator();
@@ -52,7 +53,7 @@ import il.org.spartan.utils.Separate.*;
   }
 
   @NotNull public final String asKeyValuePairs() {
-    return Separate.by((F<@NotNull Entry<@NotNull String, @NotNull String>>) λ -> λ.getKey() + "=" + λ.getValue(), entries(), ", ");
+    return Separate.by((F<Entry< String, String>>) λ -> λ.getKey() + "=" + λ.getValue(), cantBeNull(entries()), ", ");
   }
 
   public final Iterable<? extends Map.Entry<String, String>> entries() {
@@ -64,21 +65,21 @@ import il.org.spartan.utils.Separate.*;
    *          marked {@link External}
    * @return the parameter */
   public <T> T extract(final T $) {
-    for (@NotNull final Entry<String, String> ¢ : External.Introspector.toOrderedMap($).entrySet())
-      put(¢.getKey(), ¢.getValue());
+    for (final Entry<String, String> ¢ : External.Introspector.toOrderedMap($).entrySet())
+      put(cantBeNull(¢.getKey()), cantBeNull(¢.getValue()));
     return $;
   }
 
-  @Override public String get(final @NotNull String key) {
+  @Override public String get(final String key) {
     return map.get(key);
   }
 
   @Override @NotNull public Collection<String> keys() {
-    return map.keySet();
+    return cantBeNull(map.keySet());
   }
 
   public CSVLine put(final Accumulator ¢) {
-    return put(¢.name(), ¢.value());
+    return put(cantBeNull(¢.name()), ¢.value());
   }
 
   public CSVLine put(@NotNull final Accumulator... as) {
@@ -125,7 +126,7 @@ import il.org.spartan.utils.Separate.*;
    * @param value The value associated with the key
    * @return this */
   public CSVLine put(final @NotNull String key, final double value) {
-    return put(key, value, new FormatSpecifier[0]);
+    return put(key, value, new @NotNull FormatSpecifier[0]);
   }
 
   /** Add a key and a <code><b>double</b><code> value to this instance
@@ -136,7 +137,7 @@ import il.org.spartan.utils.Separate.*;
    * @param ss    Which (if any) aggregate statistics should be produced for this
    *              column
    * @return this */
-  public CSVLine put(final @NotNull String key, final double value, final FormatSpecifier... ss) {
+  public CSVLine put(final @NotNull String key, final double value, final @NotNull  FormatSpecifier... ss) {
     aggregator.record(key, value, ss);
     return put(key, value + "");
   }
@@ -153,7 +154,7 @@ import il.org.spartan.utils.Separate.*;
   public CSVLine put(final @NotNull String key, final double value, final @NotNull String format, @NotNull final FormatSpecifier... ss) {
     aggregator.record(key, value, ss);
     ___.sure(ss.length == 0 || aggregating());
-    return put(key, String.format(format, box(value)));
+    return put(key, cantBeNull(String.format(format, box(value))));
   }
 
   /** Add a key and a general <code><b>float</b><code> value to this instance
@@ -184,7 +185,7 @@ import il.org.spartan.utils.Separate.*;
   public CSVLine put(final @NotNull String key, final int value, final @NotNull String format, @NotNull final FormatSpecifier... ss) {
     aggregator.record(key, value, ss);
     ___.sure(ss.length == 0 || aggregating());
-    return put(key, String.format(format, box(value)));
+    return put(key, cantBeNull(String.format(format, box(value))));
   }
 
   /** Add a key and a general {@link Object} value to this instance
@@ -217,7 +218,7 @@ import il.org.spartan.utils.Separate.*;
     return put(key, a == null || i < 0 || i >= a.length ? null : a[i]);
   }
 
-  public final CSVLine put(final @NotNull String key, @Nullable final Object[] os) {
+  public final CSVLine put(final @NotNull String key, final @NotNull Object [] os) {
     return put(key, os == null ? null : Separate.by(os, ARRAY_SEPARATOR));
   }
 
@@ -229,7 +230,7 @@ import il.org.spartan.utils.Separate.*;
     return put(key, value + "");
   }
 
-  @Override @NotNull public final CSVLine put(final @NotNull String key, final @NotNull String value) {
+  @Override @NotNull public final CSVLine put(final String key, final String value) {
     map.put(key, value);
     return this;
   }
@@ -248,11 +249,11 @@ import il.org.spartan.utils.Separate.*;
   }
 
   @Override @NotNull public Collection<String> values() {
-    return map.values();
+    return cantBeNull(map.values());
   }
 
   protected void addAggregates(final AbstractStringProperties to, final Aggregation a) {
-    aggregator.addAggregates(map.keySet(), to, a);
+    aggregator.addAggregates(cantBeNull(map.keySet()), cantBeNull(to), cantBeNull(a));
   }
 
   @Canopy public static class Ordered extends CSVLine {

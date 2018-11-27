@@ -13,7 +13,7 @@ import il.org.spartan.Utils.FoundHandleForT.*;
  * static</code> utility functions of reasonably wide use.
  * @author Yossi Gil <code><yossi.gil [at] gmail.com></code>
  * @since 2013/07/01 */
-@SuppressWarnings("null") public interface Utils {
+public interface Utils {
   String QUOTE = "'";
   String WHITES = "(?m)\\s+";
 
@@ -59,8 +59,8 @@ import il.org.spartan.Utils.FoundHandleForT.*;
    * @param ts an arbitrary array
    * @param t  an element
    * @return newly created array */
-  @NotNull static <T> T[] append(final @NotNull T[] ts, final T t) {
-    final T @NotNull [] $ = Arrays.copyOf(ts, 1 + ts.length);
+  static <T> T @NotNull [] append(final @NotNull T[] ts, final T t) {
+    final T [] $ = Arrays.copyOf(ts, 1 + ts.length);
     $[ts.length] = t;
     return $;
   }
@@ -126,7 +126,7 @@ import il.org.spartan.Utils.FoundHandleForT.*;
    * @return parameter, with all redundant spaces removed from it */
   static String compressSpaces(final @NotNull String javaCodeFragment) {
     String $ = javaCodeFragment.replaceAll("(?m)\\s+", " ").replaceAll("^\\s", "").replaceAll("\\s$", "");
-    for (final @NotNull String operator : new String @NotNull [] { ":", "/", "%", ",", "\\{", "\\}", "=", ":", "\\?", ";", "\\+", ">", ">=", "!=",
+    for (final String operator : new String @NotNull [] { ":", "/", "%", ",", "\\{", "\\}", "=", ":", "\\?", ";", "\\+", ">", ">=", "!=",
         "==", "<", "<=", "-", "\\*", "\\|", "\\&", "%", "\\(", "\\)", "[\\^]" })
       $ = $.replaceAll(WHITES + operator, operator).replaceAll(operator + WHITES, operator);
     return cantBeNull($);
@@ -138,7 +138,7 @@ import il.org.spartan.Utils.FoundHandleForT.*;
    * @return tree iff the the first parameter contains any of the substrings found
    *         in the second parameter */
   static boolean contains(final @NotNull String text, final @Nullable String... patterns) {
-    for (final @NotNull String pattern : patterns)
+    for (final String pattern : patterns)
       if (pattern != null && text.contains(pattern))
         return true;
     return false;
@@ -150,8 +150,8 @@ import il.org.spartan.Utils.FoundHandleForT.*;
    * @param ts an arbitrary array
    * @param i  position of element to be deleted
    * @return newly created array */
-  @NotNull static <T> T[] delete(final @NotNull T[] ts, final int i) {
-    final T @NotNull [] $ = Arrays.copyOf(ts, ts.length - 1);
+  static <T> T @NotNull [] delete(final @NotNull T[] ts, final int i) {
+    final T [] $ = Arrays.copyOf(ts, ts.length - 1);
     System.arraycopy(ts, i + 1, $, i, $.length - i);
     return $;
   }
@@ -308,7 +308,7 @@ import il.org.spartan.Utils.FoundHandleForT.*;
    * @return <code><b>true</b></code> <em>iff</em>the file name ends with any one
    *         of the supplied extensions. */
   static boolean suffixedBy(final File f, final Iterable<String> suffixes) {
-    return suffixedBy(name(f), suffixes);
+    return suffixedBy(cantBeNull(name(f)), suffixes);
   }
 
   /** Determine whether a file name ends with any one of the supplied extensions.
@@ -317,7 +317,7 @@ import il.org.spartan.Utils.FoundHandleForT.*;
    * @return <code><b>true</b></code> <em>iff</em>the file name ends with any one
    *         of the supplied extensions. */
   static boolean suffixedBy(final File f, final @NotNull String @NotNull... suffixes) {
-    return suffixedBy(name(f), suffixes);
+    return suffixedBy(cantBeNull(name(f)), suffixes);
   }
 
   /** Determine whether a string ends with any one of the supplied suffixes.
@@ -326,7 +326,7 @@ import il.org.spartan.Utils.FoundHandleForT.*;
    * @return <code><b>true</b></code> <em>iff</em> <code>s</code> ends with any
    *         one of the supplied suffixes. */
   static boolean suffixedBy(final @NotNull String s, final Iterable<String> suffixes) {
-    for (final @NotNull String end : suffixes)
+    for (final String end : suffixes)
       if (s.endsWith(end))
         return true;
     return false;
@@ -371,8 +371,7 @@ import il.org.spartan.Utils.FoundHandleForT.*;
     @SafeVarargs public final Iterable<T> to(final @NotNull F... fs) {
       final List<T> $ = new ArrayList<>();
       for (final F ¢ : fs)
-        if (¢ != null)
-          $.add(function.apply(¢));
+        $.add(function.apply(¢));
       return $;
     }
 
@@ -404,7 +403,7 @@ import il.org.spartan.Utils.FoundHandleForT.*;
      * @return true if the the item is found in the list */
     @SafeVarargs public final boolean in(final @NotNull T... ts) {
       for (final T ¢ : ts)
-        if (¢ != null && ¢.equals(candidate))
+        if (¢.equals(candidate))
           return true;
       return false;
     }

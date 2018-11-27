@@ -12,16 +12,16 @@ import il.org.spartan.Utils.FoundHandleForT.*;
 import il.org.spartan.etc.*;
 
 @SuppressWarnings( "static-method" )  public class UtilsTest {
-  @NotNull @SuppressWarnings("null") public static Integer[] intToIntegers(final int... is) {
+  public static Integer @NotNull [] intToIntegers(final int... is) {
     final Integer @NotNull [] $ = new Integer @NotNull [is.length];
     for (int ¢ = 0; ¢ < is.length; ++¢)
       $[¢] = fluent.ly.box.it(is[¢]);
-    return $;
+    return cantBeNull($);
   }
 
-  @Test @SuppressWarnings("unchecked") public void addAllTypical() {
+  @Test public void addAllTypical() {
     final Set<String> ss = new HashSet<>();
-    accumulate.to(ss).addAll(as.set("A", "B"), null, as.set("B", "C", "D"));
+    accumulate.to(ss).addAll(as.set("A", "B", null, "B", "C", "D"));
     azzert.nay(ss.contains("E"));
     azzert.nay(ss.contains(null));
     azzert.that(ss.size(), is(4));
@@ -99,20 +99,20 @@ import il.org.spartan.etc.*;
   }
 
   @Test public void swapTypicalCase() {
-    final @NotNull Integer [] $ = intToIntegers(29, 1, 60);
+    final Integer @NotNull [] $ = intToIntegers(29, 1, 60);
     Utils.swap($, 0, 1);
     azzert.assertCollectionsEqual(as.list(intToIntegers(1, 29, 60)), $);
   }
 
-  @Test @SuppressWarnings("unchecked") public void addTest() {
-    @SuppressWarnings("rawtypes") final List listSource = new ArrayList();
+  @Test public void addTest() {
+    final List<String> listSource = new ArrayList<>();
     listSource.add("123");
     listSource.add("456");
     assert !Utils.add(new ArrayList<>(), listSource.iterator()).isEmpty();
   }
 
-  @Test @SuppressWarnings({ "unchecked", "rawtypes" }) public void addTest2() {
-    assert Utils.add(new ArrayList(), "a", "a", "b", "c").size() == 4;
+  @Test public void addTest2() {
+    assert Utils.add(new ArrayList<String>(), "a", "a", "b", "c").size() == 4;
   }
 
   @Test public void hasNullTest() {
@@ -123,8 +123,8 @@ import il.org.spartan.etc.*;
     assert Utils.intIsIn(3, 2, 4, 3);
   }
 
-  @Test @SuppressWarnings("unchecked") public void tesDup() {
-    @SuppressWarnings("rawtypes") final List list = new ArrayList();
+  @Test public void tesDup() {
+    final List<String> list = new ArrayList<>();
     list.add("123");
     list.add("123");
     Utils.removeDuplicates(list);

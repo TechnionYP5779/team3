@@ -1,5 +1,6 @@
 package il.org.spartan.utils;
 
+import static il.org.spartan.Utils.*;
 import static java.lang.System.*;
 
 import java.io.*;
@@ -90,7 +91,7 @@ public interface system {
     ;
   }
 
-  @SuppressWarnings("null") static boolean isBalanced(final @NotNull String s) {
+  static boolean isBalanced(final @NotNull String s) {
     final Stack<Character> $ = new Stack<>();
     for (final char ¢ : s.toCharArray())
       switch (¢) {
@@ -100,15 +101,15 @@ public interface system {
           $.push(box(¢));
           continue;
         case ')':
-          if ($.isEmpty() || unbox($.pop()) != '(')
+          if ($.isEmpty() || unbox(cantBeNull($.pop())) != '(')
             return false;
           continue;
         case ']':
-          if ($.isEmpty() || unbox($.pop()) != '[')
+          if ($.isEmpty() || unbox(cantBeNull($.pop())) != '[')
             return false;
           continue;
         case '}':
-          if ($.isEmpty() || unbox($.pop()) != '{')
+          if ($.isEmpty() || unbox(cantBeNull($.pop())) != '{')
             return false;
           continue;
       }
@@ -132,12 +133,12 @@ public interface system {
   }
 
   /** @return the name of the class from which this method was called. */
-  @NotNull @SuppressWarnings("null") static String myFullClassName() {
+  @NotNull static String myFullClassName() {
     final StackTraceElement[] $ = new Throwable().getStackTrace();
     for (int ¢ = 1; ¢ < $.length; ++¢)
       if (!$[¢].getClassName().equals($[0].getClassName()))
-        return $[¢].getClassName();
-    return new Object().getClass().getEnclosingClass().getCanonicalName();
+        return cantBeNull($[¢].getClassName());
+    return cantBeNull(new Object().getClass().getEnclosingClass().getCanonicalName());
   }
 
   static String myShortClassName() {
@@ -178,8 +179,8 @@ public interface system {
     return bash("./essence <" + fileName + ">" + essenced(fileName));
   }
 
-  @SuppressWarnings("null") static String userName() {
-    return English.upperFirstLetter(getProperty("user.name", "User"));
+  static String userName() {
+    return English.upperFirstLetter(cantBeNull(getProperty("user.name", "User")));
   }
 
   /** This function counts the number of words the given string contains. Words

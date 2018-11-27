@@ -2,6 +2,7 @@
 package il.org.spartan.utils;
 
 import static fluent.ly.___.*;
+import static il.org.spartan.Utils.*;
 
 import org.jetbrains.annotations.*;
 
@@ -24,7 +25,7 @@ import org.jetbrains.annotations.*;
  *
  * @author Adrian Kuhn
  * @since August 4th, 2008 */
-@SuppressWarnings("null") public class Tab {
+public class Tab {
   /** What to add before each indented line of text? */
   private String indentation = "";
   @NotNull public final String tab;
@@ -45,7 +46,7 @@ import org.jetbrains.annotations.*;
   /** Increase indentation but returns the previous tabulation string.
    * @return the previous tabulation string. */
   public String begin() {
-    final @NotNull String $ = toString();
+    final @NotNull String $ = cantBeNull(toString());
     more();
     return $;
   }

@@ -10,6 +10,8 @@ import org.jetbrains.annotations.*;
 
 import fluent.ly.*;
 
+import static il.org.spartan.Utils.*;
+
 public final class CSVWriter {
   @Nullable private static FileWriter open(final File $) {
     try {
@@ -30,10 +32,10 @@ public final class CSVWriter {
     fileName = "";
   }
 
-  @SuppressWarnings("null") public CSVWriter(final @NotNull String fileName) {
+  public CSVWriter(final @NotNull String fileName) {
     this.fileName = fileName;
     file = new File(fileName);
-    inner = open(file);
+    inner = cantBeNull(open(file));
   }
 
   public String close() {

@@ -19,7 +19,7 @@ import fluent.ly.*;
  * single line. Within are some other useful auxiliary functions for string
  * manipulations.
  * @author Oren Rubin */
-@SuppressWarnings("null") public enum CSV {
+public enum CSV {
   ;
   @NotNull private static final String NULL = "\\0";
 
@@ -93,7 +93,7 @@ import fluent.ly.*;
   public static String[][] load(final Reader r) {
     final @NotNull ArrayList<String[]> $ = new ArrayList<>(20);
     for (final @NotNull Scanner ¢ = new Scanner(r); ¢.hasNext();)
-      $.add(split(¢.nextLine()));
+      $.add(split(cantBeNull(¢.nextLine())));
     return $.toArray(new String[$.size()][]);
   }
 
@@ -103,12 +103,12 @@ import fluent.ly.*;
     }
   }
 
-  @NotNull public static <T extends Enum<T>> T[] split(final Class<T> clazz, final @NotNull String s) {
+  public static <@Nullable T extends Enum<T>> T @NotNull [] split(final Class<T> clazz, final @NotNull String s) {
     final String @NotNull [] ss = split(s);
-    @SuppressWarnings("unchecked") final T @NotNull [] $ = (T[]) Array.newInstance(clazz, ss.length);
+    @SuppressWarnings("unchecked") final T [] $ = (T[]) Array.newInstance(clazz, ss.length);
     for (int ¢ = 0; ¢ < $.length; ++¢)
       $[¢] = ss[¢] == null ? null : Enum.valueOf(clazz, ss[¢]);
-    return $;
+    return cantBeNull($);
   }
 
   public static String @NotNull [] split(final @NotNull String s) {
@@ -118,15 +118,15 @@ import fluent.ly.*;
     for (int from = 0;;) {
       final int to = s.indexOf(',', from);
       if (to < 0) {
-        $.add(unescape(s.substring(from, s.length())));
-        return $.toArray(new String[$.size()]);
+        $.add(unescape(cantBeNull(s.substring(from, s.length()))));
+        return cantBeNull($.toArray(new String[$.size()]));
       }
-      $.add(unescape(s.substring(from, to)));
+      $.add(unescape(cantBeNull(s.substring(from, to))));
       from = to + 1;
     }
   }
 
-  @NotNull public static Class<?>[] splitToClasses(final @NotNull String s) {
+  public static Class<?> @NotNull [] splitToClasses(final @NotNull String s) {
     final String @NotNull [] names = split(s);
     final Class<?> @NotNull [] $ = new Class<?>[names.length];
     for (int i = 0; i < $.length; ++i)

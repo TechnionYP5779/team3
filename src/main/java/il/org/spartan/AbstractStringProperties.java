@@ -5,10 +5,11 @@ import java.util.*;
 import org.jetbrains.annotations.*;
 
 import fluent.ly.*;
+import static il.org.spartan.Utils.cantBeNull;
 
 /** @author Yossi Gil
  * @since Apr 8, 2012 */
-@SuppressWarnings("null") public abstract class AbstractStringProperties {
+public abstract class AbstractStringProperties {
   final Renderer renderer;
 
   public AbstractStringProperties() {
@@ -39,7 +40,7 @@ import fluent.ly.*;
   public abstract Iterable<String> keys();
 
   @NotNull public final String line() {
-    return makeLine(values());
+    return cantBeNull(makeLine(values()));
   }
 
   public abstract AbstractStringProperties put(String key, String value);
@@ -56,7 +57,7 @@ import fluent.ly.*;
     @NotNull private final List<String> keys = new ArrayList<>();
     @NotNull private final List<String> values = new ArrayList<>();
 
-    @Override @Nullable public String get(final @NotNull String key) {
+    @Override @Nullable public String get(final  String key) {
       final int $ = keys.lastIndexOf(key);
       return $ < 0 ? null : values.get($);
     }
@@ -65,7 +66,7 @@ import fluent.ly.*;
       return keys;
     }
 
-    @Override @NotNull public ListProperties put(final @NotNull String key, final @NotNull String value) {
+    @Override @NotNull public ListProperties put(final String key, final String value) {
       keys.add(key);
       values.add(value);
       return this;
@@ -144,7 +145,7 @@ import fluent.ly.*;
         return "";
       }
 
-      @Override String makeField(final @NotNull String ¢) {
+      @Override String makeField(final String ¢) {
         return String.format("%" + WIDTH + "s", ¢);
       }
     },
@@ -182,7 +183,7 @@ import fluent.ly.*;
     }
 
     public String separate(final Iterable<String> ¢) {
-      return separate.these(¢).by(delimiter());
+      return separate.these(cantBeNull(¢)).by(cantBeNull(delimiter()));
     }
 
     abstract String allBottom();
