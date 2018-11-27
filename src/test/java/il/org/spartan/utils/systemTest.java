@@ -1,12 +1,16 @@
 package il.org.spartan.utils;
 
+import static org.junit.Assert.*;
+
 import java.util.*;
 
 import org.junit.*;
 
+import fluent.ly.*;
+
 @SuppressWarnings("static-method") public class systemTest {
   
-  @Test @SuppressWarnings({ "deprecation", "resource" }) public void basic_test() {
+  @Test public void basic_test() {
     if (!system.isWindows())
       return;
     assert (system.isWindows());
@@ -14,7 +18,6 @@ import org.junit.*;
     assert (system.callingClassUniqueWriter() != null);
     assert (system.ephemeral(null) != null);
     assert (system.dumpOutput(null) == null);
-    assert ("x=1".equals(system.essence("x=1")));
     assert ("abc.essence".equals(system.essenced("abc")));
     assert ("CWD".equals(system.folder2File(".")));
     assert (system.isBalanced("()"));
@@ -25,7 +28,11 @@ import org.junit.*;
     assert ("systemTest".equals(system.myShortClassName()));
     assert (system.myCallerFullClassName()!=null);
     assert (system.now().contains("-"));
-    assert ("\nabc".equals(system.read(new Scanner("abc"))));
+    try (
+      Scanner s = new Scanner("abc");){
+      assert ("\nabc".equals(system.read(s)));
+      s.close();
+    }
     assert (system.runScript() != null);
     assert (system.shellEssenceMetrics("text") == null);
     assert (system.userName()!=null);
