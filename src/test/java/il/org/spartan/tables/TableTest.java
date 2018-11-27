@@ -61,6 +61,11 @@ import java.io.*;
     new File(".tex").delete();
     new File(".tex2").delete();
     new File(".txt").delete();
+    new File("a.csv").delete();
+    new File("a.markdown").delete();
+    new File("a.tex").delete();
+    new File("a.tex2").delete();
+    new File("a.txt").delete();
   }
   
   @Test public void noStatistics() {
