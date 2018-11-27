@@ -48,7 +48,7 @@ public enum iterables {
   }
 
   public static <T> Iterable<T> alternate(final Iterable<T> it1, final Iterable<T> it2) {
-    return !(it1 == null | it2 == null) ? () -> new Iterator<T>() {
+    return it1 != null && it2 != null ? () -> new Iterator<T>() {
       int current;
       Iterator<T> i1 = cantBeNull(it1).iterator();
       Iterator<T> i2 = cantBeNull(it2).iterator();
