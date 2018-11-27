@@ -65,7 +65,7 @@ public class CSVLineWriter extends CSVLine.Ordered {
     ++count;
   }
 
-  static protected String extension() {
+  protected static String extension() {
     return ".csv";
   }
 }

@@ -26,6 +26,7 @@ import il.org.spartan.Utils;
     forget.it(s);
     assert is.empty(s);
     Iterable<Integer> it = null;
+    forget.it(it);
     assert is.empty(it);
   }
 

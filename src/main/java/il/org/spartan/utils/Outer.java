@@ -20,10 +20,9 @@ public class Outer< Inner> {
   }
 
   @Override @NotNull public Outer<Inner> clone() throws CloneNotSupportedException {
-    @NotNull Object o = cantBeNull(super.clone());
     @SuppressWarnings("unchecked")
-    Outer<Inner> o2 = (Outer<Inner>) o;
-    return o2;
+    Outer<Inner> $ = (Outer<Inner>) (cantBeNull(super.clone()));
+    return $;
   }
 
   /** @param ¢ JD

@@ -34,8 +34,9 @@ import il.org.spartan.*;
   }
 
   @Test public void use6() {
-    @NotNull String[] a = new @NotNull String[] { "a" };
-    @NotNull String[] bc =  new @NotNull String[] { "b", "c" };
+    @NotNull String[] a = new @NotNull String[] { "a" }, bc = new @NotNull String[] { "b", "c" };
+    forget.it(a);
+    forget.it(bc);
     assert "abc".equals(Utils.cantBeNull(string.cat(a,bc)));
   }
 

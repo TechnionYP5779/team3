@@ -66,10 +66,11 @@ import il.org.spartan.Utils;
     assert as.bit("false") == 1;
   }
 
-  @SuppressWarnings("unlikely-arg-type") @Test public void setTest() {
+  @Test @SuppressWarnings("unlikely-arg-type") public void setTest() {
     final Set<? extends String> s1 = as.set("a", "b", "c");
     assert s1.size() == 3;
     Collection<String> list = as.list("a", "b", "c");
+    forget.it(list);
     assert s1.containsAll(list);
   }
 
