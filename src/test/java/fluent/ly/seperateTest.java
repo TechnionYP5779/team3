@@ -12,6 +12,7 @@ import org.junit.*;
 
 import an.*;
 import fluent.ly.separate.*;
+import il.org.spartan.*;
 import il.org.spartan.etc.*;
 
 @SuppressWarnings("static-method") public class seperateTest {
@@ -81,12 +82,12 @@ import il.org.spartan.etc.*;
     azzert.that(separate.these(cantBeNull(new Applicator<>(quote).to(as.list("Hello", "World")))).by(", "), is("'Hello', 'World'"));
   }
 
-  @Test @SuppressWarnings("null") public final void byFOfTTArrayChar() {
+  @Test public final void byFOfTTArrayChar() {
     final @NotNull Applicator<Object, String> f = new Applicator<>(λ -> "'" + λ + "'");
     assert f != null : "Function literals should never by null.";
     final @NotNull Collection<String> c = as.list("Hello", "World");
     azzert.that(c.size(), is(2));
-    final @NotNull Iterable<String> ts = f.to(c);
+    final @NotNull Iterable<String> ts = Utils.cantBeNull(f.to(c));
     azzert.that(count.of(ts), is(2));
     azzert.that(separate.these(ts).by(' '), is("'Hello' 'World'"));
   }
@@ -164,13 +165,13 @@ import il.org.spartan.etc.*;
     azzert.that(separate.these("Hello", "World").byNLs(), is("Hello\nWorld"));
   }
 
-  @Test @SuppressWarnings("null") public final void separateByNoItemslPruneWhitesSpaceSeparated() {
+  @Test public final void separateByNoItemslPruneWhitesSpaceSeparated() {
     final @NotNull SeparationSubject these = separate.these();
     assert these != null;
     final Iterable<?> os = these.os;
     assert os != null;
     azzert.aye(is.empty(os));
-    final @NotNull String[] ss = as.strings(os);
+    final String[] ss = Utils.cantBeNull(as.strings(os));
     assert ss != null;
     azzert.zero(ss.length);
     azzert.zero(prune.whites(ss).length);
