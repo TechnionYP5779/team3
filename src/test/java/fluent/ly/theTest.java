@@ -2,26 +2,30 @@ package fluent.ly;
 
 import java.util.*;
 import static fluent.ly.box.*;
+
+import org.jetbrains.annotations.*;
 import org.junit.*;
 
+import il.org.spartan.*;
+
 @SuppressWarnings("static-method") public class theTest {
-  @Test @SuppressWarnings("null") public void testos() {
+  @Test public void testos() {
     assert the.nil() == null;
     assert " #1/2".equals(the.nth("1", "2"));
     assert " #1/2".equals(the.nth(1, 2));
     assert " #1/0".equals(the.nth(1, new ArrayList<Integer>()));
     assert the.penultimateOf(new ArrayList<Integer>()) == null;
-    final List<Integer> li = new ArrayList<>();
+    final @Nullable List<@Nullable Integer> li = new ArrayList<>();
     li.add(0, box(0));
     li.add(1, box(1));
     li.add(2, box(2));
     li.add(3, box(3));
-    assert the.previous(box(1), li).equals(box(0));
+    assert Utils.cantBeNull(the.previous(box(1), li)).equals(box(0));
     assert the.previous(box(1), null) == null;
     assert the.tailOf(li).size() == 3;
     assert "23".equals(the.tailOf("123"));
     assert the.rest(box(1), li).size() == 2;
-    assert the.headOf(li).equals(box(0));
+    assert Utils.cantBeNull(the.headOf(li)).equals(box(0));
     assert the.headOf(null) == null;
     assert the.headOf(new ArrayList<Integer>()) == null;
     assert the.ith("123", 0) == '1';
@@ -41,7 +45,7 @@ import org.junit.*;
     assert the.lastOf(anArray).equals(box(1000));
     assert the.tailOf(anArray).length == 9;
     assert the.sqr(2) == 4;
-    assert the.lastOf(li).equals(box(3));
+    assert Utils.cantBeNull(the.lastOf(li)).equals(box(3));
     final List<String> li2 = new ArrayList<>();
     li2.add(0, "1");
     assert("1".equals(the.onlyOneOf(li2)));

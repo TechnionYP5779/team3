@@ -8,8 +8,9 @@ import java.util.*;
 import static fluent.ly.box.*;
 import org.jetbrains.annotations.*;
 import org.junit.*;
+import il.org.spartan.Utils;
 
-@SuppressWarnings({ "static-method", "null" }) public class asTest {
+@SuppressWarnings( "static-method") public class asTest {
   @Test public void asBitOfFalse() {
     azzert.that(as.bit(false), is(0));
   }
@@ -20,12 +21,12 @@ import org.junit.*;
 
   @Test public void asIntArraySimple() {
     final int @NotNull [] is = as.intArray(100, 200, 200, 12, 13, 0);
-    azzert.assertCollectionsEqual(as.list(is), as.ingeterList(is));
+    azzert.assertCollectionsEqual(Utils.cantBeNull(as.list(is)), as.ingeterList(is));
   }
 
   @Test public void asListSimple() {
     // direct call `as.list(12, 13, 14)` kills Travis --or
-    final @NotNull List<Integer> is = as.list(new int @NotNull [] { 12, 13, 14 });
+    final @NotNull List<Integer> is = Utils.cantBeNull(as.list(new int @NotNull [] { 12, 13, 14 }));
     azzert.that(is.get(0), is(fluent.ly.box.it(12)));
     azzert.that(is.get(1), is(fluent.ly.box.it(13)));
     azzert.that(is.get(2), is(fluent.ly.box.it(14)));
@@ -46,7 +47,7 @@ import org.junit.*;
 
   @Test public void asIteretableTest() {
     Integer val = box(1);
-    for (final Integer ¢ : as.asIterable(box(1), box(2), box(3))) {
+    for (final Integer ¢ : as.asIterable(Utils.cantBeNull(box(1)), Utils.cantBeNull(box(2)), Utils.cantBeNull(box(3)))) {
       assert ¢.equals(val);
       val = box(val.intValue() + 1);
     }
@@ -54,7 +55,7 @@ import org.junit.*;
 
   @Test public void asIteretableLambdaTest() {
     Integer val = box(1);
-    for (final Integer ¢ : as.asIterableLambda(box(1), box(2), box(3))) {
+    for (final Integer ¢ : as.asIterableLambda(Utils.cantBeNull(box(1)), Utils.cantBeNull(box(2)), Utils.cantBeNull(box(3)))) {
       assert ¢.equals(val);
       val = box(val.intValue() + 1);
     }
@@ -65,10 +66,11 @@ import org.junit.*;
     assert as.bit("false") == 1;
   }
 
-  @Test @SuppressWarnings("unlikely-arg-type") public void setTest() {
+  @SuppressWarnings("unlikely-arg-type") @Test public void setTest() {
     final Set<? extends String> s1 = as.set("a", "b", "c");
     assert s1.size() == 3;
-    assert s1.containsAll(as.list("a", "b", "c"));
+    Collection<String> list = as.list("a", "b", "c");
+    assert s1.containsAll(list);
   }
 
   @Test public void stringsTest() {
@@ -76,14 +78,14 @@ import org.junit.*;
   }
   
   @Test public void moreTests() {
-    assertArrayEquals(as.intArray(as.list(new int[] {1,2,3})), new int[] {1,2,3});
+    assertArrayEquals(as.intArray(Utils.cantBeNull(as.list(new int[] {1,2,3}))), new int[] {1,2,3});
     assert as.iterator(box(1)).next().equals(box(1));
     Iterator<Integer> i = null;
     forget.it(i);
     assert as.list(i).isEmpty();
     assert "a".equals(as.string('a'));
     assert "null".equals(as.string(null));
-    assert "1".equals(as.string(box(1)));
+    assert "1".equals(as.string(Utils.cantBeNull(box(1))));
     
   }
 }

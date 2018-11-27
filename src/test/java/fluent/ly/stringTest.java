@@ -2,7 +2,10 @@ package fluent.ly;
 
 import static fluent.ly.box.*;
 
+import org.jetbrains.annotations.*;
 import org.junit.*;
+
+import il.org.spartan.*;
 
 @SuppressWarnings("static-method") public class stringTest {
   @Test public void use0() {
@@ -30,8 +33,10 @@ import org.junit.*;
     assert "ab".equals(string.cat("a", "b"));
   }
 
-  @Test @SuppressWarnings("null") public void use6() {
-    assert "abc".equals(string.cat(new String[] { "a" }, new String[] { "b", "c" }));
+  @Test public void use6() {
+    @NotNull String[] a = new @NotNull String[] { "a" };
+    @NotNull String[] bc =  new @NotNull String[] { "b", "c" };
+    assert "abc".equals(Utils.cantBeNull(string.cat(a,bc)));
   }
 
   @Test public void use7() {
@@ -106,7 +111,7 @@ import org.junit.*;
     assert "999 cats".equals(string.pluralize(999, "cat"));
   }
 
-  @Test @SuppressWarnings("null") public void use15() {
+  @Test public void use15() {
     assert "aaaA".equals(string.javaCase("AaaA"));
     assert "".equals(string.javaCase(""));
     assert string.last("blabla") == 'a';
@@ -121,9 +126,9 @@ import org.junit.*;
     assert "A".equals(string.upCounter(0));
     assert "F".equals(string.upCounter(5));
     assert "labl".equals(string.strip("blabla"));
-    assert "".equals(string.sprintf(new String[] {}));
-    assert "a".equals(string.sprintf(new String[] { "a" }));
-    assert "a".equals(string.sprintf(new String[] { "a", "b" }));
+    assert "".equals(string.sprintf(new @NotNull String[] {}));
+    assert "a".equals(string.sprintf(new @NotNull String[] { "a" }));
+    assert "a".equals(string.sprintf(new @NotNull String[] { "a", "b" }));
     assert "nn".equals(string.repeat(2, "n"));
     assert Double.isNaN(string.delta(0, 4));
     assert string.delta(2, 4) == 2.0/3.0;
@@ -132,7 +137,6 @@ import org.junit.*;
     assert "2 cats:\n\t1) a\n\t2) b\n".equals(string.pretty("cat", as.list(new String[] {"a","b"})));
     assert "1 cat: x\n".equals(string.pretty("cat", as.list(new String[] {"x"})));
     assert "".equals(string.pretty("cat", as.list(new String[] {})));
-    assert "".equals(string.pretty("cat", null));
     assert "\'a\'".equals(string.quote("a"));
     assert "aa".equals(string.repeat(2, "a"));
     assert "aa".equals(string.repeat(2, 'a'));

@@ -5,11 +5,12 @@ import java.util.*;
 import org.jetbrains.annotations.*;
 import org.junit.*;
 import static fluent.ly.box.*;
+import il.org.spartan.Utils;
 
 
 @SuppressWarnings("static-method") public class isTest {
-  @Test @SuppressWarnings("null") public void intTest() {
-    @NotNull List<Integer> li = as.list(new int @NotNull [] { 12, 13, 14 });
+  @Test public void intTest() {
+    @NotNull List<Integer> li = Utils.cantBeNull(as.list(new int @NotNull [] { 12, 13, 14 }));
     assert is.intIsIn(12, new int @NotNull [] { 12, 13, 14 });
     assert !is.intIsIn(15, new int @NotNull [] { 12, 13, 14 });
     assert is.out(box(15), li);
@@ -21,13 +22,11 @@ import static fluent.ly.box.*;
     forget.it(i);
     assert is.empty(i);
     assert is.empty(new String[] {});
-    li = null;
     String s = null;
     forget.it(s);
     assert is.empty(s);
     Iterable<Integer> it = null;
     assert is.empty(it);
-    assert is.empty(li);
   }
 
   @Test public void strTest() {
