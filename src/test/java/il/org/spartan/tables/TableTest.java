@@ -29,7 +29,6 @@ import java.io.*;
   @Test public void Table3() {
     try (Table t = new Table("a",cantBeNull(System.getProperty("user.dir")));){
       assert(t != null); 
-      t.close();
       new File("a.csv").delete();
       new File("a.markdown").delete();
       new File("a.tex").delete();
@@ -41,7 +40,6 @@ import java.io.*;
   @Test public void Table4() {
    try(Table t = new Table("1".getClass(),cantBeNull(System.getProperty("user.dir")));){ 
      assert(t != null); 
-     t.close();
      new File(".csv").delete();
      new File(".markdown").delete();
      new File(".tex").delete();
@@ -55,7 +53,6 @@ import java.io.*;
     try(Table t = new Table("1".getClass(), cantBeNull(System.getProperty("user.dir")));){ 
       assert(t != null); 
       assert(t.baseName().contains("/") || t.baseName().contains("\\") ); 
-      t.close();
       new File(".csv").delete();
       new File(".markdown").delete();
       new File(".tex").delete();
@@ -69,30 +66,16 @@ import java.io.*;
     try(Table t = new Table("1".getClass(), cantBeNull(System.getProperty("user.dir")));)
     {
       assert(t.add(Statistic.NA).length()==1);
-      t.close();
     }
   }
   
-  @Test public void col() {
-    try(Table t = new Table("1".getClass(), cantBeNull(System.getProperty("user.dir")));){ 
-      t.close();
-      new File(".csv").delete();
-      new File(".markdown").delete();
-      new File(".tex").delete();
-      new File(".tex2").delete();
-      new File(".txt").delete();
-      assert("{null=1, 1=1.5}".equals(t.col("1", 1.5) + ""));
-      assert("{null=1, 1=1.5, 2=2}".equals(t.col("2", 2) + ""));
-      assert("{null=1, 1=1.5, 2=2, 3=3}".equals(t.col("3", 3L) + ""));
-    }
-  }
+
   @Test public void noStatistics() {
     try(Table t = new Table("1".getClass(), cantBeNull(System.getProperty("user.dir")));)
     {
       assert(t.noStatistics() == t);
       t.nl();
       assert(t.length() == 2);
-      t.close();
       new File(".csv").delete();
       new File(".markdown").delete();
       new File(".tex").delete();
@@ -105,7 +88,6 @@ import java.io.*;
     try(Table t = new Table("1".getClass(), cantBeNull(System.getProperty("user.dir")));)
     {
       assert (t.description().contains("The table has"));
-      t.close();
       new File(".csv").delete();
       new File(".markdown").delete();
       new File(".tex").delete();
