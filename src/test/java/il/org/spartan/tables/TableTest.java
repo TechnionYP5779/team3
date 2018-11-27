@@ -29,22 +29,12 @@ import java.io.*;
   @Test public void Table3() {
     try (Table t = new Table("a",cantBeNull(System.getProperty("user.dir")));){
       assert(t != null); 
-      new File("a.csv").delete();
-      new File("a.markdown").delete();
-      new File("a.tex").delete();
-      new File("a.tex2").delete();
-      new File("a.txt").delete();
     }
   }
   
   @Test public void Table4() {
    try(Table t = new Table("1".getClass(),cantBeNull(System.getProperty("user.dir")));){ 
      assert(t != null); 
-     new File(".csv").delete();
-     new File(".markdown").delete();
-     new File(".tex").delete();
-     new File(".tex2").delete();
-     (new File(".txt")).delete();
    }
   }
   
@@ -53,11 +43,7 @@ import java.io.*;
     try(Table t = new Table("1".getClass(), cantBeNull(System.getProperty("user.dir")));){ 
       assert(t != null); 
       assert(t.baseName().contains("/") || t.baseName().contains("\\") ); 
-      new File(".csv").delete();
-      new File(".markdown").delete();
-      new File(".tex").delete();
-      new File(".tex2").delete();
-      (new File(".txt")).delete();
+      
     }
     
   }
@@ -69,18 +55,21 @@ import java.io.*;
     }
   }
   
-
+  @After public void col() {
+    new File(".csv").delete();
+    new File(".markdown").delete();
+    new File(".tex").delete();
+    new File(".tex2").delete();
+    new File(".txt").delete();
+  }
+  
   @Test public void noStatistics() {
     try(Table t = new Table("1".getClass(), cantBeNull(System.getProperty("user.dir")));)
     {
       assert(t.noStatistics() == t);
       t.nl();
       assert(t.length() == 2);
-      new File(".csv").delete();
-      new File(".markdown").delete();
-      new File(".tex").delete();
-      new File(".tex2").delete();
-      (new File(".txt")).delete();
+      
     }
   }
     
@@ -88,11 +77,7 @@ import java.io.*;
     try(Table t = new Table("1".getClass(), cantBeNull(System.getProperty("user.dir")));)
     {
       assert (t.description().contains("The table has"));
-      new File(".csv").delete();
-      new File(".markdown").delete();
-      new File(".tex").delete();
-      new File(".tex2").delete();
-      (new File(".txt")).delete();
+      
     }
   }
  
