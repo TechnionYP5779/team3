@@ -19,6 +19,7 @@ The goal is to refactor some Spartanizer code (basically refactor the refactorin
  * [**Elad Yundler** ](https://github.com/eladyundler)
 * [**Daniela Dagan** ](https://github.com/DanielaDii)
  * [**Ilya Smagloy** ](https://github.com/IliaSmagloy)
+ * [**Rani Jammal** ](https://github.com/IliaSmagloy)
 
 
 # <a name="introduction"></a>The Spartanizer is:
