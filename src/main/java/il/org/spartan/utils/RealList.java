@@ -63,7 +63,7 @@ public class RealList {
     Double xSummed = x.stream().reduce((prev, next) -> box(unbox(cantBeNull(prev)) + unbox(cantBeNull(next)))).get(),
         ySummed = y.stream().reduce((prev, next) -> box(unbox(cantBeNull(prev)) + unbox(cantBeNull(next)))).get(),
         sumOfXMultipliedByY = xMultipliedByY.stream().reduce((prev, next) -> box(unbox(cantBeNull(prev)) + unbox(cantBeNull(next)))).get();
-    double slopeNominator = unbox(cantBeNull($)) * unbox(cantBeNull(sumOfXMultipliedByY)) - unbox(cantBeNull(ySummed)) * unbox(cantBeNull(xSummed)),
+    double slopeNominator = unbox(cantBeNull($)) * unbox(cantBeNull(sumOfXMultipliedByY)) - unbox(cantBeNull(xSummed)) * unbox(cantBeNull(ySummed)),
         slopeDenominator = unbox(cantBeNull($))
             * unbox(cantBeNull(xSquared.stream().reduce((prev, next) -> box(unbox(cantBeNull(prev)) + unbox(cantBeNull(next)))).get()))
             - Math.pow(unbox(cantBeNull(xSummed)), 2);
