@@ -1,12 +1,13 @@
 package fluent.ly;
 
 import static il.org.spartan.Utils.*;
+
 import static fluent.ly.azzert.*;
+import static fluent.ly.box.*;
 
 import java.util.*;
 
 import org.junit.*;
-import static fluent.ly.box.*;
 
 @SuppressWarnings("static-method") public class azzertTest {
   @Test public void testStuff() {
@@ -138,7 +139,7 @@ import static fluent.ly.box.*;
     azzert.nonNulls(as.list("a", "b"));
     azzert.that("a", not("b"));
     azzert.notNullz("a", "b");
-    String a = "";
+    final String a = "";
     forget.it(a);
     azzert.that(a, sameInstance(a));
     azzert.that('c', is('c'));
@@ -147,11 +148,11 @@ import static fluent.ly.box.*;
     forget.it(l);
     azzert.that(l, is(l));
     azzert.that("reason", l, is(l));
-    byte b = 5;
+    final byte b = 5;
     forget.it(b);
     azzert.that(b, is(b));
     azzert.that("reason", b, is(b));
-    float f = 5;
+    final float f = 5;
     forget.it(f);
     azzert.that(f, is(f));
     azzert.that("reason", f, is(f));

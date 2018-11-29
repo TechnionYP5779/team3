@@ -1,5 +1,7 @@
 package fluent.ly;
 
+import static il.org.spartan.Utils.*;
+
 import static fluent.ly.azzert.*;
 
 import java.util.*;
@@ -7,7 +9,6 @@ import java.util.function.*;
 
 import org.jetbrains.annotations.*;
 import org.junit.*;
-import static il.org.spartan.Utils.*;
 
 import il.org.spartan.*;
 import il.org.spartan.etc.*;

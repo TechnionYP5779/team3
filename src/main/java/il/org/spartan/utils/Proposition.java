@@ -1,6 +1,7 @@
 package il.org.spartan.utils;
 
 import static il.org.spartan.Utils.*;
+
 import java.util.*;
 import java.util.function.*;
 import java.util.stream.*;

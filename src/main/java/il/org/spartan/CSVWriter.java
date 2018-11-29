@@ -1,6 +1,8 @@
 // <a href=http://ssdl-linux.cs.technion.ac.il/wiki/index.php>SSDLPedia</a>
 package il.org.spartan;
 
+import static il.org.spartan.Utils.*;
+
 // TODO: I commented this import. Had it been renamed?
 
 // import static il.org.spartan.utils.___.*;
@@ -9,8 +11,6 @@ import java.io.*;
 import org.jetbrains.annotations.*;
 
 import fluent.ly.*;
-
-import static il.org.spartan.Utils.*;
 
 public final class CSVWriter {
   @Nullable private static FileWriter open(final File $) {

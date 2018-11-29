@@ -9,17 +9,17 @@ import org.junit.*;
     try (PrintWriter writer = new PrintWriter("the-file-name.txt", "UTF-8")) {
       writer.println("The first line");
       writer.close();
-      assert (FileUtils.findAllJavaFiles("").isEmpty());
-    } catch (Exception ¢) {
+      assert FileUtils.findAllJavaFiles("").isEmpty();
+    } catch (final Exception ¢) {
       ¢.printStackTrace();
     }
     try {
-      assert (FileUtils.read("the-file-name.txt") != null);
+      assert FileUtils.read("the-file-name.txt") != null;
       FileUtils.writeToFile("the-file-name.txt", "The second line");
-      assert ("The second line".equals(FileUtils.read("the-file-name.txt")));
-    } catch (IOException ¢) {
+      assert "The second line".equals(FileUtils.read("the-file-name.txt"));
+    } catch (final IOException ¢) {
       ¢.printStackTrace();
     }
-    (new File("the-file-name.txt")).delete();
+    new File("the-file-name.txt").delete();
   }
 }

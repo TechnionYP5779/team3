@@ -1,7 +1,6 @@
 package il.org.spartan.etc;
 
 import static il.org.spartan.Utils.*;
-
 import static il.org.spartan.etc.English.*;
 import static java.lang.String.*;
 import static java.util.stream.Collectors.*;

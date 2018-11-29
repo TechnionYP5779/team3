@@ -1,10 +1,12 @@
 package il.org.spartan.tables;
 
 import static il.org.spartan.Utils.*;
+
+import static fluent.ly.box.*;
+
 import java.util.*;
 
 import org.jetbrains.annotations.*;
-import static fluent.ly.box.*;
 
 import fluent.ly.*;
 import il.org.spartan.*;

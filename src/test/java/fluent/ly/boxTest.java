@@ -1,7 +1,8 @@
 package fluent.ly;
 
-import org.junit.*;
 import static fluent.ly.box.*;
+
+import org.junit.*;
 
 @SuppressWarnings("static-method") public class boxTest {
   @Test public void boxAdds() {
@@ -69,6 +70,6 @@ import static fluent.ly.box.*;
       assert ITarrlb[j].equals(ITarrl1[j]);
     assert box.it((short) 5).equals(Short.valueOf("5"));
     for (int j = 0; j < 3; ++j)
-      assert box.it(new short[] { 5, 6, 7 })[j].equals((new Short[] { box((short) 5), box((short) 6), box((short) 7) })[j]);
+      assert box.it(new short[] { 5, 6, 7 })[j].equals(new Short[] { box((short) 5), box((short) 6), box((short) 7) }[j]);
   }
 }

@@ -2,6 +2,7 @@
 package il.org.spartan.iterables;
 
 import static il.org.spartan.Utils.*;
+
 import java.util.*;
 
 import org.jetbrains.annotations.*;

@@ -2,9 +2,10 @@ package il.org.spartan.etc;
 
 import static il.org.spartan.Utils.*;
 
-import il.org.spartan.utils.*;
-import static fluent.ly.unbox.*;
 import static fluent.ly.box.*;
+import static fluent.ly.unbox.*;
+
+import il.org.spartan.utils.*;
 
 public class Rectangle {
   Pair<Double, Double> first;

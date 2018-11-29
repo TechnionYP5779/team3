@@ -3,12 +3,14 @@ package fluent.ly;
 import static org.junit.Assert.*;
 
 import static fluent.ly.azzert.*;
+import static fluent.ly.box.*;
 
 import java.util.*;
-import static fluent.ly.box.*;
+
 import org.jetbrains.annotations.*;
 import org.junit.*;
-import il.org.spartan.Utils;
+
+import il.org.spartan.*;
 
 @SuppressWarnings("static-method") public class asTest {
   @Test public void asBitOfFalse() {
@@ -69,7 +71,7 @@ import il.org.spartan.Utils;
   @Test @SuppressWarnings("unlikely-arg-type") public void setTest() {
     final Set<? extends String> s1 = as.set("a", "b", "c");
     assert s1.size() == 3;
-    Collection<String> list = as.list("a", "b", "c");
+    final Collection<String> list = as.list("a", "b", "c");
     forget.it(list);
     assert s1.containsAll(list);
   }
@@ -81,7 +83,7 @@ import il.org.spartan.Utils;
   @Test public void moreTests() {
     assertArrayEquals(as.intArray(Utils.cantBeNull(as.list(new int[] { 1, 2, 3 }))), new int[] { 1, 2, 3 });
     assert as.iterator(box(1)).next().equals(box(1));
-    Iterator<Integer> i = null;
+    final Iterator<Integer> i = null;
     forget.it(i);
     assert as.list(i).isEmpty();
     assert "a".equals(as.string('a'));

@@ -6,27 +6,27 @@ import org.junit.*;
 
 @SuppressWarnings("static-method") public class faultTest {
   @Test public void done() {
-    assert (fault.done().contains("Stack trace: [[[................."));
+    assert fault.done().contains("Stack trace: [[[.................");
   }
 
   @Test public void trace() {
-    assert (fault.trace().contains("java.lang.AssertionError"));
+    assert fault.trace().contains("java.lang.AssertionError");
   }
 
   @Test public void dump() {
-    assert (fault.dump().contains("FAULT:"));
+    assert fault.dump().contains("FAULT:");
   }
 
   @Test public void unreachable() {
-    assert (!fault.unreachable());
+    assert !fault.unreachable();
   }
 
   @Test public void bool() {
-    assert (!fault.bool(box(1)));
+    assert !fault.bool(box(1));
   }
 
   @Test public void specifically() {
-    String value = fault.specifically("test failed because", box(1));
-    assert (value.contains("FAULT:") && value.contains("test failed because"));
+    final String value = fault.specifically("test failed because", box(1));
+    assert value.contains("FAULT:") && value.contains("test failed because");
   }
 }

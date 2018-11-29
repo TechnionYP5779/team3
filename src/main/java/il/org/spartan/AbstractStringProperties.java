@@ -1,11 +1,12 @@
 package il.org.spartan;
 
+import static il.org.spartan.Utils.*;
+
 import java.util.*;
 
 import org.jetbrains.annotations.*;
 
 import fluent.ly.*;
-import static il.org.spartan.Utils.cantBeNull;
 
 /** @author Yossi Gil
  * @since Apr 8, 2012 */

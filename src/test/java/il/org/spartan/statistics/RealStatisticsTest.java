@@ -1,7 +1,9 @@
 package il.org.spartan.statistics;
 
-import static fluent.ly.box.*;
+import static org.junit.Assert.assertEquals;
+
 import static fluent.ly.azzert.*;
+import static fluent.ly.box.*;
 
 import org.jetbrains.annotations.*;
 import org.junit.*;
@@ -187,27 +189,27 @@ import il.org.spartan.bench.*;
 
   @Test public void test() {
     final double @NotNull [] vs = { 1.1, 1.1, 1.1 };
-    assert (Statistics.sampleMean(vs) == 1.1);
-    assert (Statistics.sampleVariance(vs) == 0.0);
-    RealStatistics t = new RealStatistics();
+    assert Statistics.sampleMean(vs) == 1.1;
+    assert Statistics.sampleVariance(vs) == 0.0;
+    final RealStatistics t = new RealStatistics();
     t.record(1.0, 1.0, 1.0, 2.0);
-    assert (!t.isEmpty());
-    assert (t.max() == 2.0);
+    assert !t.isEmpty();
+    assert t.max() == 2.0;
     t.record(2.0, 2.0);
-    assert (t.min() == 1.0);
-    assert (t.mean() == 1.5);
-    assert (t.v() == 0.2999999999999998);
-    assert (t.variance() == 0.25);
-    assert (t.sd() == 0.5);
-    assert (t.missing() == 0);
-    assert (t.v() == 0.2999999999999998);
-    assert (t.flipping() == 0.5);
-    assert ("mean=1.50bcmax=2.00n=6range=1.00⋯2.00]max=2.001.50min=1.00".equals(t.format(Unit.INTEGER, "abcxnrxji")));
-    assert (t.relativeMedianError() == 0.3333333333333333);
-    assert (t.relativeMinError() == 0.5);
+    assert t.min() == 1.0;
+    assert t.mean() == 1.5;
+    assert t.v() == 0.2999999999999998;
+    assert t.variance() == 0.25;
+    assert t.sd() == 0.5;
+    assert t.missing() == 0;
+    assert t.v() == 0.2999999999999998;
+    assert t.flipping() == 0.5;
+    assert "mean=1.50bcmax=2.00n=6range=1.00⋯2.00]max=2.001.50min=1.00".equals(t.format(Unit.INTEGER, "abcxnrxji"));
+    assert t.relativeMedianError() == 0.3333333333333333;
+    assert t.relativeMinError() == 0.5;
     assert t.record(Double.NaN).missing() == 1;
     assert t.record(Double.POSITIVE_INFINITY).missing() == 2;
-    Double d = null;
+    final Double d = null;
     forget.it(d);
     assert t.record(d).missing() == 3;
     assert t.record(box(10.0)).max() == 10.0;

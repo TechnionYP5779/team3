@@ -3,11 +3,12 @@ package il.org.spartan.utils;
 import static il.org.spartan.Utils.*;
 import static java.lang.System.*;
 
+import static fluent.ly.box.*;
+import static fluent.ly.unbox.*;
+
 import java.io.*;
 import java.text.*;
 import java.util.*;
-import static fluent.ly.unbox.*;
-import static fluent.ly.box.*;
 
 import org.jetbrains.annotations.*;
 

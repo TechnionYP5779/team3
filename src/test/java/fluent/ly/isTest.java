@@ -1,29 +1,31 @@
 package fluent.ly;
 
+import static fluent.ly.box.*;
+
 import java.util.*;
 
 import org.jetbrains.annotations.*;
 import org.junit.*;
-import static fluent.ly.box.*;
-import il.org.spartan.Utils;
+
+import il.org.spartan.*;
 
 @SuppressWarnings("static-method") public class isTest {
   @Test public void intTest() {
-    @NotNull List<Integer> li = Utils.cantBeNull(as.list(new int @NotNull [] { 12, 13, 14 }));
+    @NotNull final List<Integer> li = Utils.cantBeNull(as.list(new int @NotNull [] { 12, 13, 14 }));
     assert is.intIsIn(12, new int @NotNull [] { 12, 13, 14 });
     assert !is.intIsIn(15, new int @NotNull [] { 12, 13, 14 });
     assert is.out(box(15), li);
     assert !is.empty(li);
     assert is.empty("");
     assert !is.empty("a");
-    Integer[] i = null;
+    final Integer[] i = null;
     forget.it(i);
     assert is.empty(i);
     assert is.empty(new String[] {});
-    String s = null;
+    final String s = null;
     forget.it(s);
     assert is.empty(s);
-    Iterable<Integer> it = null;
+    final Iterable<Integer> it = null;
     forget.it(it);
     assert is.empty(it);
   }

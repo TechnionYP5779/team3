@@ -1,10 +1,11 @@
 package il.org.spartan;
 
-import static fluent.ly.azzert.*;
-
 import static il.org.spartan.Utils.*;
-import java.io.*;
+
+import static fluent.ly.azzert.*;
 import static fluent.ly.box.*;
+
+import java.io.*;
 
 import org.jetbrains.annotations.*;
 import org.junit.*;
@@ -21,16 +22,16 @@ import fluent.ly.*;
   }
 
   @Test public void combine2() {
-    assert (CSV.combine(new Class<?>[] { Integer.class, Long.class }).equals(Integer.class.getName() + "," + Long.class.getName()));
+    assert CSV.combine(new Class<?>[] { Integer.class, Long.class }).equals(Integer.class.getName() + "," + Long.class.getName());
   }
 
   @Test public void combine3() {
-    assert ("a,b".equals(CSV.combine(new M[] { M.a, M.b })));
+    assert "a,b".equals(CSV.combine(new M[] { M.a, M.b }));
   }
 
   @Test public void load() throws IOException {
-    File f = new File("test.csv");
-    StringBuilder b = new StringBuilder();
+    final File f = new File("test.csv");
+    final StringBuilder b = new StringBuilder();
     b.append("1");
     b.append(",");
     b.append("2");
@@ -43,16 +44,16 @@ import fluent.ly.*;
       p.write(b + "");
       p.close();
     }
-    String[][] s = CSV.load(f);
-    StringBuffer results = new StringBuffer();
-    String separator = ",";
-    for (int i = 0; i < s.length; ++i) {
+    final String[][] s = CSV.load(f);
+    final StringBuffer results = new StringBuffer();
+    final String separator = ",";
+    for (final String[] element : s) {
       results.append('[');
-      for (int j = 0; j < s[i].length; ++j)
+      for (int j = 0; j < element.length; ++j)
         if (j > 0)
-          results.append(s[i][j]);
+          results.append(element[j]);
         else
-          results.append(s[i][j]).append(separator);
+          results.append(element[j]).append(separator);
       results.append(']');
     }
     azzert.that(results + "", is("[1,2][1,2]"));
@@ -60,8 +61,8 @@ import fluent.ly.*;
   }
 
   @Test public void save() throws IOException {
-    File f = new File("test.csv");
-    @NotNull String[][] values = new @NotNull String[2][2];
+    final File f = new File("test.csv");
+    @NotNull final String[][] values = new @NotNull String[2][2];
     values[0][0] = "1";
     values[0][1] = "2";
     values[1][0] = "1";
@@ -77,7 +78,7 @@ import fluent.ly.*;
   }
 
   @Test public void unescape() {
-    assert (CSV.unescape("\\0") == null);
+    assert CSV.unescape("\\0") == null;
     azzert.that(CSV.unescape("\\n"), is("\n"));
     azzert.that(CSV.unescape("\\r"), is("\r"));
     azzert.that(CSV.unescape("\\t"), is("\t"));

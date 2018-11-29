@@ -1,9 +1,11 @@
 package fluent.ly;
 
 import static il.org.spartan.Utils.*;
+import static org.junit.Assert.*;
+
+import static fluent.ly.azzert.*;
 import static fluent.ly.box.*;
 import static fluent.ly.unbox.*;
-import static fluent.ly.azzert.*;
 
 import java.util.*;
 
@@ -135,7 +137,7 @@ import org.junit.*;
 
   @Test public void more() {
     assert unbox.it(cantBeNull(box(1))) == 1;
-    short s = 7;
+    final short s = 7;
     forget.it(s);
     assertArrayEquals(unbox(as.list(new Short[] { box(s) })), new short[] { s });
   }

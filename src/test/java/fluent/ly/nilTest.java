@@ -2,6 +2,7 @@ package fluent.ly;
 
 import static fluent.ly.azzert.*;
 import static fluent.ly.box.*;
+
 import java.util.function.*;
 
 import org.junit.*;

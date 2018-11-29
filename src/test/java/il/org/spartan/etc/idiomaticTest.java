@@ -1,7 +1,7 @@
 package il.org.spartan.etc;
 
-import static fluent.ly.box.*;
 import static fluent.ly.azzert.*;
+import static fluent.ly.box.*;
 
 import org.junit.*;
 

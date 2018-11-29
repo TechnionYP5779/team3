@@ -1,10 +1,10 @@
 package il.org.spartan.utils;
 
+import static il.org.spartan.Utils.*;
+
 import org.jetbrains.annotations.*;
 
 import il.org.spartan.*;
-
-import static il.org.spartan.Utils.*;
 
 /** TODO Yossi Gil: document class
  * @author Yossi Gil
@@ -21,7 +21,7 @@ public class Outer<Inner> {
   }
 
   @Override @NotNull public Outer<Inner> clone() throws CloneNotSupportedException {
-    @SuppressWarnings("unchecked") Outer<Inner> $ = (Outer<Inner>) (cantBeNull(super.clone()));
+    @SuppressWarnings("unchecked") final Outer<Inner> $ = (Outer<Inner>) cantBeNull(super.clone());
     return $;
   }
 

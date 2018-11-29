@@ -12,9 +12,9 @@ import org.junit.*;
   }
 
   @Test public void unuse() {
-    long a = 1;
+    final long a = 1;
     forget.unuse(a);
-    double b = 1;
+    final double b = 1;
     forget.unused(b, new double[] {});
     forget.unused(b, new Object[] {});
     forget.unused(a, new long[] {});
