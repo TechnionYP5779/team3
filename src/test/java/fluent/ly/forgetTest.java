@@ -10,7 +10,7 @@ import org.junit.*;
     forget.it("bla");
     forget.all("1", "2", "3");
   }
-  
+
   @Test public void unuse() {
     long a = 1;
     forget.unuse(a);
@@ -20,11 +20,8 @@ import org.junit.*;
     forget.unused(a, new long[] {});
     forget.unused(a, new Object[] {});
   }
-  
-  
+
   @Test public void unused() {
     forget.______unused("a", "b");
   }
-
-  
 }

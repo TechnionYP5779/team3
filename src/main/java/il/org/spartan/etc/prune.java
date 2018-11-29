@@ -25,7 +25,7 @@ import fluent.ly.*;
 public enum prune {
   ;
   @NotNull private static String @NotNull [] asArrray(final @NotNull List<String> $) {
-    return cantBeNull($.toArray(new @NotNull String [0]));
+    return cantBeNull($.toArray(new @NotNull String[0]));
   }
 
   @NotNull public static <T, C extends Collection<T>> C nulls(final @NotNull C $) {
@@ -43,7 +43,7 @@ public enum prune {
     return $;
   }
 
-   public static <T> T @NotNull [] nulls(final T[] ts) {
+  public static <T> T @NotNull [] nulls(final T[] ts) {
     final @NotNull List<@NotNull T> $ = new ArrayList<>();
     if (ts != null)
       for (final T ¢ : ts)
@@ -60,7 +60,7 @@ public enum prune {
     return Arrays.copyOf(¢, 0);
   }
 
-  @SafeVarargs public static <T> @NotNull String @NotNull [] whites(final T ... ts) {
+  @SafeVarargs public static <T> @NotNull String @NotNull [] whites(final T... ts) {
     final @NotNull List<@NotNull String> $ = an.empty.list();
     if (ts != null)
       for (final @Nullable T ¢ : ts)

@@ -37,7 +37,7 @@ import il.org.spartan.*;
     @NotNull String[] a = new @NotNull String[] { "a" }, bc = new @NotNull String[] { "b", "c" };
     forget.it(a);
     forget.it(bc);
-    assert "abc".equals(Utils.cantBeNull(string.cat(a,bc)));
+    assert "abc".equals(Utils.cantBeNull(string.cat(a, bc)));
   }
 
   @Test public void use7() {
@@ -132,11 +132,11 @@ import il.org.spartan.*;
     assert "a".equals(string.sprintf(new @NotNull String[] { "a", "b" }));
     assert "nn".equals(string.repeat(2, "n"));
     assert Double.isNaN(string.delta(0, 4));
-    assert string.delta(2, 4) == 2.0/3.0;
+    assert string.delta(2, 4) == 2.0 / 3.0;
     assert "1".equals(string.ltoa(1));
     assert "(a)".equals(string.paren("a"));
-    assert "2 cats:\n\t1) a\n\t2) b\n".equals(string.pretty("cat", as.list(new String[] {"a","b"})));
-    assert "1 cat: x\n".equals(string.pretty("cat", as.list(new String[] {"x"})));
+    assert "2 cats:\n\t1) a\n\t2) b\n".equals(string.pretty("cat", as.list(new String[] { "a", "b" })));
+    assert "1 cat: x\n".equals(string.pretty("cat", as.list(new String[] { "x" })));
     assert "".equals(string.pretty("cat", as.list(new String[] {})));
     assert "\'a\'".equals(string.quote("a"));
     assert "aa".equals(string.repeat(2, "a"));

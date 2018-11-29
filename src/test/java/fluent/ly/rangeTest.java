@@ -75,15 +75,12 @@ public class rangeTest {
     assert !range.to(2).includes(2);
     assert !range.to(2).includes(3);
     assert range.to(2).includes(1);
-    final inner_range b1 = new inner_range(); 
+    final inner_range b1 = new inner_range();
     assert b1.includes(1);
-    
     final inner_range a1 = range.from(2), a2 = range.from(1);
-    assert(new range() != null); 
-    assert(a1.interset(b1)).from == box(2); 
-    assert(a2.interset(a1).from == box(2));
-    
+    assert (new range() != null);
+    assert (a1.interset(b1)).from == box(2);
+    assert (a2.interset(a1).from == box(2));
     assert (range.to(1).interset(range.to(2)).to == box(1));
-    
   }
 }

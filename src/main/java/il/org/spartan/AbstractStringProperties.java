@@ -57,7 +57,7 @@ public abstract class AbstractStringProperties {
     @NotNull private final List<String> keys = new ArrayList<>();
     @NotNull private final List<String> values = new ArrayList<>();
 
-    @Override @Nullable public String get(final  String key) {
+    @Override @Nullable public String get(final String key) {
       final int $ = keys.lastIndexOf(key);
       return $ < 0 ? null : values.get($);
     }

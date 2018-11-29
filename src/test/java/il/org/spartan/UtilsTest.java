@@ -1,4 +1,5 @@
 package il.org.spartan;
+
 import static fluent.ly.box.*;
 import static fluent.ly.azzert.*;
 import static il.org.spartan.Utils.*;
@@ -11,7 +12,7 @@ import fluent.ly.*;
 import il.org.spartan.Utils.FoundHandleForT.*;
 import il.org.spartan.etc.*;
 
-@SuppressWarnings( "static-method" )  public class UtilsTest {
+@SuppressWarnings("static-method") public class UtilsTest {
   public static Integer @NotNull [] intToIntegers(final int... is) {
     final Integer @NotNull [] $ = new Integer @NotNull [is.length];
     for (int ¢ = 0; ¢ < is.length; ++¢)
@@ -87,13 +88,13 @@ import il.org.spartan.etc.*;
   }
 
   @Test public void swapDegenerate() {
-    final String [] ss = as.array("A", "B", "C", "D");
+    final String[] ss = as.array("A", "B", "C", "D");
     Utils.swap(ss, 1, 1);
     azzert.assertCollectionsEqual(as.list("A", "B", "C", "D"), ss);
   }
 
   @Test public void swapTypical() {
-    final String [] ss = as.array("A", "B", "C", "D");
+    final String[] ss = as.array("A", "B", "C", "D");
     Utils.swap(ss, 1, 2);
     azzert.assertCollectionsEqual(as.list("A", "C", "B", "D"), ss);
   }
@@ -207,12 +208,12 @@ import il.org.spartan.etc.*;
     Utils.canBeNull(box(5));
     assert Utils.contains("blabla", "bla");
     assert !Utils.contains("blabla", "x", null);
-    assert !Utils.hasNull("a","b");
+    assert !Utils.hasNull("a", "b");
     assert !Utils.inRange(5, as.list("a"));
     assert Utils.inRange(0, as.list("a"));
-    assert !Utils.intIsIn(5, 1,2,3);
+    assert !Utils.intIsIn(5, 1, 2, 3);
     assert !Utils.suffixedBy("bla", as.list("x"));
     assert Utils.hash(null) == 0;
     assert Utils.hash("a") == "a".hashCode();
-   }
+  }
 }

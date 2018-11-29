@@ -8,6 +8,7 @@ import org.junit.*;
 
 @SuppressWarnings("static-method") public class nilTest {
   static String helloString = "Hello";
+
   @Test public void usecase0() {
     azzert.isNull(nil.ignoring(true));
   }
@@ -27,6 +28,7 @@ import org.junit.*;
   @Test public void usecase4() {
     azzert.isNull(nil.guardingly(λ -> box("hi".equals(λ))).on(null));
   }
+
   @Test public void t() {
     final Integer i1 = nil.guardingly(String::length).on(helloString);
     azzert.that(i1, is(5));
@@ -40,7 +42,7 @@ import org.junit.*;
     nil.guardingly(State::getName).on(null);
     nil.guardingly(State::getName).on(californiaCustomer.getAddress().getState());
   }
-  
+
   String nullString;
   final Customer californiaCustomer = () -> () -> new State() {
     @Override public String getName() {

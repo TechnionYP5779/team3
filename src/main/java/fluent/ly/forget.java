@@ -9,8 +9,7 @@ package fluent.ly;
   /** Suppresses "variable unused" warning on a variable number of arguments.
    * @param _1 The first object to be ignored.
    * @param _2 The rest of the varargs. */
-   static void all(final Object _1, final Object... _2) {
-     
+  static void all(final Object _1, final Object... _2) {
     /**/ }
 
   /** Suppresses "variable unused" warning on a boolean.
@@ -32,9 +31,7 @@ package fluent.ly;
    * @param __ The object to be ignored. */
   static void it(final Object __) {
     /**/ }
-  
-  
-  
+
   static void ______unused(final long l, final Object... os) {
     forget.it(l);
     forget.all(os);
@@ -48,8 +45,7 @@ package fluent.ly;
   static void ______unused(final Object... ____) {
     unused(____);
   }
-  
-  
+
   static void unuse(final long __, final Object... ____) {
     forget.it(__);
     forget.it(____);
@@ -98,8 +94,4 @@ package fluent.ly;
   static void unused(final Object... ____) {
     forget.it(____);
   }
-
- 
-  
-  
 }

@@ -53,7 +53,7 @@ public abstract class CSVLine extends AbstractStringProperties implements Clonea
   }
 
   @NotNull public final String asKeyValuePairs() {
-    return Separate.by((F<Entry< String, String>>) λ -> λ.getKey() + "=" + λ.getValue(), cantBeNull(entries()), ", ");
+    return Separate.by((F<Entry<String, String>>) λ -> λ.getKey() + "=" + λ.getValue(), cantBeNull(entries()), ", ");
   }
 
   public final Iterable<? extends Map.Entry<String, String>> entries() {
@@ -120,9 +120,9 @@ public abstract class CSVLine extends AbstractStringProperties implements Clonea
   }
 
   /** Add a key and a <code><b>double</b><code> value to this instance
-                                     *
-                                     * &#64;param key
-                                     *          The key to be added; must not be <code><b>null</b></code>
+                                      *
+                                      * &#64;param key
+                                      *          The key to be added; must not be <code><b>null</b></code>
    * @param value The value associated with the key
    * @return this */
   public CSVLine put(final @NotNull String key, final double value) {
@@ -130,22 +130,22 @@ public abstract class CSVLine extends AbstractStringProperties implements Clonea
   }
 
   /** Add a key and a <code><b>double</b><code> value to this instance
-                                     *
-                                     * &#64;param key
-                                     *          The key to be added; must not be <code><b>null</b></code>
+                                      *
+                                      * &#64;param key
+                                      *          The key to be added; must not be <code><b>null</b></code>
    * @param value The value associated with the key
    * @param ss    Which (if any) aggregate statistics should be produced for this
    *              column
    * @return this */
-  public CSVLine put(final @NotNull String key, final double value, final @NotNull  FormatSpecifier... ss) {
+  public CSVLine put(final @NotNull String key, final double value, final @NotNull FormatSpecifier... ss) {
     aggregator.record(key, value, ss);
     return put(key, value + "");
   }
 
   /** Add a key and a <code><b>double</b><code> value to this instance
-                                     *
-                                     * &#64;param key
-                                     *          The key to be added; must not be <code><b>null</b></code>
+                                      *
+                                      * &#64;param key
+                                      *          The key to be added; must not be <code><b>null</b></code>
    * @param value  The value associated with the key
    * @param format How should the value be formatted
    * @param ss     Which (if any) aggregate statistics should be produced for this
@@ -158,9 +158,9 @@ public abstract class CSVLine extends AbstractStringProperties implements Clonea
   }
 
   /** Add a key and a general <code><b>float</b><code> value to this instance
-                                     *
-                                     * &#64;param key
-                                     *          The key to be added; must not be <code><b>null</b></code>
+                                      *
+                                      * &#64;param key
+                                      *          The key to be added; must not be <code><b>null</b></code>
    * @param value The value associated with the key
    * @return this */
   public final CSVLine put(final @NotNull String key, final float value) {
@@ -218,7 +218,7 @@ public abstract class CSVLine extends AbstractStringProperties implements Clonea
     return put(key, a == null || i < 0 || i >= a.length ? null : a[i]);
   }
 
-  public final CSVLine put(final @NotNull String key, final @NotNull Object [] os) {
+  public final CSVLine put(final @NotNull String key, final @NotNull Object[] os) {
     return put(key, os == null ? null : Separate.by(os, ARRAY_SEPARATOR));
   }
 

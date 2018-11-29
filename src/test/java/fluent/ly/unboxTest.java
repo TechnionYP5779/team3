@@ -1,4 +1,3 @@
-
 package fluent.ly;
 
 import static il.org.spartan.Utils.*;
@@ -30,7 +29,7 @@ import org.junit.*;
     int j = 0;
     for (final int ¢ : arr)
       azzert.that(¢, is(res[j++]));
-    final @NotNull Integer [] arrInt = { cantBeNull(a), cantBeNull(b), cantBeNull(c), cantBeNull(d), cantBeNull(e), cantBeNull(f) };
+    final @NotNull Integer[] arrInt = { cantBeNull(a), cantBeNull(b), cantBeNull(c), cantBeNull(d), cantBeNull(e), cantBeNull(f) };
     res = unbox.it(arrInt);
     azzert.that(res.length, is(arr.length));
     j = 0;
@@ -47,7 +46,7 @@ import org.junit.*;
   @Test public void testShorts() {
     final short[] arr = { 1, 2, 3, 4, 5, 6 };
     short[] res;
-    final @NotNull Short [] arrShort = box(arr);
+    final @NotNull Short[] arrShort = box(arr);
     azzert.that(unbox(cantBeNull(box((short) 5))), is(5));
     res = unbox(arrShort);
     azzert.that(res.length, is(arr.length));
@@ -102,7 +101,7 @@ import org.junit.*;
 
   @Test public void testBools() {
     final boolean[] arr = { true, false, true, true, false, false };
-    final @NotNull Boolean [] arrBool = box(arr);
+    final @NotNull Boolean[] arrBool = box(arr);
     assert unbox(cantBeNull(Boolean.TRUE));
     assert !unbox(cantBeNull(Boolean.FALSE));
     final boolean[] res = unbox(arrBool);
@@ -133,11 +132,11 @@ import org.junit.*;
     for (final char i : arr)
       azzert.that(i, is(res[j++]));
   }
-  
+
   @Test public void more() {
     assert unbox.it(cantBeNull(box(1))) == 1;
     short s = 7;
     forget.it(s);
-    assertArrayEquals(unbox(as.list(new Short[] {box(s)})), new short[] {s});
+    assertArrayEquals(unbox(as.list(new Short[] { box(s) })), new short[] { s });
   }
 }

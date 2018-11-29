@@ -2,7 +2,6 @@ package fluent.ly;
 
 import org.junit.*;
 
-
 @SuppressWarnings("static-method") public class anonymousTest {
   @Test public void usecase0() {
     assert anonymous.ly(() -> true);

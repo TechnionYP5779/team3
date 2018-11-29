@@ -41,7 +41,7 @@ import org.jetbrains.annotations.*;
    * @return <code><b>this</b></code> */
   @NotNull accumulate<T, C> add(@Nullable T t);
 
-  @NotNull default accumulate<T, C> add( final T... ts) {
+  @NotNull default accumulate<T, C> add(final T... ts) {
     if (ts != null)
       for (final @Nullable T ¢ : ts)
         if (¢ != null)
@@ -61,7 +61,6 @@ import org.jetbrains.annotations.*;
 
   /** @param tss JD
    * @return <code><b>this</b></code> */
-  
   @NotNull default accumulate<T, C> addAll(final @Nullable Iterable<? extends T>... tss) {
     if (tss != null)
       for (final Iterable<? extends T> ¢ : tss)

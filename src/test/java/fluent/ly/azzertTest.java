@@ -1,11 +1,12 @@
 package fluent.ly;
+
 import static il.org.spartan.Utils.*;
 import static fluent.ly.azzert.*;
 
 import java.util.*;
 
 import org.junit.*;
-import static fluent.ly.box.*; 
+import static fluent.ly.box.*;
 
 @SuppressWarnings("static-method") public class azzertTest {
   @Test public void testStuff() {
@@ -128,15 +129,15 @@ import static fluent.ly.box.*;
     azzert.that(cantBeNull(box(5)), cantBeNull(azzert.describedAs("desc", is(5))));
     azzert.that("bla", cantBeNull(equalToIgnoringCase("BLA")));
     azzert.that("bla", cantBeNull(equalToIgnoringWhiteSpace("bla")));
-    azzert.that(as.list("a","a"), cantBeNull(everyItem(is("a"))));
-    azzert.that(as.list("a","b"), cantBeNull(hasItem(is("a"))));
-    azzert.that(as.list("a","b"), cantBeNull(hasItem("a")));
-    azzert.that(as.list("a","b"), cantBeNull(hasItems(is("a"), is("b"))));
-    azzert.that(as.list("a","b"), cantBeNull(hasItems("a", "b")));
+    azzert.that(as.list("a", "a"), cantBeNull(everyItem(is("a"))));
+    azzert.that(as.list("a", "b"), cantBeNull(hasItem(is("a"))));
+    azzert.that(as.list("a", "b"), cantBeNull(hasItem("a")));
+    azzert.that(as.list("a", "b"), cantBeNull(hasItems(is("a"), is("b"))));
+    azzert.that(as.list("a", "b"), cantBeNull(hasItems("a", "b")));
     azzert.isNull(null);
-    azzert.nonNulls(as.list("a","b"));
+    azzert.nonNulls(as.list("a", "b"));
     azzert.that("a", not("b"));
-    azzert.notNullz("a","b");
+    azzert.notNullz("a", "b");
     String a = "";
     forget.it(a);
     azzert.that(a, sameInstance(a));
@@ -167,7 +168,7 @@ import static fluent.ly.box.*;
     azzert.zero(l);
     s = 0;
     azzert.zero(s);
-    xassertEquals(1,1);
-    xassertEquals("bla",1,1);
+    xassertEquals(1, 1);
+    xassertEquals("bla", 1, 1);
   }
 }

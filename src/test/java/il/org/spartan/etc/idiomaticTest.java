@@ -1,6 +1,5 @@
 package il.org.spartan.etc;
 
-
 import static fluent.ly.box.*;
 import static fluent.ly.azzert.*;
 
@@ -9,8 +8,7 @@ import org.junit.*;
 import fluent.ly.*;
 import il.org.spartan.etc.idiomatic.*;
 
-@SuppressWarnings("static-method")
-public class idiomaticTest {
+@SuppressWarnings("static-method") public class idiomaticTest {
   @Test public void use0() {
     assert new Storer<>(this) != null;
   }

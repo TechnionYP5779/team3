@@ -13,26 +13,23 @@ public class dumpTest {
   private final PrintStream originalOut = System.out;
   private final PrintStream originalErr = System.err;
 
-  @Before
-  public void setUpStreams() {
-      System.setOut(new PrintStream(outContent));
-      System.setErr(new PrintStream(errContent));
+  @Before public void setUpStreams() {
+    System.setOut(new PrintStream(outContent));
+    System.setErr(new PrintStream(errContent));
   }
 
-  @After
-  public void restoreStreams() {
-      System.setOut(originalOut);
-      System.setErr(originalErr);
+  @After public void restoreStreams() {
+    System.setOut(originalOut);
+    System.setErr(originalErr);
   }
-  
-  @Test
-  public void test() {
+
+  @Test public void test() {
     dump.go(ManagementFactory.getClassLoadingMXBean());
     dump.go(Utils.cantBeNull(ManagementFactory.getMemoryPoolMXBeans()), "a", "b");
     dump.go(ManagementFactory.getRuntimeMXBean());
     dump.go(getClass());
-    dump.go(new String[] {"a", "b"}, "a", "b");
-    dump.go((Object)null, "a", "b");
+    dump.go(new String[] { "a", "b" }, "a", "b");
+    dump.go((Object) null, "a", "b");
     assert outContent + "" != null;
   }
 }

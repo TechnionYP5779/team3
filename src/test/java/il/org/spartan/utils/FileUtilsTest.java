@@ -2,13 +2,11 @@ package il.org.spartan.utils;
 
 import java.io.*;
 
-
 import org.junit.*;
 
 @SuppressWarnings("static-method") public class FileUtilsTest {
   @Test public void test() {
-    try (PrintWriter writer = new PrintWriter("the-file-name.txt", "UTF-8")){
-     
+    try (PrintWriter writer = new PrintWriter("the-file-name.txt", "UTF-8")) {
       writer.println("The first line");
       writer.close();
       assert (FileUtils.findAllJavaFiles("").isEmpty());
@@ -23,8 +21,5 @@ import org.junit.*;
       ¢.printStackTrace();
     }
     (new File("the-file-name.txt")).delete();
-  
-
   }
 }
-

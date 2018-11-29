@@ -44,7 +44,7 @@ import org.jetbrains.annotations.*;
   }
 
   public static int @NotNull [] it(final @NotNull List<Integer> ¢) {
-    return it(¢.toArray(new @NotNull Integer [¢.size()]));
+    return it(¢.toArray(new @NotNull Integer[¢.size()]));
   }
 
   public static boolean unbox(final @NotNull Boolean ¢) {

@@ -5,6 +5,7 @@ import static il.org.spartan.Utils.*;
 import il.org.spartan.utils.*;
 import static fluent.ly.unbox.*;
 import static fluent.ly.box.*;
+
 public class Rectangle {
   Pair<Double, Double> first;
   Pair<Double, Double> second;
@@ -31,7 +32,8 @@ public class Rectangle {
   }
 
   public double area() {
-    return Math.abs((unbox(cantBeNull(first.first)) - unbox(cantBeNull(second.first))) * (unbox(cantBeNull(first.second)) - unbox(cantBeNull(second.second))));
+    return Math.abs(
+        (unbox(cantBeNull(first.first)) - unbox(cantBeNull(second.first))) * (unbox(cantBeNull(first.second)) - unbox(cantBeNull(second.second))));
   }
 
   public void changeFirst(final double x1, final double y1) {
@@ -45,6 +47,5 @@ public class Rectangle {
   public double perimiter() {
     return Math.abs(2.0 * (unbox(cantBeNull(first.first)) - unbox(cantBeNull(second.first))))
         + 2.0 * Math.abs(unbox(cantBeNull(first.second)) - unbox(cantBeNull(second.second)));
-
   }
 }

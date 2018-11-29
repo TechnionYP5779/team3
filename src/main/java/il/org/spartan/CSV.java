@@ -105,7 +105,7 @@ public enum CSV {
 
   public static <@Nullable T extends Enum<T>> T @NotNull [] split(final Class<T> clazz, final @NotNull String s) {
     final String @NotNull [] ss = split(s);
-    @SuppressWarnings("unchecked") final T [] $ = (T[]) Array.newInstance(clazz, ss.length);
+    @SuppressWarnings("unchecked") final T[] $ = (T[]) Array.newInstance(clazz, ss.length);
     for (int ¢ = 0; ¢ < $.length; ++¢)
       $[¢] = ss[¢] == null ? null : Enum.valueOf(clazz, ss[¢]);
     return cantBeNull($);

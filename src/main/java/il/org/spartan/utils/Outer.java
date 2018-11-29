@@ -5,10 +5,11 @@ import org.jetbrains.annotations.*;
 import il.org.spartan.*;
 
 import static il.org.spartan.Utils.*;
+
 /** TODO Yossi Gil: document class
  * @author Yossi Gil
  * @since 2017-03-21 */
-public class Outer< Inner> {
+public class Outer<Inner> {
   @Nullable public Inner inner;
 
   public Outer(final Inner inner) {
@@ -20,8 +21,7 @@ public class Outer< Inner> {
   }
 
   @Override @NotNull public Outer<Inner> clone() throws CloneNotSupportedException {
-    @SuppressWarnings("unchecked")
-    Outer<Inner> $ = (Outer<Inner>) (cantBeNull(super.clone()));
+    @SuppressWarnings("unchecked") Outer<Inner> $ = (Outer<Inner>) (cantBeNull(super.clone()));
     return $;
   }
 

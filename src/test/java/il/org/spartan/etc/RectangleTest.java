@@ -2,7 +2,7 @@ package il.org.spartan.etc;
 
 import org.junit.*;
 
-@SuppressWarnings("static-method")public class RectangleTest {
+@SuppressWarnings("static-method") public class RectangleTest {
   @Test public void test() {
     final Rectangle rec = new Rectangle(1.0, 1.0, 2.0, 2.0);
     assert rec != null;

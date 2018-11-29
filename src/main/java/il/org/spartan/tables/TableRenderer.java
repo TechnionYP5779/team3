@@ -234,7 +234,7 @@ import il.org.spartan.*;
     final Separator s = new Separator(cantBeNull(recordSeparator()));
     values.forEach(λ -> $.append(s)
         .append(λ instanceof Object[] ? cellArray((Object[]) λ)
-            : λ instanceof Integer ? cellInt(box((long)((Integer) λ).intValue()))
+            : λ instanceof Integer ? cellInt(box((long) ((Integer) λ).intValue()))
                 : λ instanceof Long ? cellInt((Long) λ) : λ instanceof Double ? cellReal((Double) λ) : λ));
     return $ + recordEnd();
   }

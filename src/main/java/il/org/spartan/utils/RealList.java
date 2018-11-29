@@ -30,9 +30,8 @@ public class RealList {
   }
 
   public static double first(Pair<Double, Double> x) {
-    return unbox( cantBeNull(x.first));
+    return unbox(cantBeNull(x.first));
   }
-
 
   public Iterator<Pair<Double, Double>> iteratorX() {
     List<Pair<Double, Double>> $ = new ArrayList<>(li);
@@ -72,10 +71,12 @@ public class RealList {
   }
 
   public double averageX() {
-    return x.isEmpty() ? 0 : unbox(cantBeNull(x.stream().reduce((prev, next) -> box(unbox(cantBeNull(prev)) + unbox(cantBeNull(next)))).get())) / x.size();
+    return x.isEmpty() ? 0
+        : unbox(cantBeNull(x.stream().reduce((prev, next) -> box(unbox(cantBeNull(prev)) + unbox(cantBeNull(next)))).get())) / x.size();
   }
 
   public double averageY() {
-    return y.isEmpty() ? 0 : unbox(cantBeNull(y.stream().reduce((prev, next) -> box(unbox(cantBeNull(prev)) + unbox(cantBeNull(next)))).get())) / y.size();
+    return y.isEmpty() ? 0
+        : unbox(cantBeNull(y.stream().reduce((prev, next) -> box(unbox(cantBeNull(prev)) + unbox(cantBeNull(next)))).get())) / y.size();
   }
 }

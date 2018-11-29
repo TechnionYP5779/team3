@@ -10,7 +10,7 @@ import org.jetbrains.annotations.*;
 import org.junit.*;
 import il.org.spartan.Utils;
 
-@SuppressWarnings( "static-method") public class asTest {
+@SuppressWarnings("static-method") public class asTest {
   @Test public void asBitOfFalse() {
     azzert.that(as.bit(false), is(0));
   }
@@ -77,9 +77,9 @@ import il.org.spartan.Utils;
   @Test public void stringsTest() {
     assertArrayEquals(new String[] { "a", "b", "c", "1" }, as.strings(as.list("a", "b", "c", box(1), null)));
   }
-  
+
   @Test public void moreTests() {
-    assertArrayEquals(as.intArray(Utils.cantBeNull(as.list(new int[] {1,2,3}))), new int[] {1,2,3});
+    assertArrayEquals(as.intArray(Utils.cantBeNull(as.list(new int[] { 1, 2, 3 }))), new int[] { 1, 2, 3 });
     assert as.iterator(box(1)).next().equals(box(1));
     Iterator<Integer> i = null;
     forget.it(i);
@@ -87,6 +87,5 @@ import il.org.spartan.Utils;
     assert "a".equals(as.string('a'));
     assert "null".equals(as.string(null));
     assert "1".equals(as.string(Utils.cantBeNull(box(1))));
-    
   }
 }

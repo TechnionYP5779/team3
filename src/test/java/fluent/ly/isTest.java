@@ -7,7 +7,6 @@ import org.junit.*;
 import static fluent.ly.box.*;
 import il.org.spartan.Utils;
 
-
 @SuppressWarnings("static-method") public class isTest {
   @Test public void intTest() {
     @NotNull List<Integer> li = Utils.cantBeNull(as.list(new int @NotNull [] { 12, 13, 14 }));
@@ -15,10 +14,9 @@ import il.org.spartan.Utils;
     assert !is.intIsIn(15, new int @NotNull [] { 12, 13, 14 });
     assert is.out(box(15), li);
     assert !is.empty(li);
-    
     assert is.empty("");
     assert !is.empty("a");
-    Integer [] i = null;
+    Integer[] i = null;
     forget.it(i);
     assert is.empty(i);
     assert is.empty(new String[] {});

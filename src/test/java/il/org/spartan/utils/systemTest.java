@@ -1,13 +1,10 @@
 package il.org.spartan.utils;
 
-
 import java.util.*;
 
 import org.junit.*;
 
-
 @SuppressWarnings("static-method") public class systemTest {
-  
   @Test public void basic_test() {
     if (!system.isWindows())
       return;
@@ -24,16 +21,15 @@ import org.junit.*;
     assert (!system.isBalanced("]"));
     assert (!system.isBalanced("}"));
     assert ("systemTest".equals(system.myShortClassName()));
-    assert (system.myCallerFullClassName()!=null);
+    assert (system.myCallerFullClassName() != null);
     assert (system.now().contains("-"));
-    try (
-      Scanner s = new Scanner("abc");){
+    try (Scanner s = new Scanner("abc");) {
       assert ("\nabc".equals(system.read(s)));
       s.close();
     }
     assert (system.runScript() != null);
     assert (system.shellEssenceMetrics("text") == null);
-    assert (system.userName()!=null);
+    assert (system.userName() != null);
     assert (system.wc("") == 0);
     assert (system.wc("a b c") == 3);
     assert (system.wc(null) == 0);

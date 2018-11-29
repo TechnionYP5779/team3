@@ -66,7 +66,7 @@ public abstract class PropositionReducer<R> extends Reduce<R> {
     return reduce();
   }
 
-  protected R ante( final Proposition.Singleton __) {
+  protected R ante(final Proposition.Singleton __) {
     forget.it(__);
     return reduce();
   }

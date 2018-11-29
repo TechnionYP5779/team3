@@ -60,7 +60,7 @@ public interface Utils {
    * @param t  an element
    * @return newly created array */
   static <T> T @NotNull [] append(final @NotNull T[] ts, final T t) {
-    final T [] $ = Arrays.copyOf(ts, 1 + ts.length);
+    final T[] $ = Arrays.copyOf(ts, 1 + ts.length);
     $[ts.length] = t;
     return $;
   }
@@ -126,8 +126,8 @@ public interface Utils {
    * @return parameter, with all redundant spaces removed from it */
   static String compressSpaces(final @NotNull String javaCodeFragment) {
     String $ = javaCodeFragment.replaceAll("(?m)\\s+", " ").replaceAll("^\\s", "").replaceAll("\\s$", "");
-    for (final String operator : new String @NotNull [] { ":", "/", "%", ",", "\\{", "\\}", "=", ":", "\\?", ";", "\\+", ">", ">=", "!=",
-        "==", "<", "<=", "-", "\\*", "\\|", "\\&", "%", "\\(", "\\)", "[\\^]" })
+    for (final String operator : new String @NotNull [] { ":", "/", "%", ",", "\\{", "\\}", "=", ":", "\\?", ";", "\\+", ">", ">=", "!=", "==", "<",
+        "<=", "-", "\\*", "\\|", "\\&", "%", "\\(", "\\)", "[\\^]" })
       $ = $.replaceAll(WHITES + operator, operator).replaceAll(operator + WHITES, operator);
     return cantBeNull($);
   }
@@ -151,7 +151,7 @@ public interface Utils {
    * @param i  position of element to be deleted
    * @return newly created array */
   static <T> T @NotNull [] delete(final @NotNull T[] ts, final int i) {
-    final T [] $ = Arrays.copyOf(ts, ts.length - 1);
+    final T[] $ = Arrays.copyOf(ts, ts.length - 1);
     System.arraycopy(ts, i + 1, $, i, $.length - i);
     return $;
   }
