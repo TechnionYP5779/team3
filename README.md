@@ -13,13 +13,13 @@ The goal is to refactor some Spartanizer code (basically refactor the refactorin
 
 
 ## Our Team
-* [**Anny Firer** ](https://github.com/anny234)
-* [**Eric Kiel** ](https://github.com/eric-K1)
-* [**Yaniv Baldinger** ](https://github.com/yanivbaldi)
- * [**Elad Yundler** ](https://github.com/eladyundler)
-* [**Daniela Dagan** ](https://github.com/DanielaDii)
- * [**Ilya Smagloy** ](https://github.com/IliaSmagloy)
- * [**Rani Jammal** ](https://github.com/IliaSmagloy)
+1. [**Anny Firer** ](https://github.com/anny234)
+2. [**Eric Kiel** ](https://github.com/eric-K1)
+3. [**Yaniv Baldinger** ](https://github.com/yanivbaldi)
+4. [**Elad Yundler** ](https://github.com/eladyundler)
+5. [**Daniela Dagan** ](https://github.com/DanielaDii)
+6. [**Ilya Smagloy** ](https://github.com/IliaSmagloy)
+7. [**Rani Jammal** ](https://github.com/IliaSmagloy)
 
 
 # <a name="introduction"></a>The Spartanizer is:
