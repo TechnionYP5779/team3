@@ -1,0 +1,96 @@
+body {
+	margin: 0px;
+    border: 20px solid SkyBlue;
+    padding: 25px;
+    background-image: linear-gradient(white , white, white, Ivory );
+    /*background-color: white; you can remove gradient line and
+    use this insted*/
+}
+
+h1 {
+    
+    color: RoyalBlue;
+   
+    letter-spacing: 3px; /*makes space between letters bigger,
+    fell free to remove this if you dont like it*/
+    text-shadow: 3px 3px LightGray; /*obviously creates shadow,
+    fell free to remove this if you dont like it*/
+}
+
+h2 {
+    
+    color: SeaGreen;
+}
+
+p {
+    /*text-indent: 15px;    put this on if you want to have tab
+    in the beginning of the paragrath*/
+    color: MidnightBlue;
+}
+
+/*----------------button styles-------------------*/
+.button { 
+    /* write: <button class="button">Button_text</button>
+    to make a styled button*/
+    background-color: RoyalBlue;
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 10px 20px;
+    transition-duration: 0.4s;
+}
+
+.button:hover {
+    background-color: DodgerBlue;
+}
+
+.button2 {background-color: SeaGreen;} /*<button class="button button2">*/
+
+.button2:hover {
+    background-color: #17c578;
+}
+/*-------------------------------------------------------------*/
+
+/*---------------------navigation bar style--------------------*/
+/*usage example:
+<ul>
+  <li><a class="active" href="#home">Home</a></li>
+  <li><a href="#news">News</a></li>
+</ul>
+*/
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #17c578;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    background-color: #17c578;
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    font-family: sans-serif;
+    cursor: pointer;
+    padding: 10px 20px;
+    transition-duration: 0.4s;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: SeaGreen;
+    color: white;
+}
+.active {
+    background-color: SeaGreen;
+}
+/*-------------------------------------------------------------*/
