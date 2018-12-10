@@ -62,41 +62,41 @@
 <div  id="login" class="container">
   <h2>Add a parking spot</h2>
   <p>Let people use your empty parking spot and earn some money<p>
-  <form class="form-horizontal">
+  <form class="form-horizontal" action="AddParkSpot" method="post">
     <div class="form-group">
-      <label class="control-label col-sm-4" for="email">City</label>
+      <label class="control-label col-sm-4" for="city">City</label>
       <div class="col-sm-4">
-        <input type="city" class="form-control" id="email" placeholder="Enter city">
+        <input type="text" class="form-control" id="city" name="city" placeholder="Enter city">
       </div>
     </div>
 	    <div class="form-group">
-      <label class="control-label col-sm-4" for="email">Street</label>
+      <label class="control-label col-sm-4" for="street">Street</label>
       <div class="col-sm-4">
-        <input type="street" class="form-control" id="street" placeholder="Enter street">
+        <input type="text" class="form-control" id="street" name="street" placeholder="Enter street">
       </div>
     </div>
     <div class="form-group">
-      <label class="control-label col-sm-4" for="pwd">Building number</label>
+      <label class="control-label col-sm-4" for="BuildNum">Building number</label>
       <div class="col-sm-4">          
-        <input type="buildNum" class="form-control" id="BuildNum" placeholder="Enter Building number">
+        <input type="text" class="form-control" id="BuildNum" name="BuildNum" placeholder="Enter Building number">
       </div>
     </div>
 	    <div class="form-group">
-      <label class="control-label col-sm-4" for="pwd">Date</label>
+      <label class="control-label col-sm-4" for="Date">Date</label>
       <div class="col-sm-4">          
-        <input type="Date" class="form-control" id="Date" placeholder="Enter Date">
+        <input type="Date" class="form-control" id="Date" name="date" >
       </div>
     </div>
 	    <div class="form-group">
-      <label class="control-label col-sm-4" for="pwd">From hour</label>
+      <label class="control-label col-sm-4" for="FromHour">From hour</label>
       <div class="col-sm-4">          
-        <input type="FromHour" class="form-control" id="FromHour" placeholder="Enter From Hour">
+        <input type="time" class="form-control" id="FromHour" name="FromHout" placeholder="Enter From Hour">
       </div>
     </div>
 	<div class="form-group">
       <label class="control-label col-sm-4" for="pwd">From hour</label>
       <div class="col-sm-4">          
-        <input type="ToHour" class="form-control" id="ToHour" placeholder="Enter To Hour">
+        <input type="time" class="form-control" id="ToHour" name="ToHour">
       </div>
     </div>
     <div class="form-group">        
