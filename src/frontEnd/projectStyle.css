@@ -1,40 +1,71 @@
+:root {
+/*color vars for CSS ----- if you change colors change only here*/
+    --primary-color:RoyalBlue;
+    --secondary-color:SeaGreen;
+    --text-color:MidnightBlue;
+    --button_text-color:white;
+    
+    --pr_on_hover-color:DodgerBlue;
+    --sec_on_hover-color:#17c578;
+    --bg_light-color:white;
+    --bg_darker-color:Ivory;
+    
+    --border-color:SkyBlue;
+    --shadow-color:LightGray;
+    
+/*alternative colors  
+    --primary-color:rgb(255, 51, 0);
+    --secondary-color:rgb(255, 102, 0);
+    --text-color:rgb(20, 100, 5);
+    --button_text-color:white;
+    
+    --pr_on_hover-color:rgb(255, 15, 0);
+    --sec_on_hover-color:rgb(255, 133, 51);
+    --bg_light-color:white;
+    --bg_darker-color:rgb(240, 255, 190);
+    
+    --border-color:rgb(140, 255, 100);
+    --shadow-color:rgb(220, 220, 180)
+*/     
+}
 body {
 	margin: 0px;
-    border: 20px solid SkyBlue;
+    border: 20px solid var(--border-color);
     padding: 25px;
-    background-image: linear-gradient(white , white, white, Ivory );
-    /*background-color: white; you can remove gradient line and
-    use this insted*/
+    background-image: linear-gradient(var(--bg_light-color),
+    var(--bg_light-color), var(--bg_light-color), var(--bg_darker-color));
+    /*background-color: var(--bg_light-color); you can remove gradient line and
+    use this instead*/
 }
 
 h1 {
     
-    color: RoyalBlue;
+    color: var(--primary-color);
    
     letter-spacing: 3px; /*makes space between letters bigger,
-    fell free to remove this if you dont like it*/
-    text-shadow: 3px 3px LightGray; /*obviously creates shadow,
-    fell free to remove this if you dont like it*/
+    fell free to remove this if you don't like it*/
+    text-shadow: 3px 3px var(--shadow-color); /*obviously creates shadow,
+    fell free to remove this if you don't like it*/
 }
 
 h2 {
     
-    color: SeaGreen;
+    color: var(--secondary-color);
 }
 
 p {
     /*text-indent: 15px;    put this on if you want to have tab
     in the beginning of the paragrath*/
-    color: MidnightBlue;
+    color: var(--text-color);
 }
 
 /*----------------button styles-------------------*/
 .button { 
     /* write: <button class="button">Button_text</button>
     to make a styled button*/
-    background-color: RoyalBlue;
+    background-color: var(--primary-color);
     border: none;
-    color: white;
+    color: var(--button_text-color);
     text-align: center;
     font-size: 16px;
     cursor: pointer;
@@ -43,13 +74,13 @@ p {
 }
 
 .button:hover {
-    background-color: DodgerBlue;
+    background-color: var(--pr_on_hover-color);
 }
 
-.button2 {background-color: SeaGreen;} /*<button class="button button2">*/
+.button2 {background-color: var(--secondary-color);} /*<button class="button button2">*/
 
 .button2:hover {
-    background-color: #17c578;
+    background-color: var(--sec_on_hover-color);
 }
 /*-------------------------------------------------------------*/
 
@@ -65,7 +96,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #17c578;
+    background-color: var(--sec_on_hover-color);
 }
 
 li {
@@ -74,9 +105,9 @@ li {
 
 li a {
     display: block;
-    background-color: #17c578;
+    background-color: var(--sec_on_hover-color);
     border: none;
-    color: white;
+    color: var(--button_text-color);
     text-align: center;
     font-size: 16px;
     font-family: sans-serif;
@@ -87,10 +118,9 @@ li a {
 }
 
 li a:hover {
-    background-color: SeaGreen;
-    color: white;
+    background-color: var(--secondary-color);
 }
 .active {
-    background-color: SeaGreen;
+    background-color: var(--secondary-color);
 }
 /*-------------------------------------------------------------*/
