@@ -48,7 +48,7 @@ import org.junit.*;
   @Test public void testShorts() {
     final short[] arr = { 1, 2, 3, 4, 5, 6 };
     short[] res;
-    final @NotNull Short[] arrShort = box(arr);
+    final Short @NotNull [] arrShort = box(arr);
     azzert.that(unbox(cantBeNull(box((short) 5))), is(5));
     res = unbox(arrShort);
     azzert.that(res.length, is(arr.length));
@@ -60,7 +60,7 @@ import org.junit.*;
   @Test public void testBytes() {
     final byte[] arr = { 1, 2, 3, 4, 5, 6 };
     byte[] res;
-    @NotNull final Byte[] arrByte = box(arr);
+    final Byte @NotNull [] arrByte = box(arr);
     azzert.that(unbox(cantBeNull(box((byte) 5))), is(5));
     res = unbox(arrByte);
     azzert.that(res.length, is(arr.length));
@@ -71,7 +71,7 @@ import org.junit.*;
 
   @Test public void testDoubles() {
     final double[] arr = { 1.0, 2.0, 3.0, 4.0, 5.0, 6.0 };
-    final @NotNull Double[] arrDouble = box(arr);
+    final Double @NotNull [] arrDouble = box(arr);
     double[] res = unbox.it(arrDouble);
     azzert.that(res.length, is(arr.length));
     int j = 0;
@@ -103,7 +103,7 @@ import org.junit.*;
 
   @Test public void testBools() {
     final boolean[] arr = { true, false, true, true, false, false };
-    final @NotNull Boolean[] arrBool = box(arr);
+    final Boolean @NotNull [] arrBool = box(arr);
     assert unbox(cantBeNull(Boolean.TRUE));
     assert !unbox(cantBeNull(Boolean.FALSE));
     final boolean[] res = unbox(arrBool);
@@ -115,7 +115,7 @@ import org.junit.*;
 
   @Test public void testLongs() {
     final long[] arr = { 1, 2, 3, 4, 5, 6 };
-    @NotNull final Long[] arrLong = box(arr);
+    final Long @NotNull [] arrLong = box(arr);
     assert unbox(box(5l)) == 5l;
     final long[] res = unbox(arrLong);
     azzert.that(res.length, is(arr.length));
@@ -126,7 +126,7 @@ import org.junit.*;
 
   @Test public void testChars() {
     final char[] arr = { 1, 2, 3, 4, 5, 6 };
-    final @NotNull Character[] arrChar = box(arr);
+    final Character @NotNull [] arrChar = box(arr);
     azzert.that(unbox(cantBeNull(box((char) 5))), is(5));
     final char[] res = unbox(arrChar);
     azzert.that(res.length, is(arr.length));

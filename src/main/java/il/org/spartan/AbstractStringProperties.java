@@ -1,6 +1,6 @@
 package il.org.spartan;
 
-import static il.org.spartan.Utils.*;
+import static il.org.spartan.Utils.cantBeNull;
 
 import java.util.*;
 
