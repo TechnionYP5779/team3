@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,6 +35,8 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="index.html">HOME</a></li>
         <li><a href="index.html#About Us">ABOUT</a></li>
+        <li><a href="loginUser.html">LOGIN</a></li>
+        <li><a href="adduser.html">REGISTER</a></li>
     </div>
 
   </div>
@@ -44,47 +48,38 @@
 
 
 
-
-
 <div class="bg-text">
-<div  id="login" class="container">
-  <h2>Add a parking spot</h2>
-  <p>Let people use your empty parking spot and earn some money<p>
-  <form class="form-horizontal" action="AddParkSpot" method="post">
+<div  id="registration" class="container">
+  <h2>Registration</h2>
+  <form class="form-horizontal" action="AddUser" method="post">
     <div class="form-group">
-      <label class="control-label col-sm-4" for="city">City</label>
+      <label class="control-label col-sm-4" for="userName">User Name</label>
       <div class="col-sm-4">
-        <input type="text" class="form-control" id="city" name="city" placeholder="Enter city">
-      </div>
-    </div>
-	    <div class="form-group">
-      <label class="control-label col-sm-4" for="street">Street</label>
-      <div class="col-sm-4">
-        <input type="text" class="form-control" id="street" name="street" placeholder="Enter street">
+        <input type="userName" class="form-control" id="userName" name="userName" placeholder="Enter user name">
       </div>
     </div>
     <div class="form-group">
-      <label class="control-label col-sm-4" for="BuildNum">Building number</label>
+      <label class="control-label col-sm-4" for="firstName">First name</label>
       <div class="col-sm-4">
-        <input type="text" class="form-control" id="BuildNum" name="BuildNum" placeholder="Enter Building number">
+        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter first name">
       </div>
     </div>
 	    <div class="form-group">
-      <label class="control-label col-sm-4" for="Date">Date</label>
+      <label class="control-label col-sm-4" for="lastName">Last name</label>
       <div class="col-sm-4">
-        <input type="Date" class="form-control" id="Date" name="date" >
+        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter last name">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-4" for="pwd">Password</label>
+      <div class="col-sm-4">
+        <input type="password" class="form-control" name="pwd" id="pwd" placeholder="Enter password">
       </div>
     </div>
 	    <div class="form-group">
-      <label class="control-label col-sm-4" for="FromHour">From hour</label>
+      <label class="control-label col-sm-4" for="phoneNumber">Phone number</label>
       <div class="col-sm-4">
-        <input type="time" class="form-control" id="FromHour" name="FromHout" placeholder="Enter From Hour">
-      </div>
-    </div>
-	<div class="form-group">
-      <label class="control-label col-sm-4" for="pwd">From hour</label>
-      <div class="col-sm-4">
-        <input type="time" class="form-control" id="ToHour" name="ToHour">
+        <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Enter phone number">
       </div>
     </div>
     <div class="form-group">
@@ -93,6 +88,14 @@
       </div>
     </div>
   </form>
+  <%
+	if(request.getAttribute("errorMessage") != null){
+  %>
+  <label style="color:red;"><%=request.getAttribute("errorMessage")%></label>
+	
+  <%
+    }
+  %>
 </div>
 </div>
 

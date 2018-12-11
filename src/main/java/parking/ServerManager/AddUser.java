@@ -15,12 +15,13 @@ import javax.servlet.http.*;
  * Servlet Tutorial - Servlet Example
  */
 @WebServlet(
-    description = "Park4You Login", 
-    urlPatterns = { "/Login" })
-public class Login extends HttpServlet {
+    description = "Park4You Add User", 
+    urlPatterns = { "/AddUser" })
+public class AddUser extends HttpServlet {
   private static final long serialVersionUID = 1L;
   public static final String HTML_START="<html><body>";
   public static final String HTML_END="</body></html>";
+  public static final String legalPhoneRegex = "^(1\\-)?[0-9]{3}\\-?[0-9]{3}\\-?[0-9]{4}$";
        
     
   @Override public void init() throws ServletException {
@@ -29,20 +30,27 @@ public class Login extends HttpServlet {
   }
 
   
+  @Override protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    response.sendRedirect("adduser.jsp");
+  }
+  
   @Override protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    //get parameters
+  //get parameters
+    String firstName = request.getParameter("firstName");
+    String lastName = request.getParameter("lastName");
+    String phoneNumber = request.getParameter("phoneNumber");
     String userName = request.getParameter("userName");
     String password = request.getParameter("pwd");
-    //Some logs to understand this :)
     
-    log("-------------------------------");
-    log("user is " + userName);
-    log("password is " + password);
-    log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+    if (!phoneNumber.matches(legalPhoneRegex)) {
+      request.setAttribute("errorMessage", "Illegal phone number");
+      RequestDispatcher rd = request.getRequestDispatcher("adduser.jsp");
+      rd.forward(request, response);
+      return;
+    }
     
+    //TODO save to DB, if failed return something
     
-    //TODO check username and password
     //TODO maybe change to user id?
     Cookie user = new Cookie("user", userName);
     //TODO set expire right
@@ -50,7 +58,19 @@ public class Login extends HttpServlet {
     response.addCookie( user );
     //TODO redirect to correct page.
     response.sendRedirect("tmpLogged.jsp");
-    return; 
+    return;
     
+    
+    //TODO
+    /* for errors add in jsp:
+     <%
+      if(request.getAttribute("errorMessage") != null){
+     %>
+      <label style="color:red;"><%=request.getAttribute("errorMessage")%></label>
+      
+     <%
+      }
+     %>
+     */
   }
 }

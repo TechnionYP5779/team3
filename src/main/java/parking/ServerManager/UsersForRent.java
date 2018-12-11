@@ -15,42 +15,21 @@ import javax.servlet.http.*;
  * Servlet Tutorial - Servlet Example
  */
 @WebServlet(
-    description = "Park4You Login", 
-    urlPatterns = { "/Login" })
-public class Login extends HttpServlet {
+    description = "Park4You Add User", 
+    urlPatterns = { "/GetUsersForRent" })
+public class UsersForRent extends HttpServlet {
   private static final long serialVersionUID = 1L;
   public static final String HTML_START="<html><body>";
   public static final String HTML_END="</body></html>";
+  public static final String legalPhoneRegex = "^(1\\-)?[0-9]{3}\\-?[0-9]{3}\\-?[0-9]{4}$";
        
     
   @Override public void init() throws ServletException {
     //we can create DB connection resource here and set it to Servlet context
     
   }
-
   
   @Override protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    //get parameters
-    String userName = request.getParameter("userName");
-    String password = request.getParameter("pwd");
-    //Some logs to understand this :)
-    
-    log("-------------------------------");
-    log("user is " + userName);
-    log("password is " + password);
-    log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-    
-    
-    //TODO check username and password
-    //TODO maybe change to user id?
-    Cookie user = new Cookie("user", userName);
-    //TODO set expire right
-    user.setMaxAge(60*60*24);
-    response.addCookie( user );
-    //TODO redirect to correct page.
-    response.sendRedirect("tmpLogged.jsp");
-    return; 
-    
+    //TODO
   }
 }

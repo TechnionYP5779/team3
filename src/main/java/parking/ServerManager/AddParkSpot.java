@@ -37,7 +37,7 @@ public class AddParkSpot extends HttpServlet {
     String street = request.getParameter("street");
     String BuildNum = request.getParameter("BuildNum");
     String date = request.getParameter("date");
-    String FromHour = request.getParameter("FromHour");
+    String FromHour = request.getParameter("FromHout");
     String ToHour = request.getParameter("ToHour");
     
     //TODO save to DB
