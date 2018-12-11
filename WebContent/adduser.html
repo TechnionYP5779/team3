@@ -13,7 +13,8 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+</head>
+<body>
 
 <div class="bg-image"></div>
 
@@ -35,27 +36,52 @@
         <li><a href="loginUser.html">LOGIN</a></li>
         <li><a href="adduser.html">REGISTER</a></li>
     </div>
+
   </div>
 </nav>
 
+
+
+
+
+
+
 <div class="bg-text">
-<div  id="login" class="container">
-  <h2>Login</h2>
-  <form class="form-horizontal" action="Login" method="post">
+<div  id="registration" class="container">
+  <h2>Registration</h2>
+  <form class="form-horizontal" action="AddUser" method="post">
     <div class="form-group">
-      <label class="control-label col-sm-4" for="userName">User Name:</label>
+      <label class="control-label col-sm-4" for="userName">User Name</label>
       <div class="col-sm-4">
-        <input type="userName" class="form-control" id="userName" name="userName" placeholder="Enter user name">
+        <input type="text" class="form-control" id="userName" name="userName" placeholder="Enter user name">
       </div>
     </div>
     <div class="form-group">
-      <label class="control-label col-sm-4" for="pwd">Password:</label>
+      <label class="control-label col-sm-4" for="firstName">First name</label>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter first name">
+      </div>
+    </div>
+	    <div class="form-group">
+      <label class="control-label col-sm-4" for="lastName">Last name</label>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter last name">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-4" for="pwd">Password</label>
       <div class="col-sm-4">
         <input type="password" class="form-control" name="pwd" id="pwd" placeholder="Enter password">
       </div>
     </div>
+	    <div class="form-group">
+      <label class="control-label col-sm-4" for="phoneNumber">Phone number</label>
+      <div class="col-sm-4">
+        <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Enter phone number">
+      </div>
+    </div>
     <div class="form-group">
-      <div class="col-sm-offset-4 col-sm-4">
+      <div class="col-sm-offset-2 col-sm-8">
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>
     </div>
@@ -64,5 +90,7 @@
 </div>
 
 
-</head>
-<body>
+
+
+</body>
+</html>

@@ -2,12 +2,9 @@
 package parking.ServerManager;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
@@ -56,21 +53,9 @@ public class AddUser extends HttpServlet {
     //TODO set expire right
     user.setMaxAge(60*60*24);
     response.addCookie( user );
-    //TODO redirect to correct page.
-    response.sendRedirect("tmpLogged.jsp");
+    
+    response.sendRedirect("homePage.html");
     return;
     
-    
-    //TODO
-    /* for errors add in jsp:
-     <%
-      if(request.getAttribute("errorMessage") != null){
-     %>
-      <label style="color:red;"><%=request.getAttribute("errorMessage")%></label>
-      
-     <%
-      }
-     %>
-     */
   }
 }

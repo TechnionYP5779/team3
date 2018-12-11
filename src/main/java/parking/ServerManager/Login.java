@@ -48,8 +48,7 @@ public class Login extends HttpServlet {
     //TODO set expire right
     user.setMaxAge(60*60*24);
     response.addCookie( user );
-    //TODO redirect to correct page.
-    response.sendRedirect("tmpLogged.jsp");
+    response.sendRedirect("homePage.html");
     return; 
     
   }

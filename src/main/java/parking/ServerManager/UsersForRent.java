@@ -30,6 +30,36 @@ public class UsersForRent extends HttpServlet {
   }
   
   @Override protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    //TODO
+    //TODO get cookie and check user logged in
+    //TODO get from user cookie a list of parkings
+    //TODO Gson.toJson
+    String json_response = "[{\"city\" : \"Haifa\" ... }, ...]"; // Should use Gson on DB classes to create the json.
+    response.setContentType("text/plain");
+    response.getWriter().write(json_response);
   }
 }
+
+
+/*
+<script type="text/javascript">
+
+$(document).ready(function() {
+  $.ajax({
+    type: "POST",
+    url : 'GetUsersForRent',
+    data : {
+    },
+    success : function(response) {
+      console.log(response);
+      parkings = JSON.parse(response);
+      new_html = "";
+      for (var i in parkings) {
+        console.log(parkings[i]);
+        new_html += ...
+      }
+      $("#parkings_table").html(new_html);
+    }
+  });
+});
+</script>
+*/
