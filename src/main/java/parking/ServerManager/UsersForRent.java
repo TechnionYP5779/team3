@@ -33,7 +33,7 @@ public class UsersForRent extends HttpServlet {
     //TODO get cookie and check user logged in
     //TODO get from user cookie a list of parkings
     //TODO Gson.toJson
-    String json_response = "[{\"city\" : \"Haifa\" ... }, ...]"; // Should use Gson on DB classes to create the json.
+    String json_response = "[{\"Address\" : \"Haifa\", \"Price\" : \"52\", \"Hours\" : \"12:00-13:00\", \"Occupied\" : \"No\"}, {\"Address\" : \"Haifa\", \"Price\" : \"52\", \"Hours\" : \"12:00-13:00\", \"Occupied\" : \"No\"}]"; // Should use Gson on DB classes to create the json.
     response.setContentType("text/plain");
     response.getWriter().write(json_response);
   }
