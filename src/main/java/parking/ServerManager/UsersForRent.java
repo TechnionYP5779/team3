@@ -10,9 +10,7 @@ import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
-/**
- * Servlet Tutorial - Servlet Example
- */
+
 @WebServlet(
     description = "Park4You Add User", 
     urlPatterns = { "/GetUsersForRent" })
