@@ -1,7 +1,6 @@
 package parking.ServerManager;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.*;
 
 import javax.servlet.RequestDispatcher;
@@ -36,7 +35,7 @@ public class UsersForRent extends HttpServlet {
     //TODO Gson.toJson
     
    List<Parking> parkings = new DBManager().getParking(1);
-
+   System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaaAAAA  " + parkings.size());
     String json_response = new Gson().toJson(parkings); //"[{\"Address\" : \"Haifa\", \"Date\" : \"01.01.0000\", \"Price\" : \"52\",\"Hours\" : \"12:00-13:00\", \"Occupied\" : \"No\"}, {\"Address\" : \"Haifa\",\"Date\" : \"01.01.0000\", \"Price\" : \"52\", \"Hours\" : \"12:00-13:00\", \"Occupied\" : \"No\"}, {\"Address\" : \"Haifa\", \"Date\" : \"01.01.0000\", \"Price\" : \"52\",\"Hours\" : \"12:00-13:00\", \"Occupied\" : \"No\"}]";
     response.setContentType("text/plain");
     response.getWriter().write(json_response);
