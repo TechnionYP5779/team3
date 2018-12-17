@@ -3,14 +3,17 @@ package parking.db;
 public class Rental {
   int id;
   int renterId;
+  int parkingId;
   String startingTime;    //TODO: change to datetime object?
   String endingTime;
-  public Rental(int id, int renterId, String startingTime, String endingTime) {
-    super();
+  String carModel;
+  public Rental(int id, int parkingId, int renterId, String startingTime, String endingTime, String carModel) {
     this.id = id;
+    this.parkingId = parkingId;
     this.renterId = renterId;
     this.startingTime = startingTime;
     this.endingTime = endingTime;
+    this.carModel = carModel;
   }
   public int getRenterId() {
     return renterId;
