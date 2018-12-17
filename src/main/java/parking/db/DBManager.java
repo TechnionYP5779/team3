@@ -1,6 +1,7 @@
 package parking.db;
 
 import java.sql.*;
+import java.util.*;
 
 public class DBManager {
   
@@ -45,23 +46,24 @@ public class DBManager {
       }
   }
   
-  public Parking getParking(int pid){
-    String sql = "SELECT * FROM parkingSpaces WHERE id = ?";
+  public List<Parking> getParking(int ownerId){
+    String sql = "SELECT * FROM parkingSpaces WHERE ownerUid = ?";
     
     try (Connection conn = this.connect();
         PreparedStatement pstmt  = conn.prepareStatement(sql)){
         
-        pstmt.setInt(1, pid);
+        pstmt.setInt(1, ownerId);
       
         try(ResultSet rs  = pstmt.executeQuery()) {
-          if(!rs.next())
-            return null;    //user not found
+          List<Parking> lst = new ArrayList<>();
           
-          assert !rs.isLast();
+          while(rs.next())
+          {
+            Parking p = new Parking(rs.getInt("id"), ownerId, rs.getString("city"), rs.getString("street"), rs.getString("buildingNum"), rs.getString("startingTime"), rs.getString("endingTime"), rs.getInt("price"));
+            lst.add(p);
+          }
           
-          Parking u = new Parking(pid, rs.getInt("ownerUid"), rs.getString("city"), rs.getString("street"), rs.getString("buildingNum"), rs.getString("startingTime"), rs.getString("endingTime"), rs.getInt("price"));
-          
-          return u;
+          return lst;
         }
         
         
