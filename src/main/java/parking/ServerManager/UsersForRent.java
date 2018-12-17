@@ -34,7 +34,7 @@ public class UsersForRent extends HttpServlet {
     //TODO get from user cookie a list of parkings
     //TODO Gson.toJson
     //System.out.println("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB Working Directory = " +
-        System.getProperty("user.dir"));
+    //System.getProperty("user.dir"));
    List<Parking> parkings = new DBManager().getParking(1);
    //System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa " + parkings.size());
    try {
