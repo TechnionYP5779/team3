@@ -3,14 +3,14 @@ package parking.db;
 public class Parking {
   int ParkID;
   int UserID;
-  String City;
-  String Street;
-  String BuildingNum;
+  String Address;
+  double lat;
+  double lon;
   String From;
   String To;
   int Price;
   
-  Parking(int ParkID, int UserID, String City, String Street, String BuildingNum,
+  Parking(int ParkID, int UserID, String address, double lat, double lon,
           String From, String To, int Price){
     this.UserID=UserID;
     this.ParkID=ParkID;

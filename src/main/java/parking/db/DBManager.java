@@ -59,7 +59,7 @@ public class DBManager {
           
           while(rs.next())
           {
-            Parking p = new Parking(rs.getInt("id"), ownerId, rs.getString("city"), rs.getString("street"), rs.getString("buildingNum"), rs.getString("startingTime"), rs.getString("endingTime"), rs.getInt("price"));
+            Parking p = new Parking(rs.getInt("id"), ownerId, rs.getString("address"), rs.getDouble("lat"), rs.getDouble("lon"), rs.getString("startingTime"), rs.getString("endingTime"), rs.getInt("price"));
             lst.add(p);
           }
           
