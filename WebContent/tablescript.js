@@ -12,7 +12,7 @@ $(document).ready(function() {
       new_html = "";
       for (var i in parkings) {
         console.log(parkings[i]);
-        new_html += "<tr><td>" + parkings[i].Address +"</td><td>"
+        new_html += "<tr  class=\"table-light\" ><td>" + parkings[i].Address +"</td><td>"
         		    + parkings[i].Price +"</td><td>" + parkings[i].Date +"</td><td>"
         		    + parkings[i].Hours +"</td><td>" + parkings[i].Occupied +"</td></tr>";
       }
