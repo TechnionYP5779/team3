@@ -5,15 +5,11 @@ import java.util.*;
 
 public class DBManager {
   
-  private Connection connect() {
+  private Connection connect() throws SQLException {
     Connection conn;
-    try {
-        String url = "jdbc:sqlite:main.db";
-        conn = DriverManager.getConnection(url);
-    } catch (SQLException e) {
-        System.out.println(e.getMessage());
-        return null;
-    }
+    
+    String url = "jdbc:sqlite:C:main.db";
+    conn = DriverManager.getConnection(url);
     
     return conn;
   }

@@ -2,16 +2,10 @@
 package parking.ServerManager;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.*;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
-import com.auth0.*;
 
 /**
  * Servlet Tutorial - Servlet Example
@@ -23,13 +17,6 @@ public class Login extends HttpServlet {
   private static final long serialVersionUID = 1L;
   public static final String HTML_START="<html><body>";
   public static final String HTML_END="</body></html>";
-  
-  String domain = getServletConfig().getServletContext().getInitParameter("com.auth0.domain");
-  String clientId = getServletConfig().getServletContext().getInitParameter("com.auth0.clientId");
-  String clientSecret = getServletConfig().getServletContext().getInitParameter("com.auth0.clientSecret");
-
-  AuthenticationController controller = AuthenticationController.newBuilder(domain, clientId, clientSecret)
-                  .build();
        
     
   @Override public void init() throws ServletException {
@@ -59,6 +46,5 @@ public class Login extends HttpServlet {
     response.addCookie( user );
     response.sendRedirect("homePage.html");
     return; 
-    
   }
 }
