@@ -1,4 +1,3 @@
-
 package parking.ServerManager;
 
 import java.io.IOException;
@@ -22,8 +21,8 @@ public class UsersForRent extends HttpServlet {
   public static final String HTML_START="<html><body>";
   public static final String HTML_END="</body></html>";
   public static final String legalPhoneRegex = "^(1\\-)?[0-9]{3}\\-?[0-9]{3}\\-?[0-9]{4}$";
-       
-    
+         
+  
   @Override public void init() throws ServletException {
     //we can create DB connection resource here and set it to Servlet context
     
