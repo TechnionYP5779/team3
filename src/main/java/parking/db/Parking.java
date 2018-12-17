@@ -6,12 +6,12 @@ public class Parking {
   String City;
   String Street;
   String BuildingNum;
-  int From;
-  int To;
+  String From;
+  String To;
   int Price;
   
   Parking(int ParkID, int UserID, String City, String Street, String BuildingNum,
-          int From,int To, int Price){
+          String From, String To, int Price){
     this.UserID=UserID;
     this.ParkID=ParkID;
     this.City=City;
@@ -42,11 +42,11 @@ public class Parking {
     return BuildingNum;    
   } 
   
-  public int getFrom() {
+  public String getFrom() {
     return From;    
   }
   
-  public int getTo() {
+  public String getTo() {
     return To;    
   }
   
@@ -67,11 +67,11 @@ public class Parking {
     Street=newBuildingNum;    
   }  
   
-  public void setFrom(int newFrom) {
+  public void setFrom(String newFrom) {
     From=newFrom;    
   }  
   
-  public void setTo(int newTo) {
+  public void setTo(String newTo) {
     To=newTo;    
   }  
   
