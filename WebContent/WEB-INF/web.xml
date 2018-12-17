@@ -4,4 +4,18 @@
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
+  <context-param>
+    <param-name>com.auth0.domain</param-name>
+    <param-value>park4you.eu.auth0.com</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>com.auth0.clientId</param-name>
+    <param-value>IbIrA21WE75buPRW6IBTsOEO3y6F1oIl</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>com.auth0.clientSecret</param-name>
+    <param-value>FPQyx2AsX2eB_QUdMd-G_Nlri2Foq4-8qGfi6qRwTWHMmdHRSpTbOG-xaAXgMH0U</param-value>
+  </context-param>
 </web-app>
