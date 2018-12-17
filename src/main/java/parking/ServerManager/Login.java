@@ -2,14 +2,10 @@
 package parking.ServerManager;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.*;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
+
 
 /**
  * Servlet Tutorial - Servlet Example
@@ -50,6 +46,5 @@ public class Login extends HttpServlet {
     response.addCookie( user );
     response.sendRedirect("homePage.html");
     return; 
-    
   }
 }

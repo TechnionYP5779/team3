@@ -1,7 +1,6 @@
 package parking.ServerManager;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.*;
 
 import javax.servlet.RequestDispatcher;
@@ -9,6 +8,10 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
+
+import com.google.gson.*;
+
+import parking.db.*;
 
 
 @WebServlet(
@@ -30,7 +33,18 @@ public class UsersForRent extends HttpServlet {
     //TODO get cookie and check user logged in
     //TODO get from user cookie a list of parkings
     //TODO Gson.toJson
-    String json_response = "[{\"Address\" : \"Haifa\", \"Date\" : \"01.01.0000\", \"Price\" : \"52\",\"Hours\" : \"12:00-13:00\", \"Occupied\" : \"No\"}, {\"Address\" : \"Haifa\",\"Date\" : \"01.01.0000\", \"Price\" : \"52\", \"Hours\" : \"12:00-13:00\", \"Occupied\" : \"No\"}, {\"Address\" : \"Haifa\", \"Date\" : \"01.01.0000\", \"Price\" : \"52\",\"Hours\" : \"12:00-13:00\", \"Occupied\" : \"No\"}]";
+    //System.out.println("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB Working Directory = " +
+        System.getProperty("user.dir"));
+   List<Parking> parkings = new DBManager().getParking(1);
+   //System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa " + parkings.size());
+   try {
+     Class.forName("com.google.gson.Gson");
+   } catch (ClassNotFoundException e) {
+     // TODO Auto-generated catch block
+     e.printStackTrace();
+   }
+   
+    String json_response = new Gson().toJson(parkings); //"[{\"Address\" : \"Haifa\", \"Date\" : \"01.01.0000\", \"Price\" : \"52\",\"Hours\" : \"12:00-13:00\", \"Occupied\" : \"No\"}, {\"Address\" : \"Haifa\",\"Date\" : \"01.01.0000\", \"Price\" : \"52\", \"Hours\" : \"12:00-13:00\", \"Occupied\" : \"No\"}, {\"Address\" : \"Haifa\", \"Date\" : \"01.01.0000\", \"Price\" : \"52\",\"Hours\" : \"12:00-13:00\", \"Occupied\" : \"No\"}]";
     response.setContentType("text/plain");
     response.getWriter().write(json_response);
   }

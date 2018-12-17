@@ -3,20 +3,20 @@ package parking.db;
 public class Parking {
   int ParkID;
   int UserID;
-  String City;
-  String Street;
-  String BuildingNum;
-  int From;
-  int To;
+  String address;
+  double lat;
+  double lon;
+  String From;
+  String To;
   int Price;
   
-  Parking(int ParkID, int UserID, String City, String Street, String BuildingNum,
-          int From,int To, int Price){
+  Parking(int ParkID, int UserID, String address, double lat, double lon,
+          String From, String To, int Price){
     this.UserID=UserID;
     this.ParkID=ParkID;
-    this.City=City;
-    this.Street=Street;
-    this.BuildingNum=BuildingNum;
+    this.address=address;
+    this.lat=lat;
+    this.lon=lon;
     this.From=From;
     this.To=To;
     this.Price=Price;
@@ -30,23 +30,13 @@ public class Parking {
     return ParkID;    
   }
   
-  public String getCity() {
-    return City;    
-  }  
+
   
-  public String getStreet() {
-    return Street;    
-  }  
-  
-  public String getBuildingNum() {
-    return BuildingNum;    
-  } 
-  
-  public int getFrom() {
+  public String getFrom() {
     return From;    
   }
   
-  public int getTo() {
+  public String getTo() {
     return To;    
   }
   
@@ -54,24 +44,12 @@ public class Parking {
     return Price;    
   }
   
-  public void setCity(String newCity) {
-    City=newCity;    
-  }  
-  
-  
-  public void setStreet(String newStreet) {
-    Street=newStreet;    
-  }  
-  
-  public void setBuildingNum(String newBuildingNum) {
-    Street=newBuildingNum;    
-  }  
-  
-  public void setFrom(int newFrom) {
+
+  public void setFrom(String newFrom) {
     From=newFrom;    
   }  
   
-  public void setTo(int newTo) {
+  public void setTo(String newTo) {
     To=newTo;    
   }  
   
