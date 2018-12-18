@@ -7,6 +7,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
+import parking.db.*;
 
 /**
  * Servlet Tutorial - Servlet Example
@@ -47,6 +48,10 @@ public class AddUser extends HttpServlet {
     }
     
     //TODO save to DB, if failed return something
+    
+    User u = new User(-1, userName, firstName, lastName, phoneNumber, password);
+    
+    new DBManager().addUser(u);
     
     //TODO maybe change to user id?
     Cookie user = new Cookie("user", userName);
