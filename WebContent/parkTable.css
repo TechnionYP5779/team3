@@ -97,12 +97,18 @@ body, html {
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
-  text-shadow: 2px 2px 8px #808080;
+  
 }
 
 tr{
 	  color: black;
+	  background-color: white;
 }
 th{
-	color: white;
+	  color: black;
+	  background-color: white;
+}
+td{
+	  color: black;
+	  background-color: white;
 }
