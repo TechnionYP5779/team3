@@ -5,7 +5,7 @@
   <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
    <link rel="stylesheet" href="search.css">
    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
 
@@ -71,16 +71,17 @@
 
 
 
+
 <body onload="initMap()">
   <div id="ser" class="container">
 
       <label for="Date">Date:</label>
-      <input type="date" id="date" size="13"/>
+      <input type="Date" id="Date" size="13"/>
       <label for="FromHour">From Hour:</label>
-      <input type="number" id="FromHour" size="13"/>
+      <input type="time" id="FromHour" size="13"/>
 
       <label for="ToHour">To Hour:</label>
-      <input type="number" id="ToHour" size="13"/>
+      <input type="time" id="ToHour" size="13"/>
       <p>    <p>
        <label for="raddressInput">  Address:</label>
        <input type="text" id="addressInput" size="13"/>
@@ -153,31 +154,34 @@
          clearLocations();
 
          var radius = document.getElementById('radiusSelect').value;
-         var searchUrl = 'storelocator.php?lat=' + center.lat() + '&lng=' + center.lng() + '&radius=' + radius;
+         var from = document.getElementById('FromHour').value;
+         var to = document.getElementById('ToHour').value;
+         var date = document.getElementById('Date').value;
+         var searchUrl = 'http://localhost:8080/fluent.ly/ParkingsNearby?lat=' + center.lat() + '&lng=' + center.lng() + '&radius=' + radius+ '&date=' + date + '&from=' + from + '&to=' + to;
+         downloadUrl(searchUrl, function(data) {
 
-           //var xml = parseXml(data);
-           //var markerNodes = xml.documentElement.getElementsByTagName("marker");
+           var xml = parseXml(data);
+           var markerNodes = xml.documentElement.getElementsByTagName("marker");
            var bounds = new google.maps.LatLngBounds();
-           var ids=["1","2","3"];
-           var names=["elad","anny","daniela"];
-           var addresses=["Crowea Pl, Frenchs Forest NSW 2086","Thalia St, Hassall Grove NSW 2761","Glenview Avenue, Revesby, NSW 2212"];
-           var distances=["52.762480400236754","51.30359905145628","65.60640686758967"];
-           var lats = ["-33.737885","-33.729752","-33.949448"];
-           var lngs = ["151.235260","150.836090","151.008591"];
-           var prices= ["100","200","300"];
+           // var ids=["1","2","3"];
+           // var names=["elad","anny","daniela"];
+           // var addresses=["Crowea Pl, Frenchs Forest NSW 2086","Thalia St, Hassall Grove NSW 2761","Glenview Avenue, Revesby, NSW 2212"];
+           // var distances=["52.762480400236754","51.30359905145628","65.60640686758967"];
+           // var lats = ["-33.737885","-33.729752","-33.949448"];
+           // var lngs = ["151.235260","150.836090","151.008591"];
+           // var prices= ["100","200","300"];
 
-           for (var i = 0; i < 3; i++) {
-             var id = ids[i];
-             var name = names[i];
-             var address = addresses[i];
-             var distance = parseFloat(distances[i]);
+
+           for (var i = 0; i < markerNodes.length; i++){
+             var id = markerNodes[i].getAttribute("id");
+             var address = markerNodes[i].getAttribute("address");
+             var distance = parseFloat(markerNodes[i].getAttribute("distance"));
              var latlng = new google.maps.LatLng(
-                  parseFloat(lats[i]),
-                  parseFloat(lngs[i]));
-            var price=parseFloat(prices[i]);
+                  parseFloat(markerNodes[i].getAttribute("lat")),
+                  parseFloat(markerNodes[i].getAttribute("lng")));
 
              createOption(name, distance, i);
-             createMarker(latlng, name, address,distance,price);
+             createMarker(latlng,address,distance);
              bounds.extend(latlng);
            }
            map.fitBounds(bounds);
@@ -186,11 +190,11 @@
              var markerNum = locationSelect.options[locationSelect.selectedIndex].value;
              google.maps.event.trigger(markers[markerNum], 'click');
            };
-
+           });
        }
 
-     function createMarker(latlng, name, address,distance,price) {
-        var html = "<br><br><p><b>Distance: </b>" + distance + "<br>" + "<b>Address: </b>"+address +"<br>" + "<b>Price per 1/2 Hour: </b>"+price ;
+     function createMarker(latlng, address,distance) {
+        var html = "<br><br><p><b>Distance: </b>" + distance + "<br>" + "<b>Address: </b>"+address +"<br>" ;
         var marker = new google.maps.Marker({
           map: map,
           position: latlng
@@ -210,6 +214,22 @@
      }
 
 
+
+     function downloadUrl(url, callback) {
+        var request = window.ActiveXObject ?
+            new ActiveXObject('Microsoft.XMLHTTP') :
+            new XMLHttpRequest;
+
+        request.onreadystatechange = function() {
+          if (request.readyState == 4) {
+            request.onreadystatechange = doNothing;
+            callback(request.responseText, request.status);
+          }
+        };
+
+        request.open('GET', url, true);
+        request.send(null);
+     }
 
      function parseXml(str) {
         if (window.ActiveXObject) {
