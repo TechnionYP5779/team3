@@ -11,7 +11,13 @@
 This repo is a part of the software engineering yearly project in The Technion - Israel Institute of Technology.
 The goal is to refactor some Spartanizer code (basically refactor the refactoring code)
 
-
+# <a name="introduction"></a>Parking Project:
+	We are currently working on a parking project, it includes building a web
+	application that allows its users to offer parking spots to other users or
+	rent parking spots from other users for a declared time and price.
+	The application also allows its users to search for parking spots available for rent
+	surrounding an area of their choosing.
+	
 ## Our Team
 1. [**Anny Firer** ](https://github.com/anny234)
 2. [**Eric Kiel** ](https://github.com/eric-K1)
