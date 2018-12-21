@@ -46,6 +46,7 @@ public class CallbackServlet extends HttpServlet {
      */
     @Override
     public void init(ServletConfig config) throws ServletException {
+        log("callback init");
         super.init(config);
         redirectOnSuccess = "/portal/home";
         redirectOnFail = "/login";
@@ -67,6 +68,7 @@ public class CallbackServlet extends HttpServlet {
      */
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
+        log("callback doget");
         handle(req, res);
     }
 
@@ -82,10 +84,12 @@ public class CallbackServlet extends HttpServlet {
      */
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
+        log("callback dopost");
         handle(req, res);
     }
 
     private void handle(HttpServletRequest req, HttpServletResponse res) throws IOException {
+        log("callback handle");
         try {
             Tokens tokens = authenticationController.handle(req);
             SessionUtils.set(req, "accessToken", tokens.getAccessToken());
