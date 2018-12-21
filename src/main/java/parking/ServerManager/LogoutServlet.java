@@ -20,7 +20,7 @@ public class LogoutServlet extends HttpServlet {
         if (request.getSession() != null) {
             request.getSession().invalidate();
         }
-        response.sendRedirect("/Login");
+        response.sendRedirect("/fluent.ly/");
     }
 
 }
