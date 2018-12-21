@@ -34,11 +34,12 @@ public class LoginServlet extends HttpServlet {
 
   @Override
   protected void doGet(final HttpServletRequest req, final HttpServletResponse res) throws ServletException, IOException {
-      String redirectUri = req.getScheme() + "://" + req.getServerName() + ":" + req.getServerPort() + "/callback";
-
+      String redirectUri = req.getScheme() + "://" + req.getServerName() + ":" + req.getServerPort() + "/fluent.ly/homePage.html";
+      log("redirect uri:" + redirectUri);
       String authorizeUrl = authenticationController.buildAuthorizeUrl(req, redirectUri)
               .withAudience(String.format("https://%s/userinfo", domain))
               .build();
+      log("authorize ulr:" + authorizeUrl);
       res.sendRedirect(authorizeUrl);
   }
 
