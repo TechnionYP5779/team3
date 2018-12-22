@@ -63,7 +63,7 @@ public class AddParkSpot extends HttpServlet {
     new DBManager().addParking(p);
     
     // redirect to correct page.
-    response.sendRedirect("ParkingOrders.html");
+    response.sendRedirect("parkTable.html");
     
     
   }
