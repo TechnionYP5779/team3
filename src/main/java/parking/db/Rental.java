@@ -15,6 +15,9 @@ public class Rental {
     this.endingTime = endingTime;
     this.carModel = carModel;
   }
+  public int getParkingId() {
+    return renterId;
+  }
   public int getRenterId() {
     return renterId;
   }
@@ -36,4 +39,8 @@ public class Rental {
   public int getId() {
     return id;
   }
+    public String getCarModel() {
+    return carModel;
+  }
+
 }
