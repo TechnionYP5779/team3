@@ -207,7 +207,7 @@ public class DBManager {
 
   public void addParking(Parking p)
   {
-    String sql = "INSERT INTO parkings(userID,address,lat,lon,from,to,price) VALUES(?,?,?,?,?,?,?)";
+    String sql = "INSERT INTO parkingSpaces(ownerUid,address,lat,lon,startingTime,endingTime,price) VALUES(?,?,?,?,?,?,?)";
     
     try (Connection conn = this.connect();
         PreparedStatement pstmt  = conn.prepareStatement(sql)){
@@ -228,7 +228,7 @@ public class DBManager {
   
   public void addRental(Rental r)
   {
-    String sql = "INSERT INTO parkings(parkingId,renterId,startingTime,endingTime,carModel) VALUES(?,?,?,?,?)";
+    String sql = "INSERT INTO rentals(parkingId,renterId,startingTime,endingTime,carModel) VALUES(?,?,?,?,?)";
     
     try (Connection conn = this.connect();
         PreparedStatement pstmt  = conn.prepareStatement(sql)){
