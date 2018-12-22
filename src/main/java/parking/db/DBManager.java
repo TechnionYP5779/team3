@@ -158,6 +158,47 @@ public class DBManager {
     }
 }
   
+
+  public void addParking(Parking p)
+  {
+    String sql = "INSERT INTO parkings(userID,address,lat,lon,from,to,price) VALUES(?,?,?,?,?,?,?)";
+    
+    try (Connection conn = this.connect();
+        PreparedStatement pstmt  = conn.prepareStatement(sql)){
+        pstmt.setInt(1, p.getUserID());
+        pstmt.setString(2, p.getAddress());
+        pstmt.setDouble(3, p.getLat());
+        pstmt.setDouble(4, p.getLon());
+        pstmt.setString(5, p.getFrom());
+        pstmt.setString(6, p.getTo());
+        pstmt.setInt(7, p.getPrice());
+        pstmt.executeUpdate();
+    } catch (SQLException e) {
+          System.out.println(e.getMessage());
+          
+          return;
+    }
+  }  
+  
+  public void addRental(Rental r)
+  {
+    String sql = "INSERT INTO parkings(parkingId,renterId,startingTime,endingTime,carModel) VALUES(?,?,?,?,?)";
+    
+    try (Connection conn = this.connect();
+        PreparedStatement pstmt  = conn.prepareStatement(sql)){
+        pstmt.setInt(1, r.getParkingId());
+        pstmt.setInt(2, r.getRenterId());
+        pstmt.setString(3, r.getStartingTime());
+        pstmt.setString(4, r.getEndingTime());
+        pstmt.setString(5, r.getCarModel());
+        pstmt.executeUpdate();
+    } catch (SQLException e) {
+          System.out.println(e.getMessage());
+          
+          return;
+    }
+  }  
+  
   public static void main(String[] args) {
     DBManager app = new DBManager();
     System.out.println(app.getUserById(1));
