@@ -20,6 +20,25 @@ public class DBManager {
     return conn;
   }
   
+  public void addUser(User u)
+  {
+    String sql = "INSERT INTO users(username,password,firstName,lastName,phone) VALUES(?,?,?,?,?)";
+    
+    try (Connection conn = this.connect();
+        PreparedStatement pstmt  = conn.prepareStatement(sql)){
+        pstmt.setString(1, u.getUserName());
+        pstmt.setString(2, u.getPassword());
+        pstmt.setString(3, u.getFirstName());
+        pstmt.setString(4, u.getLastName());
+        pstmt.setString(5, u.getPhoneNum());
+        pstmt.executeUpdate();
+    } catch (SQLException e) {
+          System.out.println(e.getMessage());
+          
+          return;
+    }
+  }
+  
   public User getUserById(int uid){
       String sql = "SELECT * FROM users WHERE id = ?";
       
@@ -62,6 +81,7 @@ public class DBManager {
           assert !rs.isLast();
           
           User u = new User(rs.getInt("id"), username, rs.getString("firstName"), rs.getString("lastName"), rs.getString("phone"), rs.getString("password"));
+          System.out.println(" AAAAAAAAAAAAAAAAAAAAAAAA " + rs.getString("password"));
           
           return u;
         }
@@ -88,6 +108,32 @@ public class DBManager {
           while(rs.next())
           {
             Parking p = new Parking(rs.getInt("id"), ownerId, rs.getString("address"), rs.getDouble("lat"), rs.getDouble("lon"), rs.getString("startingTime"), rs.getString("endingTime"), rs.getInt("price"));
+            lst.add(p);
+          }
+          
+          return lst;
+        }
+        
+        
+    } catch (SQLException e) {
+        System.out.println(e.getMessage());
+        
+        return null;
+    }
+}
+  
+  public List<Parking> getAllParking(){
+    String sql = "SELECT * FROM parkingSpaces";
+    
+    try (Connection conn = this.connect();
+        PreparedStatement pstmt  = conn.prepareStatement(sql)){
+      
+        try(ResultSet rs  = pstmt.executeQuery()) {
+          List<Parking> lst = new ArrayList<>();
+          
+          while(rs.next())
+          {
+            Parking p = new Parking(rs.getInt("id"), rs.getInt("ownerUid"), rs.getString("address"), rs.getDouble("lat"), rs.getDouble("lon"), rs.getString("startingTime"), rs.getString("endingTime"), rs.getInt("price"));
             lst.add(p);
           }
           
