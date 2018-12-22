@@ -35,7 +35,20 @@ public class UsersForRent extends HttpServlet {
     //TODO Gson.toJson
     //System.out.println("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB Working Directory = " +
     //System.getProperty("user.dir"));
-   List<Parking> parkings = new DBManager().getParking(1);
+    Cookie[] cookies = request.getCookies();
+    int uid = -1;
+    
+    for(Cookie c : cookies)
+    {
+      System.out.println(c.getName());
+      if(c.getName().equals("uid"))
+      {
+        uid = Integer.parseInt(c.getValue());
+        break;
+      }
+    }
+    System.out.println(uid);
+   List<Parking> parkings = new DBManager().getParking(uid);
    //System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa " + parkings.size());
    try {
      Class.forName("com.google.gson.Gson");
@@ -45,6 +58,7 @@ public class UsersForRent extends HttpServlet {
    }
    
     String json_response = new Gson().toJson(parkings); //"[{\"Address\" : \"Haifa\", \"Date\" : \"01.01.0000\", \"Price\" : \"52\",\"Hours\" : \"12:00-13:00\", \"Occupied\" : \"No\"}, {\"Address\" : \"Haifa\",\"Date\" : \"01.01.0000\", \"Price\" : \"52\", \"Hours\" : \"12:00-13:00\", \"Occupied\" : \"No\"}, {\"Address\" : \"Haifa\", \"Date\" : \"01.01.0000\", \"Price\" : \"52\",\"Hours\" : \"12:00-13:00\", \"Occupied\" : \"No\"}]";
+    //System.out.println(json_response);
     response.setContentType("text/plain");
     response.getWriter().write(json_response);
   }
