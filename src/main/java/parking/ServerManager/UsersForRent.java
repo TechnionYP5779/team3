@@ -49,7 +49,6 @@ public class UsersForRent extends HttpServlet {
     }
     System.out.println(uid);
    List<Parking> parkings = new DBManager().getParking(uid);
-   //System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa " + parkings.size());
    try {
      Class.forName("com.google.gson.Gson");
    } catch (ClassNotFoundException e) {
