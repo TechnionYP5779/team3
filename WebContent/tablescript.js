@@ -12,9 +12,9 @@ $(document).ready(function() {
       new_html = "";
       for (var i in parkings) {
         console.log(parkings[i]);
-        new_html += "<tr><td>" + parkings[i].Address +"</td><td>"
-        		    + parkings[i].Price +"</td><td>" + parkings[i].Date +"</td><td>"
-        		    + parkings[i].Hours +"</td><td>" + parkings[i].Occupied +"</td></tr>";
+        new_html += "<tr><td>" + parkings[i].address +"</td><td>"
+        		    + parkings[i].Price +"</td><td>" + parkings[i].From +"</td><td>"
+        		    + parkings[i].To +"</td><td>" + /*parkings[i].Occupied*/ "No" +"</td></tr>";
       }
       $("#parkings_table").html(new_html);
     },
