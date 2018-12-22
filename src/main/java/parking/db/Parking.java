@@ -10,7 +10,7 @@ public class Parking {
   String To;
   int Price;
   
-  Parking(int ParkID, int UserID, String address, double lat, double lon,
+  public Parking(int ParkID, int UserID, String address, double lat, double lon,
           String From, String To, int Price){
     this.UserID=UserID;
     this.ParkID=ParkID;
