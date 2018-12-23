@@ -180,9 +180,13 @@
              var latlng = new google.maps.LatLng(
                   parseFloat(markerNodes[i].getAttribute("lat")),
                   parseFloat(markerNodes[i].getAttribute("lng")));
+            var from = markerNodes[i].getAttribute("from");
+             var to = markerNodes[i].getAttribute("to");
+             var price = markerNodes[i].getAttribute("price");
+
 
              createOption(name, distance, i);
-             createMarker(latlng,address,distance);
+             createMarker(latlng,address,distance,id,from,to,price);
              bounds.extend(latlng);
            }
            map.fitBounds(bounds);
@@ -194,8 +198,13 @@
            });
        }
 
-     function createMarker(latlng, address,distance) {
-        var html = "<br><br><p><b>Distance: </b>" + distance + "<br>" + "<b>Address: </b>"+address +"<br>" ;
+     function createMarker(latlng, address,distance,id,from,to,price) {
+        var html = '<br><br><p><b>Distance: </b>' + distance +
+         'km<br>' + '<b>Address: </b>'+address
+         +'<br><b>From: </b>'+from +'<br><b>To: </b>'+to+'<br><b>Price: </b>'+price
+          +' <br><br><form action="Buy" method="post">'
+     +'<button class="btn btn-primary" name="foo" value="'+id+'">Rent this spot</button>'
+     +'</form>' ;
         var marker = new google.maps.Marker({
           map: map,
           position: latlng

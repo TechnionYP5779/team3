@@ -13,8 +13,11 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyB04i20gc7nU0lFN2PoYXQpigu9X3kMrPY"></script>
+
 </head>
 <body>
+
 
 <div class="bg-image"></div>
 
@@ -46,23 +49,12 @@
 <div  id="login" class="container">
   <h2>Add a parking spot</h2>
   <p>Let people use your empty parking spot and earn some money<p>
-  <form class="form-horizontal" action="AddParkSpot" method="post">
+  <form id="addForm" name="addForm" class="form-horizontal" action="AddParkSpot" method="post" onsubmit="func();">
+
     <div class="form-group">
-      <label class="control-label col-sm-4" for="city">City</label>
+      <label class="control-label col-sm-4" for="Address">Address</label>
       <div class="col-sm-4">
-        <input type="text" class="form-control" id="city" name="city" placeholder="Enter city">
-      </div>
-    </div>
-	    <div class="form-group">
-      <label class="control-label col-sm-4" for="street">Street</label>
-      <div class="col-sm-4">
-        <input type="text" class="form-control" id="street" name="street" placeholder="Enter street">
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-4" for="BuildNum">Building number</label>
-      <div class="col-sm-4">
-        <input type="text" class="form-control" id="BuildNum" name="BuildNum" placeholder="Enter Building number">
+        <input type="text" class="form-control" id="addressInput" name="Address" placeholder="Enter Address">
       </div>
     </div>
 	    <div class="form-group">
@@ -89,6 +81,16 @@
         <input type="number" min= "0" class="form-control" id="price" name="price">
       </div>
     </div>
+    <div class="form-group" style="display:none">
+      <label class="control-label col-sm-4" for="lng"></label>
+        <input type="text" style="display:none" class="form-control" id="lng" name="lng">
+
+    </div>
+    <div class="form-group" style="display:none">
+      <label class="control-label col-sm-4" for="lat"></label>
+        <input type="text" style="display:none" class="form-control" id="lat" name="lat">
+
+    </div>
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-8">
         <button type="submit" class="btn btn-primary">Submit</button>
@@ -97,6 +99,79 @@
   </form>
 </div>
 </div>
+
+
+
+<script>
+function func() {
+  var address = document.getElementById("addressInput").value;
+  //alert(address);
+  var searchUrl = 'https://maps.googleapis.com/maps/api/geocode/xml?key=AIzaSyB04i20gc7nU0lFN2PoYXQpigu9X3kMrPY&address=' + address;
+  //alert("222222222");
+  downloadUrl(searchUrl, function(data) {
+    //alert("3333333333333333");
+    var xml = parseXml(data);
+    //alert("444444444444444");
+
+    var x = xml.getElementsByTagName("lat")[0];
+    var y = x.childNodes[0];
+    var z = y.nodeValue;
+
+    if(!x){
+      alert('address not found');
+      return false;
+    }
+
+      document.getElementById("lat").value = z;
+      //alert(document.getElementById("lat").value);
+      x = xml.getElementsByTagName("lng")[0];
+      y = x.childNodes[0];
+      z = y.nodeValue;
+      document.getElementById("lng").value = z;
+      //alert(document.getElementById("lng").value);
+      document.getElementById('addForm').submit();
+      return true;
+    });
+    //alert("bugg");
+    return false;
+    }
+
+
+function downloadUrl(url, callback) {
+   var request = window.ActiveXObject ?
+       new ActiveXObject('Microsoft.XMLHTTP') :
+       new XMLHttpRequest;
+       //alert('888888888888');
+
+       request.onreadystatechange = function() {
+           //alert('9999999999999999999');
+    if (this.readyState === this.DONE) {
+        callback(this.responseText, this.status); // do something; the request has completed
+    }
+}
+
+   request.open('GET', url,true);
+   request.send(null);
+
+
+}
+
+
+function parseXml(str) {
+   if (window.ActiveXObject) {
+     var doc = new ActiveXObject('Microsoft.XMLDOM');
+     doc.loadXML(str);
+     return doc;
+   } else if (window.DOMParser) {
+     return (new DOMParser).parseFromString(str, 'text/xml');
+   }
+}
+function doNothing() {}
+
+</script>
+
+
+
 <form id="logout-form" style="display:none" action="Logout" method="POST"></form>
 
 <script>
@@ -104,9 +179,6 @@ function myFunction() {
   document.getElementById("logout-form").submit();
 }
 </script>
-
-
-
 
 
 </body>
