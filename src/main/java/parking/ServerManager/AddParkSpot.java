@@ -33,9 +33,10 @@ public class AddParkSpot extends HttpServlet {
   
   @Override protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
   //get parameters
-    String city = request.getParameter("city");
-    String street = request.getParameter("street");
-    String BuildNum = request.getParameter("BuildNum");
+
+    String Address = request.getParameter("Address");
+    String lat = request.getParameter("lat");
+    String lng = request.getParameter("lng");
     String date = request.getParameter("date");
     String FromHour = request.getParameter("FromHour");
     String ToHour = request.getParameter("ToHour");
@@ -45,7 +46,7 @@ public class AddParkSpot extends HttpServlet {
     //TODO redirect to correct page.
     
     try(PrintWriter out = response.getWriter();){
-      out.println(HTML_START + "<h2>Hi There!</h2><br/><h3>city="+ city +"</h3><h3>street="+ street +"</h3><h3>building="+BuildNum + "</h3><h3>date=" +date+"</h3><h3>from=" + FromHour + "</h3><h3>to=" + ToHour + "</h3>"+HTML_END);
+      out.println(HTML_START +"</h3><h3>lat="+lat + "</h3><h3>lng="+lng +"</h3><h3>Address="+Address + "</h3><h3>date=" +date+"</h3><h3>from=" + FromHour + "</h3><h3>to=" + ToHour + "</h3>"+HTML_END);
     }
     
   }

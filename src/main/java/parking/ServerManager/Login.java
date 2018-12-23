@@ -2,14 +2,13 @@
 package parking.ServerManager;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.*;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebInitParam;
+import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
+
+import parking.db.*;
+
 
 /**
  * Servlet Tutorial - Servlet Example
@@ -41,6 +40,17 @@ public class Login extends HttpServlet {
     log("password is " + password);
     log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     
+    User u = new DBManager().getUserByUsername(userName);
+    
+    if(u == null || !u.getPassword().equals(password))
+    {
+      //user not found
+      request.setAttribute("errorMessage", "No such username/password");
+      RequestDispatcher rd = request.getRequestDispatcher("loginUser.jsp");
+      rd.forward(request, response);
+      return;
+    }
+    
     
     //TODO check username and password
     //TODO maybe change to user id?
@@ -48,8 +58,9 @@ public class Login extends HttpServlet {
     //TODO set expire right
     user.setMaxAge(60*60*24);
     response.addCookie( user );
+    Cookie uid = new Cookie("uid", "" + u.getUserID());
+    response.addCookie( uid );
     response.sendRedirect("homePage.html");
     return; 
-    
   }
 }

@@ -8,13 +8,13 @@ public class User {
   String PhoneNum;
   String Password;
   
-  User(int UserID, String UserName, String FirstName, String LastName,String PhoneNum,String Password){
+  public User(int UserID, String UserName, String FirstName, String LastName,String PhoneNum,String Password){
     this.UserID=UserID;
     this.UserName=UserName;
     this.FirstName=FirstName;
     this.LastName=LastName;
     this.PhoneNum=PhoneNum;
-    this.PhoneNum=Password;
+    this.Password=Password;
   }
   
   public int getUserID() {
