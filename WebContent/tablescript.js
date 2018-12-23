@@ -14,7 +14,7 @@ $(document).ready(function() {
         console.log(parkings[i]);
         new_html += "<tr><td>" + parkings[i].address +"</td><td>"
         		    + parkings[i].Price +"</td><td>" + parkings[i].From +"</td><td>"
-        		    + parkings[i].To +"</td><td>" + /*parkings[i].Occupied*/ "No" +"</td></tr>";
+        		    + parkings[i].To +"</td><td>" + parkings[i].occupied +"</td></tr>";
       }
       $("#parkings_table").html(new_html);
     },

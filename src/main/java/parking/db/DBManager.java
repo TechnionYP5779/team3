@@ -14,7 +14,7 @@ public class DBManager {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
-    String url = "jdbc:sqlite:/home/eric/Documents/team3/main.db";
+    String url = "jdbc:sqlite:C:\\Users\\ANNY\\Desktop\\yearly_project\\team3\\main.db";
     conn = DriverManager.getConnection(url);
     
     return conn;
@@ -38,6 +38,62 @@ public class DBManager {
           return;
     }
   }
+  
+  
+  public Parking getParkingById(int id){
+    String sql = "SELECT * FROM parkingSpaces WHERE id = ?";
+    
+    try (Connection conn = this.connect();
+        PreparedStatement pstmt  = conn.prepareStatement(sql)){
+        
+        pstmt.setInt(1, id);
+      
+        try(ResultSet rs  = pstmt.executeQuery()) {
+          if(!rs.next())
+            return null;    //user not found
+          
+          assert !rs.isLast();
+          
+          Parking u = new Parking(id,  rs.getInt("ownerUid"), rs.getString("address"), rs.getDouble("lat"), rs.getDouble("lon"), rs.getString("startingTime"), rs.getString("endingTime"), rs.getInt("price"));
+          
+          return u;
+        }
+        
+        
+    } catch (SQLException e) {
+        System.out.println(e.getMessage());
+        
+        return null;
+    }
+}
+  
+  public List<Rental> getRentalsByParkingId(int pid){
+    String sql = "SELECT * FROM rentals WHERE parkingId = ?";
+    
+    try (Connection conn = this.connect();
+        PreparedStatement pstmt  = conn.prepareStatement(sql)){
+        
+        pstmt.setInt(1, pid);
+      
+        try(ResultSet rs  = pstmt.executeQuery()) {
+          List<Rental> lst = new ArrayList<>();
+          
+          while(rs.next())
+          {
+            Rental r = new Rental(rs.getInt("id"), pid, rs.getInt("renterId"), rs.getString("startingTime"), rs.getString("endingTime"), rs.getString("carModel"));
+            lst.add(r);
+          }
+          
+          return lst;
+        }
+        
+        
+    } catch (SQLException e) {
+        System.out.println(e.getMessage());
+        
+        return null;
+    }
+}
   
   public User getUserById(int uid){
       String sql = "SELECT * FROM users WHERE id = ?";
@@ -161,7 +217,7 @@ public class DBManager {
           
           while(rs.next())
           {
-            Rental p = new Rental(rs.getInt("id"), rs.getInt("parkingId"), renterId, rs.getString("startingTime"), rs.getString("endTime"), rs.getString("carModel"));
+            Rental p = new Rental(rs.getInt("id"), rs.getInt("parkingId"), renterId, rs.getString("startingTime"), rs.getString("endingTime"), rs.getString("carModel"));
             lst.add(p);
           }
           
@@ -189,7 +245,7 @@ public class DBManager {
           
           while(rs.next())
           {
-            Rental p = new Rental(rs.getInt("id"), parkingId, rs.getInt("renterId"), rs.getString("startingTime"), rs.getString("endTime"), rs.getString("carModel"));
+            Rental p = new Rental(rs.getInt("id"), parkingId, rs.getInt("renterId"), rs.getString("startingTime"), rs.getString("endingTime"), rs.getString("carModel"));
             lst.add(p);
           }
           

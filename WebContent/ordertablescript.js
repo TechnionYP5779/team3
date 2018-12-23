@@ -12,8 +12,8 @@ $(document).ready(function() {
       for (var i in parkings) {
         console.log(parkings[i]);
         new_html += "<tr><td>" + parkings[i].address +"</td><td>" + 
-        parkings[i].Price +"</td><td>" + parkings[i].From +"</td><td>" + 
-        parkings[i].To +"</td>" </tr>";
+        parkings[i].price +"</td><td>" + parkings[i].startingTime +"</td><td>" + 
+        parkings[i].endingTime +"</td> </tr>";
       }
       $("#BuyTable").html(new_html);
     },

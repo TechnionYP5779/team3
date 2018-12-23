@@ -45,8 +45,16 @@ public class MyOrders extends HttpServlet {
         break;
       }
     }
-	  List<Rental> parkings = new DBManager().getRentalsByRenter(uid);
-	  String json_response = new Gson().toJson(parkings);
+	  List<Rental> rentals = new DBManager().getRentalsByRenter(uid);
+	  for (Rental r : rentals) {
+	    Parking p = new DBManager().getParkingById(r.getParkingId());
+	    r.setAddress(p.getAddress());
+	    r.setPrice(p.getPrice());
+	    r.setStartingTime(p.getFrom());
+	    r.setEndingTime(p.getTo());
+	  }
+	  String json_response = new Gson().toJson(rentals);
+	  System.out.println(json_response);
     //System.out.println(json_response);
     response.setContentType("text/plain");
     response.getWriter().write(json_response);
