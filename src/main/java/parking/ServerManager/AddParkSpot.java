@@ -1,4 +1,3 @@
-
 package parking.ServerManager;
 
 import java.io.IOException;
@@ -40,11 +39,9 @@ public class AddParkSpot extends HttpServlet {
 
     String date = request.getParameter("date");
     int price = Integer.parseInt(request.getParameter("price"));
-    
-    //TODO get real address from google maps search
-    String address = "fake place";
-    double lat = 0.0;
-    double lon = 0.0;
+    double lat = Double.parseDouble(request.getParameter("lat"));
+    double lon = Double.parseDouble(request.getParameter("lng"));
+    String address = request.getParameter("Address");
     
     //getting user id cookie
     Cookie[] cookies = request.getCookies();
