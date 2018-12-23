@@ -9,8 +9,9 @@ public class Parking {
   String From;
   String To;
   int Price;
+  String occupied;
   
-  Parking(int ParkID, int UserID, String address, double lat, double lon,
+  public Parking(int ParkID, int UserID, String address, double lat, double lon,
           String From, String To, int Price){
     this.UserID=UserID;
     this.ParkID=ParkID;
@@ -22,7 +23,9 @@ public class Parking {
     this.Price=Price;
   }
   
-  
+  public void setOccupied(String occupied) {
+    this.occupied = occupied;
+  }
 
   public void setAddress(String address) {
     this.address = address;
