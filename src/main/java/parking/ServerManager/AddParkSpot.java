@@ -33,10 +33,11 @@ public class AddParkSpot extends HttpServlet {
   
   @Override protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
   //get parameters
-    
+
     
     String from = request.getParameter("FromHour");
     String to = request.getParameter("ToHour");
+
     String date = request.getParameter("date");
     int price = Integer.parseInt(request.getParameter("price"));
     
@@ -57,6 +58,7 @@ public class AddParkSpot extends HttpServlet {
         uid = Integer.parseInt(c.getValue());
         break;
       }
+
     }
     //save to DB
     Parking p = new Parking(-1, uid, address, lat, lon, from, to, price);
