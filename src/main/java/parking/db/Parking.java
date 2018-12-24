@@ -9,8 +9,9 @@ public class Parking {
   String From;
   String To;
   int Price;
+  String occupied;
   
-  Parking(int ParkID, int UserID, String address, double lat, double lon,
+  public Parking(int ParkID, int UserID, String address, double lat, double lon,
           String From, String To, int Price){
     this.UserID=UserID;
     this.ParkID=ParkID;
@@ -22,25 +23,19 @@ public class Parking {
     this.Price=Price;
   }
   
-  public String getAddress() {
-    return address;
+  public void setOccupied(String occupied) {
+    this.occupied = occupied;
   }
 
   public void setAddress(String address) {
     this.address = address;
   }
 
-  public double getLat() {
-    return lat;
-  }
 
   public void setLat(double lat) {
     this.lat = lat;
   }
 
-  public double getLon() {
-    return lon;
-  }
 
   public void setLon(double lon) {
     this.lon = lon;
@@ -62,7 +57,17 @@ public class Parking {
     return ParkID;    
   }
   
-
+  public String getAddress() {
+    return address;    
+  }
+  
+  public double getLat() {
+    return lat;    
+  }
+  
+  public double getLon() {
+    return lon;    
+  }
   
   public String getFrom() {
     return From;    

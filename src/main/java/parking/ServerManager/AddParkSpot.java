@@ -9,9 +9,9 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
+
+import parking.db.*;
 
 /**
  * Servlet Tutorial - Servlet Example
@@ -34,20 +34,39 @@ public class AddParkSpot extends HttpServlet {
   @Override protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
   //get parameters
 
-    String Address = request.getParameter("Address");
-    String lat = request.getParameter("lat");
-    String lng = request.getParameter("lng");
+    
+    String from = request.getParameter("FromHour");
+    String to = request.getParameter("ToHour");
+
     String date = request.getParameter("date");
-    String FromHour = request.getParameter("FromHour");
-    String ToHour = request.getParameter("ToHour");
+    int price = Integer.parseInt(request.getParameter("price"));
     
-    //TODO get cookie and check user logged in
-    //TODO save to DB
-    //TODO redirect to correct page.
+    //TODO get real address from google maps search
+    String address = "fake place";
+    double lat = 0.0;
+    double lon = 0.0;
     
-    try(PrintWriter out = response.getWriter();){
-      out.println(HTML_START +"</h3><h3>lat="+lat + "</h3><h3>lng="+lng +"</h3><h3>Address="+Address + "</h3><h3>date=" +date+"</h3><h3>from=" + FromHour + "</h3><h3>to=" + ToHour + "</h3>"+HTML_END);
+    //getting user id cookie
+    Cookie[] cookies = request.getCookies();
+    int uid = -1;
+    
+    for(Cookie c : cookies)
+    {
+      System.out.println(c.getName());
+      if(c.getName().equals("uid"))
+      {
+        uid = Integer.parseInt(c.getValue());
+        break;
+      }
+
     }
+    //save to DB
+    Parking p = new Parking(-1, uid, address, lat, lon, from, to, price);
+    new DBManager().addParking(p);
+    
+    // redirect to correct page.
+    response.sendRedirect("parkTable.html");
+    
     
   }
 }

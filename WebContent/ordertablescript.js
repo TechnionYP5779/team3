@@ -1,9 +1,8 @@
-
 $(document).ready(function() {
 	
   $.ajax({
     type: "POST",
-    url : 'GetUsersForRent',
+    url : 'GetMyOrders',
     data : {
     },
     success : function(response) {
@@ -12,11 +11,11 @@ $(document).ready(function() {
       new_html = "";
       for (var i in parkings) {
         console.log(parkings[i]);
-        new_html += "<tr><td>" + parkings[i].address +"</td><td>"
-        		    + parkings[i].Price +"</td><td>" + parkings[i].From +"</td><td>"
-        		    + parkings[i].To +"</td><td>" + parkings[i].occupied +"</td></tr>";
+        new_html += "<tr><td>" + parkings[i].address +"</td><td>" + 
+        parkings[i].price +"</td><td>" + parkings[i].startingTime +"</td><td>" + 
+        parkings[i].endingTime +"</td> </tr>";
       }
-      $("#parkings_table").html(new_html);
+      $("#BuyTable").html(new_html);
     },
     error: function(error) {
     	console.log(error);

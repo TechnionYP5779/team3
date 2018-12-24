@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<div class="bg-image"></div>
+<div class="bg-image2"></div>
 
 <nav id="my_nav" class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
@@ -33,8 +33,8 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="homePage.html">HOME</a></li>
         <li><a href="homePage.html#About Us">ABOUT</a></li>
-        <li><a href="profile.html">PROFILE</a></li>
-        <li><a onclick="myFunction()">LOGOUT</a></li>
+		<li><a href="profile.html">PROFILE</a></li>
+        <li><a href ="logout">LOGOUT</a></li>
       </ul>
     </div>
 
@@ -50,20 +50,19 @@
 
 <div class="bg-text">
 <div class="container">
-  <h2>Your Parkings</h2>
-  <p>Those are the parking that you're offering for rent: </p>
+  <h2>Your Orders:</h2>
+  <p>Those are the parking spaces you purchased</p>
   <div class="table-responsive">
-  <table class="table table-bordered table-hover table-condensed">
+  <table class="table table-striped table-bordered table-hover table-condensed">
     <thead>
       <tr>
         <th>Address</th>
         <th>Price</th>
         <th>From</th>
         <th>Until</th>
-		<th>Occupied</th>
       </tr>
     </thead>
-    <tbody id="parkings_table">
+    <tbody id="BuyTable">
 
     </tbody>
   </table>
@@ -71,9 +70,34 @@
 </div>
 
 </div>
-
-<script src="tablescript.js">
+<script src="ordertablescript.js">
 </script>
+<!--
+<script src="myjs.js">
+</script>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+  $.ajax({
+    type: "POST",
+    url : 'GetUsersForRent',
+    data : {
+    },
+    success : function(response) {
+      console.log(response);
+      parkings = JSON.parse(response);
+      new_html = "";
+      for (var i in parkings) {
+        console.log(parkings[i]);
+        new_html += "<tr><td>..." + parkings[i].addresss +...
+      }
+      $("#parkings_table").html(new_html);
+    }
+  });
+});
+</script>
+-->
 
 <form id="logout-form" style="display:none" action="Logout" method="POST"></form>
 
@@ -82,7 +106,6 @@ function myFunction() {
   document.getElementById("logout-form").submit();
 }
 </script>
-
 
 
 
