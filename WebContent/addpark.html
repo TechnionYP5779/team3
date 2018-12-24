@@ -38,7 +38,7 @@
         <li><a href="homePage.html#About Us">ABOUT</a></li>
 		<li><a href="profile.html">PROFILE</a></li>
         <li><a href="payments.html">PAYMENTS</a></li>
-        <li><a href ="logout">LOGOUT</a></li>
+         <li><a onclick="myFunction()">LOGOUT</a></li>
       </ul>
     </div>
   </div>
@@ -105,9 +105,9 @@
 <script>
 function func() {
   var address = document.getElementById("addressInput").value;
-  //alert(address);
+  alert(address);
   var searchUrl = 'https://maps.googleapis.com/maps/api/geocode/xml?key=AIzaSyB04i20gc7nU0lFN2PoYXQpigu9X3kMrPY&address=' + address;
-  //alert("222222222");
+  alert("222222222");
   downloadUrl(searchUrl, function(data) {
     //alert("3333333333333333");
     var xml = parseXml(data);

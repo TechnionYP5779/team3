@@ -51,7 +51,7 @@
         <li><a href="homePage.html#About Us">ABOUT</a></li>
 		<li><a href="profile.html">PROFILE</a></li>
         <li><a href="payments.html">PAYMENTS</a></li>
-        <li><a href ="logout">LOGOUT</a></li>
+         <li><a onclick="myFunction()">LOGOUT</a></li>
         </ul>
     </div>
   </div>
@@ -67,6 +67,7 @@
 <br>
 <br>
 <br>
+
 
 </div>
 
@@ -201,7 +202,7 @@
      function createMarker(latlng, address,distance,id,from,to,price) {
         var html = '<br><br><p><b>Distance: </b>' + distance +
          'km<br>' + '<b>Address: </b>'+address
-         +'<br><b>From: </b>'+from +'<br><b>To: </b>'+to+'<br><b>Price: </b>'+price
+        +'<br><b>Price: </b>'+price
           +' <br><br><form action="Buy" method="post">'
      +'<button class="btn btn-primary" name="foo" value="'+id+'">Rent this spot</button>'
      +'</form>' ;

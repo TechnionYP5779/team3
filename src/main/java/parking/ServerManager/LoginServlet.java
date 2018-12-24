@@ -13,7 +13,7 @@ import java.io.UnsupportedEncodingException;
  */
 @WebServlet(
     description = "Park4You Login", 
-    urlPatterns = { "/Login" })
+    urlPatterns = { "/Login1" })
 public class LoginServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
   public static final String HTML_START="<html><body>";
