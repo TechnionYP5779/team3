@@ -40,11 +40,23 @@ public class AddParkSpot extends HttpServlet {
   @Override protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
   //get parameters
 
+<<<<<<< HEAD
+    System.out.println("AAAAAAAAAA");
+=======
     System.out.println("meowmeowmeow");
+>>>>>>> master
     String from = request.getParameter("FromHour");
     
     String to = request.getParameter("ToHour");
+<<<<<<< HEAD
+    String lat1 = request.getParameter("lat");
+    String lng1 = request.getParameter("lng");
+    System.out.println("BBBBBBBBBBBB");
+   
+
+=======
     
+>>>>>>> master
     String date = request.getParameter("date");
     String address = request.getParameter("Address");
     String price_string = request.getParameter("price");
