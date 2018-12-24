@@ -28,20 +28,59 @@ public class AddParkSpot extends HttpServlet {
     //we can create DB connection resource here and set it to Servlet context
     
   }
+  
+  private static void alert_error(String msg, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    request.setAttribute("errorMessage", msg);
+    RequestDispatcher rd = request.getRequestDispatcher("addpark.jsp");
+    rd.forward(request, response);
+    return;
+  }
 
   
   @Override protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
   //get parameters
 
-    
+    System.out.println("meowmeowmeow");
     String from = request.getParameter("FromHour");
+    
     String to = request.getParameter("ToHour");
-
+    
     String date = request.getParameter("date");
-    int price = Integer.parseInt(request.getParameter("price"));
-    double lat = Double.parseDouble(request.getParameter("lat"));
-    double lon = Double.parseDouble(request.getParameter("lng"));
     String address = request.getParameter("Address");
+    String price_string = request.getParameter("price");
+    if (from == null || from.equals("") || 
+        to == null || to.equals("") ||
+            date == null || date.equals("") ||
+                address == null || address.equals("") ||
+                    price_string == null || price_string.equals("")) {
+      alert_error("Please fill all fields", request, response);
+      return;
+    }
+    
+    int price = 0;
+    try {
+        price = Integer.parseInt(price_string);
+    }
+    catch (NumberFormatException e) {
+      alert_error("Please enter a positive number as price", request, response);
+      return;
+    }
+    if (price <= 0) {
+      alert_error("Please enter a positive number as price", request, response);
+      return;
+    }
+    double lat = 0;
+    double lon = 0;
+    try {
+         lat = Double.parseDouble(request.getParameter("lat"));
+         lon = Double.parseDouble(request.getParameter("lng"));
+    }
+    catch (NumberFormatException e) {
+      alert_error("Address not found", request, response);
+      return;
+    }
+
+    System.out.println("params are:" + address + "" + lon + "" + lat +"" +price);
     
     //getting user id cookie
     Cookie[] cookies = request.getCookies();
@@ -58,7 +97,7 @@ public class AddParkSpot extends HttpServlet {
 
     }
     //save to DB
-    Parking p = new Parking(-1, uid, address, lat, lon, from, to, price);
+    Parking p = new Parking(-1, uid, address, lat, lon, from + " " + date, to + " " + date, price);
     new DBManager().addParking(p);
     
     // redirect to correct page.
