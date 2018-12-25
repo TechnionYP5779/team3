@@ -34,25 +34,31 @@ public class Buy extends HttpServlet {
   
   @Override protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
   //get parameters
-    String id = request.getParameter("foo");
+    Integer parking_id = Integer.parseInt(request.getParameter("foo"));
     
     Cookie[] cookies = request.getCookies();
     String username=null;
 
     for (int i = 0; i < cookies.length; i++) {
       String name = cookies[i].getName();
-      if(name.equals("user")) {
+      if(name.equals("uid")) {
           username= cookies[i].getValue();
           break;
       }
       
       
-    }
-    System.out.println(username+" wants to buy parking number "+ id);
+    };
+    Integer user_id=Integer.parseInt(username);
+    
     response.sendRedirect("homePage.html");
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
-
+    DBManager db=new DBManager();
+    Parking park=db.getParkingById(parking_id);
+    Rental rent=new Rental(123,parking_id,user_id,park.getFrom(),park.getTo(),"Jeep");
+    
+    db.addRental(rent);
+    System.out.println(username+" wants to buy parking number "+ parking_id);
        out.println("<script type=\"text/javascript\">");
        out.println("location='homePage.html';");
        out.println("alert('Parking was ordered successfully');");

@@ -48,7 +48,7 @@
 <div  id="login" class="container">
   <h2>Add a parking spot</h2>
   <p>Let people use your empty parking spot and earn some money<p>
-  <form id="addForm" name="addForm" class="form-horizontal" action="AddParkSpot" method="post" onsubmit="func();">
+  <form id="addForm" name="addForm" class="form-horizontal" method="POST" action="AddParkSpot" onsubmit="func();">
 
     <div class="form-group">
       <label class="control-label col-sm-4" for="Address">Address</label>
@@ -96,6 +96,14 @@
       </div>
     </div>
   </form>
+  <%
+	if(request.getAttribute("errorMessage") != null){
+  %>
+  <label style="color:red;"><%=request.getAttribute("errorMessage")%></label>
+	
+  <%
+    }
+  %>
 </div>
 </div>
 
@@ -104,31 +112,34 @@
 <script>
 function func() {
   var address = document.getElementById("addressInput").value;
-  //alert(address);
+  
   var searchUrl = 'https://maps.googleapis.com/maps/api/geocode/xml?key=AIzaSyB04i20gc7nU0lFN2PoYXQpigu9X3kMrPY&address=' + address;
   //alert("222222222");
   downloadUrl(searchUrl, function(data) {
     //alert("3333333333333333");
     var xml = parseXml(data);
-    //alert("444444444444444");
+    
+    console.log("hi")
 
     var x = xml.getElementsByTagName("lat")[0];
     var y = x.childNodes[0];
     var z = y.nodeValue;
 
     if(!x){
-      alert('address not found');
+    	alert("bad address");
+    	document.getElementById("error_msg").style.visibility = "visible";
       return false;
     }
 
       document.getElementById("lat").value = z;
-      //alert(document.getElementById("lat").value);
+      
       x = xml.getElementsByTagName("lng")[0];
       y = x.childNodes[0];
       z = y.nodeValue;
       document.getElementById("lng").value = z;
-      //alert(document.getElementById("lng").value);
-      document.getElementById('addForm').submit();
+      document.getElementById("addForm").submit();
+      
+      
       return true;
     });
     //alert("bugg");
@@ -138,18 +149,18 @@ function func() {
 
 function downloadUrl(url, callback) {
    var request = window.ActiveXObject ?
-       new ActiveXObject('Microsoft.XMLHTTP') :
-       new XMLHttpRequest;
+   new ActiveXObject('Microsoft.XMLHTTP') :
+   new XMLHttpRequest;
        //alert('888888888888');
 
-       request.onreadystatechange = function() {
+   request.onreadystatechange = function() {
            //alert('9999999999999999999');
-    if (this.readyState === this.DONE) {
-        callback(this.responseText, this.status); // do something; the request has completed
-    }
-}
+   		if (this.readyState === this.DONE) {
+   			callback(this.responseText, this.status); // do something; the request has completed
+   		}
+	}
 
-   request.open('GET', url,true);
+   request.open('GET', url,false);
    request.send(null);
 
 
