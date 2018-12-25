@@ -46,12 +46,19 @@ public class AddParkSpot extends HttpServlet {
     String from = request.getParameter("FromHour");
     
     String to = request.getParameter("ToHour");
+    
+    request.setAttribute("fromHour", from);
+    request.setAttribute("toHour", to);
+    
 
     
 
     String date = request.getParameter("date");
     String address = request.getParameter("Address");
     String price_string = request.getParameter("price");
+    request.setAttribute("date", date);
+    request.setAttribute("address", address);
+    request.setAttribute("price", price_string);
     if (from == null || from.equals("") || 
         to == null || to.equals("") ||
             date == null || date.equals("") ||

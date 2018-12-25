@@ -51,41 +51,41 @@
     <div class="form-group">
       <label class="control-label col-sm-4" for="Address">Address</label>
       <div class="col-sm-4">
-        <input type="text" class="form-control" id="addressInput" name="Address" value="<%= request.getAttribute("address") %>" placeholder="Enter Address">
+        <input type="text" class="form-control" id="addressInput" name="Address" placeholder="Enter Address">
       </div>
     </div>
 	    <div class="form-group">
       <label class="control-label col-sm-4" for="Date">Date</label>
       <div class="col-sm-4">
-        <input type="Date" class="form-control" id="Date" name="date" value="<%= request.getAttribute("date") %>" >
+        <input type="Date" class="form-control" id="Date" name="date" >
       </div>
     </div>
 	    <div class="form-group">
       <label class="control-label col-sm-4" for="FromHour">From hour</label>
       <div class="col-sm-4">
-        <input type="time" class="form-control" id="FromHour" name="FromHour" placeholder="Enter From Hour" value="<%= request.getAttribute("fromHour") %>">
+        <input type="time" class="form-control" id="FromHour" name="FromHour" placeholder="Enter From Hour">
       </div>
     </div>
 	<div class="form-group">
       <label class="control-label col-sm-4" for="ToHour">To Hour</label>
       <div class="col-sm-4">
-        <input type="time" class="form-control" id="ToHour" name="ToHour" value="<%= request.getAttribute("toHour") %>">
+        <input type="time" class="form-control" id="ToHour" name="ToHour">
       </div>
     </div>
 		<div class="form-group">
       <label class="control-label col-sm-4" for="price">Price</label>
       <div class="col-sm-4">
-        <input type="number" min= "0" class="form-control" id="price" name="price" value="<%= request.getAttribute("price") %>">
+        <input type="number" min= "0" class="form-control" id="price" name="price">
       </div>
     </div>
     <div class="form-group" style="display:none">
       <label class="control-label col-sm-4" for="lng"></label>
-        <input type="text" style="display:none" class="form-control" id="lng" name="lng" value="<%= request.getAttribute("lng") %>">
+        <input type="text" style="display:none" class="form-control" id="lng" name="lng">
 
     </div>
     <div class="form-group" style="display:none">
       <label class="control-label col-sm-4" for="lat"></label>
-        <input type="text" style="display:none" class="form-control" id="lat" name="lat" value="<%= request.getAttribute("lat") %>">
+        <input type="text" style="display:none" class="form-control" id="lat" name="lat">
 
     </div>
     <div class="form-group">
@@ -94,14 +94,6 @@
       </div>
     </div>
   </form>
-  <%
-	if(request.getAttribute("errorMessage") != null){
-  %>
-  <label style="color:red;"><%=request.getAttribute("errorMessage")%></label>
-	
-  <%
-    }
-  %>
 </div>
 </div>
 

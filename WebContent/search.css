@@ -89,11 +89,12 @@ body, html {
 }
 #ser{
 
-  position: absolute;
+ /* position: absolute;*/
 	text-align: center;
-  top: 13%;
+ /* top: 13%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);*/
+  margin:auto;	
   color: #123456;
 	font-size: 15px;
 }
