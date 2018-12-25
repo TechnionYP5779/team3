@@ -49,22 +49,15 @@ public class Buy extends HttpServlet {
       
     };
     Integer user_id=Integer.parseInt(username);
-    
-    response.sendRedirect("homePage.html");
-    response.setContentType("text/html;charset=UTF-8");
-    PrintWriter out = response.getWriter();
+   
     DBManager db=new DBManager();
     Parking park=db.getParkingById(parking_id);
     Rental rent=new Rental(123,parking_id,user_id,park.getFrom(),park.getTo(),"Jeep");
     
     db.addRental(rent);
     System.out.println(username+" wants to buy parking number "+ parking_id);
-       out.println("<script type=\"text/javascript\">");
-       out.println("location='homePage.html';");
-       out.println("alert('Parking was ordered successfully');");
-       
-       out.println("</script>");
-    
+    response.sendRedirect("ParkingOrders.html");
+
     
     
     ///adding here a DB manager func
