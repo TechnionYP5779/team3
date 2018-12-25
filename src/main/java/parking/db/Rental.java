@@ -28,7 +28,7 @@ public class Rental {
   }
   
   public int getParkingId() {
-    return renterId;
+    return parkingId;
   }
   public int getRenterId() {
     return renterId;

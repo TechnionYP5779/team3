@@ -45,26 +45,19 @@ public class Buy extends HttpServlet {
           username= cookies[i].getValue();
           break;
       }
-      
-      
-    };
-    Integer user_id=Integer.parseInt(username);
-   
-    DBManager db=new DBManager();
+    }
+    
+    Integer user_id = Integer.parseInt(username);
+    
+    DBManager db =new DBManager();
+    
     Parking park=db.getParkingById(parking_id);
-    Rental rent=new Rental(123,parking_id,user_id,park.getFrom(),park.getTo(),"Jeep");
+    System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAA " + park.getAddress());
+    Rental rent=new Rental(123, parking_id, user_id, park.getFrom(), park.getTo(), "Jeep");
     
     db.addRental(rent);
     System.out.println(username+" wants to buy parking number "+ parking_id);
     response.sendRedirect("ParkingOrders.html");
-
-    
-    
-    ///adding here a DB manager func
-
-    
-
-   
     return;
     
   }

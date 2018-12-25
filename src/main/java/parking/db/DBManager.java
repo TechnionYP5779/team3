@@ -14,7 +14,7 @@ public class DBManager {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
-    String url = "jdbc:sqlite:C:\\Users\\user\\workspace\\team3\\main.db";
+    String url = "jdbc:sqlite:/home/eric/Documents/team3/main.db";
     conn = DriverManager.getConnection(url);
     
     return conn;

@@ -39,9 +39,24 @@ public class AddUser extends HttpServlet {
     String phoneNumber = request.getParameter("phoneNumber");
     String userName = request.getParameter("userName");
     String password = request.getParameter("pwd");
+    request.setAttribute("username", userName);
+    request.setAttribute("firstName", firstName);
+    request.setAttribute("lastName", lastName);
+    request.setAttribute("phoneNumber", phoneNumber);
+    String errorMessage = "";
+    if(!phoneNumber.matches(legalPhoneRegex))
+      errorMessage += "Illegal phone number<br/>";
+    if(firstName.isEmpty())
+      errorMessage += "Please enter your first name<br/>";
+    if(lastName.isEmpty())
+      errorMessage += "Please enter your last name<br/>";
+    if(userName.isEmpty())
+      errorMessage += "Please enter your username<br/>";
+    if(new DBManager().getUserByUsername(userName) != null)
+      errorMessage += "Username taken<br/>";
     
-    if (!phoneNumber.matches(legalPhoneRegex)) {
-      request.setAttribute("errorMessage", "Illegal phone number");
+    if (!errorMessage.isEmpty()) {
+      request.setAttribute("errorMessage", errorMessage);
       RequestDispatcher rd = request.getRequestDispatcher("adduser.jsp");
       rd.forward(request, response);
       return;

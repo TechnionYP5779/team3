@@ -46,6 +46,7 @@ public class Login extends HttpServlet {
     {
       //user not found
       request.setAttribute("errorMessage", "No such username/password");
+      request.setAttribute("username", userName);
       RequestDispatcher rd = request.getRequestDispatcher("loginUser.jsp");
       rd.forward(request, response);
       return;

@@ -55,19 +55,19 @@
     <div class="form-group">
       <label class="control-label col-sm-4" for="userName">User Name</label>
       <div class="col-sm-4">
-        <input type="userName" class="form-control" id="userName" name="userName" placeholder="Enter user name">
+        <input type="userName" class="form-control" id="userName" name="userName" value="<%= request.getAttribute("username")  %>" placeholder="Enter user name">
       </div>
     </div>
     <div class="form-group">
       <label class="control-label col-sm-4" for="firstName">First name</label>
       <div class="col-sm-4">
-        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter first name">
+        <input type="text" class="form-control" id="firstName" name="firstName" value="<%= request.getAttribute("firstName")  %>"  placeholder="Enter first name">
       </div>
     </div>
 	    <div class="form-group">
       <label class="control-label col-sm-4" for="lastName">Last name</label>
       <div class="col-sm-4">
-        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter last name">
+        <input type="text" class="form-control" id="lastName" name="lastName" value="<%= request.getAttribute("lastName")  %>"  placeholder="Enter last name">
       </div>
     </div>
     <div class="form-group">
@@ -79,7 +79,7 @@
 	    <div class="form-group">
       <label class="control-label col-sm-4" for="phoneNumber">Phone number</label>
       <div class="col-sm-4">
-        <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Enter phone number">
+        <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" value="<%= request.getAttribute("phoneNumber")  %>" placeholder="Enter phone number">
       </div>
     </div>
     <div class="form-group">

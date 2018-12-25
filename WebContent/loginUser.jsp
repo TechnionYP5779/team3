@@ -53,7 +53,7 @@
     <div class="form-group">
       <label class="control-label col-sm-4" for="userName">User Name:</label>
       <div class="col-sm-4">
-        <input type="userName" class="form-control" id="userName" name="userName" placeholder="Enter user name">
+        <input type="userName" class="form-control" id="userName" value="<%= request.getAttribute("username") %>" name="userName" placeholder="Enter user name">
       </div>
     </div>
     <div class="form-group">
