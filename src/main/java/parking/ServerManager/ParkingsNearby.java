@@ -62,7 +62,7 @@ public class ParkingsNearby extends HttpServlet {
    String xml="<?xml version=\"1.0\"?><markers>";
    for( Parking parking  : lst) {
      double dist = getDistanceFromLatLonInKm(lat, lng, parking.getLat(), parking.getLon());
-     if(dist<=radius) {
+     if(dist<=radius && parsedDateandHour_getDate(parking.getFrom()).equals(date) && compareHours(from, parsedDateandHour_getHour(parking.getFrom())) && compareHours(parsedDateandHour_getHour(parking.getTo()),to)) {
      xml= xml+ "<marker id=\""+ parking.getParkID()+"\" "+"address=\""+parking.getAddress()+"\" "
      +"from=\""+parking.getFrom()+"\" "+"to=\""+parking.getTo()+"\" "+"price=\""+parking.getPrice()+"\" "+"lat=\""+parking.getLat()+"\" "+"lng=\""+parking.getLon()+"\""+" distance=\""+dist+"\" />";
      }
@@ -74,8 +74,30 @@ public class ParkingsNearby extends HttpServlet {
 
 
   }
+
+
+private static String parsedDateandHour_getDate(String dateAndHourQuary) {
+  String[] splitStr = dateAndHourQuary.split("\\s+");
+  return splitStr[0];
 }
 
+private static String parsedDateandHour_getHour(String dateAndHourQuary) {
+  String[] splitStr = dateAndHourQuary.split("\\s+");
+  return splitStr[1];
+}
+
+private static boolean compareHours(String hour1, String hour2) {
+  int hours1 = Integer.parseInt(hour1.split(":")[0]); 
+  int minutes1 = Integer.parseInt(hour1.split(":")[1]); 
+  int hours2 = Integer.parseInt(hour2.split(":")[0]); 
+  int minutes2 = Integer.parseInt(hour2.split(":")[1]); 
+  
+  return (hours1*60+minutes1)>=(hours2*60+minutes2);
+  
+}
+
+
+}
 
 /*
 <script type="text/javascript">
