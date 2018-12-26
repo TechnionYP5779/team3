@@ -63,6 +63,7 @@ public class ParkingsNearby extends HttpServlet {
    List<Parking> lst = new DBManager().getAllParking();
    String xml="<?xml version=\"1.0\"?><markers>";
    for( Parking parking  : lst) {
+     //System.out.println(parking.getFrom());
      double dist = getDistanceFromLatLonInKm(lat, lng, parking.getLat(), parking.getLon());
      if(dist<=radius && parsedDateandHour_getDate(parking.getFrom()).equals(date) && compareHours(from, parsedDateandHour_getHour(parking.getFrom())) && compareHours(parsedDateandHour_getHour(parking.getTo()),to)) {
      xml= xml+ "<marker id=\""+ parking.getParkID()+"\" "+"address=\""+parking.getAddress()+"\" "
