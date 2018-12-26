@@ -50,7 +50,7 @@ public class UsersForRent extends HttpServlet {
     System.out.println(uid);
    List<Parking> parkings = new DBManager().getParking(uid);
    for (Parking p : parkings) {
-     p.setOccupied(new DBManager().getRentalsByParkingId(p.getParkID()).isEmpty() ? "No" : "Yes");
+     p.setOccupied(new DBManager().getRentalsByParkingId(p.getParkID()).isEmpty() ? false: true);
    }
    
     String json_response = new Gson().toJson(parkings); //"[{\"Address\" : \"Haifa\", \"Date\" : \"01.01.0000\", \"Price\" : \"52\",\"Hours\" : \"12:00-13:00\", \"Occupied\" : \"No\"}, {\"Address\" : \"Haifa\",\"Date\" : \"01.01.0000\", \"Price\" : \"52\", \"Hours\" : \"12:00-13:00\", \"Occupied\" : \"No\"}, {\"Address\" : \"Haifa\", \"Date\" : \"01.01.0000\", \"Price\" : \"52\",\"Hours\" : \"12:00-13:00\", \"Occupied\" : \"No\"}]";

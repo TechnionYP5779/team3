@@ -144,10 +144,6 @@
        markers.length = 0;
 
        locationSelect.innerHTML = "";
-       var option = document.createElement("option");
-       option.value = "none";
-       option.innerHTML = "See all results:";
-       locationSelect.appendChild(option);
      }
 
      function searchLocationsNear(center) {
@@ -204,6 +200,29 @@
            });
        }
 
+
+    function weight(radius){
+      if (radius < 0.3){
+        return 1.2;
+      }
+      if (radius < 0.6){
+        return 1.0;
+      }
+      if (radius < 1.0){
+        return 0.8;
+      }
+      if (radius < 1.5){
+        return 0.65;
+      }
+      if (radius < 3.0){
+        return 0.65;
+      }
+      if (radius < 4.0){
+        return 0.5;
+      }
+      return 0.5;
+    }
+
      function createMarker(latlng, address,distance,id,from,to,price) {
         var html = '<br><br><p><b>Distance: </b>' + distance +
          'km<br>' + '<b>Address: </b>'+address
@@ -213,9 +232,16 @@
           +' <br><br><form action="Buy" method="post">'
      +'<button class="btn btn-primary" name="foo" value="'+id+'">Rent this spot</button>'
      +'</form>' ;
+     var markerIcon = {
+            url: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Parking_icon.svg',
+            scaledSize: new google.maps.Size(50*weight(distance), 50*weight(distance)),
+    origin: new google.maps.Point(0, 0),
+    anchor: new google.maps.Point(20,40)
+          };
         var marker = new google.maps.Marker({
           map: map,
-          position: latlng
+          position: latlng,
+          icon: markerIcon
         });
         google.maps.event.addListener(marker, 'click', function() {
           infoWindow.setContent(html);
