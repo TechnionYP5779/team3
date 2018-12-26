@@ -90,7 +90,7 @@
         <option value="5" >5 kms</option>
         <option value="2">2 kms</option>
         <option value="1">1 kms</option>
-        
+
         <b> </b>
       </select>
       <input type="button" class="btn-primary" id="searchButton" value="Search"/>
@@ -162,6 +162,13 @@
 
            var xml = parseXml(data);
            var markerNodes = xml.documentElement.getElementsByTagName("marker");
+
+            if( !markerNodes || markerNodes.length ==0){
+              alert('we dont have any parkings for you');
+              return;
+            }
+
+
            var bounds = new google.maps.LatLngBounds();
            // var ids=["1","2","3"];
            // var names=["elad","anny","daniela"];
@@ -200,6 +207,8 @@
      function createMarker(latlng, address,distance,id,from,to,price) {
         var html = '<br><br><p><b>Distance: </b>' + distance +
          'km<br>' + '<b>Address: </b>'+address
+         +'<br><b>From: </b>'+from
+         +'<br><b>To: </b>'+to
         +'<br><b>Price: </b>'+price
           +' <br><br><form action="Buy" method="post">'
      +'<button class="btn btn-primary" name="foo" value="'+id+'">Rent this spot</button>'
