@@ -24,7 +24,6 @@ public class ParkingsNearby extends HttpServlet {
   public static final String HTML_START="<html><body>";
   public static final String HTML_END="</body></html>";
   public static final String legalPhoneRegex = "^(1\\-)?[0-9]{3}\\-?[0-9]{3}\\-?[0-9]{4}$";
-  public static final DBManager db = new DBManager(); 
 
   @Override public void init() throws ServletException {
     //we can create DB connection resource here and set it to Servlet context
@@ -65,7 +64,7 @@ public class ParkingsNearby extends HttpServlet {
    for( Parking parking  : lst) {
      //System.out.println(parking.getFrom());
      double dist = getDistanceFromLatLonInKm(lat, lng, parking.getLat(), parking.getLon());
-     if(dist<=radius && parsedDateandHour_getDate(parking.getFrom()).equals(date) && compareHours(from, parsedDateandHour_getHour(parking.getFrom())) && compareHours(parsedDateandHour_getHour(parking.getTo()),to)) {
+     if(dist<=radius && parsedDateandHour_getDate(parking.getFrom()).equals(date) && compareHours(from, parsedDateandHour_getHour(parking.getFrom())) && compareHours(parsedDateandHour_getHour(parking.getTo()),to) && parking.isOccupied() == false) {
      xml= xml+ "<marker id=\""+ parking.getParkID()+"\" "+"address=\""+parking.getAddress()+"\" "
      +"from=\""+parking.getFrom()+"\" "+"to=\""+parking.getTo()+"\" "+"price=\""+parking.getPrice()+"\" "+"lat=\""+parking.getLat()+"\" "+"lng=\""+parking.getLon()+"\""+" distance=\""+dist+"\" />";
      }
