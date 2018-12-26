@@ -54,7 +54,8 @@ public class Buy extends HttpServlet {
     Parking park=db.getParkingById(parking_id);
     System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAA " + park.getAddress());
     Rental rent=new Rental(123, parking_id, user_id, park.getFrom(), park.getTo(), "Jeep");
-    
+    park.setOccupied(true);
+    db.changeParkingOccupied(park);
     db.addRental(rent);
     System.out.println(username+" wants to buy parking number "+ parking_id);
     response.sendRedirect("ParkingOrders.html");
