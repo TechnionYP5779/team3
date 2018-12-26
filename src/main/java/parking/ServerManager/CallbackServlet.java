@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 
 /**
  * The Servlet endpoint used as the callback handler in the OAuth 2.0 authorization code grant flow.
@@ -21,6 +20,10 @@ import java.io.UnsupportedEncodingException;
 @WebServlet(urlPatterns = {"/callback"})
 public class CallbackServlet extends HttpServlet {
 
+    /**
+   * 
+   */
+  private static final long serialVersionUID = 1L;
     private String redirectOnSuccess;
     private String redirectOnFail;
     private AuthenticationController authenticationController;
@@ -47,11 +50,8 @@ public class CallbackServlet extends HttpServlet {
         redirectOnSuccess = "/portal/home";
         redirectOnFail = "/login";
 
-        try {
-            authenticationController = AuthenticationControllerProvider.getInstance(config);
-        } catch (UnsupportedEncodingException e) {
-            throw new ServletException("Couldn't create the AuthenticationController instance. Check the configuration.", e);
-        }
+        authenticationController = AuthenticationControllerProvider.getInstance(config);
+        
     }
 
     /**

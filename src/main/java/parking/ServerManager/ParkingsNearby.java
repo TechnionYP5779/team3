@@ -3,13 +3,10 @@ package parking.ServerManager;
 import java.io.*;
 import java.util.*;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
-import com.google.gson.*;
 
 import parking.db.*;
 
@@ -47,18 +44,18 @@ public class ParkingsNearby extends HttpServlet {
     return deg * (Math.PI/180);
   }
 
-  @SuppressWarnings("boxing") @Override protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+  @Override protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     System.out.println("asfassafasffafs");
 
-   Double radius= Double.parseDouble(request.getParameter("radius"));
-   Double lat=Double.parseDouble(request.getParameter("lat"));
-   Double lng=Double.parseDouble( request.getParameter("lng"));
-   String from= request.getParameter("from");
-   String to= request.getParameter("to");
-   String date= request.getParameter("date");
+   double radius= Double.parseDouble(request.getParameter("radius"));
+   double lat=Double.parseDouble(request.getParameter("lat"));
+   double lng=Double.parseDouble( request.getParameter("lng"));
+//   String from= request.getParameter("from");
+//   String to= request.getParameter("to");
+//   String date= request.getParameter("date");
    System.out.println("Im hereeee");
 
-   List<Parking> lst = new DBManager().getAllParking();
+   List<Parking> lst = DBManager.getAllParking();
    String xml="<?xml version=\"1.0\"?><markers>";
    for( Parking parking  : lst) {
      double dist = getDistanceFromLatLonInKm(lat, lng, parking.getLat(), parking.getLon());

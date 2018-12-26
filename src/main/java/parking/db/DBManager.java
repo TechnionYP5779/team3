@@ -5,7 +5,7 @@ import java.util.*;
 
 public class DBManager {
   
-  private Connection connect() throws SQLException {
+  private static Connection connect() throws SQLException {
     Connection conn;
     
     try {
@@ -14,17 +14,17 @@ public class DBManager {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
-    String url = "jdbc:sqlite:/home/eric/Documents/team3/main.db";
+    String url = "jdbc:sqlite:C:\\Users\\ANNY\\Desktop\\yearly_project\\team3\\main.db";
     conn = DriverManager.getConnection(url);
     
     return conn;
   }
   
-  public void addUser(User u)
+  public static void addUser(User u)
   {
     String sql = "INSERT INTO users(username,password,firstName,lastName,phone) VALUES(?,?,?,?,?)";
     
-    try (Connection conn = this.connect();
+    try (Connection conn = DBManager.connect();
         PreparedStatement pstmt  = conn.prepareStatement(sql)){
         pstmt.setString(1, u.getUserName());
         pstmt.setString(2, u.getPassword());
@@ -40,10 +40,10 @@ public class DBManager {
   }
   
   
-  public Parking getParkingById(int id){
+  public static Parking getParkingById(int id){
     String sql = "SELECT * FROM parkingSpaces WHERE id = ?";
     
-    try (Connection conn = this.connect();
+    try (Connection conn = DBManager.connect();
         PreparedStatement pstmt  = conn.prepareStatement(sql)){
         
         pstmt.setInt(1, id);
@@ -67,10 +67,10 @@ public class DBManager {
     }
 }
   
-  public List<Rental> getRentalsByParkingId(int pid){
+  public static List<Rental> getRentalsByParkingId(int pid){
     String sql = "SELECT * FROM rentals WHERE parkingId = ?";
     
-    try (Connection conn = this.connect();
+    try (Connection conn = DBManager.connect();
         PreparedStatement pstmt  = conn.prepareStatement(sql)){
         
         pstmt.setInt(1, pid);
@@ -95,10 +95,10 @@ public class DBManager {
     }
 }
   
-  public User getUserById(int uid){
+  public static User getUserById(int uid){
       String sql = "SELECT * FROM users WHERE id = ?";
       
-      try (Connection conn = this.connect();
+      try (Connection conn = DBManager.connect();
           PreparedStatement pstmt  = conn.prepareStatement(sql)){
           
           pstmt.setInt(1, uid);
@@ -122,10 +122,10 @@ public class DBManager {
       }
   }
   
-  public User getUserByUsername(String username){
+  public static User getUserByUsername(String username){
     String sql = "SELECT * FROM users WHERE username = ?";
     
-    try (Connection conn = this.connect();
+    try (Connection conn = DBManager.connect();
         PreparedStatement pstmt  = conn.prepareStatement(sql)){
         
         pstmt.setString(1, username);
@@ -150,10 +150,10 @@ public class DBManager {
     }
 }
   
-  public List<Parking> getParking(int ownerId){
+  public static List<Parking> getParking(int ownerId){
     String sql = "SELECT * FROM parkingSpaces WHERE ownerUid = ?";
     
-    try (Connection conn = this.connect();
+    try (Connection conn = DBManager.connect();
         PreparedStatement pstmt  = conn.prepareStatement(sql)){
         
         pstmt.setInt(1, ownerId);
@@ -178,10 +178,10 @@ public class DBManager {
     }
 }
   
-  public List<Parking> getAllParking(){
+  public static List<Parking> getAllParking(){
     String sql = "SELECT * FROM parkingSpaces";
     
-    try (Connection conn = this.connect();
+    try (Connection conn = DBManager.connect();
         PreparedStatement pstmt  = conn.prepareStatement(sql)){
       
         try(ResultSet rs  = pstmt.executeQuery()) {
@@ -204,10 +204,10 @@ public class DBManager {
     }
 }
   
-  public List<Rental> getRentalsByRenter(int renterId){
+  public static List<Rental> getRentalsByRenter(int renterId){
     String sql = "SELECT * FROM rentals WHERE renterId = ?";
     
-    try (Connection conn = this.connect();
+    try (Connection conn = DBManager.connect();
         PreparedStatement pstmt  = conn.prepareStatement(sql)){
         
         pstmt.setInt(1, renterId);
@@ -232,10 +232,10 @@ public class DBManager {
     }
 }
   
-  public List<Rental> getRentalsByParking(int parkingId){
+  public static List<Rental> getRentalsByParking(int parkingId){
     String sql = "SELECT * FROM rentals WHERE parkingId = ?";
     
-    try (Connection conn = this.connect();
+    try (Connection conn = DBManager.connect();
         PreparedStatement pstmt  = conn.prepareStatement(sql)){
         
         pstmt.setInt(1, parkingId);
@@ -261,11 +261,11 @@ public class DBManager {
 }
   
 
-  public void addParking(Parking p)
+  public static void addParking(Parking p)
   {
     String sql = "INSERT INTO parkingSpaces(ownerUid,address,lat,lon,startingTime,endingTime,price) VALUES(?,?,?,?,?,?,?)";
     
-    try (Connection conn = this.connect();
+    try (Connection conn = DBManager.connect();
         PreparedStatement pstmt  = conn.prepareStatement(sql)){
         pstmt.setInt(1, p.getUserID());
         pstmt.setString(2, p.getAddress());
@@ -282,11 +282,11 @@ public class DBManager {
     }
   }  
   
-  public void addRental(Rental r)
+  public static void addRental(Rental r)
   {
     String sql = "INSERT INTO rentals(parkingId,renterId,startingTime,endingTime,carModel) VALUES(?,?,?,?,?)";
     
-    try (Connection conn = this.connect();
+    try (Connection conn = DBManager.connect();
         PreparedStatement pstmt  = conn.prepareStatement(sql)){
         pstmt.setInt(1, r.getParkingId());
         pstmt.setInt(2, r.getRenterId());
@@ -302,8 +302,7 @@ public class DBManager {
   }  
   
   public static void main(String[] args) {
-    DBManager app = new DBManager();
-    System.out.println(app.getUserById(1));
-    System.out.println(app.getParking(1).toString());
+    System.out.println(DBManager.getUserById(1));
+    System.out.println(DBManager.getParking(1).toString());
   }
 }

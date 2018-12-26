@@ -7,7 +7,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import com.auth0.AuthenticationController;
 import javax.servlet.ServletConfig;
-import java.io.UnsupportedEncodingException;
 /**
  * Servlet Tutorial - Servlet Example
  */
@@ -25,11 +24,8 @@ public class LoginServlet extends HttpServlet {
   public void init(ServletConfig config) throws ServletException {
       super.init(config);
       domain = config.getServletContext().getInitParameter("com.auth0.domain");
-      try {
-          authenticationController = AuthenticationControllerProvider.getInstance(config);
-      } catch (UnsupportedEncodingException e) {
-          throw new ServletException("Couldn't create the AuthenticationController instance. Check the configuration.", e);
-      }
+      authenticationController = AuthenticationControllerProvider.getInstance(config);
+      
   }
 
   @Override

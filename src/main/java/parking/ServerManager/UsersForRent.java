@@ -3,9 +3,7 @@ package parking.ServerManager;
 import java.io.*;
 import java.util.*;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
@@ -48,9 +46,9 @@ public class UsersForRent extends HttpServlet {
       }
     }
     System.out.println(uid);
-   List<Parking> parkings = new DBManager().getParking(uid);
+   List<Parking> parkings = DBManager.getParking(uid);
    for (Parking p : parkings) {
-     p.setOccupied(new DBManager().getRentalsByParkingId(p.getParkID()).isEmpty() ? "No" : "Yes");
+     p.setOccupied(DBManager.getRentalsByParkingId(p.getParkID()).isEmpty() ? "No" : "Yes");
    }
    
     String json_response = new Gson().toJson(parkings); //"[{\"Address\" : \"Haifa\", \"Date\" : \"01.01.0000\", \"Price\" : \"52\",\"Hours\" : \"12:00-13:00\", \"Occupied\" : \"No\"}, {\"Address\" : \"Haifa\",\"Date\" : \"01.01.0000\", \"Price\" : \"52\", \"Hours\" : \"12:00-13:00\", \"Occupied\" : \"No\"}, {\"Address\" : \"Haifa\", \"Date\" : \"01.01.0000\", \"Price\" : \"52\",\"Hours\" : \"12:00-13:00\", \"Occupied\" : \"No\"}]";

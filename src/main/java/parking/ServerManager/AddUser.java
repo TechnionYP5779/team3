@@ -52,7 +52,7 @@ public class AddUser extends HttpServlet {
       errorMessage += "Please enter your last name<br/>";
     if(userName.isEmpty())
       errorMessage += "Please enter your username<br/>";
-    if(new DBManager().getUserByUsername(userName) != null)
+    if(DBManager.getUserByUsername(userName) != null)
       errorMessage += "Username taken<br/>";
     
     if (!errorMessage.isEmpty()) {
@@ -66,12 +66,15 @@ public class AddUser extends HttpServlet {
     
     User u = new User(-1, userName, firstName, lastName, phoneNumber, password);
     
-    new DBManager().addUser(u);
+    DBManager.addUser(u);
+    u = DBManager.getUserByUsername(userName);
     
     //TODO maybe change to user id?
     Cookie user = new Cookie("user", userName);
     //TODO set expire right
     user.setMaxAge(60*60*24);
+    Cookie uid = new Cookie("uid", "" + u.getUserID());
+    response.addCookie( uid );
     response.addCookie( user );
     
     response.sendRedirect("homePage.html");

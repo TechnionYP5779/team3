@@ -13,7 +13,8 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+</head>
+<body>
 
 <div class="bg-image"></div>
 
@@ -34,6 +35,7 @@
         <li><a href="index.html#About Us">ABOUT</a></li>
         <li><a href="loginUser.html">LOGIN</a></li>
         <li><a href="adduser.html">REGISTER</a></li>
+        </ul>
     </div>
   </div>
 </nav>
@@ -53,7 +55,7 @@
     <div class="form-group">
       <label class="control-label col-sm-4" for="userName">User Name:</label>
       <div class="col-sm-4">
-        <input type="userName" class="form-control" id="userName" value="<%= request.getAttribute("username") %>" name="userName" placeholder="Enter user name">
+        <input type="text" class="form-control" id="userName" value="<%= request.getAttribute("username") %>" name="userName" placeholder="Enter user name">
       </div>
     </div>
     <div class="form-group">
@@ -71,6 +73,5 @@
 </div>
 </div>
 
-
-</head>
-<body>
+</body>
+</html>

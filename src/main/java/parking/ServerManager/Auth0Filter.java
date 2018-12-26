@@ -16,6 +16,7 @@ public class Auth0Filter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
+      //TODO
     }
 
     /**
@@ -40,5 +41,6 @@ public class Auth0Filter implements Filter {
 
     @Override
     public void destroy() {
+      //TODO
     }
 }

@@ -3,7 +3,6 @@ package parking.ServerManager;
 
 import java.io.*;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
@@ -34,7 +33,7 @@ public class Buy extends HttpServlet {
   
   @Override protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
   //get parameters
-    Integer parking_id = Integer.parseInt(request.getParameter("foo"));
+    int parking_id = Integer.parseInt(request.getParameter("foo"));
     
     Cookie[] cookies = request.getCookies();
     String username=null;
@@ -47,15 +46,15 @@ public class Buy extends HttpServlet {
       }
     }
     
-    Integer user_id = Integer.parseInt(username);
+    int user_id = Integer.parseInt(username);
     
-    DBManager db =new DBManager();
     
-    Parking park=db.getParkingById(parking_id);
+    
+    Parking park=DBManager.getParkingById(parking_id);
     System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAA " + park.getAddress());
     Rental rent=new Rental(123, parking_id, user_id, park.getFrom(), park.getTo(), "Jeep");
     
-    db.addRental(rent);
+    DBManager.addRental(rent);
     System.out.println(username+" wants to buy parking number "+ parking_id);
     response.sendRedirect("ParkingOrders.html");
     return;

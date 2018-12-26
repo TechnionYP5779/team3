@@ -37,6 +37,7 @@
         <li><a href="index.html#About Us">ABOUT</a></li>
         <li><a href="loginUser.html">LOGIN</a></li>
         <li><a href="adduser.html">REGISTER</a></li>
+        </ul>
     </div>
 
   </div>
@@ -55,7 +56,7 @@
     <div class="form-group">
       <label class="control-label col-sm-4" for="userName">User Name</label>
       <div class="col-sm-4">
-        <input type="userName" class="form-control" id="userName" name="userName" value="<%= request.getAttribute("username")  %>" placeholder="Enter user name">
+        <input type="text" class="form-control" id="userName" name="userName" value="<%= request.getAttribute("username")  %>" placeholder="Enter user name">
       </div>
     </div>
     <div class="form-group">

@@ -1,15 +1,13 @@
 package parking.ServerManager;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
+import fluent.ly.*;
 import parking.db.*;
 
 /**
@@ -73,6 +71,7 @@ public class AddParkSpot extends HttpServlet {
         price = Integer.parseInt(price_string);
     }
     catch (NumberFormatException e) {
+      forget.it(e);
       alert_error("Please enter a positive number as price", request, response);
       return;
     }
@@ -87,6 +86,7 @@ public class AddParkSpot extends HttpServlet {
          lon = Double.parseDouble(request.getParameter("lng"));
     }
     catch (NumberFormatException e) {
+      forget.it(e);
       alert_error("Address not found", request, response);
       return;
     }
@@ -109,7 +109,7 @@ public class AddParkSpot extends HttpServlet {
     }
     //save to DB
     Parking p = new Parking(-1, uid, address, lat, lon, from + " " + date, to + " " + date, price);
-    new DBManager().addParking(p);
+    DBManager.addParking(p);
     
     // redirect to correct page.
     response.sendRedirect("parkTable.html");

@@ -46,9 +46,9 @@ public class MyOrders extends HttpServlet {
       }
     }
     System.out.println("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB " + uid);
-	  List<Rental> rentals = new DBManager().getRentalsByRenter(uid);
+	  List<Rental> rentals = DBManager.getRentalsByRenter(uid);
 	  for (Rental r : rentals) {
-	    Parking p = new DBManager().getParkingById(r.getParkingId());
+	    Parking p = DBManager.getParkingById(r.getParkingId());
 	    System.out.println("CCCCCCCCCCCCCCCCCCCCCCCCC " + r.getParkingId());
 	    r.setAddress(p.getAddress());
 	    r.setPrice(p.getPrice());

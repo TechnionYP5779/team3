@@ -40,7 +40,7 @@ public class Login extends HttpServlet {
     log("password is " + password);
     log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     
-    User u = new DBManager().getUserByUsername(userName);
+    User u = DBManager.getUserByUsername(userName);
     
     if(u == null || !u.getPassword().equals(password))
     {
