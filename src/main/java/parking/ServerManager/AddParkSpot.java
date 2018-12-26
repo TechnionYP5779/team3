@@ -108,7 +108,7 @@ public class AddParkSpot extends HttpServlet {
 
     }
     //save to DB
-    Parking p = new Parking(-1, uid, address, lat, lon, from + " " + date, to + " " + date, price);
+    Parking p = new Parking(-1, uid, address, lat, lon, from + " " + date, to + " " + date, price, false);
     new DBManager().addParking(p);
     
     // redirect to correct page.

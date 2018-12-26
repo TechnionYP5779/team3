@@ -53,8 +53,8 @@ public class DBManager {
             return null;    //user not found
           
           assert !rs.isLast();
-          
-          Parking u = new Parking(id,  rs.getInt("ownerUid"), rs.getString("address"), rs.getDouble("lat"), rs.getDouble("lon"), rs.getString("startingTime"), rs.getString("endingTime"), rs.getInt("price"));
+          boolean occupied = rs.getInt("occupied") == 0 ? false : true;
+          Parking u = new Parking(id,  rs.getInt("ownerUid"), rs.getString("address"), rs.getDouble("lat"), rs.getDouble("lon"), rs.getString("startingTime"), rs.getString("endingTime"), rs.getInt("price"), occupied);
           
           return u;
         }
@@ -163,7 +163,8 @@ public class DBManager {
           
           while(rs.next())
           {
-            Parking p = new Parking(rs.getInt("id"), ownerId, rs.getString("address"), rs.getDouble("lat"), rs.getDouble("lon"), rs.getString("startingTime"), rs.getString("endingTime"), rs.getInt("price"));
+            boolean occupied = rs.getInt("occupied") == 0 ? false : true;
+            Parking p = new Parking(rs.getInt("id"), ownerId, rs.getString("address"), rs.getDouble("lat"), rs.getDouble("lon"), rs.getString("startingTime"), rs.getString("endingTime"), rs.getInt("price"), occupied);
             lst.add(p);
           }
           
@@ -189,7 +190,8 @@ public class DBManager {
           
           while(rs.next())
           {
-            Parking p = new Parking(rs.getInt("id"), rs.getInt("ownerUid"), rs.getString("address"), rs.getDouble("lat"), rs.getDouble("lon"), rs.getString("startingTime"), rs.getString("endingTime"), rs.getInt("price"));
+            boolean occupied = rs.getInt("occupied") == 0 ? false : true;
+            Parking p = new Parking(rs.getInt("id"), rs.getInt("ownerUid"), rs.getString("address"), rs.getDouble("lat"), rs.getDouble("lon"), rs.getString("startingTime"), rs.getString("endingTime"), rs.getInt("price"), occupied);
             lst.add(p);
           }
           
@@ -260,10 +262,26 @@ public class DBManager {
     }
 }
   
+  
+  public void changeParkingOccupied(Parking p)
+  {
+    String sql = "UPDATE parkingSpaces SET occupied = ? WHERE id = ?";
+    
+    try (Connection conn = this.connect();
+        PreparedStatement pstmt  = conn.prepareStatement(sql)){
+        pstmt.setInt(1, p.getParkID());
+        pstmt.setInt(2, p.isOccupied() ? 1 : 0);
+        pstmt.executeUpdate();
+    } catch (SQLException e) {
+          System.out.println(e.getMessage());
+          
+          return;
+    }
+  }
 
   public void addParking(Parking p)
   {
-    String sql = "INSERT INTO parkingSpaces(ownerUid,address,lat,lon,startingTime,endingTime,price) VALUES(?,?,?,?,?,?,?)";
+    String sql = "INSERT INTO parkingSpaces(ownerUid,address,lat,lon,startingTime,endingTime,price, occupied) VALUES(?,?,?,?,?,?,?,?)";
     
     try (Connection conn = this.connect();
         PreparedStatement pstmt  = conn.prepareStatement(sql)){
@@ -274,6 +292,7 @@ public class DBManager {
         pstmt.setString(5, p.getFrom());
         pstmt.setString(6, p.getTo());
         pstmt.setInt(7, p.getPrice());
+        pstmt.setInt(8, p.isOccupied() ? 1 : 0);
         pstmt.executeUpdate();
     } catch (SQLException e) {
           System.out.println(e.getMessage());

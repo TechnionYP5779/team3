@@ -9,10 +9,14 @@ public class Parking {
   String From;
   String To;
   int Price;
-  String occupied;
+  boolean occupied;
   
+  public boolean isOccupied() {
+    return occupied;
+  }
+
   public Parking(int ParkID, int UserID, String address, double lat, double lon,
-          String From, String To, int Price){
+          String From, String To, int Price, boolean occupied){
     this.UserID=UserID;
     this.ParkID=ParkID;
     this.address=address;
@@ -21,9 +25,10 @@ public class Parking {
     this.From=From;
     this.To=To;
     this.Price=Price;
+    this.occupied = occupied;
   }
   
-  public void setOccupied(String occupied) {
+  public void setOccupied(boolean occupied) {
     this.occupied = occupied;
   }
 
