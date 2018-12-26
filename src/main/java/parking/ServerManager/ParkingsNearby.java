@@ -9,6 +9,8 @@ import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
+import org.sqlite.core.*;
+
 import com.google.gson.*;
 
 import parking.db.*;
@@ -22,7 +24,7 @@ public class ParkingsNearby extends HttpServlet {
   public static final String HTML_START="<html><body>";
   public static final String HTML_END="</body></html>";
   public static final String legalPhoneRegex = "^(1\\-)?[0-9]{3}\\-?[0-9]{3}\\-?[0-9]{4}$";
-
+  public static final DBManager db = new DBManager(); 
 
   @Override public void init() throws ServletException {
     //we can create DB connection resource here and set it to Servlet context
