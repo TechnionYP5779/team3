@@ -192,7 +192,7 @@
              bounds.extend(latlng);
            }
            map.fitBounds(bounds);
-           locationSelect.style.visibility = "visible";
+           locationSelect.style.visibility = "hidden";
            locationSelect.onchange = function() {
              var markerNum = locationSelect.options[locationSelect.selectedIndex].value;
              google.maps.event.trigger(markers[markerNum], 'click');
