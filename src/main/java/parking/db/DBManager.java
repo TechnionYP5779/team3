@@ -56,7 +56,7 @@ public class DBManager {
           
           assert !rs.isLast();
           boolean occupied = rs.getInt("occupied") == 0 ? false : true;
-          Parking u = new Parking(id,  rs.getInt("ownerUid"), rs.getString("address"), rs.getDouble("lat"), rs.getDouble("lon"), rs.getString("startingTime"), rs.getString("endingTime"), rs.getInt("price"), occupied);
+          Parking u = new Parking(id,  rs.getString("ownerUid"), rs.getString("address"), rs.getDouble("lat"), rs.getDouble("lon"), rs.getString("startingTime"), rs.getString("endingTime"), rs.getInt("price"), occupied);
           
           return u;
         }
@@ -82,7 +82,7 @@ public class DBManager {
           
           while(rs.next())
           {
-            Rental r = new Rental(rs.getInt("id"), pid, rs.getInt("renterId"), rs.getString("startingTime"), rs.getString("endingTime"), rs.getString("carModel"));
+            Rental r = new Rental(rs.getInt("id"), pid, rs.getString("renterId"), rs.getString("startingTime"), rs.getString("endingTime"), rs.getString("carModel"));
             lst.add(r);
           }
           
@@ -152,13 +152,13 @@ public class DBManager {
     }
 }
   
-  public List<Parking> getParking(int ownerId){
+  public List<Parking> getParking(String ownerId){
     String sql = "SELECT * FROM parkingSpaces WHERE ownerUid = ?";
     
     try (Connection conn = this.connect();
         PreparedStatement pstmt  = conn.prepareStatement(sql)){
         
-        pstmt.setInt(1, ownerId);
+        pstmt.setString(1, ownerId);
       
         try(ResultSet rs  = pstmt.executeQuery()) {
           List<Parking> lst = new ArrayList<>();
@@ -193,7 +193,7 @@ public class DBManager {
           while(rs.next())
           {
             boolean occupied = rs.getInt("occupied") == 0 ? false : true;
-            Parking p = new Parking(rs.getInt("id"), rs.getInt("ownerUid"), rs.getString("address"), rs.getDouble("lat"), rs.getDouble("lon"), rs.getString("startingTime"), rs.getString("endingTime"), rs.getInt("price"), occupied);
+            Parking p = new Parking(rs.getInt("id"), rs.getString("ownerUid"), rs.getString("address"), rs.getDouble("lat"), rs.getDouble("lon"), rs.getString("startingTime"), rs.getString("endingTime"), rs.getInt("price"), occupied);
             lst.add(p);
           }
           
@@ -208,13 +208,13 @@ public class DBManager {
     }
 }
   
-  public List<Rental> getRentalsByRenter(int renterId){
+  public List<Rental> getRentalsByRenter(String renterId){
     String sql = "SELECT * FROM rentals WHERE renterId = ?";
     
     try (Connection conn = this.connect();
         PreparedStatement pstmt  = conn.prepareStatement(sql)){
         
-        pstmt.setInt(1, renterId);
+        pstmt.setString(1, renterId);
       
         try(ResultSet rs  = pstmt.executeQuery()) {
           List<Rental> lst = new ArrayList<>();
@@ -249,7 +249,7 @@ public class DBManager {
           
           while(rs.next())
           {
-            Rental p = new Rental(rs.getInt("id"), parkingId, rs.getInt("renterId"), rs.getString("startingTime"), rs.getString("endingTime"), rs.getString("carModel"));
+            Rental p = new Rental(rs.getInt("id"), parkingId, rs.getString("renterId"), rs.getString("startingTime"), rs.getString("endingTime"), rs.getString("carModel"));
             lst.add(p);
           }
           
@@ -302,7 +302,7 @@ public class DBManager {
     
     try (Connection conn = this.connect();
         PreparedStatement pstmt  = conn.prepareStatement(sql)){
-        pstmt.setInt(1, p.getUserID());
+        pstmt.setString(1, p.getUserID());
         pstmt.setString(2, p.getAddress());
         pstmt.setDouble(3, p.getLat());
         pstmt.setDouble(4, p.getLon());
@@ -325,7 +325,7 @@ public class DBManager {
     try (Connection conn = this.connect();
         PreparedStatement pstmt  = conn.prepareStatement(sql)){
         pstmt.setInt(1, r.getParkingId());
-        pstmt.setInt(2, r.getRenterId());
+        pstmt.setString(2, r.getRenterId());
         pstmt.setString(3, r.getStartingTime());
         pstmt.setString(4, r.getEndingTime());
         pstmt.setString(5, r.getCarModel());
@@ -340,6 +340,6 @@ public class DBManager {
   public static void main(String[] args) {
     DBManager app = new DBManager();
     System.out.println(app.getUserById(1));
-    System.out.println(app.getParking(1).toString());
+    //System.out.println(app.getParking(1).toString());
   }
 }

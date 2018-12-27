@@ -38,6 +38,7 @@ public class LoginServlet extends HttpServlet {
       log("redirect uri:" + redirectUri);
       String authorizeUrl = authenticationController.buildAuthorizeUrl(req, redirectUri)
               .withAudience(String.format("https://%s/userinfo", domain))
+              .withScope("openid")
               .build();
       log("authorize ulr:" + authorizeUrl);
       res.sendRedirect(authorizeUrl);
@@ -49,6 +50,7 @@ public class LoginServlet extends HttpServlet {
 
     String authorizeUrl = authenticationController.buildAuthorizeUrl(request, redirectUri)
             .withAudience(String.format("https://%s/userinfo", domain))
+            .withScope("openid")
             .build();
     response.sendRedirect(authorizeUrl);
 /*

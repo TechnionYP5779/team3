@@ -10,6 +10,8 @@ import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
+import com.auth0.*;
+
 import parking.db.*;
 
 /**
@@ -95,8 +97,8 @@ public class AddParkSpot extends HttpServlet {
     
     //getting user id cookie
     Cookie[] cookies = request.getCookies();
-    int uid = -1;
-    
+    String uid = (String) SessionUtils.get(request, "uid");
+    /*
     for(Cookie c : cookies)
     {
       System.out.println(c.getName());
@@ -106,7 +108,7 @@ public class AddParkSpot extends HttpServlet {
         break;
       }
 
-    }
+    }*/
     //save to DB
     Parking p = new Parking(-1, uid, address, lat, lon, from + " " + date, to + " " + date, price, false);
     new DBManager().addParking(p);

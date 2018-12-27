@@ -2,7 +2,7 @@ package parking.db;
 
 public class Parking {
   int ParkID;
-  int UserID;
+  String UserID;
   String address;
   double lat;
   double lon;
@@ -15,7 +15,7 @@ public class Parking {
     return occupied;
   }
 
-  public Parking(int ParkID, int UserID, String address, double lat, double lon,
+  public Parking(int ParkID, String UserID, String address, double lat, double lon,
           String From, String To, int Price, boolean occupied){
     this.UserID=UserID;
     this.ParkID=ParkID;
@@ -50,11 +50,11 @@ public class Parking {
     ParkID = parkID;
   }
 
-  public void setUserID(int userID) {
+  public void setUserID(String userID) {
     UserID = userID;
   }
 
-  public int getUserID() {
+  public String getUserID() {
     return UserID;    
   }
   

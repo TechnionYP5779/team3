@@ -7,6 +7,9 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
+
+import com.auth0.*;
+
 import parking.db.*;
 
 /**
@@ -37,27 +40,17 @@ public class Buy extends HttpServlet {
     Integer parking_id = Integer.parseInt(request.getParameter("foo"));
     
     Cookie[] cookies = request.getCookies();
-    String username=null;
-
-    for (int i = 0; i < cookies.length; i++) {
-      String name = cookies[i].getName();
-      if(name.equals("uid")) {
-          username= cookies[i].getValue();
-          break;
-      }
-    }
-    
-    Integer user_id = Integer.parseInt(username);
+    String uid= (String) SessionUtils.get(request, "uid");
     
     DBManager db =new DBManager();
     
     Parking park=db.getParkingById(parking_id);
     System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAA " + park.getAddress());
-    Rental rent=new Rental(123, parking_id, user_id, park.getFrom(), park.getTo(), "Jeep");
+    Rental rent=new Rental(123, parking_id, uid, park.getFrom(), park.getTo(), "Jeep");
     park.setOccupied(true);
     db.changeParkingOccupied(park);
     db.addRental(rent);
-    System.out.println(username+" wants to buy parking number "+ parking_id);
+    System.out.println(uid+" wants to buy parking number "+ parking_id);
     response.sendRedirect("ParkingOrders.html");
     return;
     

@@ -2,7 +2,7 @@ package parking.db;
 
 public class Rental {
   int id;
-  int renterId;
+  String renterId;
   int parkingId;
   String startingTime;    //TODO: change to datetime object?
   String endingTime;
@@ -10,7 +10,7 @@ public class Rental {
   double price;
   String address;
   
-  public Rental(int id, int parkingId, int renterId, String startingTime, String endingTime, String carModel) {
+  public Rental(int id, int parkingId, String renterId, String startingTime, String endingTime, String carModel) {
     this.id = id;
     this.parkingId = parkingId;
     this.renterId = renterId;
@@ -30,10 +30,10 @@ public class Rental {
   public int getParkingId() {
     return parkingId;
   }
-  public int getRenterId() {
+  public String getRenterId() {
     return renterId;
   }
-  public void setRenterId(int renterId) {
+  public void setRenterId(String renterId) {
     this.renterId = renterId;
   }
   public String getStartingTime() {
