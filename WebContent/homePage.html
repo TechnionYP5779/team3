@@ -1,17 +1,29 @@
 ﻿<!DOCTYPE html>
+
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
-<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+<script type="text/javascript">
+	function layouthandler(){
+		var styleLink = document.getElementById("pagestyle");
+		if(  window.innerHeight < 400){
+			styleLink.href= "homePageSmallest.css";
+		} else if(window.innerHeight < 650) {
+			styleLink.href= "homePageSmall.css";
+		} else {
+			styleLink.href= "homePage.css";
+		}
+	}
+</script>
 <html lang="en">
 
     <head>
         <title>Park4You</title>
     </head>
-<body  class="bg-image" bgcolor="#123456">
+  
+<body  class="bg-image" bgcolor="#123456" onresize="layouthandler()">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="homePage.css">
+    <link id="pagestyle" rel="stylesheet" type="text/css" href="homePageSmall.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
 
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
@@ -44,7 +56,8 @@
     <div class= "bg-header">
         <h1 style="font-size:60px;">Home Page</h1>
     </div>
-    <div class="buttons" id="buttons">
+		
+    <div class="center-buttons" id="buttons">
     	<div id=center-right>
     	<a class='btn btn-info btn-lg .btn-block' href="addpark.html" role="button">
         Offer Your 
