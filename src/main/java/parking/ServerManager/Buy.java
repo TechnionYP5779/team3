@@ -68,13 +68,16 @@ public class Buy extends HttpServlet {
       park.setOccupied(true);
       db.addParking(park);
       
-      //add new parking spot for the time before the new rent 
-      Parking parkingSplitFirst = new Parking(-1, park.getUserID(), park.getAddress(), park.getLat(), park.getLon(), fromParking + " " + dateFrom, fromRequest + " " + dateTo, park.getPrice(), false);
-      db.addParking(parkingSplitFirst);
-      
-    //add new parking spot for the time after the new rent 
-      Parking parkingSplitSecond = new Parking(-1, park.getUserID(), park.getAddress(), park.getLat(), park.getLon(), toRequest + " " + dateFrom, toParking + " " + dateTo, park.getPrice(), false);
-      db.addParking(parkingSplitSecond);
+      if(hoursDiff(fromRequest, fromParking) != 0 ) {
+        //add new parking spot for the time before the new rent 
+         Parking parkingSplitFirst = new Parking(-1, park.getUserID(), park.getAddress(), park.getLat(), park.getLon(), fromParking + " " + dateFrom, fromRequest + " " + dateTo, park.getPrice(), false);
+         db.addParking(parkingSplitFirst);
+      }
+      if(hoursDiff(toParking, toRequest) != 0) {
+        //add new parking spot for the time after the new rent 
+        Parking parkingSplitSecond = new Parking(-1, park.getUserID(), park.getAddress(), park.getLat(), park.getLon(), toRequest + " " + dateFrom, toParking + " " + dateTo, park.getPrice(), false);
+        db.addParking(parkingSplitSecond);
+      }
       //add new rented parking to rented table
       Rental rent=new Rental(123, parking_id, user_id, park.getFrom(), park.getTo(), "Jeep");
       db.addRental(rent);
@@ -82,11 +85,11 @@ public class Buy extends HttpServlet {
       System.out.println(username+" wants to buy parking number "+ parking_id);
       response.sendRedirect("ParkingOrders.html");
     }else {
-      request.setAttribute("errorMessage", "Can not leave a span of less than an hour!");
-      RequestDispatcher rd = request.getRequestDispatcher("loginUser.jsp");
-      rd.forward(request, response);
+      PrintWriter pw = response.getWriter(); 
+      pw.println("<script type=\"text/javascript\">");
+      pw.println("alert('Can not leave a span of less than an hour!');");
+      pw.println("</script>");
     }
-    
     return;
     
   }
