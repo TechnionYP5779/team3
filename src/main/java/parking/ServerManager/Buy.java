@@ -34,7 +34,12 @@ public class Buy extends HttpServlet {
   
   @Override protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
   //get parameters
-    Integer parking_id = Integer.parseInt(request.getParameter("foo"));
+    String req=request.getParameter("foo");
+    
+    String fromRequest= req.split(",")[1];
+    String torequest = req.split(",")[2];
+    
+    Integer parking_id = Integer.parseInt(req.split(",")[0]);
     
     Cookie[] cookies = request.getCookies();
     String username=null;
@@ -50,8 +55,7 @@ public class Buy extends HttpServlet {
     Integer user_id = Integer.parseInt(username);
     
     DBManager db =new DBManager();
-    String fromRequest= request.getParameter("FromHour");
-    String toRequest= request.getParameter("ToHour");
+
     
     Parking park=db.getParkingById(parking_id);
     String fromParking = parsedDateandHour_getHour(park.getFrom()); 
