@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Park4You</title>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+   <link rel="stylesheet" href="search.css">
+   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+  <title>Info Windows</title>
+  <style>
+    /* Always set the map height explicitly to define the size of the div
+     * element that contains the map. */
+    #map {
+      height: 100%;
+    }
+    /* Optional: Makes the sample page fill the window. */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+<nav id="my_nav" class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Park4You</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="homePage.html">HOME</a></li>
+        <li><a href="homePage.html#About Us">ABOUT</a></li>
+         <li><a onclick="myFunction()">LOGOUT</a></li>
+        </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+
+<div  id="login" class="bg-text">
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+</div>
+
+
+
+
+<body onload="initMap()">
+
+  <%
+	if(request.getAttribute("errorMessage") != null){
+  %>
+  <label style="color:red;"><%=request.getAttribute("errorMessage")%></label>
+	
+  <%
+    }
+  %>
+  <div id="ser" class="container">
+
+      <label for="Date">Date:</label>
+      <input type="Date" id="Date" size="13"/>
+      <label for="FromHour">From Hour:</label>
+      <input type="time" id="FromHour" size="13"/>
+
+      <label for="ToHour">To Hour:</label>
+      <input type="time" id="ToHour" size="13"/>
+      <p>    <p>
+       <label for="raddressInput">  Address:</label>
+       <input type="text" id="addressInput" size="13"/>
+      <label for="radiusSelect">Radius:</label>
+      <select id="radiusSelect" label="Radius">
+        <option value="10" selected>10 kms</option>
+        <option value="5" >5 kms</option>
+        <option value="2">2 kms</option>
+        <option value="1">1 kms</option>
+
+        <b> </b>
+      </select>
+      <input type="button" class="btn-primary" id="searchButton" value="Search"/>
+  </div>
+  <div><select id="locationSelect" style="width: 10%; visibility: hidden"></select></div>
+  <div id="map" style="width: 100%; height: 80%"></div>
+  <script>
+    var map;
+    var markers = [];
+    var infoWindow;
+    var locationSelect;
+
+      function initMap() {
+        var sydney = {lat: 31.046051, lng: 34.851612};
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: sydney,
+          zoom: 7,
+          mapTypeId: 'roadmap',
+          mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU}
+        });
+        infoWindow = new google.maps.InfoWindow();
+
+        searchButton = document.getElementById("searchButton").onclick = searchLocations;
+
+        locationSelect = document.getElementById("locationSelect");
+        locationSelect.onchange = function() {
+          var markerNum = locationSelect.options[locationSelect.selectedIndex].value;
+          if (markerNum != "none"){
+            google.maps.event.trigger(markers[markerNum], 'click');
+          }
+        };
+      }
+
+      function searchLocations() {
+        var address = document.getElementById("addressInput").value;
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode({address: address}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+           searchLocationsNear(results[0].geometry.location);
+          } else {
+            alert(address + ' not found');
+          }
+        });
+      }
+
+     function clearLocations() {
+       infoWindow.close();
+       for (var i = 0; i < markers.length; i++) {
+         markers[i].setMap(null);
+       }
+       markers.length = 0;
+
+       locationSelect.innerHTML = "";
+     }
+
+     function searchLocationsNear(center) {
+         clearLocations();
+
+         var radius = document.getElementById('radiusSelect').value;
+         var from = document.getElementById('FromHour').value;
+         var to = document.getElementById('ToHour').value;
+         var date = document.getElementById('Date').value;
+         var searchUrl = 'http://localhost:8080/fluent.ly/ParkingsNearby?lat=' + center.lat() + '&lng=' + center.lng() + '&radius=' + radius+ '&date=' + date + '&from=' + from + '&to=' + to;
+         downloadUrl(searchUrl, function(data) {
+
+           var xml = parseXml(data);
+           var markerNodes = xml.documentElement.getElementsByTagName("marker");
+
+            if( !markerNodes || markerNodes.length ==0){
+              alert('we dont have any parkings for you');
+              return;
+            }
+
+
+           var bounds = new google.maps.LatLngBounds();
+           // var ids=["1","2","3"];
+           // var names=["elad","anny","daniela"];
+           // var addresses=["Crowea Pl, Frenchs Forest NSW 2086","Thalia St, Hassall Grove NSW 2761","Glenview Avenue, Revesby, NSW 2212"];
+           // var distances=["52.762480400236754","51.30359905145628","65.60640686758967"];
+           // var lats = ["-33.737885","-33.729752","-33.949448"];
+           // var lngs = ["151.235260","150.836090","151.008591"];
+           // var prices= ["100","200","300"];
+
+
+           for (var i = 0; i < markerNodes.length; i++){
+             var id = markerNodes[i].getAttribute("id");
+             var address = markerNodes[i].getAttribute("address");
+             var distance = parseFloat(markerNodes[i].getAttribute("distance"));
+             var latlng = new google.maps.LatLng(
+                  parseFloat(markerNodes[i].getAttribute("lat")),
+                  parseFloat(markerNodes[i].getAttribute("lng")));
+            var from = markerNodes[i].getAttribute("from");
+             var to = markerNodes[i].getAttribute("to");
+             var price = markerNodes[i].getAttribute("price");
+
+
+             createOption(name, distance, i);
+             createMarker(latlng,address,distance,id,from,to,price);
+             bounds.extend(latlng);
+           }
+           map.fitBounds(bounds);
+           locationSelect.style.visibility = "visible";
+           locationSelect.onchange = function() {
+             var markerNum = locationSelect.options[locationSelect.selectedIndex].value;
+             google.maps.event.trigger(markers[markerNum], 'click');
+           };
+           });
+       }
+
+
+    function weight(radius){
+      if (radius < 0.3){
+        return 1.2;
+      }
+      if (radius < 0.6){
+        return 1.0;
+      }
+      if (radius < 1.0){
+        return 0.8;
+      }
+      if (radius < 1.5){
+        return 0.65;
+      }
+      if (radius < 3.0){
+        return 0.65;
+      }
+      if (radius < 4.0){
+        return 0.5;
+      }
+      return 0.5;
+    }
+
+     function createMarker(latlng, address,distance,id,from,to,price) {
+        var html = '<br><br><p><b>Distance: </b>' + distance +
+         'km<br>' + '<b>Address: </b>'+address
+         +'<br><b>From: </b>'+from
+         +'<br><b>To: </b>'+to
+        +'<br><b>Price: </b>'+price
+          +' <br><br><form action="Buy" method="post">'
+     +'<button class="btn btn-primary" name="foo" value="'+id+  ','+document.getElementById('FromHour').value+ ','+document.getElementById('ToHour').value +
+     '">Rent this spot</button>'
+     +'</form>' ;
+     var markerIcon = {
+            url: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Parking_icon.svg',
+            scaledSize: new google.maps.Size(50*weight(distance), 50*weight(distance)),
+    origin: new google.maps.Point(0, 0),
+    anchor: new google.maps.Point(20,40)
+          };
+        var marker = new google.maps.Marker({
+          map: map,
+          position: latlng,
+          icon: markerIcon
+        });
+        google.maps.event.addListener(marker, 'click', function() {
+          infoWindow.setContent(html);
+          infoWindow.open(map, marker);
+        });
+        markers.push(marker);
+      }
+
+     function createOption(name, distance, num) {
+        var option = document.createElement("option");
+        option.value = num;
+        option.innerHTML = name;
+        locationSelect.appendChild(option);
+     }
+
+
+
+     function downloadUrl(url, callback) {
+        var request = window.ActiveXObject ?
+            new ActiveXObject('Microsoft.XMLHTTP') :
+            new XMLHttpRequest;
+
+        request.onreadystatechange = function() {
+          if (request.readyState == 4) {
+            request.onreadystatechange = doNothing;
+            callback(request.responseText, request.status);
+          }
+        };
+
+        request.open('GET', url, true);
+        request.send(null);
+     }
+
+     function parseXml(str) {
+        if (window.ActiveXObject) {
+          var doc = new ActiveXObject('Microsoft.XMLDOM');
+          doc.loadXML(str);
+          return doc;
+        } else if (window.DOMParser) {
+          return (new DOMParser).parseFromString(str, 'text/xml');
+        }
+     }
+
+     function doNothing() {}
+</script>
+
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB04i20gc7nU0lFN2PoYXQpigu9X3kMrPY&callback=initMap">
+  </script>
+
+  <form id="logout-form" style="display:none" action="Logout" method="POST"></form>
+
+<script>
+function myFunction() {
+    document.getElementById("logout-form").submit();
+}
+</script>
+
+</body>
+
+ </html>

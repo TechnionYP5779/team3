@@ -86,11 +86,16 @@ public class Buy extends HttpServlet {
       System.out.println(username+" wants to buy parking number "+ parking_id);
       response.sendRedirect("ParkingOrders.html");
     }else {
-      response.sendRedirect("search.html");
+    //user not found
+      request.setAttribute("errorMessage", "Can not leave a span of less than an hour!);
+      RequestDispatcher rd = request.getRequestDispatcher("search.jsp");
+      rd.forward(request, response);
+      return;
+      /*response.sendRedirect("search.html");
       PrintWriter pw = response.getWriter(); 
 
       pw.println("<html><body onload=\"window.location.href='search.html';alert('Can not leave a span of less than an hour!')\"></body></html>");
-
+      */
     }
     return;
     
