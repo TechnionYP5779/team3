@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet {
 
   @Override
   protected void doGet(final HttpServletRequest req, final HttpServletResponse res) throws ServletException, IOException {
-      String redirectUri = req.getScheme() + "://" + req.getServerName() + ":" + req.getServerPort() + "/fluent.ly/homePage.html";
+      String redirectUri = req.getScheme() + "://" + req.getServerName() + ":" + req.getServerPort() + "/fluent.ly/callback";
       log("redirect uri:" + redirectUri);
       String authorizeUrl = authenticationController.buildAuthorizeUrl(req, redirectUri)
               .withAudience(String.format("https://%s/userinfo", domain))
@@ -45,7 +45,7 @@ public class LoginServlet extends HttpServlet {
 
   
   @Override protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    String redirectUri = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/callback";
+    String redirectUri = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/fluent.ly/callback";
 
     String authorizeUrl = authenticationController.buildAuthorizeUrl(request, redirectUri)
             .withAudience(String.format("https://%s/userinfo", domain))

@@ -44,8 +44,8 @@ public class CallbackServlet extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        redirectOnSuccess = "/portal/home";
-        redirectOnFail = "/login";
+        redirectOnSuccess = "homePage.html";
+        redirectOnFail = "Login1";
 
         try {
             authenticationController = AuthenticationControllerProvider.getInstance(config);
@@ -87,6 +87,8 @@ public class CallbackServlet extends HttpServlet {
             Tokens tokens = authenticationController.handle(req);
             SessionUtils.set(req, "accessToken", tokens.getAccessToken());
             SessionUtils.set(req, "idToken", tokens.getIdToken());
+            System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA " + SessionUtils.get(req, "accessToken"));
+            System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA " + SessionUtils.get(req, "idToken"));
             res.sendRedirect(redirectOnSuccess);
         } catch (IdentityVerificationException e) {
             e.printStackTrace();
