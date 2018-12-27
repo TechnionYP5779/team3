@@ -36,7 +36,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="homePage.html">HOME</a></li>
         <li><a href="homePage.html#About Us">ABOUT</a></li>
-        <li><a onclick ="myFunction()">LOGOUT</a></li>
+        <li><a href="logout1">LOGOUT</a></li>
       </ul>
     </div>
   </div>

@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
+import com.auth0.*;
 import com.google.gson.*;
 
 import parking.db.*;
@@ -36,8 +37,8 @@ public class UsersForRent extends HttpServlet {
     //System.out.println("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB Working Directory = " +
     //System.getProperty("user.dir"));
     Cookie[] cookies = request.getCookies();
-    int uid = -1;
-    
+    String uid = (String) SessionUtils.get(request, "uid");
+    /*
     for(Cookie c : cookies)
     {
       System.out.println(c.getName());
@@ -46,7 +47,7 @@ public class UsersForRent extends HttpServlet {
         uid = Integer.parseInt(c.getValue());
         break;
       }
-    }
+    }*/
     System.out.println(uid);
    List<Parking> parkings = new DBManager().getParking(uid);
    for (Parking p : parkings) {

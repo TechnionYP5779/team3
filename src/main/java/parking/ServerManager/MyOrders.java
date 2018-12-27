@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
+import com.auth0.*;
 import com.google.gson.*;
 
 import parking.db.*;
@@ -34,8 +35,8 @@ public class MyOrders extends HttpServlet {
 	
 	//getting user id cookie
     Cookie[] cookies = request.getCookies();
-    int uid = -1;
-    
+    String uid = (String) SessionUtils.get(request, "uid");
+    /*
     for(Cookie c : cookies)
     {
       System.out.println(c.getName());
@@ -44,7 +45,7 @@ public class MyOrders extends HttpServlet {
         uid = Integer.parseInt(c.getValue());
         break;
       }
-    }
+    }*/
     System.out.println("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB " + uid);
 	  List<Rental> rentals = new DBManager().getRentalsByRenter(uid);
 	  for (Rental r : rentals) {
