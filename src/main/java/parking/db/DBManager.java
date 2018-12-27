@@ -281,7 +281,7 @@ public class DBManager {
   
   public void removeParking(Parking p)
   {
-    String sql = "DELETE FROM warehouses WHERE id = ?";
+    String sql = "DELETE FROM parkingSpaces WHERE id = ?";
     
     try (Connection conn = this.connect();
         PreparedStatement pstmt  = conn.prepareStatement(sql)){
