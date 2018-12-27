@@ -50,8 +50,8 @@ public class Buy extends HttpServlet {
     Integer user_id = Integer.parseInt(username);
     
     DBManager db =new DBManager();
-    String fromRequest= request.getParameter("from");
-    String toRequest= request.getParameter("to");
+    String fromRequest= request.getParameter("FromHour");
+    String toRequest= request.getParameter("ToHour");
     
     Parking park=db.getParkingById(parking_id);
     String fromParking = parsedDateandHour_getHour(park.getFrom()); 
