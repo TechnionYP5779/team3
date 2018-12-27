@@ -8,6 +8,7 @@
 	top: 50%;
 }
 
+
 #center-right a
 { 
 	width:17em
@@ -21,7 +22,7 @@
   position: absolute;
   left: 49.75%;
   transform: translate(-50%, -50%);
-  top: 33%;
+  top: 44%;
 }
 
 #center-left a
@@ -36,7 +37,7 @@
   position: absolute;
   left: 49.75%;
   transform: translate(-50%, -50%);
-  top: 50%;
+  top: 56%;
 }
 #second-right a
 {
@@ -65,10 +66,8 @@
   position: absolute;
   left: 49.75%;
   transform: translate(-50%, -50%);
-  top: 84%;
+  top: 80%;
 }
-
-
 .navbar {
     margin-bottom: 0;
     background-color: #123456;
