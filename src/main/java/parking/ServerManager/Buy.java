@@ -37,7 +37,7 @@ public class Buy extends HttpServlet {
     String req=request.getParameter("foo");
     
     String fromRequest= req.split(",")[1];
-    String torequest = req.split(",")[2];
+    String toRequest = req.split(",")[2];
     
     Integer parking_id = Integer.parseInt(req.split(",")[0]);
     
@@ -65,13 +65,10 @@ public class Buy extends HttpServlet {
     System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAA " + park.getAddress());
     if((hoursDiff(fromRequest,fromParking) >=60 || hoursDiff(fromRequest, fromParking) == 0 ) && (hoursDiff(toParking, toRequest) >=60 || hoursDiff(toRequest,  toParking) ==  0 )  ) {
       //delete parkig 
-      db.removeParking(park);
-      //update the part of the time that rented
-      park.setFrom(fromRequest);
-      park.setTo(toRequest);
-      park.setOccupied(true);
-      db.addParking(park);
       
+      db.changeParkFrom(park,fromRequest + " " + dateFrom);
+      db.changeParkTo(park,toRequest + " " + dateFrom);
+   
       if(hoursDiff(fromRequest, fromParking) != 0 ) {
         //add new parking spot for the time before the new rent 
          Parking parkingSplitFirst = new Parking(-1, park.getUserID(), park.getAddress(), park.getLat(), park.getLon(), fromParking + " " + dateFrom, fromRequest + " " + dateTo, park.getPrice(), false);
@@ -89,10 +86,11 @@ public class Buy extends HttpServlet {
       System.out.println(username+" wants to buy parking number "+ parking_id);
       response.sendRedirect("ParkingOrders.html");
     }else {
+      response.sendRedirect("search.html");
       PrintWriter pw = response.getWriter(); 
-      pw.println("<script type=\"text/javascript\">");
-      pw.println("alert('Can not leave a span of less than an hour!');");
-      pw.println("</script>");
+
+      pw.println("<html><body onload=\"window.location.href='search.html';alert('Can not leave a span of less than an hour!')\"></body></html>");
+
     }
     return;
     
@@ -106,12 +104,16 @@ public class Buy extends HttpServlet {
     return (hours1*60+minutes1)-(hours2*60+minutes2);
 }
   private static String parsedDateandHour_getDate(String dateAndHourQuary) {
-    String[] splitStr = dateAndHourQuary.split("\\s+");
+    String[] splitStr = dateAndHourQuary.split(" ");
+    if(splitStr.length<=1) {
+      return " ";
+    }
+    
     return splitStr[1];
   }
 
   private static String parsedDateandHour_getHour(String dateAndHourQuary) {
-    String[] splitStr = dateAndHourQuary.split("\\s+");
+    String[] splitStr = dateAndHourQuary.split(" ");
     return splitStr[0];
   }
 

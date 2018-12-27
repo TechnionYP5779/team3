@@ -79,12 +79,15 @@ public class ParkingsNearby extends HttpServlet {
 
 
 private static String parsedDateandHour_getDate(String dateAndHourQuary) {
-  String[] splitStr = dateAndHourQuary.split("\\s+");
+  String[] splitStr = dateAndHourQuary.split(" ");
+  if(splitStr.length<=1) {
+    return " ";
+  }
   return splitStr[1];
 }
 
 private static String parsedDateandHour_getHour(String dateAndHourQuary) {
-  String[] splitStr = dateAndHourQuary.split("\\s+");
+  String[] splitStr = dateAndHourQuary.split(" ");
   return splitStr[0];
 }
 

@@ -230,7 +230,8 @@
          +'<br><b>To: </b>'+to
         +'<br><b>Price: </b>'+price
           +' <br><br><form action="Buy" method="post">'
-     +'<button class="btn btn-primary" name="foo" value="'+id+'">Rent this spot</button>'
+     +'<button class="btn btn-primary" name="foo" value="'+id+  ','+document.getElementById('FromHour').value+ ','+document.getElementById('ToHour').value +
+     '">Rent this spot</button>'
      +'</form>' ;
      var markerIcon = {
             url: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Parking_icon.svg',

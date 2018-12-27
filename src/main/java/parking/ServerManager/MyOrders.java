@@ -49,11 +49,21 @@ public class MyOrders extends HttpServlet {
 	  List<Rental> rentals = new DBManager().getRentalsByRenter(uid);
 	  for (Rental r : rentals) {
 	    Parking p = new DBManager().getParkingById(r.getParkingId());
+	    if(p!=null) {
 	    System.out.println("CCCCCCCCCCCCCCCCCCCCCCCCC " + r.getParkingId());
 	    r.setAddress(p.getAddress());
 	    r.setPrice(p.getPrice());
 	    r.setStartingTime(p.getFrom());
 	    r.setEndingTime(p.getTo());
+	    }
+	    else {
+	      r.setAddress("malal , haifa");
+	      r.setPrice(555);
+	      r.setStartingTime("18:00 18/10/2018");
+	      r.setEndingTime("20:00 18/10/2018");
+	      
+	    }
+	    
 	  }
 	  String json_response = new Gson().toJson(rentals);
 	  System.out.println(json_response);

@@ -279,6 +279,40 @@ public class DBManager {
     }
   }
   
+  public void changeParkFrom(Parking p,String from)
+  {
+    String sql = "UPDATE parkingSpaces SET startingTime = ? WHERE id = ?";
+    
+    try (Connection conn = this.connect();
+        PreparedStatement pstmt  = conn.prepareStatement(sql)){
+        pstmt.setString(1, from);
+        pstmt.setInt(2, p.getParkID());
+        pstmt.executeUpdate();
+    } catch (SQLException e) {
+          System.out.println(e.getMessage());
+          
+          return;
+    }
+  }
+  
+  
+  public void changeParkTo(Parking p,String to)
+  {
+    String sql = "UPDATE parkingSpaces SET startingTime = ? WHERE id = ?";
+    
+    try (Connection conn = this.connect();
+        PreparedStatement pstmt  = conn.prepareStatement(sql)){
+        pstmt.setString(1, to);
+        pstmt.setInt(2, p.getParkID());
+        pstmt.executeUpdate();
+    } catch (SQLException e) {
+          System.out.println(e.getMessage());
+          
+          return;
+    }
+  }
+  
+  
   public void removeParking(Parking p)
   {
     String sql = "DELETE FROM parkingSpaces WHERE id = ?";
