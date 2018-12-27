@@ -49,11 +49,12 @@ public class ParkingsNearby extends HttpServlet {
   }
 
   @SuppressWarnings("boxing") @Override protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    System.out.println("asfassafasffafs");
+   System.out.println("asfassafasffafs");
 
+   String latString = request.getParameter("lat");
+   String lngString = request.getParameter("lng");
    Double radius= Double.parseDouble(request.getParameter("radius"));
-   Double lat=Double.parseDouble(request.getParameter("lat"));
-   Double lng=Double.parseDouble( request.getParameter("lng"));
+   
    String from= request.getParameter("from");
    String to= request.getParameter("to");
    String date= request.getParameter("date");
@@ -62,9 +63,27 @@ public class ParkingsNearby extends HttpServlet {
    List<Parking> lst = new DBManager().getAllParking();
    String xml="<?xml version=\"1.0\"?><markers>";
    for( Parking parking  : lst) {
+     double dist = 0;
+     if (latString != null && !latString.isEmpty()) {
+       Double lat=Double.parseDouble(latString);
+       Double lng=Double.parseDouble(lngString);
+       dist = getDistanceFromLatLonInKm(lat, lng, parking.getLat(), parking.getLon());  
+     }
+     System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`");
+     System.out.println("dist is" + dist + ", raius is" + radius);
+     System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`");
      //System.out.println(parking.getFrom());
-     double dist = getDistanceFromLatLonInKm(lat, lng, parking.getLat(), parking.getLon());
-     if(dist<=radius && parsedDateandHour_getDate(parking.getFrom()).equals(date) && compareHours(from, parsedDateandHour_getHour(parking.getFrom())) && compareHours(parsedDateandHour_getHour(parking.getTo()),to) && new DBManager().getRentalsByParkingId(parking.getParkID()).isEmpty()) {
+     
+//     if(dist<=radius && 
+//         parsedDateandHour_getDate(parking.getFrom()).equals(date) && 
+//         compareHours(from, parsedDateandHour_getHour(parking.getFrom())) && 
+//         compareHours(parsedDateandHour_getHour(parking.getTo()),to) && 
+//         new DBManager().getRentalsByParkingId(parking.getParkID()).isEmpty()) {
+     if (dist <= radius &&
+         compareDate(date, parsedDateandHour_getDate(parking.getFrom())) &&
+         compareHours(from, parsedDateandHour_getHour(parking.getFrom())) &&
+         compareHours(parsedDateandHour_getHour(parking.getTo()),to) &&
+         new DBManager().getRentalsByParkingId(parking.getParkID()).isEmpty()) {
      xml= xml+ "<marker id=\""+ parking.getParkID()+"\" "+"address=\""+parking.getAddress()+"\" "
      +"from=\""+parking.getFrom()+"\" "+"to=\""+parking.getTo()+"\" "+"price=\""+parking.getPrice()+"\" "+"lat=\""+parking.getLat()+"\" "+"lng=\""+parking.getLon()+"\""+" distance=\""+dist+"\" />";
      }
@@ -88,7 +107,19 @@ private static String parsedDateandHour_getHour(String dateAndHourQuary) {
   return splitStr[0];
 }
 
+private static boolean compareDate(String date1, String date2) {
+  if (date1 == null || date1.isEmpty() || date2 == null || date2.isEmpty()) {
+    return true;
+  }
+  
+  return date1.equals(date2);
+  
+}
+
 private static boolean compareHours(String hour1, String hour2) {
+  if (hour1 == null || hour1.isEmpty() || hour2 == null || hour2.isEmpty()) {
+    return true;
+  }
   int hours1 = Integer.parseInt(hour1.split(":")[0]); 
   int minutes1 = Integer.parseInt(hour1.split(":")[1]); 
   int hours2 = Integer.parseInt(hour2.split(":")[0]); 
