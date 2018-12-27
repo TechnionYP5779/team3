@@ -50,16 +50,62 @@ public class Buy extends HttpServlet {
     Integer user_id = Integer.parseInt(username);
     
     DBManager db =new DBManager();
+    String fromRequest= request.getParameter("from");
+    String toRequest= request.getParameter("to");
     
     Parking park=db.getParkingById(parking_id);
+    String fromParking = parsedDateandHour_getHour(park.getFrom()); 
+    String toParking = parsedDateandHour_getHour(park.getTo()); 
+    String dateFrom =  parsedDateandHour_getDate(park.getFrom()); 
+    String dateTo =  parsedDateandHour_getDate(park.getTo());
     System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAA " + park.getAddress());
-    Rental rent=new Rental(123, parking_id, user_id, park.getFrom(), park.getTo(), "Jeep");
-    park.setOccupied(true);
-    db.changeParkingOccupied(park);
-    db.addRental(rent);
-    System.out.println(username+" wants to buy parking number "+ parking_id);
-    response.sendRedirect("ParkingOrders.html");
+    if((hoursDiff(fromRequest,fromParking) >=60 || hoursDiff(fromRequest, fromParking) == 0 ) && (hoursDiff(toParking, toRequest) >=60 || hoursDiff(toRequest,  toParking) ==  0 )  ) {
+      //delete parkig 
+      db.removeParking(park);
+      //update the part of the time that rented
+      park.setFrom(fromRequest);
+      park.setTo(toRequest);
+      park.setOccupied(true);
+      db.addParking(park);
+      
+      //add new parking spot for the time before the new rent 
+      Parking parkingSplitFirst = new Parking(-1, park.getUserID(), park.getAddress(), park.getLat(), park.getLon(), fromParking + " " + dateFrom, fromRequest + " " + dateTo, park.getPrice(), false);
+      db.addParking(parkingSplitFirst);
+      
+    //add new parking spot for the time after the new rent 
+      Parking parkingSplitSecond = new Parking(-1, park.getUserID(), park.getAddress(), park.getLat(), park.getLon(), toRequest + " " + dateFrom, toParking + " " + dateTo, park.getPrice(), false);
+      db.addParking(parkingSplitSecond);
+      //add new rented parking to rented table
+      Rental rent=new Rental(123, parking_id, user_id, park.getFrom(), park.getTo(), "Jeep");
+      db.addRental(rent);
+      
+      System.out.println(username+" wants to buy parking number "+ parking_id);
+      response.sendRedirect("ParkingOrders.html");
+    }else {
+      request.setAttribute("errorMessage", "Can not leave a span of less than an hour!");
+      RequestDispatcher rd = request.getRequestDispatcher("loginUser.jsp");
+      rd.forward(request, response);
+    }
+    
     return;
     
   }
+  private static int hoursDiff(String hour1, String hour2) {
+    int hours1 = Integer.parseInt(hour1.split(":")[0]); 
+    int minutes1 = Integer.parseInt(hour1.split(":")[1]); 
+    int hours2 = Integer.parseInt(hour2.split(":")[0]); 
+    int minutes2 = Integer.parseInt(hour2.split(":")[1]); 
+    
+    return (hours1*60+minutes1)-(hours2*60+minutes2);
+}
+  private static String parsedDateandHour_getDate(String dateAndHourQuary) {
+    String[] splitStr = dateAndHourQuary.split("\\s+");
+    return splitStr[1];
+  }
+
+  private static String parsedDateandHour_getHour(String dateAndHourQuary) {
+    String[] splitStr = dateAndHourQuary.split("\\s+");
+    return splitStr[0];
+  }
+
 }
