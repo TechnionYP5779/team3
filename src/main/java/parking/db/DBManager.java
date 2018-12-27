@@ -278,6 +278,21 @@ public class DBManager {
           return;
     }
   }
+  
+  public void removeParking(Parking p)
+  {
+    String sql = "DELETE FROM warehouses WHERE id = ?";
+    
+    try (Connection conn = this.connect();
+        PreparedStatement pstmt  = conn.prepareStatement(sql)){
+        pstmt.setInt(1, p.getParkID());
+        pstmt.executeUpdate();
+    } catch (SQLException e) {
+          System.out.println(e.getMessage());
+          
+          return;
+    }
+  }  
 
   public void addParking(Parking p)
   {
