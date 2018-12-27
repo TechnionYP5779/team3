@@ -1,5 +1,6 @@
 package parking.db;
 
+import java.io.*;
 import java.sql.*;
 import java.util.*;
 
@@ -14,7 +15,8 @@ public class DBManager {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
-    String url = "jdbc:sqlite:C:\\Users\\user\\workspace\\team3\\main.db";
+    File currentDir=new File(".");
+    String url = "jdbc:sqlite:" + currentDir.getAbsolutePath() + File.separator + "main.db";
     conn = DriverManager.getConnection(url);
     
     return conn;
